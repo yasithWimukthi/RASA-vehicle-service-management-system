@@ -2,13 +2,13 @@
   Created by IntelliJ IDEA.
   User: yasith wimukthi
   Date: 3/23/2021
-  Time: 6:55 PM
+  Time: 7:22 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Customer Registration</title>
+    <title>vehicle registration</title>
     <link href="styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
     <link href="styles/style.css" rel="stylesheet" type="text/css">
     <style>
@@ -97,9 +97,9 @@
                     <div class="search-wrapper">
                         <form method="get">
                             <div class="ui action input massive searchBar">
-                                <input type="text" placeholder="Enter NIC Number..." id="input-box">
+                                <input type="text" placeholder="Enter Registration Number..." id="input-box">
                                 <button type="submit" class="ui icon button" style="height: 69%">
-                                    <i class="search icon"></i>
+                                    <i class="search icon" ></i>
                                 </button>
                             </div>
                         </form>
@@ -107,17 +107,18 @@
                 </div>
             </div>
 
+
             <!--STEP BAR-->
 
             <div class="ui steps" style="width: 90%; margin-top:50px; margin-bottom:0">
-                <div class=" active step">
+                <div class="step">
                     <i class="user icon"></i>
                     <div class="content">
                         <div class="title">Customer Registration</div>
                         <div class="description">Enter client details</div>
                     </div>
                 </div>
-                <div class=" disabled step">
+                <div class="active step">
                     <i class="car icon"></i>
                     <div class="content">
                         <div class="title">Vehicle Registration</div>
@@ -133,42 +134,49 @@
                 </div>
             </div>
 
-            <!-- CUSTOMER DETAILS FORM -->
+
+            <!-- VEHICLE DETAILS FORM -->
             <div class="ui grid form-container">
                 <div class="sixteen wide column">
                     <form method="post">
                         <div class="ui huge form error">
 
-                            <div class="two fields">
-                                <div class="field error">
-                                    <label>First Name</label>
-                                    <input placeholder="First Name" type="text">
-                                </div>
-                                <div class="field error">
-                                    <label>Last Name</label>
-                                    <input placeholder="Last Name" type="text">
-                                </div>
+                            <div class="field error">
+                                <label>Vehicle Registration Number</label>
+                                <input type="text" placeholder="Registration Number">
+                            </div>
+
+                            <div class="field error" >
+                                <label>Brand Name</label>
+                                <select class="ui search dropdown">
+                                    <option value="Toyota">Toyota</option>
+                                    <option value="Nissan">Nissan</option>
+                                    <option value="Susuki">Susuki</option>
+                                    <option value="BMW">BMW</option>
+                                    <option value="Benze">Benze</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="field error">
+                                <label>Brand Name</label>
+                                <input type="text" placeholder="Brand Name">
                             </div>
 
                             <div class="two fields">
                                 <div class="field error">
-                                    <label>NIC Number</label>
-                                    <input placeholder="NIC Number" type="text">
+                                    <label>Model</label>
+                                    <input placeholder="Vehile Model" type="text">
                                 </div>
                                 <div class="field error">
-                                    <label>Phone Number</label>
-                                    <input placeholder="Phone Number" type="text">
+                                    <label>Color</label>
+                                    <input placeholder="Vehicle Color" type="text">
                                 </div>
                             </div>
 
                             <div class="field error">
-                                <label>Address</label>
-                                <input placeholder="Address" type="text">
-                            </div>
-
-                            <div class="field error">
-                                <label>Email</label>
-                                <input placeholder="Email" type="Email">
+                                <label>Manufactured Year</label>
+                                <input type="text" placeholder="Brand Name">
                             </div>
 
                             <div class="ui error message">
@@ -188,6 +196,14 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    $('select.dropdown')
+        .dropdown()
+    ;
+</script>
+
 
 </body>
 </html>

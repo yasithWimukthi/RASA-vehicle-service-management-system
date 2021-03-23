@@ -1,5 +1,3 @@
-@charset "ISO-8859-1";
-
 :root {
     --color-primary: #eb2f64;
     --color-primary-light: #ff3366;
@@ -207,7 +205,6 @@ body {
 /*************************************************
             SEARCH BAR
 *************************************************/
-
 .search-bar-container {
     height: 50px;
 }
@@ -218,7 +215,7 @@ body {
 }
 
 .searchBar {
-    width: 90% !important;
+    width: 90%;
     height: 100%;
 }
 
@@ -229,7 +226,7 @@ form #input-box {
     padding: 1.5rem;
     font-size: 1.5rem;
     font-weight: bold;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif !important;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color: #333;
     outline: none;
     border: none;
