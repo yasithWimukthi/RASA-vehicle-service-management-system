@@ -142,33 +142,33 @@
                             <div class="two fields">
                                 <div class="field error">
                                     <label>First Name</label>
-                                    <input placeholder="First Name" type="text">
+                                    <input placeholder="First Name" type="text" name="fname" id="fname">
                                 </div>
                                 <div class="field error">
                                     <label>Last Name</label>
-                                    <input placeholder="Last Name" type="text">
+                                    <input placeholder="Last Name" type="text" name="lname" id="lname">
                                 </div>
                             </div>
 
                             <div class="two fields">
                                 <div class="field error">
                                     <label>NIC Number</label>
-                                    <input placeholder="NIC Number" type="text">
+                                    <input placeholder="NIC Number" type="text" name="nic" id="nic">
                                 </div>
                                 <div class="field error">
                                     <label>Phone Number</label>
-                                    <input placeholder="Phone Number" type="text">
+                                    <input placeholder="Phone Number" type="text" name="mobile" id="mobile">
                                 </div>
                             </div>
 
                             <div class="field error">
                                 <label>Address</label>
-                                <input placeholder="Address" type="text">
+                                <input placeholder="Address" type="text" name="address" id="address">
                             </div>
 
                             <div class="field error">
                                 <label>Email</label>
-                                <input placeholder="Email" type="Email">
+                                <input placeholder="Email" type="Email" name="email" id="email">
                             </div>
 
                             <div class="ui error message">
