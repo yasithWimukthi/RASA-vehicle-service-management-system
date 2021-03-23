@@ -14,6 +14,11 @@ public class WorkProgress {
         this.sid = sid;
     }
 
+    public WorkProgress(String pid, int sid) {
+        this.pid = pid;
+        this.sid = sid;
+    }
+
     public String getPid() {
         return pid;
     }
