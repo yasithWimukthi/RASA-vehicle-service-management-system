@@ -9,6 +9,20 @@ const idRegex = /^([0-9]{9}[x|X|v|V]|[0-9]{12})$/;
 const tldEmailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
+
+/**************************************************
+ TOP SEARCH BAR VALIDATION
+ ***************************************************/
+let topSearchBar = document.querySelector("#search-form");
+
+topSearchBar.addEventListener("submit", e =>{
+    let searchWord = document.querySelector(".searchWord").value;
+
+    if(searchWord.trim().length == 0){
+        e.preventDefault();
+    }
+});
+
 /**************************************************
  CUSTOMER INFORMATION VALIDATION
  ***************************************************/
@@ -60,6 +74,9 @@ customerRegForm.addEventListener("submit",e =>{
         e.preventDefault();
     }
 
-
     return 1;
 });
+
+/**************************************************
+ VEHICLE INFORMATION VALIDATION
+ ***************************************************/

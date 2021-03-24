@@ -95,10 +95,10 @@
             <div class="ui grid search-bar-container">
                 <div class="sixteen wide column">
                     <div class="search-wrapper">
-                        <form method="get">
+                        <form method="POST" id="search-form">
                             <div class="ui action input massive searchBar">
-                                <input type="text" placeholder="Enter NIC Number..." id="input-box">
-                                <button type="submit" class="ui icon button" style="height: 69%">
+                                <input type="text" placeholder="Enter NIC Number..." id="input-box" class="searchWord" >
+                                <button type="submit" class="ui icon button" style="height: 69%" id="search-submit">
                                     <i class="search icon"></i>
                                 </button>
                             </div>
