@@ -9,6 +9,11 @@
 <html>
 <head>
     <title>Add Entry</title>
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="styles/Semantic-UI-CSS-master/semantic.min.js"></script>
     <link href="styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
     <link href="styles/style.css" rel="stylesheet" type="text/css">
 </head>
@@ -94,21 +99,21 @@
 
                             <div class="field error">
                                 <label>Entry Date</label>
-                                <input placeholder="Entry Date" type="date">
+                                <input placeholder="Entry Date" type="date" name="entryDate">
                             </div>
 
                             <div class="inline fields">
                                 <label for="repair">Repair Type:</label>
                                 <div class="field">
                                     <div class="ui radio checkbox">
-                                        <input type="radio" name="reapir" checked="" tabindex="10" class="hidden">
+                                        <input type="radio" name="repair" checked="" tabindex="10" class="hidden">
                                         <label>Insuarance</label>
                                     </div>
                                 </div>
 
                                 <div class="field">
                                     <div class="ui radio checkbox">
-                                        <input type="radio" name="reapir" checked="" tabindex="0" class="hidden">
+                                        <input type="radio" name="repair" checked="" tabindex="0" class="hidden">
                                         <label>Non-Insuarance</label>
                                     </div>
                                 </div>
@@ -120,7 +125,7 @@
                             </div>
 
                             <div class="inline field">
-                                <label for="repair">Repair Type:</label>
+                                <label >Repair Type:</label>
                                 <div class="ui checkbox">
                                     <input type="checkbox" tabindex="0" class="hidden">
                                     <label>Customer No objection</label>
