@@ -1,5 +1,13 @@
 package com.rasa.model;
 
+/**
+ * RASA VEHICLE SERVICE MANAGEMENT SYSTEM
+ *
+ * @author Yasith Wimukthi
+ * IT19966922
+ **/
+
+
 public class InsuranceService extends Service{
     private boolean customerNoObjection;
     private boolean leasingNoObjection;

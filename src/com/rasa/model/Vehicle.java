@@ -1,7 +1,7 @@
 package com.rasa.model;
 
 /**
- * RASA VIHICLE SERVICE MANAGEMENT SYSTEM
+ * RASA VEHICLE SERVICE MANAGEMENT SYSTEM
  *
  * @author Yasith Wimukthi
  * IT19966922
