@@ -143,12 +143,12 @@
 
                             <div class="field error">
                                 <label>Vehicle Registration Number</label>
-                                <input type="text" placeholder="Registration Number">
+                                <input type="text" placeholder="Registration Number" name="regID" id="regID">
                             </div>
 
                             <div class="field error" >
                                 <label>Brand Name</label>
-                                <select class="ui search dropdown">
+                                <select class="ui search dropdown" name="brand" id="brand">
                                     <option value="Toyota">Toyota</option>
                                     <option value="Nissan">Nissan</option>
                                     <option value="Susuki">Susuki</option>
@@ -160,23 +160,23 @@
 
                             <div class="field error">
                                 <label>Brand Name</label>
-                                <input type="text" placeholder="Brand Name">
+                                <input type="text" placeholder="Brand Name" name="otherBrand" id="otherBrand">
                             </div>
 
                             <div class="two fields">
                                 <div class="field error">
                                     <label>Model</label>
-                                    <input placeholder="Vehile Model" type="text">
+                                    <input placeholder="Vehile Model" type="text" name="model" id="model">
                                 </div>
                                 <div class="field error">
                                     <label>Color</label>
-                                    <input placeholder="Vehicle Color" type="text">
+                                    <input placeholder="Vehicle Color" type="text" name="color" id="color">
                                 </div>
                             </div>
 
                             <div class="field error">
                                 <label>Manufactured Year</label>
-                                <input type="text" placeholder="Brand Name">
+                                <input type="text" placeholder="Brand Name" name="manufactureYear" id="manufactureYear">
                             </div>
 
                             <div class="ui error message">
