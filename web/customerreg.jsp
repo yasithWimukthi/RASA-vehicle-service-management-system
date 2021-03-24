@@ -136,37 +136,37 @@
             <!-- CUSTOMER DETAILS FORM -->
             <div class="ui grid form-container">
                 <div class="sixteen wide column">
-                    <form method="post">
-                        <div class="ui huge form error">
+                    <form method="post" id="customerRegForm">
+                        <div class="ui huge form" id="form-container">
 
                             <div class="two fields">
-                                <div class="field error">
+                                <div class="field" id="fnameContainer">
                                     <label>First Name</label>
                                     <input placeholder="First Name" type="text" name="fname" id="fname">
                                 </div>
-                                <div class="field error">
+                                <div class="field" id="lnameContainer">
                                     <label>Last Name</label>
                                     <input placeholder="Last Name" type="text" name="lname" id="lname">
                                 </div>
                             </div>
 
                             <div class="two fields">
-                                <div class="field error">
+                                <div class="field" id="nicContainer">
                                     <label>NIC Number</label>
                                     <input placeholder="NIC Number" type="text" name="nic" id="nic">
                                 </div>
-                                <div class="field error">
+                                <div class="field" id="mobileContainer">
                                     <label>Phone Number</label>
                                     <input placeholder="Phone Number" type="text" name="mobile" id="mobile">
                                 </div>
                             </div>
 
-                            <div class="field error">
+                            <div class="field" id="addressContainer">
                                 <label>Address</label>
                                 <input placeholder="Address" type="text" name="address" id="address">
                             </div>
 
-                            <div class="field error">
+                            <div class="field " id="emailContainer">
                                 <label>Email</label>
                                 <input placeholder="Email" type="Email" name="email" id="email">
                             </div>
@@ -188,6 +188,6 @@
         </div>
     </div>
 </div>
-
+<script src="scripts/customerManagement.js"></script>
 </body>
 </html>
