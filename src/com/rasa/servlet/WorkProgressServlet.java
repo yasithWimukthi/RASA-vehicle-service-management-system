@@ -1,5 +1,7 @@
 package com.rasa.servlet;
 
+import com.rasa.service.workprogress_service;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +15,6 @@ public class WorkProgressServlet extends HttpServlet {
         //gather service entry id from front end
         String sid = request.getParameter("sid");
         //then pass values
-
 
     }
 
