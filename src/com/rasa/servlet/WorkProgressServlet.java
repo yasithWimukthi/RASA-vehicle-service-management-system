@@ -15,11 +15,6 @@ public class WorkProgressServlet extends HttpServlet {
         //then pass values
 
 
-
-
-
-
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
