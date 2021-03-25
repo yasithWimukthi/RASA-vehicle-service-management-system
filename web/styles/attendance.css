@@ -1,0 +1,135 @@
+
+/*manage divs*/
+body{
+    font-family: arial;
+}
+
+#att_div{
+
+    position:relative;
+    padding-bottom:40px;
+    padding-top: 80px;
+
+
+
+}
+
+#btn_div{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 200px;
+
+
+}
+
+#clr_div{
+    background: #e6e6e6;
+
+}
+
+/*table size*/
+table,th,td{
+    border-collapse: collapse;
+    margin: 25px 0;
+    min-width: 150px;
+
+
+}
+
+/*table shadow*/
+table{
+    box-shadow:gray 0 5px 6px;
+
+    /*height: 300px;*/
+
+}
+
+/*data row styles*/
+th{
+    text-align: left;
+    background-color: #008080;
+    color: white;
+    font-weight: bold;
+    width: auto;
+
+
+}
+td,th{
+    padding: 12px 15px;
+
+}
+
+#save_clm{
+    padding: 12px 180px;
+}
+tbody tr{
+
+    background-color: #ffffff;
+}
+tbody tr:nth-of-type(even){
+
+    background-color: #e6f2ff;
+}
+
+thead tr{
+	display: block;
+}
+
+tbody{
+	display: block;
+	overflow: auto;
+	height: 288px;
+}
+
+/*button styles*/
+
+.btn_tbl{
+
+    background-color: #008080;
+    border: none;
+    width: 100px;
+    height: 25px;
+    /*box-shadow:black 0px 5px 6px;*/
+    font-weight: bold;
+    border-radius: 18px;
+    font-weight: bold;
+    color: #ffffff;
+
+}
+
+.btn_tbl:hover{
+
+    box-shadow:#008080 0px 8px 9px;
+    width: 105px;
+
+}
+
+.btn_submit{
+
+    background-color: #008080;
+    border-radius: 10px;
+    width: 200px;
+    height: 50px;
+    box-shadow: black 0px 2px 3px;
+    font-weight: bold;
+    color: #ffffff;
+
+}
+
+.btn_submit:hover{
+
+    box-shadow:#008080 0px 8px 9px;
+    width: 202px;
+    height: 52px;
+
+}
+
+#emp_mng{
+    margin-left: 350px;
+}
+
+#emp_pay{
+    margin-right: 350px;
+    float: right;
+}
