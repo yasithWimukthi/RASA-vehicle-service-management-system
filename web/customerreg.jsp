@@ -95,10 +95,10 @@
             <div class="ui grid search-bar-container">
                 <div class="sixteen wide column">
                     <div class="search-wrapper">
-                        <form method="get">
+                        <form method="POST" id="search-form">
                             <div class="ui action input massive searchBar">
-                                <input type="text" placeholder="Enter NIC Number..." id="input-box">
-                                <button type="submit" class="ui icon button" style="height: 69%">
+                                <input type="text" placeholder="Enter NIC Number..." id="input-box" class="searchWord" >
+                                <button type="submit" class="ui icon button" style="height: 69%" id="search-submit">
                                     <i class="search icon"></i>
                                 </button>
                             </div>
@@ -136,39 +136,39 @@
             <!-- CUSTOMER DETAILS FORM -->
             <div class="ui grid form-container">
                 <div class="sixteen wide column">
-                    <form method="post">
-                        <div class="ui huge form error">
+                    <form method="post" id="customerRegForm">
+                        <div class="ui huge form" id="form-container">
 
                             <div class="two fields">
-                                <div class="field error">
+                                <div class="field" id="fnameContainer">
                                     <label>First Name</label>
-                                    <input placeholder="First Name" type="text">
+                                    <input placeholder="First Name" type="text" name="fname" id="fname">
                                 </div>
-                                <div class="field error">
+                                <div class="field" id="lnameContainer">
                                     <label>Last Name</label>
-                                    <input placeholder="Last Name" type="text">
+                                    <input placeholder="Last Name" type="text" name="lname" id="lname">
                                 </div>
                             </div>
 
                             <div class="two fields">
-                                <div class="field error">
+                                <div class="field" id="nicContainer">
                                     <label>NIC Number</label>
-                                    <input placeholder="NIC Number" type="text">
+                                    <input placeholder="NIC Number" type="text" name="nic" id="nic">
                                 </div>
-                                <div class="field error">
+                                <div class="field" id="mobileContainer">
                                     <label>Phone Number</label>
-                                    <input placeholder="Phone Number" type="text">
+                                    <input placeholder="Phone Number" type="text" name="mobile" id="mobile">
                                 </div>
                             </div>
 
-                            <div class="field error">
+                            <div class="field" id="addressContainer">
                                 <label>Address</label>
-                                <input placeholder="Address" type="text">
+                                <input placeholder="Address" type="text" name="address" id="address">
                             </div>
 
-                            <div class="field error">
+                            <div class="field " id="emailContainer">
                                 <label>Email</label>
-                                <input placeholder="Email" type="Email">
+                                <input placeholder="Email" type="Email" name="email" id="email">
                             </div>
 
                             <div class="ui error message">
@@ -188,6 +188,6 @@
         </div>
     </div>
 </div>
-
+<script src="scripts/customerManagement.js"></script>
 </body>
 </html>
