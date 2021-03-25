@@ -1,0 +1,103 @@
+
+#clr_div{
+    background: #e6e6e6!important;
+    font-family: arial;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.form_div{
+    max-width: 500px;
+    max-height: 700px;
+    background: #e6e6e6;
+    margin-top: 10%;
+    margin-left: 30%;
+    box-shadow:gray 0 10px 11px;
+    margin-bottom: 6%;
+
+
+}
+.add_frm{
+
+    align-self: center;
+    background: #ffffff;
+
+
+}
+label{
+    padding: 5px 20px;
+    float: left;
+    margin-left: 150px;
+    color: #008080;
+    font-weight: bold;
+
+}
+
+
+input{
+    margin-bottom: 20px;
+    margin-left: 150px;
+    padding: 5px 8px;
+    border-radius: 5px;
+    border:#008080 solid 2px;
+}
+
+.btm_inp{
+
+    margin-bottom: 0;
+
+}
+
+
+
+h2{
+    padding-top: 23px;
+    color: #008080;
+}
+
+p{
+
+    margin-bottom: 5px;
+    margin-left: 150px;
+    max-width: 190px;
+    margin-top: 2px;
+    text-align: right;
+    font-weight: bold;
+}
+
+
+.valuep{
+
+}
+
+button{
+
+    background:#008080 ;
+    margin-left: 137px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    color: white;
+    border:#008080 solid;
+
+
+}
+
+.btn_save{
+    padding: 10px 90px;
+}
+
+.btm_btn{
+
+
+    margin-left: 150px;
+    width: 60px;
+
+
+}
+.close{
+    float: right;
+    margin-top: 2px;
+    margin-right: 2px;
+    color: white;
+}
