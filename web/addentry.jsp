@@ -84,47 +84,47 @@
             <div class="ui grid form-container">
                 <div class="sixteen wide column">
                     <form method="post" id="entry-form">
-                        <div class="ui huge form error">
+                        <div class="ui huge form" id="form-container">
 
                             <div class="two fields">
-                                <div class="field error">
+                                <div class="field">
                                     <label>Customer Name</label>
                                     <input placeholder="Customer Name" type="text">
                                 </div>
-                                <div class="field error">
+                                <div class="field">
                                     <label>Vehicle Registration Number</label>
                                     <input placeholder="Registration Number" type="text">
                                 </div>
                             </div>
 
-                            <div class="field error">
+                            <div class="field" id="entryDateContainer">
                                 <label>Entry Date</label>
-                                <input placeholder="Entry Date" type="date" name="entryDate">
+                                <input placeholder="Entry Date" type="date" name="entryDate" id="entryDate">
+                            </div>
+
+                            <div class="field" id="accidentDateContainer">
+                                <label>Accident Date</label>
+                                <input placeholder="Accident Date" type="date" id="accidentDate">
                             </div>
 
                             <div class="inline fields">
                                 <label for="repair">Repair Type:</label>
                                 <div class="field">
                                     <div class="ui radio checkbox">
-                                        <input type="radio" name="repair" checked="" tabindex="10" class="hidden">
+                                        <input type="radio" name="repair" tabindex="10" class="hidden" id="insurance">
                                         <label>Insuarance</label>
                                     </div>
                                 </div>
 
                                 <div class="field">
                                     <div class="ui radio checkbox">
-                                        <input type="radio" name="repair" checked="" tabindex="0" class="hidden">
+                                        <input type="radio" name="repair" checked="" tabindex="0" class="hidden" id="nonInsurance">
                                         <label>Non-Insuarance</label>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="field error">
-                                <label>Accident Date</label>
-                                <input placeholder="Accident Date" type="date">
-                            </div>
-
-                            <div class="inline field">
+                            <div class="inline field" id="document-container" style="display: none">
                                 <label >Repair Type:</label>
                                 <div class="ui checkbox">
                                     <input type="checkbox" tabindex="0" class="hidden">
@@ -151,27 +151,6 @@
                                 <i class="right check icon" style="font-size: 1.5em;"></i>
                                 complete
                             </button>
-
-                            <div class="ui basic modal">
-                                <div class="ui icon header">
-                                    <i class="archive icon"></i>
-                                    Archive Old Messages
-                                </div>
-                                <div class="content">
-                                    <p>Your inbox is getting full, would you like us to enable automatic archiving of old messages?</p>
-                                </div>
-                                <div class="actions">
-                                    <div class="ui red basic cancel inverted button">
-                                        <i class="remove icon"></i>
-                                        No
-                                    </div>
-                                    <div class="ui green ok inverted button">
-                                        <i class="checkmark icon"></i>
-                                        Yes
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
                     </form>
                 </div>
@@ -180,24 +159,24 @@
     </div>
 </div>
 
-<script>
-    $('.ui.radio.checkbox')
-        .checkbox();
-
-    $('.ui.checkbox')
-        .checkbox();
-
-    // $( "#submit-btn" ).click(function() {
+<script src="scripts/entryValidate.js">
+    // $('.ui.radio.checkbox')
+    //     .checkbox();
+    //
+    // $('.ui.checkbox')
+    //     .checkbox();
+    //
+    // // $( "#submit-btn" ).click(function() {
+    // //     $('.ui.basic.modal')
+    // //     .modal('show');
+    // // });
+    //
+    // $( "#entry-form" ).submit(function( event ) {
+    //     //alert( "Handler for .submit() called." );
+    //     event.preventDefault();
     //     $('.ui.basic.modal')
-    //     .modal('show');
+    //         .modal('show');
     // });
-
-    $( "#entry-form" ).submit(function( event ) {
-        //alert( "Handler for .submit() called." );
-        event.preventDefault();
-        $('.ui.basic.modal')
-            .modal('show');
-    });
 </script>
 
 

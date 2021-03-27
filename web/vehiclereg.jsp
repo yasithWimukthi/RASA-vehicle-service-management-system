@@ -11,6 +11,11 @@
     <title>vehicle registration</title>
     <link href="styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
     <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="styles/Semantic-UI-CSS-master/semantic.min.js"></script>
     <style>
         .search-bar-container {
             height: 50px;
@@ -197,13 +202,7 @@
     </div>
 </div>
 
-
-<script src="scripts/vehicleRegistration.js">
-    $('select.dropdown')
-        .dropdown()
-    ;
-</script>
-
+<script src="scripts/vehicleRegistration.js"></script>
 
 </body>
 </html>
