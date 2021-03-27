@@ -95,9 +95,9 @@
             <div class="ui grid search-bar-container">
                 <div class="sixteen wide column">
                     <div class="search-wrapper">
-                        <form method="get">
+                        <form method="post" id="search-form">
                             <div class="ui action input massive searchBar">
-                                <input type="text" placeholder="Enter Registration Number..." id="input-box">
+                                <input type="text" placeholder="Enter Registration Number..." id="input-box" class="searchWord">
                                 <button type="submit" class="ui icon button" style="height: 69%">
                                     <i class="search icon" ></i>
                                 </button>
@@ -138,15 +138,15 @@
             <!-- VEHICLE DETAILS FORM -->
             <div class="ui grid form-container">
                 <div class="sixteen wide column">
-                    <form method="post">
-                        <div class="ui huge form error">
+                    <form method="post" id="vehicleRegForm">
+                        <div class="ui huge form" id="form-container">
 
-                            <div class="field error">
+                            <div class="field">
                                 <label>Vehicle Registration Number</label>
                                 <input type="text" placeholder="Registration Number" name="regID" id="regID">
                             </div>
 
-                            <div class="field error" >
+                            <div class="field" id="brandContainer" >
                                 <label>Brand Name</label>
                                 <select class="ui search dropdown" name="brand" id="brand">
                                     <option value="Toyota">Toyota</option>
@@ -158,23 +158,23 @@
                                 </select>
                             </div>
 
-                            <div class="field error">
+                            <div class="field" id="OtherBrandContainer" style="display: none">
                                 <label>Brand Name</label>
                                 <input type="text" placeholder="Brand Name" name="otherBrand" id="otherBrand">
                             </div>
 
                             <div class="two fields">
-                                <div class="field error">
+                                <div class="field" id="modelContainer">
                                     <label>Model</label>
                                     <input placeholder="Vehile Model" type="text" name="model" id="model">
                                 </div>
-                                <div class="field error">
+                                <div class="field" id="colorContainer">
                                     <label>Color</label>
                                     <input placeholder="Vehicle Color" type="text" name="color" id="color">
                                 </div>
                             </div>
 
-                            <div class="field error">
+                            <div class="field" id="manufactYearContainer">
                                 <label>Manufactured Year</label>
                                 <input type="text" placeholder="Brand Name" name="manufactureYear" id="manufactureYear">
                             </div>
@@ -198,7 +198,7 @@
 </div>
 
 
-<script>
+<script src="scripts/vehicleRegistration.js">
     $('select.dropdown')
         .dropdown()
     ;
