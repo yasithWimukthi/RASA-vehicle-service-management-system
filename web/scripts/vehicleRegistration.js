@@ -76,3 +76,10 @@ vehicleRegistrationForm.addEventListener("submit", e =>{
         document.querySelector("#manufactYearContainer").classList.remove("error");
     }
 })
+
+/**************************************************
+                    jQuery
+ ***************************************************/
+
+$('.ui.search.dropdown')
+    .dropdown();
