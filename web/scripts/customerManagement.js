@@ -77,6 +77,4 @@ customerRegForm.addEventListener("submit",e =>{
     return 1;
 });
 
-/**************************************************
- VEHICLE INFORMATION VALIDATION
- ***************************************************/
+
