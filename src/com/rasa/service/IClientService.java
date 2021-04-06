@@ -17,4 +17,25 @@ public interface IClientService {
      * @return Customer
      */
     Customer searchByNic(String nic);
+
+    /**
+     * addCustomer
+     * Save customer details into the client table
+     *
+     * @param nic
+     * @param fname
+     * @param lname
+     * @param mobile
+     * @param address
+     * @param email
+     * @return True if operation is success otherwise false
+     */
+    boolean addCustomer(
+            String nic,
+            String fname,
+            String lname,
+            String mobile,
+            String address,
+            String email
+    );
 }
