@@ -53,4 +53,9 @@ public class ClientService implements IClientService{
         }
         return customer;
     }
+
+    @Override
+    public boolean addCustomer(String nic, String fname, String lname, String mobile, String address, String email) {
+        return false;
+    }
 }
