@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.rasa.model.Customer" %><%--
   Created by IntelliJ IDEA.
   User: yasith wimukthi
   Date: 3/23/2021
@@ -55,6 +55,12 @@
 </head>
 <body>
 
+<%
+    Customer customer = new Customer();
+    customer = (Customer) request.getAttribute("customer");
+
+%>
+
 <div class="container">
     <div class="content">
         <div class="sidebar">
@@ -97,7 +103,7 @@
                     <div class="search-wrapper">
                         <form method="POST" id="search-form">
                             <div class="ui action input massive searchBar">
-                                <input type="text" placeholder="Enter NIC Number..." id="input-box" class="searchWord" >
+                                <input type="text" placeholder="Enter NIC Number..." id="input-box" class="searchWord" name="nic_number">
                                 <button type="submit" class="ui icon button" style="height: 69%" id="search-submit">
                                     <i class="search icon"></i>
                                 </button>
