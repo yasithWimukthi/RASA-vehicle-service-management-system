@@ -10,26 +10,51 @@ package com.rasa.model;
 public class Customer {
     private String customerID;
     private String NICno;
-    private String name;
+    private String fullName;
+    private String firstName;
+    private String lastName;
     private String address;
     private String phoneNo;
     private String email;
 
-    public Customer(String customerID, String NICno, String name, String address, String phoneNo, String email) {
+    public Customer() {
+    }
+
+    public Customer(String customerID, String NICno, String fullName, String firstName, String lastName, String address, String phoneNo, String email) {
         this.customerID = customerID;
         this.NICno = NICno;
-        this.name = name;
+        this.fullName = fullName;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.address = address;
         this.phoneNo = phoneNo;
         this.email = email;
     }
 
-    public Customer(String NICno, String name, String address, String phoneNo, String email) {
+    public Customer(String NICno, String fullName, String firstName, String lastName, String address, String phoneNo, String email) {
         this.NICno = NICno;
-        this.name = name;
+        this.fullName = fullName;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.address = address;
         this.phoneNo = phoneNo;
         this.email = email;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getCustomerID() {
@@ -48,12 +73,12 @@ public class Customer {
         this.NICno = NICno;
     }
 
-    public String getName() {
-        return name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getAddress() {
@@ -84,7 +109,7 @@ public class Customer {
     public String toString() {
         return "Customer{" +
                 "NICno='" + NICno + '\'' +
-                ", name='" + name + '\'' +
+                ", name='" + fullName + '\'' +
                 ", address='" + address + '\'' +
                 ", phoneNo='" + phoneNo + '\'' +
                 ", email='" + email + '\'' +
