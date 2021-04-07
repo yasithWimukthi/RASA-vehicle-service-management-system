@@ -23,7 +23,7 @@ public class EmpQuery {
 
     public static final String show_adv=" ";
 
-    public static final String all_adv =" ";
+    public static final String all_adv ="select * from advance";
 
     public static final String del_adv =" ";
 
@@ -32,9 +32,18 @@ public class EmpQuery {
 
     public static final String update_sal ="";
 
-    public static final String show_sal=" ";
+    public static final String show_sal="select * from salary";
 
     public static final String all_sal =" ";
+
+
+    //emp attendance management queries
+
+    public static final String add_att ="";
+
+    public static final String update_att ="";
+
+    public static final String all_att ="select * from attendance";
 
 
 

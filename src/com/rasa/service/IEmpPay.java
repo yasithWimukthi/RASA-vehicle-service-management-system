@@ -9,6 +9,6 @@ public interface IEmpPay {
 
     public boolean showPayement(int paymentID,int empID, int adminID, Date date,double bonus, double deduct,double amount);
 
-    public boolean upodatePayement(int paymentID,int empID,double bonus, double deduct,double amount);
+    public boolean updatePayement(int paymentID,int empID,double bonus, double deduct,double amount);
 }
 
