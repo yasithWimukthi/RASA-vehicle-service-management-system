@@ -54,8 +54,32 @@ public class ClientService implements IClientService{
         return customer;
     }
 
+
     @Override
-    public boolean addCustomer(String nic, String fname, String lname, String mobile, String address, String email) {
-        return false;
+    public boolean addCustomer(String nic, String fname, String lname, String mobile, String address, String email,String operatorID) {
+
+        try{
+            conn = DBConnectionUtil.getConnection();
+            String sql = CustomerManagementQuery.ADD_CUSTOMER;
+            preparedStatement = conn.prepareStatement(sql);
+
+            preparedStatement.setString(QueryConstants.COLUMN_ONE,nic);
+            preparedStatement.setString(QueryConstants.COLUMN_TWO,fname);
+            preparedStatement.setString(QueryConstants.COLUMN_THREE,lname);
+            preparedStatement.setString(QueryConstants.COLUMN_FOUR,email);
+            preparedStatement.setString(QueryConstants.COLUMN_FIVE,address);
+            preparedStatement.setString(QueryConstants.COLUMN_SIX,mobile);
+            preparedStatement.setString(QueryConstants.COLUMN_SEVEN,operatorID);
+
+            preparedStatement.execute();
+
+        }catch (SQLException | ClassNotFoundException  e){
+            e.printStackTrace();
+            return false;
+
+        }finally {
+            DBConnectionUtil.closeConnection(preparedStatement, conn);
+        }
+        return true;
     }
 }

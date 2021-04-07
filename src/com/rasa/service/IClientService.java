@@ -36,6 +36,7 @@ public interface IClientService {
             String lname,
             String mobile,
             String address,
-            String email
+            String email,
+            String operatorID
     );
 }
