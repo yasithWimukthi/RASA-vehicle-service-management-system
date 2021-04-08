@@ -1,6 +1,6 @@
 package com.rasa.model;
 
-public class WorkService {
+public class RepairService {
 
     private String Ser_Id;
     private String ser_type;
@@ -9,10 +9,10 @@ public class WorkService {
     private String Status;
     private String pid;
 
-    public WorkService() {
+    public RepairService() {
     }
 
-    public WorkService(String ser_Id, String ser_type, String description, String date, String status, String pid) {
+    public RepairService(String ser_Id, String ser_type, String description, String date, String status, String pid) {
         Ser_Id = ser_Id;
         this.ser_type = ser_type;
         this.description = description;
@@ -21,7 +21,7 @@ public class WorkService {
         this.pid = pid;
     }
 
-    public WorkService(String ser_type, String description, String date, String status, String pid) {
+    public RepairService(String ser_type, String description, String date, String status, String pid) {
         this.ser_type = ser_type;
         this.description = description;
         this.date = date;

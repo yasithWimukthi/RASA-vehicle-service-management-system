@@ -1,6 +1,6 @@
 package com.rasa.service;
 
-import com.rasa.model.WorkService;
+import com.rasa.model.RepairService;
 import com.rasa.util.DBConnectionUtil;
 
 import java.sql.Connection;
@@ -37,7 +37,7 @@ public class Workprogress_service implements Iworkprogress_service{
 
     //insert function
     @Override
-    public void InsertService(WorkService workService) {
+    public void InsertService(RepairService repairService) {
         //I have to implement
     }
 }
