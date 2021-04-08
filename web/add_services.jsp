@@ -128,7 +128,7 @@
             </div>
             <div class="summery_content">
                 <div class="inter-content">
-                    <h4>Vehicle NO : AB454344</h4>
+                    <h4><%=request.getAttribute("pid")%></h4>
                     <h4>Total estimate amount</h4>
                     <h4>Assign Employee</h4>
                     <%-- redirect to assign employee page --%>
