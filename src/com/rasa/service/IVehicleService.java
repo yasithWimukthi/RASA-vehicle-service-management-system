@@ -17,4 +17,24 @@ public interface IVehicleService {
      * @return Vehicle object
      */
     Vehicle searchByRegistrationNumber(String registrationNum);
+
+    /**
+     * addVehicle
+     * save vehicle details into the vehicle table
+     * @param registrationNumber
+     * @param manufacturedYear
+     * @param brand
+     * @param model
+     * @param color
+     * @param NICnumber
+     * @return return true if added successfully otherwise false
+     */
+    boolean addVehicle(
+            String registrationNumber,
+            int manufacturedYear,
+            String brand,
+            String model,
+            String color,
+            String NICnumber
+    );
 }
