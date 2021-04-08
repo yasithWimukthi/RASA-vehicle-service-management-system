@@ -28,4 +28,9 @@ public class Workprogress_service implements Iworkprogress_service{
 
         return pid;
     }
+
+    @Override
+    public String createProgressId(int sid) {
+        return "p"+sid;
+    }
 }
