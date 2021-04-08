@@ -54,4 +54,39 @@ public class VehicleService implements IVehicleService{
 
         return vehicle;
     }
+
+    @Override
+    public boolean addVehicle(String registrationNumber, int manufacturedYear, String brand, String model, String color, String NICnumber) {
+
+        try {
+            conn = DBConnectionUtil.getConnection();
+
+            //add vehicle details
+            String sql = CustomerManagementQuery.ADD_VEHICLE;
+            preparedStatement = conn.prepareStatement(sql);
+
+            preparedStatement.setString(QueryConstants.COLUMN_ONE,registrationNumber);
+            preparedStatement.setInt(QueryConstants.COLUMN_TWO,manufacturedYear);
+            preparedStatement.setString(QueryConstants.COLUMN_THREE,brand);
+            preparedStatement.setString(QueryConstants.COLUMN_FOUR,model);
+            preparedStatement.setString(QueryConstants.COLUMN_FIVE,color);
+            preparedStatement.execute();
+
+            // add owner details
+            sql = CustomerManagementQuery.ADD_OWNER;
+            preparedStatement = conn.prepareStatement(sql);
+
+            preparedStatement.setString(QueryConstants.COLUMN_ONE,NICnumber);
+            preparedStatement.setString(QueryConstants.COLUMN_TWO,registrationNumber);
+            preparedStatement.execute();
+
+        }catch (SQLException | ClassNotFoundException  e){
+            e.printStackTrace();
+            return false;
+
+        }finally {
+            DBConnectionUtil.closeConnection(preparedStatement, conn);
+        }
+        return true;
+    }
 }
