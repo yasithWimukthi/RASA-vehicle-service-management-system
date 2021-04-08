@@ -102,7 +102,7 @@
                     <div class="search-wrapper">
                         <form method="post" id="search-form">
                             <div class="ui action input massive searchBar">
-                                <input type="text" placeholder="Enter Registration Number..." id="input-box" class="searchWord">
+                                <input type="text" placeholder="Enter Registration Number..." id="input-box" class="searchWord" name="registrationNumber">
                                 <button type="submit" class="ui icon button" style="height: 69%">
                                     <i class="search icon" ></i>
                                 </button>

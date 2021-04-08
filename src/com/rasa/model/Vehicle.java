@@ -15,6 +15,9 @@ public class Vehicle {
     private String brand;
     private String color;
 
+    public Vehicle() {
+    }
+
     public Vehicle(
             String NICno,
             String registrationNo,
