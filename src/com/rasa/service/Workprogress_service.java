@@ -1,5 +1,6 @@
 package com.rasa.service;
 
+import com.rasa.model.WorkService;
 import com.rasa.util.DBConnectionUtil;
 
 import java.sql.Connection;
@@ -32,5 +33,11 @@ public class Workprogress_service implements Iworkprogress_service{
     @Override
     public String createProgressId(int sid) {
         return "p"+sid;
+    }
+
+    //insert function
+    @Override
+    public void InsertService(WorkService workService) {
+        //I have to implement
     }
 }
