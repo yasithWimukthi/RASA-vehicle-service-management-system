@@ -13,6 +13,9 @@ public class InsuranceService extends Service{
     private boolean leasingNoObjection;
     private boolean claimForm;
 
+    public InsuranceService() {
+    }
+
     public InsuranceService(
             String NICno,
             String vehicleRegistrationNo,

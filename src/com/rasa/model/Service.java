@@ -14,6 +14,9 @@ public class Service {
     private String accidentDate;
     private String paymentType;
 
+    public Service() {
+    }
+
     public Service(String NICno, String vehicleRegistrationNo, String entryDate, String accidentDate, String paymentType) {
         this.NICno = NICno;
         this.vehicleRegistrationNo = vehicleRegistrationNo;
