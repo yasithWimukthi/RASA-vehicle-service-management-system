@@ -65,7 +65,7 @@ public class VehicleService implements IVehicleService{
             String sql = CustomerManagementQuery.ADD_VEHICLE;
             preparedStatement = conn.prepareStatement(sql);
 
-            preparedStatement.setString(QueryConstants.COLUMN_ONE,registrationNumber);
+            preparedStatement.setString(QueryConstants.COLUMN_ONE,registrationNumber.toLowerCase());
             preparedStatement.setInt(QueryConstants.COLUMN_TWO,manufacturedYear);
             preparedStatement.setString(QueryConstants.COLUMN_THREE,brand);
             preparedStatement.setString(QueryConstants.COLUMN_FOUR,model);
