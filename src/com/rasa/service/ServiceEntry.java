@@ -1,11 +1,14 @@
 package com.rasa.service;
 
+import com.rasa.model.InsuranceService;
+import com.rasa.model.Service;
 import com.rasa.util.CustomerManagementQuery;
 import com.rasa.util.DBConnectionUtil;
 import com.rasa.util.QueryConstants;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -55,5 +58,32 @@ public class ServiceEntry implements IServiceEntry{
             DBConnectionUtil.closeConnection(preparedStatement, conn);
         }
         return true;
+    }
+
+    @Override
+    public Service searchByRegistrationNumber(String registrationNumber) {
+        Service service;
+
+        try {
+            conn = DBConnectionUtil.getConnection();
+            String sql = CustomerManagementQuery.SEARCH_ENTRY_BY_REG_NUM;
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setString(QueryConstants.COLUMN_ONE,registrationNumber.toLowerCase());
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()){
+                service = new InsuranceService(
+
+                );
+            }
+
+        }catch (SQLException | ClassNotFoundException  e){
+            e.printStackTrace();
+        }finally {
+            DBConnectionUtil.closeConnection(preparedStatement, conn);
+        }
+
+        return null;
     }
 }

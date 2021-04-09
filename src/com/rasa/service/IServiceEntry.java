@@ -1,5 +1,7 @@
 package com.rasa.service;
 
+import com.rasa.model.Service;
+
 /**
  * RASA VEHICLE SERVICE MANAGEMENT SYSTEM
  *
@@ -30,4 +32,12 @@ public interface IServiceEntry {
             boolean insuranceNoObjection,
             boolean claimForm
     );
+
+    /**
+     * searchByRegistrationNumber
+     * search service entries by registration number
+     * @param registrationNumber
+     * @return Service object for given registration number
+     */
+    Service searchByRegistrationNumber(String registrationNumber);
 }
