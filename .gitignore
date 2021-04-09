@@ -1,0 +1,41 @@
+/out/artifacts/web_war_exploded/WEB-INF/classes/com/rasa/servlet/AddCustomerServlet.class
+/out/production/RASA - vehicle service management system/com/rasa/servlet/AddCustomerServlet.class
+/out/artifacts/web_war_exploded/addentry.jsp
+/out/artifacts/web_war_exploded/styles/addpayment.css
+/out/artifacts/web_war_exploded/addpayment.jsp
+/out/artifacts/web_war_exploded/WEB-INF/classes/com/rasa/servlet/AddServiceEntryServlet.class
+/out/production/RASA - vehicle service management system/com/rasa/servlet/AddServiceEntryServlet.class
+/out/artifacts/web_war_exploded/WEB-INF/classes/com/rasa/servlet/AddVehicleServlet.class
+/out/production/RASA - vehicle service management system/com/rasa/servlet/AddVehicleServlet.class
+/out/artifacts/web_war_exploded/styles/budget.css
+/out/artifacts/web_war_exploded/budget.jsp
+/out/artifacts/web_war_exploded/WEB-INF/classes/com/rasa/service/ClientService.class
+/out/production/RASA - vehicle service management system/com/rasa/service/ClientService.class
+/out/artifacts/web_war_exploded/WEB-INF/classes/com/rasa/model/Customer.class
+/out/production/RASA - vehicle service management system/com/rasa/model/Customer.class
+/out/artifacts/web_war_exploded/scripts/customerManagement.js
+/out/artifacts/web_war_exploded/WEB-INF/classes/com/rasa/util/CustomerManagementQuery.class
+/out/production/RASA - vehicle service management system/com/rasa/util/CustomerManagementQuery.class
+/out/artifacts/web_war_exploded/customerreg.jsp
+/out/artifacts/web_war_exploded/WEB-INF/classes/com/rasa/util/DBConnectionUtil.class
+/out/production/RASA - vehicle service management system/com/rasa/util/DBConnectionUtil.class
+/out/artifacts/web_war_exploded/entry.jsp
+/out/artifacts/web_war_exploded/scripts/entryValidate.js
+/out/artifacts/web_war_exploded/WEB-INF/classes/com/rasa/service/IClientService.class
+/out/production/RASA - vehicle service management system/com/rasa/service/IClientService.class
+/out/artifacts/web_war_exploded/WEB-INF/classes/com/rasa/model/InsuranceService.class
+/out/production/RASA - vehicle service management system/com/rasa/model/InsuranceService.class
+/out/artifacts/web_war_exploded/styles/paymentlist.css
+/out/artifacts/web_war_exploded/paymentlist.jsp
+/out/artifacts/web_war_exploded/WEB-INF/classes/com/rasa/util/QueryConstants.class
+/out/production/RASA - vehicle service management system/com/rasa/util/QueryConstants.class
+/out/artifacts/web_war_exploded/WEB-INF/classes/META-INF/RASA - vehicle service management system.kotlin_module
+/out/production/RASA - vehicle service management system/META-INF/RASA - vehicle service management system.kotlin_module
+/out/artifacts/web_war_exploded/WEB-INF/classes/com/rasa/servlet/SearchClientServlet.class
+/out/production/RASA - vehicle service management system/com/rasa/servlet/SearchClientServlet.class
+/out/artifacts/web_war_exploded/WEB-INF/classes/com/rasa/model/Service.class
+/out/production/RASA - vehicle service management system/com/rasa/model/Service.class
+/out/artifacts/web_war_exploded/WEB-INF/classes/com/rasa/model/Vehicle.class
+/out/production/RASA - vehicle service management system/com/rasa/model/Vehicle.class
+/out/artifacts/web_war_exploded/vehiclereg.jsp
+/out/artifacts/web_war_exploded/scripts/vehicleRegistration.js
