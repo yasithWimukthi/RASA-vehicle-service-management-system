@@ -1,6 +1,6 @@
 package com.rasa.service;
 
-import com.rasa.model.Service;
+import com.rasa.model.Repair;
 
 /**
  * RASA VEHICLE SERVICE MANAGEMENT SYSTEM
@@ -39,5 +39,5 @@ public interface IServiceEntry {
      * @param registrationNumber
      * @return Service object for given registration number
      */
-    Service searchByRegistrationNumber(String registrationNumber);
+    Repair searchByRegistrationNumber(String registrationNumber);
 }
