@@ -1,7 +1,6 @@
 package com.rasa.service;
 
-import com.rasa.model.InsuranceService;
-import com.rasa.model.Service;
+import com.rasa.model.Repair;
 import com.rasa.util.CustomerManagementQuery;
 import com.rasa.util.DBConnectionUtil;
 import com.rasa.util.QueryConstants;
@@ -32,7 +31,7 @@ public class ServiceEntry implements IServiceEntry{
             conn = DBConnectionUtil.getConnection();
             String sql = "";
 
-            if (ServiceType == "insurance"){
+            if (ServiceType.equals("insurance")){
                 sql = CustomerManagementQuery.ADD_CASH_SERVICE;
                 preparedStatement = conn.prepareStatement(sql);
                 preparedStatement.setString(QueryConstants.COLUMN_ONE,registrationNumber);
@@ -61,8 +60,8 @@ public class ServiceEntry implements IServiceEntry{
     }
 
     @Override
-    public Service searchByRegistrationNumber(String registrationNumber) {
-        Service service;
+    public Repair searchByRegistrationNumber(String registrationNumber) {
+        Repair repair = new Repair();
 
         try {
             conn = DBConnectionUtil.getConnection();
@@ -73,9 +72,12 @@ public class ServiceEntry implements IServiceEntry{
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()){
-                service = new InsuranceService(
-
-                );
+                repair.setVehicleRegistrationNo(resultSet.getString("registrationNumber"));
+                repair.setEntryDate(resultSet.getString("entryDate"));
+                repair.setAccidentDate(resultSet.getString("accidentDate"));
+                repair.setCustomerNoObjection(resultSet.getBoolean("customerNoObjection"));
+                repair.setLeasingNoObjection(resultSet.getBoolean("insuranceNoObjection"));
+                repair.setClaimForm(resultSet.getBoolean("claimForm"));
             }
 
         }catch (SQLException | ClassNotFoundException  e){
@@ -84,6 +86,6 @@ public class ServiceEntry implements IServiceEntry{
             DBConnectionUtil.closeConnection(preparedStatement, conn);
         }
 
-        return null;
+        return repair;
     }
 }

@@ -7,28 +7,28 @@ package com.rasa.model;
  * IT19966922
  **/
 
-public class Service {
+public class Repair {
     private String NICno;
     private String vehicleRegistrationNo;
     private String entryDate;
     private String accidentDate;
     private String paymentType;
+    private boolean customerNoObjection;
+    private boolean leasingNoObjection;
+    private boolean claimForm;
 
-    public Service() {
+    public Repair() {
     }
 
-    public Service(String NICno, String vehicleRegistrationNo, String entryDate, String accidentDate, String paymentType) {
+    public Repair(String NICno, String vehicleRegistrationNo, String entryDate, String accidentDate, String paymentType, boolean customerNoObjection, boolean leasingNoObjection, boolean claimForm) {
         this.NICno = NICno;
         this.vehicleRegistrationNo = vehicleRegistrationNo;
         this.entryDate = entryDate;
         this.accidentDate = accidentDate;
         this.paymentType = paymentType;
-    }
-
-    public Service(String entryDate, String accidentDate, String paymentType) {
-        this.entryDate = entryDate;
-        this.accidentDate = accidentDate;
-        this.paymentType = paymentType;
+        this.customerNoObjection = customerNoObjection;
+        this.leasingNoObjection = leasingNoObjection;
+        this.claimForm = claimForm;
     }
 
     public String getNICno() {
@@ -71,6 +71,27 @@ public class Service {
         this.paymentType = paymentType;
     }
 
+    public boolean isCustomerNoObjection() {
+        return customerNoObjection;
+    }
+
+    public void setCustomerNoObjection(boolean customerNoObjection) {
+        this.customerNoObjection = customerNoObjection;
+    }
+
+    public boolean isLeasingNoObjection() {
+        return leasingNoObjection;
+    }
+
+    public void setLeasingNoObjection(boolean leasingNoObjection) {
+        this.leasingNoObjection = leasingNoObjection;
+    }
+
+    public boolean isClaimForm() {
+        return claimForm;
+    }
+
+    public void setClaimForm(boolean claimForm) {
+        this.claimForm = claimForm;
+    }
 }
-
-
