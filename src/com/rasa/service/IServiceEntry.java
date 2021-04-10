@@ -2,6 +2,8 @@ package com.rasa.service;
 
 import com.rasa.model.Repair;
 
+import java.util.ArrayList;
+
 /**
  * RASA VEHICLE SERVICE MANAGEMENT SYSTEM
  *
@@ -39,5 +41,5 @@ public interface IServiceEntry {
      * @param registrationNumber
      * @return Service object for given registration number
      */
-    Repair searchByRegistrationNumber(String registrationNumber);
+    ArrayList<Repair> searchByRegistrationNumber(String registrationNumber);
 }

@@ -37,4 +37,24 @@ public interface IVehicleService {
             String color,
             String NICnumber
     );
+
+    /**
+     * updateVehicle
+     * update existing vehicle details
+     * @param registrationNumber
+     * @param manufacturedYear
+     * @param brand
+     * @param model
+     * @param color
+     * @param NICnumber
+     * @return return true if update successfully otherwise false
+     */
+    boolean updateVehicle(
+            String registrationNumber,
+            int manufacturedYear,
+            String brand,
+            String model,
+            String color,
+            String NICnumber
+    );
 }

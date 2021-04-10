@@ -34,7 +34,7 @@ public class VehicleService implements IVehicleService{
             String sql = CustomerManagementQuery.SEARCH_VEHICLE_BY_REGISTRATION_NUMBER;
             preparedStatement = conn.prepareStatement(sql);
 
-            preparedStatement.setString(QueryConstants.COLUMN_ONE,registrationNum);
+            preparedStatement.setString(QueryConstants.COLUMN_ONE,registrationNum.toLowerCase());
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()){
@@ -87,6 +87,32 @@ public class VehicleService implements IVehicleService{
         }finally {
             DBConnectionUtil.closeConnection(preparedStatement, conn);
         }
+        return true;
+    }
+
+    @Override
+    public boolean updateVehicle(String registrationNumber, int manufacturedYear, String brand, String model, String color, String NICnumber) {
+
+        try {
+            conn = DBConnectionUtil.getConnection();
+            String sql = CustomerManagementQuery.ADD_VEHICLE;
+            preparedStatement = conn.prepareStatement(sql);
+
+            preparedStatement.setInt(QueryConstants.COLUMN_ONE,manufacturedYear);
+            preparedStatement.setString(QueryConstants.COLUMN_TWO,brand);
+            preparedStatement.setString(QueryConstants.COLUMN_THREE,model);
+            preparedStatement.setString(QueryConstants.COLUMN_FOUR,color);
+            preparedStatement.setString(QueryConstants.COLUMN_FIVE,registrationNumber.toLowerCase());
+
+            preparedStatement.execute();
+
+        }catch (SQLException | ClassNotFoundException  e){
+            e.printStackTrace();
+            return false;
+        }finally {
+            DBConnectionUtil.closeConnection(preparedStatement, conn);
+        }
+
         return true;
     }
 }
