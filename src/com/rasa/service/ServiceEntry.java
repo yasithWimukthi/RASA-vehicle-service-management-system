@@ -79,6 +79,8 @@ public class ServiceEntry implements IServiceEntry{
                 repair.setCustomerNoObjection(resultSet.getBoolean("customerNoObjection"));
                 repair.setLeasingNoObjection(resultSet.getBoolean("insuranceNoObjection"));
                 repair.setClaimForm(resultSet.getBoolean("claimForm"));
+
+                repairList.add(repair);
             }
 
         }catch (SQLException | ClassNotFoundException  e){
