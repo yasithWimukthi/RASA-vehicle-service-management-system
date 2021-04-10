@@ -42,4 +42,12 @@ public interface IServiceEntry {
      * @return Service object for given registration number
      */
     ArrayList<Repair> searchByRegistrationNumber(String registrationNumber);
+
+    /**
+     * searchByRegistrationNic
+     * search service entries by NIC number
+     * @param nicNumber
+     * @return Service object for given nic number
+     */
+    ArrayList<Repair> searchByRegistrationNic(String nicNumber);
 }

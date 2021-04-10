@@ -33,7 +33,7 @@ public class ClientService implements IClientService{
             String sql = CustomerManagementQuery.SEARCH_CLIENT_BY_NIC;
             preparedStatement = conn.prepareStatement(sql);
 
-            preparedStatement.setString(QueryConstants.COLUMN_ONE,nic);
+            preparedStatement.setString(QueryConstants.COLUMN_ONE,nic.toUpperCase());
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -63,7 +63,7 @@ public class ClientService implements IClientService{
             String sql = CustomerManagementQuery.ADD_CUSTOMER;
             preparedStatement = conn.prepareStatement(sql);
 
-            preparedStatement.setString(QueryConstants.COLUMN_ONE,nic);
+            preparedStatement.setString(QueryConstants.COLUMN_ONE,nic.toUpperCase());
             preparedStatement.setString(QueryConstants.COLUMN_TWO,fname);
             preparedStatement.setString(QueryConstants.COLUMN_THREE,lname);
             preparedStatement.setString(QueryConstants.COLUMN_FOUR,email);
@@ -96,7 +96,7 @@ public class ClientService implements IClientService{
             preparedStatement.setString(QueryConstants.COLUMN_THREE,email);
             preparedStatement.setString(QueryConstants.COLUMN_FOUR,address);
             preparedStatement.setString(QueryConstants.COLUMN_FIVE,mobile);
-            preparedStatement.setString(QueryConstants.COLUMN_SIX,nic);
+            preparedStatement.setString(QueryConstants.COLUMN_SIX,nic.toUpperCase());
 
             preparedStatement.execute();
 
