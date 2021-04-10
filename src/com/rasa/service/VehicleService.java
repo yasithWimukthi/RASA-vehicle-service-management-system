@@ -95,7 +95,7 @@ public class VehicleService implements IVehicleService{
 
         try {
             conn = DBConnectionUtil.getConnection();
-            String sql = CustomerManagementQuery.ADD_VEHICLE;
+            String sql = CustomerManagementQuery.UPDATE_VEHICLE;
             preparedStatement = conn.prepareStatement(sql);
 
             preparedStatement.setInt(QueryConstants.COLUMN_ONE,manufacturedYear);
