@@ -39,4 +39,24 @@ public interface IClientService {
             String email,
             String operatorID
     );
+
+    /**
+     * updateCustomer
+     * update existing customer details
+     * @param nic
+     * @param fname
+     * @param lname
+     * @param mobile
+     * @param address
+     * @param email
+     * @return return true if operation is success otherwise false
+     */
+    boolean updateCustomer(
+            String nic,
+            String fname,
+            String lname,
+            String mobile,
+            String address,
+            String email
+    );
 }
