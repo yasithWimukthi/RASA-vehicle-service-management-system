@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * RASA VEHICLE SERVICE MANAGEMENT SYSTEM
@@ -60,9 +61,8 @@ public class ServiceEntry implements IServiceEntry{
     }
 
     @Override
-    public Repair searchByRegistrationNumber(String registrationNumber) {
-        Repair repair = new Repair();
-
+    public ArrayList<Repair> searchByRegistrationNumber(String registrationNumber) {
+        ArrayList<Repair> repairList = new ArrayList<>();
         try {
             conn = DBConnectionUtil.getConnection();
             String sql = CustomerManagementQuery.SEARCH_ENTRY_BY_REG_NUM;
@@ -72,6 +72,7 @@ public class ServiceEntry implements IServiceEntry{
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()){
+                Repair repair = new Repair();
                 repair.setVehicleRegistrationNo(resultSet.getString("registrationNumber"));
                 repair.setEntryDate(resultSet.getString("entryDate"));
                 repair.setAccidentDate(resultSet.getString("accidentDate"));
@@ -86,6 +87,6 @@ public class ServiceEntry implements IServiceEntry{
             DBConnectionUtil.closeConnection(preparedStatement, conn);
         }
 
-        return repair;
+        return repairList;
     }
 }
