@@ -38,7 +38,11 @@ public class Workprogress_service implements Iworkprogress_service{
     @Override
     public boolean Createprogress(int sid) throws SQLException, ClassNotFoundException {
         String pid = this.createProgressId(sid);
-
+        //if user refresh page twice page will redirect to the add_service.jsp
+        if(getProgressId(sid) != null){
+            return false;
+        }
+        //if it was not create pid
         con = DBConnectionUtil.getConnection();
         String sql = "INSERT INTO `workprogress`(`pid`,`sid`) VALUES (?,?)";
         PreparedStatement preparedStatement = con.prepareStatement(sql);
