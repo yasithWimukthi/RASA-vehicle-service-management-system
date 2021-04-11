@@ -59,12 +59,21 @@
     Customer customer = new Customer();
     customer = (Customer) request.getAttribute("customer");
 
-    String firstName = customer.getFirstName();
-    String lastName = customer.getLastName();
-    String nicNumber = customer.getNICno().toUpperCase();
-    String address = customer.getAddress();
-    String mobile = customer.getPhoneNo();
-    String email = customer.getEmail();
+    String firstName = "";
+    String lastName = "";
+    String nicNumber = "";
+    String address = "";
+    String mobile = "";
+    String email = "";
+
+    if(customer != null){
+        firstName = customer.getFirstName();
+        lastName = customer.getLastName();
+        nicNumber = customer.getNICno().toUpperCase();
+        address = customer.getAddress();
+        mobile = customer.getPhoneNo();
+        email = customer.getEmail();
+    }
 
 %>
 
