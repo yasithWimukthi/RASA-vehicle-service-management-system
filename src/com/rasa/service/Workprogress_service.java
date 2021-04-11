@@ -10,12 +10,12 @@ import java.sql.SQLException;
 
 public class Workprogress_service implements Iworkprogress_service{
 
-
+    Connection con = null;
     @Override
     public String getProgressId(int sid) throws SQLException, ClassNotFoundException {
         //initialized pid
         String pid = null;
-        Connection con = DBConnectionUtil.getConnection();
+        con = DBConnectionUtil.getConnection();
         String sql = "Select pid from workprogress where sid = ? ";
 
         PreparedStatement preparedStatement = con.prepareStatement(sql);
@@ -32,7 +32,24 @@ public class Workprogress_service implements Iworkprogress_service{
 
     @Override
     public String createProgressId(int sid) {
-        return "p"+sid;
+        return "PID"+sid;
+    }
+
+    @Override
+    public boolean Createprogress(int sid) throws SQLException, ClassNotFoundException {
+        String pid = this.createProgressId(sid);
+
+        con = DBConnectionUtil.getConnection();
+        String sql = "INSERT INTO `workprogress`(`pid`,`sid`) VALUES (?,?)";
+        PreparedStatement preparedStatement = con.prepareStatement(sql);
+
+        preparedStatement.setString(1,pid);
+        preparedStatement.setInt(2,sid);
+
+        Boolean isCreate = preparedStatement.execute();
+        return isCreate;
+
+
     }
 
     //insert function
