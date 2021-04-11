@@ -59,6 +59,13 @@
     Customer customer = new Customer();
     customer = (Customer) request.getAttribute("customer");
 
+    String firstName = customer.getFirstName();
+    String lastName = customer.getLastName();
+    String nicNumber = customer.getNICno().toUpperCase();
+    String address = customer.getAddress();
+    String mobile = customer.getPhoneNo();
+    String email = customer.getEmail();
+
 %>
 
 <div class="container">
@@ -101,7 +108,7 @@
             <div class="ui grid search-bar-container">
                 <div class="sixteen wide column">
                     <div class="search-wrapper">
-                        <form method="POST" id="search-form">
+                        <form method="POST" id="search-form" action="SearchClientServlet">
                             <div class="ui action input massive searchBar">
                                 <input type="text" placeholder="Enter NIC Number..." id="input-box" class="searchWord" name="nic_number">
                                 <button type="submit" class="ui icon button" style="height: 69%" id="search-submit">
@@ -148,33 +155,33 @@
                             <div class="two fields">
                                 <div class="field" id="fnameContainer">
                                     <label>First Name</label>
-                                    <input placeholder="First Name" type="text" name="fname" id="fname">
+                                    <input placeholder="First Name" type="text" name="fname" id="fname" value="<%= firstName%>">
                                 </div>
                                 <div class="field" id="lnameContainer">
                                     <label>Last Name</label>
-                                    <input placeholder="Last Name" type="text" name="lname" id="lname">
+                                    <input placeholder="Last Name" type="text" name="lname" id="lname" value="<%=lastName%>">
                                 </div>
                             </div>
 
                             <div class="two fields">
                                 <div class="field" id="nicContainer">
                                     <label>NIC Number</label>
-                                    <input placeholder="NIC Number" type="text" name="nic" id="nic">
+                                    <input placeholder="NIC Number" type="text" name="nic" id="nic" value="<%=nicNumber%>">
                                 </div>
                                 <div class="field" id="mobileContainer">
                                     <label>Phone Number</label>
-                                    <input placeholder="Phone Number" type="text" name="mobile" id="mobile">
+                                    <input placeholder="Phone Number" type="text" name="mobile" id="mobile" value="<%=mobile%>">
                                 </div>
                             </div>
 
                             <div class="field" id="addressContainer">
                                 <label>Address</label>
-                                <input placeholder="Address" type="text" name="address" id="address">
+                                <input placeholder="Address" type="text" name="address" id="address" value="<%=address%>">
                             </div>
 
                             <div class="field " id="emailContainer">
                                 <label>Email</label>
-                                <input placeholder="Email" type="Email" name="email" id="email">
+                                <input placeholder="Email" type="Email" name="email" id="email" value="<%=email%>">
                             </div>
 
                             <div class="ui error message">

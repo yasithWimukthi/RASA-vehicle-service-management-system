@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "SearchClientServlet")
+@WebServlet("/SearchClientServlet")
 public class SearchClientServlet extends HttpServlet {
 
     ClientService clientService;
@@ -23,6 +23,7 @@ public class SearchClientServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
         String NICnumber = request.getParameter("nic_number");
 
         Customer customer = clientService.searchByNic(NICnumber);
