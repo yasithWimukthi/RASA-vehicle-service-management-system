@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "SearchVehicleServlet")
+@WebServlet("/SearchVehicleServlet")
 public class SearchVehicleServlet extends HttpServlet {
 
     VehicleService vehicleService;
@@ -30,6 +30,7 @@ public class SearchVehicleServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
         String registrationNumber = request.getParameter("registrationNumber");
 
         Vehicle vehicle = vehicleService.searchByRegistrationNumber(registrationNumber);

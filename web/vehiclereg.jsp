@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.rasa.model.Vehicle" %><%--
   Created by IntelliJ IDEA.
   User: yasith wimukthi
   Date: 3/23/2021
@@ -60,6 +60,26 @@
 </head>
 <body>
 
+<%
+    Vehicle vehicle = new Vehicle();
+    vehicle = (Vehicle) request.getAttribute("vehicle");
+
+    String registrationNumber = "";
+    String year = "";
+    String model = "";
+    String color = "";
+    String brand = "";
+
+    if (vehicle != null){
+        registrationNumber = vehicle.getRegistrationNo().toUpperCase();
+        year = String.valueOf(vehicle.getYear());
+        model = vehicle.getModel();
+        color = vehicle.getColor();
+        brand = vehicle.getBrand();
+    }
+
+%>
+
 <div class="container">
     <div class="content">
         <div class="sidebar">
@@ -100,7 +120,7 @@
             <div class="ui grid search-bar-container">
                 <div class="sixteen wide column">
                     <div class="search-wrapper">
-                        <form method="post" id="search-form">
+                        <form method="post" id="search-form" action="SearchVehicleServlet">
                             <div class="ui action input massive searchBar">
                                 <input type="text" placeholder="Enter Registration Number..." id="input-box" class="searchWord" name="registrationNumber">
                                 <button type="submit" class="ui icon button" style="height: 69%">
@@ -148,7 +168,7 @@
 
                             <div class="field">
                                 <label>Vehicle Registration Number</label>
-                                <input type="text" placeholder="Registration Number" name="regID" id="regID">
+                                <input type="text" placeholder="Registration Number" name="regID" id="regID" value="<%= registrationNumber%>">
                             </div>
 
                             <div class="field" id="brandContainer" >
@@ -171,17 +191,17 @@
                             <div class="two fields">
                                 <div class="field" id="modelContainer">
                                     <label>Model</label>
-                                    <input placeholder="Vehile Model" type="text" name="model" id="model">
+                                    <input placeholder="Vehile Model" type="text" name="model" id="model" value="<%= model%>">
                                 </div>
                                 <div class="field" id="colorContainer">
                                     <label>Color</label>
-                                    <input placeholder="Vehicle Color" type="text" name="color" id="color">
+                                    <input placeholder="Vehicle Color" type="text" name="color" id="color" value="<%= color%>">
                                 </div>
                             </div>
 
                             <div class="field" id="manufactYearContainer">
                                 <label>Manufactured Year</label>
-                                <input type="text" placeholder="Brand Name" name="manufactureYear" id="manufactureYear">
+                                <input type="text" placeholder="Brand Name" name="manufactureYear" id="manufactureYear" value="<%= year%>">
                             </div>
 
                             <div class="ui error message">
