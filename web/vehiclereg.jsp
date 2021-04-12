@@ -64,6 +64,8 @@
     Vehicle vehicle = new Vehicle();
     vehicle = (Vehicle) request.getAttribute("vehicle");
 
+    String fullName = (String) request.getAttribute("fullName");
+
     String registrationNumber = "";
     String year = "";
     String model = "";
@@ -213,6 +215,7 @@
 
                             <input type="hidden" value="<%=update%>" name="update">
                             <input type="hidden" value="<%=registrationNumber%>" name="vehicleNumber">
+                            <input type="hidden" value="<%=fullName%>" name="fullName">
 
                             <div class="ui error message">
                                 <div class="header">Action Forbidden</div>

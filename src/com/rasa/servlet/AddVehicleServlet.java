@@ -37,6 +37,7 @@ public class AddVehicleServlet extends HttpServlet {
         String model = request.getParameter("model");
         String color = request.getParameter("color");
         String nicNumber = request.getParameter("nicNumber");
+        String fullName = request.getParameter("fullName");
         int manufactureYear = Integer.parseInt(request.getParameter("manufactureYear"));
         boolean update = Boolean.parseBoolean(request.getParameter("update"));
 
@@ -61,11 +62,15 @@ public class AddVehicleServlet extends HttpServlet {
         }
 
         RequestDispatcher dispatcher;
+        request.setAttribute("regID",regID);
+        request.setAttribute("fullName",fullName);
+
         if (isSuccess){
             dispatcher = getServletContext().getRequestDispatcher("/addentry.jsp");
         }else {
             dispatcher = getServletContext().getRequestDispatcher("/vehiclereg.jsp");
         }
+
         dispatcher.forward(request, response);
     }
 

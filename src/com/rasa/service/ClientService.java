@@ -46,7 +46,7 @@ public class ClientService implements IClientService{
                 customer.setEmail(resultSet.getString("email"));
             }
 
-        }catch (SQLException | ClassNotFoundException  e){
+        }catch (SQLException | ClassNotFoundException | NullPointerException e){
             e.printStackTrace();
         }finally {
             DBConnectionUtil.closeConnection(preparedStatement, conn);

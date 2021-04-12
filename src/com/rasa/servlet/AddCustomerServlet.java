@@ -37,10 +37,22 @@ public class AddCustomerServlet extends HttpServlet {
         String nic = request.getParameter("nic");
         String address = request.getParameter("address");
         String operatorID = request.getParameter("operatorID");
+        String nicNumber = request.getParameter("nicNumber");
+        boolean update = Boolean.parseBoolean(request.getParameter("update"));
+        boolean isSuccess = false;
 
-        boolean isSuccess = clientService.addCustomer(nic,fname,lname,mobile,address,email,operatorID);
+        String fullName = fname +" "+lname;
+
+        System.out.println(update);
+
+        if(update){
+            isSuccess = clientService.updateCustomer(nicNumber,fname,lname,mobile,address,email);
+        }else {
+            isSuccess = clientService.addCustomer(nic,fname,lname,mobile,address,email,"1");
+        }
 
         RequestDispatcher dispatcher;
+        request.setAttribute("fullName",fullName);
         if(isSuccess){
             dispatcher = getServletContext().getRequestDispatcher("/vehiclereg.jsp");
         }else {
