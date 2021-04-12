@@ -26,13 +26,17 @@ public class Workprogress_service implements Iworkprogress_service{
             pid = S_pid.getString(1);
 
         }
-
         return pid;
     }
 
     @Override
     public String createProgressId(int sid) {
         return "PID"+sid;
+    }
+
+    @Override
+    public String createServiceId(String pid,String type) {
+        return pid + type.substring(1,4);
     }
 
     @Override
@@ -58,7 +62,21 @@ public class Workprogress_service implements Iworkprogress_service{
 
     //insert function
     @Override
-    public void InsertService(RepairService repairService) {
-        //I have to implement
+    public Boolean InsertService(RepairService repairService) throws SQLException, ClassNotFoundException {
+        //create serviceID and return ID
+        String ser_id = this.createServiceId(repairService.getPid(),repairService.getSer_type());
+        con = DBConnectionUtil.getConnection();
+        String sqlInsert ="INSERT INTO `repair_service`(`ser_id`, `ser_type`, `description`, `status`, `s_date`, `pid`) VALUES (?,?,?,?,?,?)";
+        PreparedStatement preparedStatement = con.prepareStatement(sqlInsert);
+        preparedStatement.setString(1,ser_id);
+        preparedStatement.setString(2,repairService.getSer_type());
+        preparedStatement.setString(3,repairService.getDescription());
+        preparedStatement.setString(4,repairService.getStatus());
+        preparedStatement.setString(5,repairService.getDate());
+        preparedStatement.setString(6,repairService.getPid());
+
+        Boolean Is_add = preparedStatement.execute();
+        return Is_add;
+
     }
 }
