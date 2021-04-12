@@ -56,8 +56,14 @@
 <body>
 
 <%
-    Customer customer = new Customer();
-    customer = (Customer) request.getAttribute("customer");
+    Customer customer ;
+
+    try {
+        customer = (Customer) request.getAttribute("customer");
+    }catch (Exception e){
+        customer = null;
+        e.printStackTrace();
+    }
 
     String firstName = "";
     String lastName = "";
@@ -65,15 +71,22 @@
     String address = "";
     String mobile = "";
     String email = "";
+    boolean update = false;
 
-    if(customer != null){
-        firstName = customer.getFirstName();
-        lastName = customer.getLastName();
-        nicNumber = customer.getNICno().toUpperCase();
-        address = customer.getAddress();
-        mobile = customer.getPhoneNo();
-        email = customer.getEmail();
+    try {
+        if(customer != null){
+            firstName = customer.getFirstName();
+            lastName = customer.getLastName();
+            nicNumber = customer.getNICno().toUpperCase();
+            address = customer.getAddress();
+            mobile = customer.getPhoneNo();
+            email = customer.getEmail();
+            update = true;
+        }
+    }catch (Exception e){
+        e.printStackTrace();
     }
+
 
 %>
 
@@ -175,7 +188,7 @@
                             <div class="two fields">
                                 <div class="field" id="nicContainer">
                                     <label>NIC Number</label>
-                                    <input placeholder="NIC Number" type="text" name="nic" id="nic" value="<%=nicNumber%>">
+                                    <input placeholder="NIC Number" type="text" name="nic" id="nic" value="<%=nicNumber%>" disabled="<%=update%>">
                                 </div>
                                 <div class="field" id="mobileContainer">
                                     <label>Phone Number</label>
@@ -192,6 +205,9 @@
                                 <label>Email</label>
                                 <input placeholder="Email" type="Email" name="email" id="email" value="<%=email%>">
                             </div>
+
+                            <input type="hidden" name="update" value="<%=update%>">
+                            <input type="hidden" name="nicNumber" value="<%=nicNumber%>">
 
                             <div class="ui error message">
                                 <div class="header">Action Forbidden</div>
