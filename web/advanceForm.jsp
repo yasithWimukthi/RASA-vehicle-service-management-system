@@ -52,15 +52,12 @@
             <!-- implement fuctions here -->
             <div id="clr_div">
             <div class="form_div" >
-                <form class="add_frm">
+                <form class="add_frm" method="POST" action="<%=request.getContextPath()%>/AddAdvanceServlet">
                     <a href="#" class="close">X</a>
                     <center><h2>ADD NEW ADVANCE</h2></center><br>
                     <label> ID </label><br>
                     <input type="text" name="ID"><br>
-                    <label> fname </label><br>
-                    <input type="text" name="fname"><br>
-                    <label> lname </label><br>
-                    <input type="text" name="lname"><br>
+
                     <label> advance </label><br>
                     <input type="number" name="advance"><br>
                     <button class="btn_save">save</button>

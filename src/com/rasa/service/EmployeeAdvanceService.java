@@ -1,30 +1,56 @@
 package com.rasa.service;
 
 
+import com.rasa.model.EmployeeAdvance;
 import com.rasa.util.DBConnectionUtil;
 import com.rasa.util.EmpQuery;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EmployeeAdvanceService implements IEmpAdv {
 
-    private static Connection con;
+    private  Connection con;
     private PreparedStatement preparedStatement;
 
-    @Override
-    public boolean addAdvance(int empID, int adminID, Date date, double amount) {
+    public boolean addAdvance(EmployeeAdvance advance) {
 
         try{
             con = DBConnectionUtil.getConnection();
             String sql= EmpQuery.add_adv;
             preparedStatement=con.prepareStatement(sql);
 
+            preparedStatement.setInt(1,advance.getEmpID());
+            preparedStatement.setInt(2,advance.getAdminID());
+            preparedStatement.setDate(3,advance.getDate());
+            preparedStatement.setDouble(2,advance.getAmount());
+
+            preparedStatement.execute();
+            System.out.println(preparedStatement);
+
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+
+        }
+        finally {
+            DBConnectionUtil.closeConnection(preparedStatement,con);
+        }
+
+       return true;
+
+    }
+
+
+
+
+    public boolean updateAdvance(int advanceID, int empID, double amount) {
+        try{
+            con = DBConnectionUtil.getConnection();
+            String sql= EmpQuery.update_adv;
+            preparedStatement=con.prepareStatement(sql);
+
             preparedStatement.setInt(1,empID);
-            preparedStatement.setInt(2,adminID);
-            preparedStatement.setDate(3,date);
             preparedStatement.setDouble(4,amount);
 
             preparedStatement.execute();
@@ -37,15 +63,9 @@ public class EmployeeAdvanceService implements IEmpAdv {
             DBConnectionUtil.closeConnection(preparedStatement,con);
         }
         return true;
-
     }
 
-    @Override
-    public boolean updateAdvance(int advanceID, int empID, double amount) {
-        return false;
-    }
 
-    @Override
     public boolean deleteAdvance(int advanceID) {
         try{
             con = DBConnectionUtil.getConnection();
@@ -70,53 +90,70 @@ public class EmployeeAdvanceService implements IEmpAdv {
         return true;
     }
 
-    @Override
-    public boolean showLatestAdvance() {
-        try {
-            con = DBConnectionUtil.getConnection();
-            String sql = EmpQuery.show_adv;
-            preparedStatement = con.prepareStatement(sql);
 
-            preparedStatement.execute();
 
-        } catch (SQLException throwables) {
 
-            throwables.printStackTrace();
-            return false;
 
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return false;
-        }
-        finally {
-            DBConnectionUtil.closeConnection(preparedStatement,con);
-        }
-        return true;
-    }
+    public EmployeeAdvance showLatestAdvance() {
 
-    @Override
-    public boolean showAllAdvance() {
+        EmployeeAdvance employeeAdvance = new EmployeeAdvance();
 
         try {
+
             con = DBConnectionUtil.getConnection();
-            String sql = EmpQuery.all_adv;
+            String sql=EmpQuery.show_adv;
+
             preparedStatement = con.prepareStatement(sql);
+            System.out.println(preparedStatement);
 
-            preparedStatement.execute();
+            ResultSet rs = preparedStatement.executeQuery();
 
-        } catch (SQLException throwables) {
+            while (rs.next()) {
+                employeeAdvance.setEmpID(Integer.parseInt(rs.getString("empID")));
+                employeeAdvance.setAmount(rs.getDouble("amount"));
 
-            throwables.printStackTrace();
-            return false;
 
-        } catch (ClassNotFoundException e) {
+
+            }
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
-            return false;
         }
-        finally {
-            DBConnectionUtil.closeConnection(preparedStatement,con);
-        }
-        return true;
+        return employeeAdvance;
 
     }
+
+    public List<EmployeeAdvance> showAllAdvance() {
+
+        List <EmployeeAdvance> list = new ArrayList<>();
+
+        try {
+
+            con = DBConnectionUtil.getConnection();
+            String sql=EmpQuery.all_adv;
+
+            preparedStatement = con.prepareStatement(sql);
+            System.out.println(preparedStatement);
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+
+                int empID = Integer.parseInt(rs.getString(1));
+                int adminID = Integer.parseInt(rs.getString(2));
+                Date date=Date.valueOf(rs.getString(3));
+                double amount=Double.parseDouble(rs.getString(4));
+
+
+                list.add(new EmployeeAdvance(empID,adminID,date,amount));
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return list;
+
+    }
+
+
+
+
 }

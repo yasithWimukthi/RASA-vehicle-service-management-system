@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.rasa.service.EmployeeLoadingService" %><%--
   Created by IntelliJ IDEA.
   User: Yasith Wimukthi
   Date: 3/9/2021
@@ -52,6 +52,9 @@
             <!-- implement fuctions here -->
             <div id="clr_div">
                 <div id="act_div">
+                    <% EmployeeLoadingService retrieve = new EmployeeLoadingService();
+
+                        List<Employee> list=  retrieve.loadToPaymentTable();%>
                     <table id="act_tbl">
                         <thead>
                         <th> ID </th>
@@ -61,66 +64,31 @@
                         <th> payment</th>
                         </thead>
                         <tbody>
+                        <%for(Employee i:list){ %>
                         <tr>
-                            <td> 001 </td>
-                            <td> kavindu </td>
-                            <td> balasooriya </td>
-                            <td><button class="btn_adv">advance</button></td>
-                            <td><button class="btn_pay">payment</button></td>
+                            <td><%=i.getEmployeeID()%></td>
+                            <td><%=i.getFname()%></td>
+                            <td><%=i.getLname()%> </td>
+                            <td><a class="btn_adv" href="addAdvance.jsp">advance</a></td>
+                            <td><a class="btn_pay">payment</a></td>
                         </tr>
-                        <tr>
-                            <td> 001 </td>
-                            <td> kavindu </td>
-                            <td> balasooriya </td>
-                            <td><button class="btn_adv">advance</button></td>
-                            <td><button class="btn_pay">payment</button></td>
-                        </tr>
-                        <tr>
-                            <td> 001 </td>
-                            <td> kavindu </td>
-                            <td> balasooriya </td>
-                            <td><button class="btn_adv">advance</button></td>
-                            <td><button class="btn_pay">payment</button></td>
-                        </tr>
-                        <tr>
-                            <td> 001 </td>
-                            <td> kavindu </td>
-                            <td> balasooriya </td>
-                            <td><button class="btn_adv">advance</button></td>
-                            <td><button class="btn_pay">payment</button></td>
-                        </tr>
-                        <tr>
-                            <td> 001 </td>
-                            <td> kavindu </td>
-                            <td> balasooriya </td>
-                            <td><button class="btn_adv">advance</button></td>
-                            <td><button class="btn_pay">payment</button></td>
-                        </tr>
-                        <tr>
-                            <td> 001 </td>
-                            <td> kavindu </td>
-                            <td> balasooriya </td>
-                            <td><button class="btn_adv">advance</button></td>
-                            <td><button class="btn_pay">payment</button></td>
-                        </tr>
-                        <tr>
-                            <td> 001 </td>
-                            <td> kavindu </td>
-                            <td> balasooriya </td>
-                            <td><button class="btn_adv">advance</button></td>
-                            <td><button class="btn_pay">payment</button></td>
-                        </tr>
+                        <%} %>
                         </tbody>
                     </table>
                 </div>
                 <div id="recent_adv">
+
                     <form id="adv_frm">
+
+
                         <center><h5> Latest advance record</h5></center><br>
-                        <input type="text" name="id" placeholder="ID"><br>
-                        <input type="number" name="amount" placeholder="advance amount"><br><br>
+                        <input type="text" name="empID" value="<%=request.getAttribute("empID")%>" placeholder="ID"><br>
+                        <input type="text" name="amount"  value="<%=request.getAttribute("amount")%>"  placeholder="advance amount"><br><br>
                         <button class="btn_frm" id="btn_frm_update">update</button>
                         <button class="btn_frm" id="btn_frm_delete">delete</button>
+
                     </form>
+
                 </div>
                 <button>monthly payment</button>
                 <button>advance</button>
@@ -129,10 +97,12 @@
                 </div>
             </div>
         </div>
-        </div>
     </div>
+</div>
 </div>
 
 </body>
 </html>
+
+
 
