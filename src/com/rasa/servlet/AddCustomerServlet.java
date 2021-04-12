@@ -29,6 +29,7 @@ public class AddCustomerServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
         String fname = request.getParameter("fname");
         String lname = request.getParameter("lname");
         String email = request.getParameter("email");
