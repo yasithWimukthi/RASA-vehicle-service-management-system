@@ -1,4 +1,6 @@
-<%--
+<%@ page import="com.rasa.service.Iworkprogress_service" %>
+<%@ page import="com.rasa.service.Workprogress_service" %>
+<%@ page import="java.time.LocalDate" %><%--
   Created by IntelliJ IDEA.
   User: Tharindu
   Date: 3/25/2021
@@ -15,6 +17,16 @@
     <link href="styles/workprogress.css" rel="stylesheet">
 </head>
 <body>
+<%-- get vehcile entry Id using session --%>
+<%int sid = (int)session.getAttribute("sid");%>;
+<%-- gather pid--%>
+<%Iworkprogress_service iworkprogress_service = new Workprogress_service();%>
+<%String pid = iworkprogress_service.getProgressId(sid);%>
+
+<%--for date --%>
+<%LocalDate date = LocalDate.now();%>
+
+
 <%--for side bar space --%>
 <div class="container">
     <div class="content">
@@ -59,10 +71,10 @@
                     <%-- Header end--%>
 
                     <%-- add service form start --%>
-                    <form class="ui form" method="" action="">
+                    <form class="ui form" method="post" action="<%=request.getContextPath()%>/AddServiceServlet">
                         <div class="field">
                             <label>Select service</label>
-                            <select class="fluid dropdown" id="select_service">
+                            <select class="fluid dropdown" id="select_service" name="services">
                                 <option value="">Services</option>
                                 <option value="Remove and Refitting">Remove and Refitting</option>
                                 <option value="Repair Items">Repair Items</option>
@@ -73,8 +85,13 @@
 
                         <div class="field">
                             <label>Description (Optional)</label>
-                            <input type="text" placeholder="description" id="description3" value="  ">
+                            <input type="text" placeholder="description" id="description3" name="desc" value="--">
                         </div>
+                        <%-- Hidden value--%>
+                        <input type="hidden" name="status" value="Onprogress">
+                        <input type="hidden" name="pid" value="<%=pid%>">
+                        <input type="hidden" name="Wdate" value="<%=date%>">
+                        <%-- Hidden value--%>
                         <button class="ui primary button" id="ser_add_btn"><i class="plus square icon"></i>Add Service</button>
                     </form>
                     <%-- estimate servie table --%>
@@ -102,33 +119,14 @@
                             <form action="">
                                 <td><button class="negative ui button"><i class="trash icon"></i></button></td>
                             </form>
-
-
-                            </tbody>
-                            <tbody>
-                            <td>Remove and refetting </td>
-                            <td>2020-02-4</td>
-                            <td> -- </td>
-                            <td>finished</td>
-                            <!-- for Update method -->
-                            <form action="<%=request.getContextPath()%>/update_service.jsp">
-                                <td><button class="ui positive button"><i class="edit icon"></i></button></td>
-                            </form>
-                            <!-- for delete method -->
-                            <form action="">
-                                <td><button class="negative ui button"><i class="trash icon"></i></button></td>
-                            </form>
-
-                            </tbody>
                         </table>
-                        <button id ="estimate_btn" class="ui positive button">Show Estimate report</button>
                     </div>
                     <%-- estimate servie table --%>
                 </div>
             </div>
             <div class="summery_content">
                 <div class="inter-content">
-                    <h4><%=request.getAttribute("pid")%></h4>
+                    <h4><%=pid%></h4>
                     <h4>Total estimate amount</h4>
                     <h4>Assign Employee</h4>
                     <%-- redirect to assign employee page --%>
