@@ -25,10 +25,14 @@ public class SearchClientServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         String NICnumber = request.getParameter("nic_number");
+        Customer customer;
 
-        Customer customer = clientService.searchByNic(NICnumber);
-
-        request.setAttribute("customer",customer);
+        try {
+            customer = clientService.searchByNic(NICnumber);
+            request.setAttribute("customer",customer);
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/customerreg.jsp");
         dispatcher.forward(request, response);
     }

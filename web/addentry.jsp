@@ -19,6 +19,11 @@
 </head>
 <body>
 
+<%
+    String fullName = (String) request.getAttribute("fullName");
+    String regID = (String) request.getAttribute("regID");
+%>
+
 <div class="container">
     <div class="content">
         <div class="sidebar">
@@ -83,17 +88,17 @@
             <!-- ADD ENTRY FORM -->
             <div class="ui grid form-container">
                 <div class="sixteen wide column">
-                    <form method="post" id="entry-form">
+                    <form method="post" id="entry-form"action="AddServiceEntryServlet">
                         <div class="ui huge form" id="form-container">
 
                             <div class="two fields">
                                 <div class="field">
                                     <label>Customer Name</label>
-                                    <input placeholder="Customer Name" type="text">
+                                    <input placeholder="Customer Name" type="text" name="customerName">
                                 </div>
                                 <div class="field">
                                     <label>Vehicle Registration Number</label>
-                                    <input placeholder="Registration Number" type="text">
+                                    <input placeholder="Registration Number" type="text" name="registrationNumber">
                                 </div>
                             </div>
 
@@ -104,21 +109,21 @@
 
                             <div class="field" id="accidentDateContainer">
                                 <label>Accident Date</label>
-                                <input placeholder="Accident Date" type="date" id="accidentDate">
+                                <input placeholder="Accident Date" type="date" id="accidentDate" name="accidentDate">
                             </div>
 
                             <div class="inline fields">
                                 <label for="repair">Repair Type:</label>
                                 <div class="field">
                                     <div class="ui radio checkbox">
-                                        <input type="radio" name="repair" tabindex="10" class="hidden" id="insurance">
+                                        <input type="radio" name="repair" tabindex="10" class="hidden" id="insurance" value="Insuarance">
                                         <label>Insuarance</label>
                                     </div>
                                 </div>
 
                                 <div class="field">
                                     <div class="ui radio checkbox">
-                                        <input type="radio" name="repair" checked="" tabindex="0" class="hidden" id="nonInsurance">
+                                        <input type="radio" name="repair" checked="" tabindex="0" class="hidden" id="nonInsurance" value="nonInsurance">
                                         <label>Non-Insuarance</label>
                                     </div>
                                 </div>
@@ -127,17 +132,17 @@
                             <div class="inline field" id="document-container" style="display: none">
                                 <label >Repair Type:</label>
                                 <div class="ui checkbox">
-                                    <input type="checkbox" tabindex="0" class="hidden">
+                                    <input type="checkbox" tabindex="0" class="hidden" name="customerNoObjection">
                                     <label>Customer No objection</label>
                                 </div>
 
                                 <div class="ui checkbox">
-                                    <input type="checkbox" tabindex="0" class="hidden">
+                                    <input type="checkbox" tabindex="0" class="hidden" name="insuranceNoObjection">
                                     <label>Insuarance No objection</label>
                                 </div>
 
                                 <div class="ui checkbox">
-                                    <input type="checkbox" tabindex="0" class="hidden">
+                                    <input type="checkbox" tabindex="0" class="hidden" name="claimForm">
                                     <label>Claim Form</label>
                                 </div>
                             </div>
