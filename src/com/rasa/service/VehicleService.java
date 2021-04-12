@@ -34,7 +34,7 @@ public class VehicleService implements IVehicleService{
             String sql = CustomerManagementQuery.SEARCH_VEHICLE_BY_REGISTRATION_NUMBER;
             preparedStatement = conn.prepareStatement(sql);
 
-            preparedStatement.setString(QueryConstants.COLUMN_ONE,registrationNum.toLowerCase());
+            preparedStatement.setString(QueryConstants.COLUMN_ONE,registrationNum.toUpperCase());
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()){
@@ -60,12 +60,13 @@ public class VehicleService implements IVehicleService{
 
         try {
             conn = DBConnectionUtil.getConnection();
+            String sql;
 
             //add vehicle details
-            String sql = CustomerManagementQuery.ADD_VEHICLE;
+            sql = CustomerManagementQuery.ADD_VEHICLE;
             preparedStatement = conn.prepareStatement(sql);
 
-            preparedStatement.setString(QueryConstants.COLUMN_ONE,registrationNumber.toLowerCase());
+            preparedStatement.setString(QueryConstants.COLUMN_ONE,registrationNumber.toUpperCase());
             preparedStatement.setInt(QueryConstants.COLUMN_TWO,manufacturedYear);
             preparedStatement.setString(QueryConstants.COLUMN_THREE,brand);
             preparedStatement.setString(QueryConstants.COLUMN_FOUR,model);
@@ -76,8 +77,8 @@ public class VehicleService implements IVehicleService{
             sql = CustomerManagementQuery.ADD_OWNER;
             preparedStatement = conn.prepareStatement(sql);
 
-            preparedStatement.setString(QueryConstants.COLUMN_ONE,NICnumber);
-            preparedStatement.setString(QueryConstants.COLUMN_TWO,registrationNumber);
+            preparedStatement.setString(QueryConstants.COLUMN_ONE,NICnumber.toUpperCase());
+            preparedStatement.setString(QueryConstants.COLUMN_TWO,registrationNumber.toUpperCase());
             preparedStatement.execute();
 
         }catch (SQLException | ClassNotFoundException  e){
@@ -91,7 +92,7 @@ public class VehicleService implements IVehicleService{
     }
 
     @Override
-    public boolean updateVehicle(String registrationNumber, int manufacturedYear, String brand, String model, String color, String NICnumber) {
+    public boolean updateVehicle(String registrationNumber, int manufacturedYear, String brand, String model, String color) {
 
         try {
             conn = DBConnectionUtil.getConnection();
@@ -102,11 +103,11 @@ public class VehicleService implements IVehicleService{
             preparedStatement.setString(QueryConstants.COLUMN_TWO,brand);
             preparedStatement.setString(QueryConstants.COLUMN_THREE,model);
             preparedStatement.setString(QueryConstants.COLUMN_FOUR,color);
-            preparedStatement.setString(QueryConstants.COLUMN_FIVE,registrationNumber.toLowerCase());
+            preparedStatement.setString(QueryConstants.COLUMN_FIVE,registrationNumber.toUpperCase());
 
-            preparedStatement.execute();
+            preparedStatement.executeUpdate();
 
-        }catch (SQLException | ClassNotFoundException  e){
+        }catch (SQLException | ClassNotFoundException| NullPointerException  e){
             e.printStackTrace();
             return false;
         }finally {

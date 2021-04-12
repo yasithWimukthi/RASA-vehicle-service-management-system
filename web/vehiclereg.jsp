@@ -69,14 +69,21 @@
     String model = "";
     String color = "";
     String brand = "";
+    boolean update = false;
 
-    if (vehicle != null){
-        registrationNumber = vehicle.getRegistrationNo().toUpperCase();
-        year = String.valueOf(vehicle.getYear());
-        model = vehicle.getModel();
-        color = vehicle.getColor();
-        brand = vehicle.getBrand();
+    try {
+        if (vehicle != null){
+            registrationNumber = vehicle.getRegistrationNo().toUpperCase();
+            year = String.valueOf(vehicle.getYear());
+            model = vehicle.getModel();
+            color = vehicle.getColor();
+            brand = vehicle.getBrand();
+            update = true;
+        }
+    }catch (NullPointerException e){
+        e.printStackTrace();
     }
+
 
 %>
 
@@ -122,7 +129,7 @@
                     <div class="search-wrapper">
                         <form method="post" id="search-form" action="SearchVehicleServlet">
                             <div class="ui action input massive searchBar">
-                                <input type="text" placeholder="Enter Registration Number..." id="input-box" class="searchWord" name="registrationNumber">
+                                <input type="text" placeholder="Enter Registration Number..." id="input-box" class="searchWord" name="registrationNumber" >
                                 <button type="submit" class="ui icon button" style="height: 69%">
                                     <i class="search icon" ></i>
                                 </button>
@@ -163,12 +170,12 @@
             <!-- VEHICLE DETAILS FORM -->
             <div class="ui grid form-container">
                 <div class="sixteen wide column">
-                    <form method="post" id="vehicleRegForm">
+                    <form method="post" id="vehicleRegForm" action="AddVehicleServlet">
                         <div class="ui huge form" id="form-container">
 
                             <div class="field">
                                 <label>Vehicle Registration Number</label>
-                                <input type="text" placeholder="Registration Number" name="regID" id="regID" value="<%= registrationNumber%>">
+                                <input type="text" placeholder="Registration Number" name="regID" id="regID" value="<%= registrationNumber%>" disabled="<%=update%>">
                             </div>
 
                             <div class="field" id="brandContainer" >
@@ -203,6 +210,9 @@
                                 <label>Manufactured Year</label>
                                 <input type="text" placeholder="Brand Name" name="manufactureYear" id="manufactureYear" value="<%= year%>">
                             </div>
+
+                            <input type="hidden" value="<%=update%>" name="update">
+                            <input type="hidden" value="<%=registrationNumber%>" name="vehicleNumber">
 
                             <div class="ui error message">
                                 <div class="header">Action Forbidden</div>
