@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "AddVehicleServlet")
+@WebServlet("/AddVehicleServlet")
 public class AddVehicleServlet extends HttpServlet {
 
     VehicleService vehicleService;
@@ -30,6 +30,7 @@ public class AddVehicleServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
         String regID = request.getParameter("regID");
         String brand = request.getParameter("brand");
         String otherBrand = request.getParameter("otherBrand");
@@ -37,13 +38,26 @@ public class AddVehicleServlet extends HttpServlet {
         String color = request.getParameter("color");
         String nicNumber = request.getParameter("nicNumber");
         int manufactureYear = Integer.parseInt(request.getParameter("manufactureYear"));
+        boolean update = Boolean.parseBoolean(request.getParameter("update"));
 
         boolean isSuccess = false;
 
-        if (brand == "Other"){
-            isSuccess = vehicleService.addVehicle(regID,manufactureYear,otherBrand,model,color,nicNumber);
+        System.out.println(update);
+        System.out.println(regID);
+
+        if (update){
+            String registrationNumber = request.getParameter("vehicleNumber");
+            if (brand.equals("Other")){
+                isSuccess = vehicleService.updateVehicle(registrationNumber,manufactureYear,otherBrand,model,color);
+            }else {
+                isSuccess = vehicleService.updateVehicle(registrationNumber,manufactureYear,brand,model,color);
+            }
         }else {
-            isSuccess = vehicleService.addVehicle(regID,manufactureYear,brand,model,color,nicNumber);
+            if (brand.equals("Other")){
+                isSuccess = vehicleService.addVehicle(regID,manufactureYear,otherBrand,model,color,"980971422V");
+            }else {
+                isSuccess = vehicleService.addVehicle(regID,manufactureYear,brand,model,color,"980971422V");
+            }
         }
 
         RequestDispatcher dispatcher;
@@ -52,6 +66,7 @@ public class AddVehicleServlet extends HttpServlet {
         }else {
             dispatcher = getServletContext().getRequestDispatcher("/vehiclereg.jsp");
         }
+        dispatcher.forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

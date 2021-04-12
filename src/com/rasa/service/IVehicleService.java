@@ -46,7 +46,6 @@ public interface IVehicleService {
      * @param brand
      * @param model
      * @param color
-     * @param NICnumber
      * @return return true if update successfully otherwise false
      */
     boolean updateVehicle(
@@ -54,7 +53,6 @@ public interface IVehicleService {
             int manufacturedYear,
             String brand,
             String model,
-            String color,
-            String NICnumber
+            String color
     );
 }
