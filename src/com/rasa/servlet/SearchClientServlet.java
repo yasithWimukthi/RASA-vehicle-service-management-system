@@ -27,12 +27,16 @@ public class SearchClientServlet extends HttpServlet {
         String NICnumber = request.getParameter("nic_number");
         Customer customer;
 
-        try {
-            customer = clientService.searchByNic(NICnumber);
-            request.setAttribute("customer",customer);
-        }catch (NullPointerException e){
-            e.printStackTrace();
-        }
+//        try {
+//            customer = clientService.searchByNic(NICnumber);
+//            request.setAttribute("customer",customer);
+//        }catch (NullPointerException e){
+//            e.printStackTrace();
+//        }
+
+        customer = clientService.searchByNic(NICnumber);
+        request.setAttribute("customer",customer);
+
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/customerreg.jsp");
         dispatcher.forward(request, response);
     }

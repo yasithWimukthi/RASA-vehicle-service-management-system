@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "AddCustomerServlet")
+@WebServlet("/AddCustomerServlet")
 public class AddCustomerServlet extends HttpServlet {
 
     ClientService clientService;
@@ -43,7 +43,8 @@ public class AddCustomerServlet extends HttpServlet {
 
         String fullName = fname +" "+lname;
 
-        System.out.println(update);
+
+        System.out.println("Full name " + fullName);
 
         if(update){
             isSuccess = clientService.updateCustomer(nicNumber,fname,lname,mobile,address,email);
