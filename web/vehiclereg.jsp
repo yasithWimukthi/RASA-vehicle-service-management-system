@@ -177,7 +177,7 @@
 
                             <div class="field">
                                 <label>Vehicle Registration Number</label>
-                                <input type="text" placeholder="Registration Number" name="regID" id="regID" value="<%= registrationNumber%>" disabled="<%=update%>">
+                                <input type="text" placeholder="Registration Number" name="regID" id="regID" value="<%= registrationNumber%>" <%=update ? "disabled" : "null"%>>
                             </div>
 
                             <div class="field" id="brandContainer" >

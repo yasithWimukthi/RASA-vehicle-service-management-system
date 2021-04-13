@@ -40,6 +40,7 @@ public class AddVehicleServlet extends HttpServlet {
         String fullName = request.getParameter("fullName");
         int manufactureYear = Integer.parseInt(request.getParameter("manufactureYear"));
         boolean update = Boolean.parseBoolean(request.getParameter("update"));
+        String registrationNumber = request.getParameter("vehicleNumber");
 
         boolean isSuccess = false;
 
@@ -47,7 +48,6 @@ public class AddVehicleServlet extends HttpServlet {
         System.out.println(regID);
 
         if (update){
-            String registrationNumber = request.getParameter("vehicleNumber");
             if (brand.equals("Other")){
                 isSuccess = vehicleService.updateVehicle(registrationNumber,manufactureYear,otherBrand,model,color);
             }else {
@@ -62,8 +62,11 @@ public class AddVehicleServlet extends HttpServlet {
         }
 
         RequestDispatcher dispatcher;
-        request.setAttribute("regID",regID);
+        request.setAttribute("regID",registrationNumber);
         request.setAttribute("fullName",fullName);
+
+        System.out.println(regID);
+        System.out.println(fullName);
 
         if (isSuccess){
             dispatcher = getServletContext().getRequestDispatcher("/addentry.jsp");
