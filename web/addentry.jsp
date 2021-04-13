@@ -20,7 +20,7 @@
 <body>
 
 <%
-    String fullName = (String) request.getAttribute("fullName");
+    //String fullName = (String) request.getAttribute("fullName");
     String regID = (String) request.getAttribute("regID");
 %>
 
@@ -104,7 +104,7 @@
 
                             <div class="field">
                                 <label>Vehicle Registration Number</label>
-                                <input placeholder="Registration Number" type="text" name="registrationNumber" value="<%=regID%>" disabled>
+                                <input placeholder="Registration Number" type="text" name="regID" value="<%=regID%>" disabled>
                             </div>
 
                             <div class="field" id="entryDateContainer">
@@ -151,6 +151,8 @@
                                     <label>Claim Form</label>
                                 </div>
                             </div>
+
+                            <input type="hidden" value="<%=regID%>" name="registrationNumber">
 
                             <div class="ui error message">
                                 <div class="header">Action Forbidden</div>
