@@ -98,7 +98,7 @@ public class ClientService implements IClientService{
             preparedStatement.setString(QueryConstants.COLUMN_FIVE,mobile);
             preparedStatement.setString(QueryConstants.COLUMN_SIX,nic.toUpperCase());
 
-            preparedStatement.execute();
+            preparedStatement.executeUpdate();
 
         }catch (SQLException | ClassNotFoundException  e){
             e.printStackTrace();

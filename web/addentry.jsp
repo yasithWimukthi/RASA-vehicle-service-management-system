@@ -91,15 +91,20 @@
                     <form method="post" id="entry-form"action="AddServiceEntryServlet">
                         <div class="ui huge form" id="form-container">
 
-                            <div class="two fields">
-                                <div class="field">
-                                    <label>Customer Name</label>
-                                    <input placeholder="Customer Name" type="text" name="customerName">
-                                </div>
-                                <div class="field">
-                                    <label>Vehicle Registration Number</label>
-                                    <input placeholder="Registration Number" type="text" name="registrationNumber">
-                                </div>
+<%--                            <div class="two fields">--%>
+<%--                                <div class="field">--%>
+<%--                                    <label>Customer Name</label>--%>
+<%--                                    <input placeholder="Customer Name" type="text" name="customerName" value="<%=fullName%>">--%>
+<%--                                </div>--%>
+<%--                                <div class="field">--%>
+<%--                                    <label>Vehicle Registration Number</label>--%>
+<%--                                    <input placeholder="Registration Number" type="text" name="registrationNumber" value="<%=regID%>">--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+
+                            <div class="field">
+                                <label>Vehicle Registration Number</label>
+                                <input placeholder="Registration Number" type="text" name="registrationNumber" value="<%=regID%>" disabled>
                             </div>
 
                             <div class="field" id="entryDateContainer">

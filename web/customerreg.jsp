@@ -65,6 +65,8 @@
         e.printStackTrace();
     }
 
+    //customer = (Customer) request.getAttribute("customer");
+
     String firstName = "";
     String lastName = "";
     String nicNumber = "";
@@ -171,7 +173,7 @@
             <!-- CUSTOMER DETAILS FORM -->
             <div class="ui grid form-container">
                 <div class="sixteen wide column">
-                    <form method="post" id="customerRegForm">
+                    <form method="post" id="customerRegForm" action="AddCustomerServlet">
                         <div class="ui huge form" id="form-container">
 
                             <div class="two fields">
@@ -188,7 +190,7 @@
                             <div class="two fields">
                                 <div class="field" id="nicContainer">
                                     <label>NIC Number</label>
-                                    <input placeholder="NIC Number" type="text" name="nic" id="nic" value="<%=nicNumber%>" disabled="<%=update%>">
+                                    <input placeholder="NIC Number" type="text" name="nic" id="nic" value="<%=nicNumber%>" <%=update ? "disabled" : "null"%>>
                                 </div>
                                 <div class="field" id="mobileContainer">
                                     <label>Phone Number</label>
