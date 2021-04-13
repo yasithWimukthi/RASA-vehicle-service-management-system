@@ -7,6 +7,9 @@ package com.rasa.servlet;
  * IT19966922
  **/
 
+import com.rasa.service.ServiceEntry;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +19,14 @@ import java.io.IOException;
 
 @WebServlet("/AddServiceEntryServlet")
 public class AddServiceEntryServlet extends HttpServlet {
+
+    private ServiceEntry serviceEntry;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        serviceEntry = new ServiceEntry();
+    }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
@@ -29,6 +40,7 @@ public class AddServiceEntryServlet extends HttpServlet {
         boolean hasCustomerNoObjection = false;
         boolean hasInsuranceNoObjection = false;
         boolean hasClaimForm = false;
+        boolean isSuccess = false;
 
         try {
             if(customerNoObjection.equals("on")){
@@ -54,13 +66,21 @@ public class AddServiceEntryServlet extends HttpServlet {
             hasClaimForm = false;
         }
 
+//        System.out.println("repair " + repair);
+//        System.out.println("customerNoObjection " + hasCustomerNoObjection);
+//        System.out.println("insuranceNoObjection " + hasInsuranceNoObjection);
+//        System.out.println("Claim Form " + hasClaimForm);
 
+        isSuccess = serviceEntry.addServiceEntry(registrationNumber,repair,entryDate,accidentDate,hasCustomerNoObjection,hasInsuranceNoObjection,hasClaimForm);
+        RequestDispatcher dispatcher;
 
-        System.out.println("repair " + repair);
-        System.out.println("customerNoObjection " + hasCustomerNoObjection);
-        System.out.println("insuranceNoObjection " + hasInsuranceNoObjection);
-        System.out.println("Claim Form " + hasClaimForm);
+        if (isSuccess){
+            dispatcher = getServletContext().getRequestDispatcher("/customerreg.jsp");
+        }else {
+            dispatcher = getServletContext().getRequestDispatcher("/addentry.jsp");
+        }
 
+        dispatcher.forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
