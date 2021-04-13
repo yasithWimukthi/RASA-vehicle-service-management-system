@@ -61,9 +61,15 @@ public class AddVehicleServlet extends HttpServlet {
             }
         }
 
+        if(update){
+            request.setAttribute("regID",registrationNumber);
+        }else {
+            request.setAttribute("regID",regID);
+        }
+
         RequestDispatcher dispatcher;
-        request.setAttribute("regID",registrationNumber);
-        request.setAttribute("fullName",fullName);
+        //request.setAttribute("regID",registrationNumber);
+        //request.setAttribute("fullName",fullName);
 
         System.out.println(regID);
         System.out.println(fullName);
