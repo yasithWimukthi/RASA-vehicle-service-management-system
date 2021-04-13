@@ -38,6 +38,7 @@ public class ServiceEntry implements IServiceEntry{
                 preparedStatement.setString(QueryConstants.COLUMN_ONE,registrationNumber);
                 preparedStatement.setString(QueryConstants.COLUMN_TWO,entryDate);
                 preparedStatement.setString(QueryConstants.COLUMN_THREE,accidentDate);
+                preparedStatement.setString(QueryConstants.COLUMN_FOUR,ServiceType);
             }else {
                 sql = CustomerManagementQuery.ADD_INSURANCE_SERVICE;
                 preparedStatement = conn.prepareStatement(sql);
@@ -47,6 +48,7 @@ public class ServiceEntry implements IServiceEntry{
                 preparedStatement.setBoolean(QueryConstants.COLUMN_FOUR,customerNoObjection);
                 preparedStatement.setBoolean(QueryConstants.COLUMN_FIVE,insuranceNoObjection);
                 preparedStatement.setBoolean(QueryConstants.COLUMN_SIX,claimForm);
+                preparedStatement.setString(QueryConstants.COLUMN_SEVEN,ServiceType);
             }
 
             preparedStatement.execute();
