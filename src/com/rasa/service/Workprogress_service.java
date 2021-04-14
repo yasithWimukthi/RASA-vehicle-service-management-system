@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Workprogress_service implements Iworkprogress_service{
 
@@ -78,5 +79,29 @@ public class Workprogress_service implements Iworkprogress_service{
         Boolean Is_add = preparedStatement.execute();
         return Is_add;
 
+    }
+
+    @Override
+    public ArrayList<RepairService> displayServicelist(String pid) throws SQLException, ClassNotFoundException {
+        con = DBConnectionUtil.getConnection();
+        ArrayList<RepairService> rList = new ArrayList<>();
+        String selecQuery = "SELECT `ser_type`, `description`, `status`, `s_date` FROM `repair_service` WHERE pid = ?";
+
+        PreparedStatement preparedStatement = con.prepareStatement(selecQuery);
+        preparedStatement.setString(1,pid);
+
+        ResultSet listService = preparedStatement.executeQuery();
+
+        while(listService.next()){
+            RepairService repairService = new RepairService();
+            repairService.setSer_type(listService.getString(1));
+            repairService.setDescription(listService.getString(2));
+            repairService.setStatus(listService.getString(3));
+            repairService.setDate(listService.getString(4));
+
+            rList.add(repairService);
+
+        }
+        return rList;
     }
 }

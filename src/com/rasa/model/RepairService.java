@@ -21,7 +21,7 @@ public class RepairService {
         this.pid = pid;
     }
 
-    public RepairService(String ser_type, String description, String date, String status, String pid) {
+    public RepairService(String ser_type, String description,String status, String date, String pid) {
         this.ser_type = ser_type;
         this.description = description;
         this.date = date;
