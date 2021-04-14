@@ -279,3 +279,57 @@
 #s04:hover{
     background-image: linear-gradient(to left ,#51ecec,#0e8c8c,#0e8c8c);
 }
+/*** update form css***/
+.update-form{
+    height:130%;
+    width:100%;
+    background-color:rgba(0,0,0,0.7);
+    position:absolute;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    top:0px;
+}
+.modal_container{
+    width:400px;
+    height:400px;
+    background-color:white;
+    text-align:center;
+    border-radius:6px;
+
+}
+.modal_container h1{
+    font-family:monospace;
+    font-size:20px;
+    padding-top:5px;
+    color:black;
+    font-weight:300;
+}
+.modal_container i{
+    font-size:30px;
+}
+.status_select{
+    padding:23px;
+    width:70%;
+    height:50px;
+    font-size:15px;
+    align-items:center;
+    border-color:black;
+    text-align:center;
+}
+.Udesc{
+    padding:23px;
+    width:70%;
+    height:50px;
+    font-size:15px;
+    border-color:black;
+
+}
+.updateBtn{
+    padding:23px;
+    width:70%;
+    height:50px;
+    font-size:25px;
+}
+/*** update form css end***/
+
