@@ -1,58 +1,61 @@
 package com.rasa.model;
 
 public class addpayment {
+    int serviceID;
+    private double removeRefting;
+    private double replacing;
+    private double painting;
+    private double totEstimateAmount;
 
-    String ser_id;
-    Double totalEstimate;
-    Double estimateForRemoveAndRefiting;
-    Double estimateForPainting;
-    String vehicleRegiNo;
-
-    public addpayment(String ser_id, Double totalEstimate, Double estimateForRemoveAndRefiting, Double estimateForPainting, String vehicleRegiNo) {
-        this.ser_id = ser_id;
-        this.totalEstimate = totalEstimate;
-        this.estimateForRemoveAndRefiting = estimateForRemoveAndRefiting;
-        this.estimateForPainting = estimateForPainting;
-        this.vehicleRegiNo = vehicleRegiNo;
+    public addpayment(int serviceID, double removeRefting, double replacing, double painting, double totEstimateAmount) {
+        this.serviceID = serviceID;
+        this.removeRefting = removeRefting;
+        this.replacing = replacing;
+        this.painting = painting;
+        this.totEstimateAmount = totEstimateAmount;
     }
 
-    public String getSer_id() {
-        return ser_id;
+    public addpayment(double removeRefting){
+        this.removeRefting = removeRefting;
     }
 
-    public void setSer_id(String ser_id) {
-        this.ser_id = ser_id;
+    public int getServiceID() {
+        return serviceID;
     }
 
-    public Double getTotalEstimate() {
-        return totalEstimate;
+    public void setServiceID(int serviceID) {
+        this.serviceID = serviceID;
     }
 
-    public void setTotalEstimate(Double totalEstimate) {
-        this.totalEstimate = totalEstimate;
+    public double getRemoveRefting() {
+        return removeRefting;
     }
 
-    public Double getEstimateForRemoveAndRefiting() {
-        return estimateForRemoveAndRefiting;
+    public void setRemoveRefting(double removeRefting) {
+        this.removeRefting = removeRefting;
     }
 
-    public void setEstimateForRemoveAndRefiting(Double estimateForRemoveAndRefiting) {
-        this.estimateForRemoveAndRefiting = estimateForRemoveAndRefiting;
+    public double getReplacing() {
+        return replacing;
     }
 
-    public Double getEstimateForPainting() {
-        return estimateForPainting;
+    public void setReplacing(double replacing) {
+        this.replacing = replacing;
     }
 
-    public void setEstimateForPainting(Double estimateForPainting) {
-        this.estimateForPainting = estimateForPainting;
+    public double getPainting() {
+        return painting;
     }
 
-    public String getVehicleRegiNo() {
-        return vehicleRegiNo;
+    public void setPainting(double painting) {
+        this.painting = painting;
     }
 
-    public void setVehicleRegiNo(String vehicleRegiNo) {
-        this.vehicleRegiNo = vehicleRegiNo;
+    public double getTotEstimateAmount() {
+        return totEstimateAmount;
+    }
+
+    public void setTotEstimateAmount(double totEstimateAmount) {
+        this.totEstimateAmount = totEstimateAmount;
     }
 }

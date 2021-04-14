@@ -4,53 +4,66 @@ import java.util.Date;
 
 public class Budget {
 
-     Date month;
-     Double profit;
-     Double repairAmount;
-     Double rentalAmount;
-     Double inventoryExpenses;
-     Double empPayments;
+    String month;
+    double profit;
+    double repairAmount;
+    double rentalAmount;
+    double inventoryExpenses;
+    double empPayments;
 
-    public Budget(Double repairAmount, Double rentalAmount, Double inventoryExpenses, Double empPayments) {
+    public Budget(double repairAmount) {
+        this.repairAmount = repairAmount;
+    }
+
+    public Budget(String month, Double repairAmount, double rentalAmount, double inventoryExpenses, double empPayments) {
+        this.month = month;
         this.repairAmount = repairAmount;
         this.rentalAmount = rentalAmount;
         this.inventoryExpenses = inventoryExpenses;
         this.empPayments = empPayments;
     }
 
-    public Date getMonth() {
-        return month;
-    }
-
-    public void setMonth(Date month) {
-        this.month = month;
-    }
-
-    public Double getProfit() {
-        return profit;
-    }
-
-    public void setProfit(Double profit) {
+    public Budget(double repairAmount, double rentalAmount, double inventoryExpenses, double empPayments,double profit) {
+        this.repairAmount = repairAmount;
+        this.rentalAmount = rentalAmount;
+        this.inventoryExpenses = inventoryExpenses;
+        this.empPayments = empPayments;
         this.profit = profit;
     }
 
-    public Double getRepairAmount() {
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month= month;
+    }
+
+    public double getProfit() {
+        return profit;
+    }
+
+    public void setProfit(double profit) {
+        this.profit = profit;
+    }
+
+    public  double getRepairAmount() {
         return repairAmount;
     }
 
-    public void setRepairAmount(Double repairAmount) {
+    public void setRepairAmount(double repairAmount) {
         this.repairAmount = repairAmount;
     }
 
-    public Double getRentalAmount() {
+    public double getRentalAmount() {
         return rentalAmount;
     }
 
-    public void setRentalAmount(Double rentalAmount) {
+    public void setRentalAmount(double rentalAmount) {
         this.rentalAmount = rentalAmount;
     }
 
-    public Double getInventoryExpenses() {
+    public double getInventoryExpenses() {
         return inventoryExpenses;
     }
 
@@ -58,11 +71,11 @@ public class Budget {
         this.inventoryExpenses = inventoryExpenses;
     }
 
-    public Double getEmpPayments() {
+    public double getEmpPayments() {
         return empPayments;
     }
 
-    public void setEmpPayments(Double empPayments) {
+    public void setEmpPayments(double empPayments) {
         this.empPayments = empPayments;
     }
 }
