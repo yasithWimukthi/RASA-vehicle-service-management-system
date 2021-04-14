@@ -85,7 +85,7 @@ public class Workprogress_service implements Iworkprogress_service{
     public ArrayList<RepairService> displayServicelist(String pid) throws SQLException, ClassNotFoundException {
         con = DBConnectionUtil.getConnection();
         ArrayList<RepairService> rList = new ArrayList<>();
-        String selecQuery = "SELECT `ser_type`, `description`, `status`, `s_date` FROM `repair_service` WHERE pid = ?";
+        String selecQuery = "SELECT `ser_id`, `ser_type`, `description`, `status`, `s_date` FROM `repair_service` WHERE pid = ?";
 
         PreparedStatement preparedStatement = con.prepareStatement(selecQuery);
         preparedStatement.setString(1,pid);
@@ -94,14 +94,36 @@ public class Workprogress_service implements Iworkprogress_service{
 
         while(listService.next()){
             RepairService repairService = new RepairService();
-            repairService.setSer_type(listService.getString(1));
-            repairService.setDescription(listService.getString(2));
-            repairService.setStatus(listService.getString(3));
-            repairService.setDate(listService.getString(4));
+            repairService.setSer_Id(listService.getString(1));
+            repairService.setSer_type(listService.getString(2));
+            repairService.setDescription(listService.getString(3));
+            repairService.setStatus(listService.getString(4));
+            repairService.setDate(listService.getString(5));
 
             rList.add(repairService);
 
         }
         return rList;
+    }
+
+    @Override
+    public RepairService retirvedatabyID(String ser_id) throws SQLException, ClassNotFoundException {
+        con = DBConnectionUtil.getConnection();
+        String getdatabyId = "SELECT `ser_id`, `ser_type`, `description`, `status`, `s_date` FROM `repair_service` WHERE ser_id = ?";
+        PreparedStatement preparedStatement = con.prepareStatement(getdatabyId);
+        preparedStatement.setString(1,ser_id);
+
+        ResultSet ser_recd = preparedStatement.executeQuery();
+        RepairService r1 = new RepairService();
+        while (ser_recd.next()){
+            r1.setSer_Id(ser_recd.getString(1));
+            r1.setSer_type(ser_recd.getString(2));
+            r1.setDescription(ser_recd.getString(3));
+            r1.setStatus(ser_recd.getString(4));
+            r1.setDate(ser_recd.getString(5));
+        }
+        return r1;
+
+
     }
 }
