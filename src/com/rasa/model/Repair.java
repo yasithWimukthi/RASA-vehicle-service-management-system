@@ -16,6 +16,8 @@ public class Repair {
     private boolean customerNoObjection;
     private boolean leasingNoObjection;
     private boolean claimForm;
+    private String progress;
+    private int repairId;
 
     public Repair() {
     }
@@ -93,5 +95,21 @@ public class Repair {
 
     public void setClaimForm(boolean claimForm) {
         this.claimForm = claimForm;
+    }
+
+    public String getProgress() {
+        return progress;
+    }
+
+    public void setProgress(String progress) {
+        this.progress = progress;
+    }
+
+    public int getRepairId() {
+        return repairId;
+    }
+
+    public void setRepairId(int repairId) {
+        this.repairId = repairId;
     }
 }

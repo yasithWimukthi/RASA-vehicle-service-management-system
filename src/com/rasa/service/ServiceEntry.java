@@ -69,7 +69,7 @@ public class ServiceEntry implements IServiceEntry{
             conn = DBConnectionUtil.getConnection();
             String sql = CustomerManagementQuery.SEARCH_ENTRY_BY_REG_NUM;
             preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setString(QueryConstants.COLUMN_ONE,registrationNumber.toLowerCase());
+            preparedStatement.setString(QueryConstants.COLUMN_ONE,registrationNumber.toUpperCase());
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -81,6 +81,9 @@ public class ServiceEntry implements IServiceEntry{
                 repair.setCustomerNoObjection(resultSet.getBoolean("customerNoObjection"));
                 repair.setLeasingNoObjection(resultSet.getBoolean("insuranceNoObjection"));
                 repair.setClaimForm(resultSet.getBoolean("claimForm"));
+                repair.setProgress(resultSet.getString("progress"));
+                repair.setPaymentType(resultSet.getString("type"));
+                repair.setRepairId(resultSet.getInt("serivceID"));
 
                 repairList.add(repair);
             }
@@ -115,7 +118,9 @@ public class ServiceEntry implements IServiceEntry{
                 repair.setCustomerNoObjection(resultSet.getBoolean("customerNoObjection"));
                 repair.setLeasingNoObjection(resultSet.getBoolean("insuranceNoObjection"));
                 repair.setClaimForm(resultSet.getBoolean("claimForm"));
-
+                repair.setProgress(resultSet.getString("progress"));
+                repair.setPaymentType(resultSet.getString("type"));
+                repair.setRepairId(resultSet.getInt("serivceID"));
                 repairList.add(repair);
             }
 

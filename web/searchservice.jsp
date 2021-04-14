@@ -1,4 +1,6 @@
-<%--
+<%@ page import="java.util.List" %>
+<%@ page import="com.rasa.model.Repair" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: ACER
   Date: 4/14/2021
@@ -18,6 +20,12 @@
     <script src="styles/Semantic-UI-CSS-master/semantic.min.js"></script>
 </head>
 <body>
+
+<%
+    List<Repair> repairsList = new ArrayList<>();
+    repairsList = (List<Repair>) request.getAttribute("services");
+
+%>
 
 <div class="container">
     <div class="content">
@@ -59,12 +67,12 @@
             <div class="ui grid search-bar-container">
                 <div class="sixteen wide column">
                     <div class="search-wrapper">
-                        <form method="post " action="SearchServiceServlet">
+                        <form method="get " action="SearchServiceServlet">
                             <div class="ui action input searchBar" style="height: 50px">
-                                <input type="text" placeholder="Search...">
-                                <select class="ui compact selection dropdown">
-                                    <option value="all">NIC Number</option>
-                                    <option selected="" value="articles" default>Registration Number</option>
+                                <input type="text" placeholder="Search..." name="key">
+                                <select class="ui compact selection dropdown" name="type">
+                                    <option value="nicNumber">NIC Number</option>
+                                    <option selected="" value="registrationNumber" default>Registration Number</option>
                                 </select>
                                 <button type="submit"class="ui button">
                                     <i class="search icon"></i>
@@ -74,35 +82,51 @@
                     </div>
                 </div>
             </div>
-            <!-- CUSTOMER DETAILS FORM -->
-            <div class="ui grid form-container">
-                <div class="sixteen  wide column">
-                    <table class="ui celled table">
-                        <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Registration Number</th>
-                            <th>Entry Date</th>
-                            <th>Service Type</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr class="negative">
-                            <td> <i class="icon close"></i>No Name Specified</td>
-                            <td>Unknown</td>
-                            <td class="negative">None</td>
-                            <td class="negative">None</td>
-                        </tr>
-                        <tr class="positive">
-                            <td><i class="icon checkmark"></i>Jimmy</td>
-                            <td>> Approved</td>
-                            <td>None</td>
-                            <td class="negative">None</td>
-                        </tr>
-                        </tbody>
-                    </table>
+            <!-- SERVICE ENTRY TABLE -->
+            <% if (repairsList != null){%>
+                <div class="ui grid form-container">
+                    <div class="sixteen  wide column">
+                        <table class="ui celled table">
+                            <thead>
+                            <tr>
+                                <th>Registration Number</th>
+                                <th>Entry Date</th>
+                                <th>Type</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="negative">
+                                <td> <i class="icon close"></i>No Name Specified</td>
+                                <td>Unknown</td>
+                                <td class="negative">None</td>
+                                <td class="negative">None</td>
+                            </tr>
+                            <tr class="positive">
+                                <td><i class="icon checkmark"></i>Jimmy</td>
+                                <td>> Approved</td>
+                                <td>None</td>
+                                <td class="negative">None</td>
+                            </tr>
+
+                            <% for (Repair repair : repairsList) {%>
+
+                                <tr class="positive">
+                                    <td><i class="icon checkmark"></i> <%= repair.getVehicleRegistrationNo()%> </td>
+                                    <td>> <%=repair.getEntryDate()%></td>
+                                    <td><%=repair.getPaymentType()%></td>
+                                    <td class="negative">
+                                        <form>
+                                            <input type="hidden" name="serviceID" value="<%=repair.getRepairId()%>">
+                                            <input type="submit" value="view" class="btn btn-primary">
+                                        </form>
+                                    </td>
+                                </tr>
+                            <%}%>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
+            <% }%>
         </div>
     </div>
 </div>
