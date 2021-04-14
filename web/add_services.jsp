@@ -1,6 +1,8 @@
 <%@ page import="com.rasa.service.Iworkprogress_service" %>
 <%@ page import="com.rasa.service.Workprogress_service" %>
-<%@ page import="java.time.LocalDate" %><%--
+<%@ page import="java.time.LocalDate" %>
+<%@ page import="com.rasa.model.RepairService" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: Tharindu
   Date: 3/25/2021
@@ -15,6 +17,7 @@
     <link href="styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
     <link href="styles/style.css" rel="stylesheet">
     <link href="styles/workprogress.css" rel="stylesheet">
+    <script src="scripts/workprogress.js"></script>
 </head>
 <body>
 <%-- get vehcile entry Id using session --%>
@@ -62,6 +65,7 @@
         </div>
 
         <div class="main-content">
+
             <div class="ui grid form-container">
                 <div class="sixteen wide column">
                     <%-- Header end--%>
@@ -95,31 +99,37 @@
                         <button class="ui primary button" id="ser_add_btn"><i class="plus square icon"></i>Add Service</button>
                     </form>
                     <%-- estimate servie table --%>
+                        <h1><%ArrayList<RepairService> rList =iworkprogress_service.displayServicelist(pid);%></h1>
                     <div class="form_container_service">
                         <table class="ui fixed single line celled table" id="service_table">
                             <thead>
-                            <th>Service Name</th>
-                            <th>Date</th>
-                            <th>description</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                            <th>Action</th>
-                            <th>Action</th>
+                                <th>Service Name</th>
+                                <th>Date</th>
+                                <th>description</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                                <th>Action</th>
+                                <th>Action</th>
                             </thead>
                             <tbody>
-                            <td>Painting</td>
-                            <td>2020-02-4</td>
-                            <td> -- </td>
-                            <td>finished</td>
-                            <!-- for Update method -->
-                            <form action="<%=request.getContextPath()%>/update-service.jsp">
-                                <td><button class="ui positive button"><i class="edit icon"></i></button></td>
-                            </form>
+                            <%for(RepairService r : rList){%>
+                                <td><%=r.getSer_type()%></td>
+                                <td><%=r.getDate()%></td>
+                                <td><%=r.getDescription()%></td>
+                                <td><%=r.getStatus()%></td>
+                                <!-- for Update method -->
+                               <form method="post" action="<%=request.getContextPath()%>/EditserviceInfoServlet">
+                                   <td><button id="Ubutton"  class="ui positive button"><i class="edit icon"></i></button></td>
+                                   <input type="hidden" name="serId" value="<%=r.getSer_Id()%>">
+                               </form>
                             <!-- for delete method -->
-                            <form action="">
-                                <td><button class="negative ui button"><i class="trash icon"></i></button></td>
-                            </form>
+                                <form action="">
+                                     <td><button class="negative ui button"><i class="trash icon"></i></button></td>
+                                </form>
+                            </tbody>
+                            <%}%>
                         </table>
+
                     </div>
                     <%-- estimate servie table --%>
                 </div>
@@ -138,6 +148,40 @@
         </div>
     </div>
 </div>
+<!--update form for popup modal -->
+<%if(request.getAttribute("ObjectServ") != null){%>
+<%RepairService repairService = (RepairService)request.getAttribute("ObjectServ");%>
+<div class="update-form">
+    <div class="modal_container">
+        <i class="sync alternate icon"></i>
+        <h1><%=repairService.getSer_type()%></h1>
+        <form class="ui form" method="post" action="<%=request.getContextPath()%>/UpdateWorkServiceServlet">
+            <center><div class="status_select">
+                <select name="Ustatus">
+                    <option>Finished</option>
+                    <option>OnProgress</option>
+                </select>
+            </div>
+            </center>
+            <center>
+            <div class="Udesc">
+                <input type="text" name="Udesc" value="<%=repairService.getDescription()%>">
+            </div>
+            </center>
+            <center><div class="updateBtn">
+                <button class="ui button positive" type="submit">Save Changes</button>
+            </div></center>
+
+            <!-- hidden inputs-->
+            <input type="hidden" name="serId" value="<%=repairService.getSer_Id()%>">
+
+        </form>
+    </div>
+</div>
+<%}%>
+<!--update form finished-->
+
+
 <%--for side bar space --%>
 </body>
 </html>
