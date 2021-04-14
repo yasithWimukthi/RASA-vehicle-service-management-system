@@ -13,6 +13,7 @@ public interface Iworkprogress_service {
    public Boolean InsertService(RepairService repairService) throws SQLException, ClassNotFoundException;
    public ArrayList<RepairService> displayServicelist(String pid) throws SQLException, ClassNotFoundException;
    public RepairService retirvedatabyID(String ser_id) throws SQLException, ClassNotFoundException;
+   public boolean updateServiceStatus(RepairService repairService) throws SQLException, ClassNotFoundException;
 
 
 

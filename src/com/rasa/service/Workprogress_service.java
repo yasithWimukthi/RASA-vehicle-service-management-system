@@ -126,4 +126,20 @@ public class Workprogress_service implements Iworkprogress_service{
 
 
     }
+
+    @Override
+    public boolean updateServiceStatus(RepairService repairService) throws SQLException, ClassNotFoundException {
+        con = DBConnectionUtil.getConnection();
+        String updateQuery = "UPDATE `repair_service` SET `description`=? ,`status`= ? WHERE `ser_id` = ?";
+        PreparedStatement preparedStatement = con.prepareStatement(updateQuery);
+        preparedStatement.setString(1,repairService.getDescription());
+        preparedStatement.setString(2,repairService.getStatus());
+        preparedStatement.setString(3,repairService.getSer_Id());
+        int res = preparedStatement.executeUpdate();
+        if(res==1)
+            return true;
+        else
+            return false;
+
+    }
 }
