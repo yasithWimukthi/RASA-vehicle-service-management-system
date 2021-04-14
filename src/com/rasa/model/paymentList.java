@@ -1,31 +1,45 @@
 package com.rasa.model;
 
-import java.util.Date;
+
+import java.sql.Date;
 
 public class paymentList {
-    String payId;
+
+    int payId;
     String vehicleRegiNo;
     String customerName;
-    Double estimateAmount;
-    Double claimAmount;
-    Double cash;
+    double estimateAmount;
+    double cash;
     Date paymentDate;
 
-    public paymentList(String payId, String vehicleRegiNo, String customerName, Double estimateAmount, Double claimAmount, Double cash, Date paymentDate) {
+    public paymentList(int payId,String vehicleRegiNo,String customerName,double estimateAmount,double cash,Date paymentDate) {
         this.payId = payId;
         this.vehicleRegiNo = vehicleRegiNo;
         this.customerName = customerName;
         this.estimateAmount = estimateAmount;
-        this.claimAmount = claimAmount;
+
         this.cash = cash;
         this.paymentDate = paymentDate;
     }
 
-    public String getPayId() {
+    public paymentList(String vehicleRegiNo,String customerName,double estimateAmount,double cash,Date paymentDate) {
+
+
+        this.vehicleRegiNo = vehicleRegiNo;
+        this.customerName = customerName;
+        this.estimateAmount = estimateAmount;
+
+        this.cash = cash;
+        this.paymentDate = paymentDate;
+    }
+
+
+
+    public  int getPayId() {
         return payId;
     }
 
-    public void setPayId(String payId) {
+    public void setPayId(int payId) {
         this.payId = payId;
     }
 
@@ -45,27 +59,21 @@ public class paymentList {
         this.customerName = customerName;
     }
 
-    public Double getEstimateAmount() {
+    public double getEstimateAmount() {
         return estimateAmount;
     }
 
-    public void setEstimateAmount(Double estimateAmount) {
+    public void setEstimateAmount(double estimateAmount) {
         this.estimateAmount = estimateAmount;
     }
 
-    public Double getClaimAmount() {
-        return claimAmount;
-    }
 
-    public void setClaimAmount(Double claimAmount) {
-        this.claimAmount = claimAmount;
-    }
 
-    public Double getCash() {
+    public double getCash() {
         return cash;
     }
 
-    public void setCash(Double cash) {
+    public void setCash(double cash) {
         this.cash = cash;
     }
 
