@@ -1,6 +1,9 @@
-<%--
+<%@ page import="com.rasa.service.paymentdao" %>
+<%@ page import="com.rasa.model.paymentList" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.rasa.service.paymentdao" %><%--
   Created by IntelliJ IDEA.
-  User: asus
+  User: Tharukshi
   Date: 3/22/2021
   Time: 10:17 PM
   To change this template use File | Settings | File Templates.
@@ -29,76 +32,6 @@
 </head>
 <body >
 
-
-
-
-
-
-
-
-<div class="modalWindow_container" >
-    <div class = "modalWindow">
-        <div class="close"id ="close" >+</div>
-
-        <div class="box">
-            <form>
-
-                <div class="form-main-text">Edit Payment</div>
-
-                <br>
-
-                <label style="float:left;margin-left:8%" for="RegiNo">RegiNo</label>
-                <input type="text" class="form-input" id="RegiNo">
-
-
-
-                <label style="float:left;margin-left:8%" for="customer_name" >Customer Name</label>
-                <input type="text"  class="form-input"id="customer_name">
-
-
-
-
-                <label style="float:left;margin-left:8%" for="Estimation">Estimation Amount</label>
-                <input type="text" class="form-input" id="Estimation">
-
-
-
-
-                <label style="float:left;margin-left:8%" for="insurance">ClaimAmount</label>
-                <input type="text"class="form-input" id="insurance">
-
-
-
-
-                <label style="float:left;margin-left:8%" for="cashAmount">Cash</label>
-                <input type="text"  class="form-input"id="cashAmount">
-
-
-
-
-                <label style="float:left;margin-left:8%" for="DateOfpayment">Date of Payment</label>
-                <input type="text"class="form-input" id="DateOfpayment">
-
-
-
-
-                <br>
-                <label for="bi"></label>
-                <button class="btn-save" type="submit" id="bi" >Save</button>
-
-
-            </form>
-        </div>
-
-
-    </div>
-
-
-
-
-</div>
-</div>
-</div>
 
 
 <div class="container">
@@ -148,52 +81,51 @@
 
 
                 <h2 class="main-title">Payments</h2>
+                <% paymentdao pays = new paymentdao();
 
+                    List<paymentList> payList=  pays.selectAllPayment(); %>
                 <table class="ui selectable compact blue table">
                     <thead>
                     <tr>
-                        <th class="ui column-width 200px">VehicleRNo</th>
+                        <th>payId</th>
+                        <th >vehicleRegiNo</th>
                         <th>customerName</th>
-                        <th>estimationAmount</th>
-                        <th>insuranceAmount</th>
-                        <th>cashAmount</th>
-                        <th>dateOfPayment</th>
+                        <th>estimateAmount</th>
+
+                        <th>cash</th>
+                        <th>payment</th>
 
                         <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
                     <!-- table data -->
+                    <%for(paymentList i:payList){ %>
                     <tr>
-                        <td>CS4123</td>
-                        <td>R.M.Senanayaka</td>
-                        <td>100000</td>
-                        <td>50000</td>
-                        <td>50000</td>
-                        <td>12/10/2021</td>
-                        <td><a  href="#" id="button"   ><i class= "fa fa-pencil" aria-hidden ="true" style="color:darkblue;width:20px"></i></a> &nbsp;&nbsp;&nbsp;&nbsp; <a  href="delete?paymentId=<c:out value='${pay.paymentId}' />" ><i class="fa fa-trash-o" aria-hidden="true" style="color:Red"></i></a></td>
+                        <td>
+                            <%=i.getPayId() %>
+                        </td>
+                        <td>
+                            <%=i.getVehicleRegiNo() %>
+                        </td>
+                        <td>
+                            <%=i.getCustomerName() %>
+                        </td>
+                        <td>
+                            <%=i.getEstimateAmount() %>
+                        </td>
+
+                        <td>
+                            <%=i.getCash() %>
+                        </td>
+                        <td>
+                            <%=i.getPaymentDate() %>
+                        </td>
+                        <td><a href="retriveEditServlet?payId=<%=i.getPayId()%>" id="button"   > <i class="fa fa-pencil" aria-hidden="true" style="color:Red"></i></a> &nbsp;&nbsp;&nbsp;&nbsp; <a  href="paymentDeleteServlet?payId=<%=i.getPayId()%>"  /> <i class="fa fa-trash-o" aria-hidden="true" style="color:Red"></i></a></td>
                     </tr>
-                    <tr>
-                        <td>CS4678</td>
-                        <td>R.M.Rathnayke</td>
-                        <td>500000</td>
-                        <td>120000</td>
-                        <td>345677</td>
-                        <td>10/10/2021</td>
+                    <%} %>
 
 
-                        <!-- action column links -->
-                        <td><a href="#" id="button" ><i class= "fa fa-pencil" aria-hidden ="true" style="color:darkblue;width:20px"></i></a> &nbsp;&nbsp;&nbsp;&nbsp; <a  href="delete?paymentId=<c:out value='${pay.paymentId}' />" ><i class="fa fa-trash-o" aria-hidden="true" style="color:Red"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>CS4123</td>
-                        <td>R.M.Senanayaka</td>
-                        <td>100000</td>
-                        <td>50000</td>
-                        <td>50000</td>
-                        <td>12/10/2021</td>
-                        <td><a  href="#"id="button" ><i class= "fa fa-pencil" aria-hidden ="true" style="color:darkblue;width:20px"></i></a> &nbsp;&nbsp;&nbsp;&nbsp; <a  href="delete?>" ><i class="fa fa-trash-o" aria-hidden="true" style="color:Red"></i></a></td>
-                    </tr>
 
 
                     </tbody>
@@ -207,20 +139,7 @@
     </div>
 </div>
 
-<script>
 
-
-
-    document.getElementById("button").addEventListener("click",
-        function(){
-            document.querySelector(".modalWindow_container").style.display = "flex";
-        });
-
-    document.getElementById("close").addEventListener("click",
-        function () {
-            document.querySelector(".modalWindow_container").style.display = "none";
-        })
-</script>
 </body>
 
 </html>
