@@ -27,13 +27,14 @@ public class paymentEditServlet extends HttpServlet {
 
 
 
-        paymentList existingPayment = new paymentList(vehicleRegiNo,customerName,estimateAmount,cash,paymentDate);
+        paymentList existingPayment = new paymentList(payId,vehicleRegiNo,customerName,estimateAmount,cash,paymentDate);
         try {
             paymentdao.updatePayment(existingPayment);
             response.sendRedirect("paymentlist.jsp");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+
 
 
 
