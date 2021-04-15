@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: asus
+  User: Tharukshi
   Date: 3/22/2021
   Time: 10:16 PM
   To change this template use File | Settings | File Templates.
@@ -116,42 +116,67 @@
                 </table>
             </div>
 
-            <div class="esti-wrapper">
-                <div class="form">
-                    <h2>Payment Form</h2>
-
-                    <div class="inputfield">
-                        <label>vehicle RegisterNo</label>
-                        <input type="text" class="input" name="vehicle No">
-                    </div>
-
-                    <div class="inputfield">
-                        <label>customer Name</label>
-                        <input type="text" class="input" name="customerName">
-                    </div>
-                    <div class="inputfield">
-                        <label>Estimation Amount</label>
-                        <input type="text" class="input" name="etimation">
-                    </div>
-                    <div class="inputfield">
-                        <label>Claim Amount</label>
-                        <input type="text"  class="input" name="insurance">
-                    </div>
-                    <div class="inputfield">
-                        <label>Cash </label>
-                        <input type="text"  class="input"name="cash amount">
-                    </div>
-                    <div class="inputfield">
-                        <label>Payment Date</label>
-                        <input type="date" class="input" name="dateofPayment">
-                    </div>
+            <div class="box">
+                <form method="post" class="form" id="form" action="<%=request.getContextPath()%>/paymentListServlet">
 
 
+                    <%--@declare id="vehicleregino"--%><%--@declare id="customername"--%><%--@declare id="estimateamount"--%>
+                    <%--@declare id="cash"--%><%--@declare id="paymentdate"--%>
 
-                    <div class="inputfield">
-                        <input type="submit" class="btn"value="save">
+                    <div class="form-main-text">Add payment</div>
+
+                    <br>
+                    <input type ="hidden" name="payId">
+                    <div class="form-control">
+                        <label for="vehicleRegiNo">RegiNo</label>
+                        <input type="text" name="vehicleRegiNo" id="vehicleRegiNo"  >
+                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                        <small>Error</small>
                     </div>
-                </div>
+
+                    <div class="form-control">
+                        <label for="customerName">Customer Name</label>
+                        <input type="text" name="customerName" id="customerName" >
+                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                        <small>Error</small>
+                    </div>
+
+                    <div class="form-control">
+                        <label  for="estimateAmount">Estimation Amount</label>
+                        <input type="text" name="estimateAmount"  id="estimateAmount"  >
+                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                        <small>Error</small>
+                    </div>
+
+                    <div class="form-control">
+                        <label for="cash">Cash</label>
+                        <input type="text"   name="cash" id="cash"  >
+                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                        <small>Error</small>
+                    </div>
+
+
+
+                    <div class="form-control">
+                        <label for="paymentDate">Date of Payment</label>
+                        <input type="date"  name="paymentDate" id="paymentDate" >
+                        <i class="fa fa-check-circle" aria-hidden="true"></i>
+                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                        <small>Error</small>
+                    </div>
+
+
+
+
+
+
+                    <button>submit</button>
+                </form>
+
             </div>
 
         </div>
