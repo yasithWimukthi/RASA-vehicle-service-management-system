@@ -85,6 +85,11 @@
         }
     }catch (NullPointerException e){
         e.printStackTrace();
+        registrationNumber = "";
+        year = "";
+        model = "";
+        color = "";
+        brand = "";
         isExist = true;
     }
 
@@ -204,22 +209,29 @@
                                 <input type="text" placeholder="Registration Number" name="regID" id="regID" value="<%= registrationNumber%>" <%=update ? "disabled" : "null"%>>
                             </div>
 
-                            <div class="field" id="brandContainer" >
-                                <label>Brand Name</label>
-                                <select class="ui search dropdown" name="brand" id="brand">
-                                    <option value="Toyota">Toyota</option>
-                                    <option value="Nissan">Nissan</option>
-                                    <option value="Susuki">Susuki</option>
-                                    <option value="BMW">BMW</option>
-                                    <option value="Benze">Benze</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                            </div>
+                            <% if(!update) {%>
+                                <div class="field" id="brandContainer" >
+                                    <label>Brand Name</label>
+                                    <select class="ui search dropdown" name="brand" id="brand">
+                                        <option value="Toyota">Toyota</option>
+                                        <option value="Nissan">Nissan</option>
+                                        <option value="Susuki">Susuki</option>
+                                        <option value="BMW">BMW</option>
+                                        <option value="Benze">Benze</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
 
-                            <div class="field" id="OtherBrandContainer" style="display: none">
-                                <label>Brand Name</label>
-                                <input type="text" placeholder="Brand Name" name="otherBrand" id="otherBrand">
-                            </div>
+                                <div class="field" id="OtherBrandContainer" style="display: none">
+                                    <label>Brand Name</label>
+                                    <input type="text" placeholder="Brand Name" name="otherBrand" id="otherBrand" >
+                                </div>
+                            <% }else {%>
+                                <div class="field" id="updateBrandContainer" style="display: block">
+                                    <label>Brand Name</label>
+                                    <input type="text" placeholder="Brand Name" name="brand" id="updateBrand" value="<%=vehicle.getBrand()%>">
+                                </div>
+                            <% }%>
 
                             <div class="two fields">
                                 <div class="field" id="modelContainer">
