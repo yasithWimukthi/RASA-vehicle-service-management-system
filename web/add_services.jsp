@@ -122,10 +122,6 @@
                                    <td><button id="Ubutton"  class="ui positive button"><i class="edit icon"></i></button></td>
                                    <input type="hidden" name="serId" value="<%=r.getSer_Id()%>">
                                </form>
-                            <!-- for delete method -->
-                                <form action="">
-                                     <td><button class="negative ui button"><i class="trash icon"></i></button></td>
-                                </form>
                             </tbody>
                             <%}%>
                         </table>

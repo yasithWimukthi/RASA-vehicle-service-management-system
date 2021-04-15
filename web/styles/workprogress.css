@@ -227,59 +227,34 @@
     height:10%;
     border-radius: 12px;
 }
+.btn-container{
+    width:200%;
+
+}
+.btn-container form{
+    display:inline;
+}
 #s01{
     background-color:#0e8c8c;
-    position:absolute;
-    top:20%;
-    left:3%;
-    width:20%;
-    height:40%;
-
-
-}
-#s02{
-    background-color:#0e8c8c;
-    position:absolute;
-    top:20%;
-    left:25%;
-    width:20%;
-    height:40%;
-
-
-}
-#s03{
-    background-color:#0e8c8c;
-    position:absolute;
-    top:20%;
-    width:20%;
-    left:47%;
-    height:40%;
-
-
-}
-#s04{
-    background-color:#0e8c8c;
-    position:absolute;
-    top:20%;
-    left:69%;
-    width:20%;
-    height:40%;
-
+    width:17%;
+    height:17%;
 
 }
 #s01:hover{
-    background-image: linear-gradient(to left ,#51ecec,#0e8c8c,#0e8c8c);
+    background-color: #88b2fc;
+    color: #032a3b;
 }
-#s02:hover{
-    background-image: linear-gradient(to left ,#51ecec,#0e8c8c,#0e8c8c);
+.header_container{
+    position:absolute;
+    top:17%;
+    color:black;
+
 }
-#s03:hover{
-    background-image: linear-gradient(to left ,#51ecec,#0e8c8c,#0e8c8c);
+.header_container h1{
+    font-size:28px;
 }
-#s04:hover{
-    background-image: linear-gradient(to left ,#51ecec,#0e8c8c,#0e8c8c);
-}
-/*** update form css***/
+
+    /*** update form css***/
 .update-form{
     height:130%;
     width:100%;
@@ -333,3 +308,53 @@
 }
 /*** update form css end***/
 
+/**** Add component styles*****/
+.add_component_form{
+    position:absolute;
+    padding:12%;
+    background-color:lightseagreen;
+    margin:34%;
+
+}
+.page_container{
+    position:relative;
+    padding:12%;
+}
+.addItems_form-contenter{
+    position:absolute;
+    text-align:center;
+    top:20%;
+    width:40%;
+    height:40%;
+    left:20%;
+    padding-top:12px;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.5),-2px -2px 4px rgba(128 ,120,64,0.5);
+    border-radius:4px;
+
+}
+.addItems_form-contenter select{
+    padding:8px;
+    width:50%;
+    margin:5px;
+    height:30px;
+    font-size:12px;
+    align-items:center;
+    border-color:black;
+    text-align:center;
+}
+.addItems_form-contenter input{
+    padding:11px;
+    width:50%;
+    height:30px;
+    margin:6px;
+    font-size:16px;
+    align-items:center;
+    border-color:black;
+    text-align:center;
+}
+.form_container_component table{
+    position:absolute;
+    width:20%;
+    left:60%;
+    top:10%;
+}

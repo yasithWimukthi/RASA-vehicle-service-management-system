@@ -1,5 +1,8 @@
 <%@ page import="com.rasa.service.Iworkprogress_service" %>
-<%@ page import="com.rasa.service.Workprogress_service" %><%--
+<%@ page import="com.rasa.service.Workprogress_service" %>
+<%@ page import="java.lang.reflect.Array" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.rasa.model.RepairService" %><%--
   Created by IntelliJ IDEA.
   User: Tharindu
   Date: 3/25/2021
@@ -21,6 +24,7 @@
 <%-- gather pid--%>
 <%Iworkprogress_service iworkprogress_service = new Workprogress_service();%>
 <%String pid = iworkprogress_service.getProgressId(sid);%>
+<%ArrayList<RepairService> rlist = iworkprogress_service.displayServicelist(pid);%>
 <div class="container">
       <div class="content">
             <div class="sidebar">
@@ -58,27 +62,36 @@
                               </div>
                               <div class="form-assign">
                                     <form method="post" action="<%=request.getContextPath()%>/CreateWorkProgressServlet">
-                                          <button class="ui positive button"  id="estimatebtn">Create Estimate</button>
+                                          <button class="ui positive button"  id="estimatebtn">+ Add Services</button>
                                           <input type="hidden" name ="sid" value="<%=sid%>">
                                     </form>
                                </div>
 
                               <%-- if pid not null user can add items--%>
                               <%} else{%>
-                        <div class="form-assign">
-                              <h1><i class="cogs icon"></i>On progress!</h1>
-                              <a href="<%=request.getContextPath()%>/add_services.jsp">
-                              <button class="ui positive button" id="s01">Remove And refitting Items</button>
-                              <button class="ui positive button" id="s02">Painting Items</button>
-                              <button class="ui positive button" id="s03">Repair to be Items</button>
-                              <button class="ui positive button" id="s04">service 4</button>
+                              <div class="header_container">
+                                    <h1><i class="tint icon"></i>Vehicle Service Onprogress..!</h1>
+                                    <a href="<%=request.getContextPath()%>/add_services.jsp"><button class="ui positive button">Show Progress</button></a>
+                                    <a href="<%=request.getContextPath()%>/add_services.jsp"><button class="ui positive button">Show Estimate</button></a>
+                              </div>
+                              <div class="btn-container">
+                                    <%for(RepairService repairService : rlist){%>
+                                    <form method="post" action="<%=request.getContextPath()%>/RetriveWorkServiceServlet">
+                                          <button id="s01" class="ui positive button"><%=repairService.getSer_type()%></button>
+                                          <!--hidden types -->
+                                          <input type="hidden" name="ser_id" value="<%=repairService.getSer_Id()%>">
+                                          <input type="hidden" name="pid" value="<%=pid%>">
+                                          <input type="hidden" name="ser_name" value="<%=repairService.getSer_type()%>">
+                                          <!--hidden types -->
+                                    </form>
+                                    <%}%>
+                              </div>
                               <%}%>
-                        </div>
                   </div>
             </div>
       </div>
-</div>
 
+</div>
 </body>
 </html>
 
