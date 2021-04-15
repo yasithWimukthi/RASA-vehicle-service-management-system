@@ -66,7 +66,10 @@
             </div>
         </div>
         <div class="main-content">
-            <h1>Add Repair Components</h1>
+            <div class="header_container_repair">
+                <h1><i class="plus icon"></i>Add Repair Components</h1>
+            </div>
+
             <div class="createS-form-box">
                 <div class="addItems_form-contenter">
                     <h1><%=ser_name%></h1>
