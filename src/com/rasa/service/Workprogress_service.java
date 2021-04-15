@@ -1,6 +1,8 @@
 package com.rasa.service;
 
+import com.rasa.model.RepairComponent;
 import com.rasa.model.RepairService;
+import com.rasa.model.VehicleComponent;
 import com.rasa.util.DBConnectionUtil;
 
 import java.sql.Connection;
@@ -142,4 +144,79 @@ public class Workprogress_service implements Iworkprogress_service{
             return false;
 
     }
+
+    @Override
+    public Boolean addRepairComponent(RepairComponent repairComponent) throws SQLException, ClassNotFoundException {
+
+        con = DBConnectionUtil.getConnection();
+        String insertQuery = "INSERT INTO `vehiclerepair_item`(`ser_id`, `ItemId`, `estimateAmount`) VALUES (?,?,?)";
+
+        PreparedStatement preparedStatement = con.prepareStatement(insertQuery);
+        preparedStatement.setString(1,repairComponent.getRepairService().getSer_Id());
+        preparedStatement.setString(2,repairComponent.getVehicleComponent().getV_itemId());
+        preparedStatement.setInt(3,repairComponent.getEstimateAmount());
+
+        Boolean res = preparedStatement.execute();
+
+        return res;
+    }
+
+    @Override
+    public ArrayList<RepairComponent> retriveRepairComponents(String ser_id) throws SQLException, ClassNotFoundException {
+        con = DBConnectionUtil.getConnection();
+        ArrayList<RepairComponent> List_repair_com = new ArrayList<>();
+        String retrive_comp_query = "SELECT ve.ser_id , ve.ItemId , ve.estimateAmount , r.ItemName FROM vehiclerepair_item ve , repairitem r WHERE r.ItemId = ve.ItemId AND ve.ser_id =?";
+        PreparedStatement preparedStatement = con.prepareStatement(retrive_comp_query);
+
+        preparedStatement.setString(1,ser_id);
+        ResultSet listRepairC = preparedStatement.executeQuery();
+
+        while(listRepairC.next()){
+            RepairComponent repairComponent = new RepairComponent();
+            RepairService repairService = new RepairService();
+            VehicleComponent vehicleComponent = new VehicleComponent();
+
+            String serId = listRepairC.getString(1);
+            String ItemId = listRepairC.getString(2);
+            int estimateA = listRepairC.getInt(3);
+            String ItemName = listRepairC.getString(4);
+
+            repairService.setSer_Id(serId);
+            vehicleComponent.setV_itemId(ItemId);
+            vehicleComponent.setV_Item_name(ItemName);
+
+            repairComponent.setRepairService(repairService);
+            repairComponent.setVehicleComponent(vehicleComponent);
+            repairComponent.setEstimateAmount(estimateA);
+
+
+            List_repair_com.add(repairComponent);
+
+        }
+
+        return List_repair_com;
+    }
+
+    @Override
+    public ArrayList<VehicleComponent> retriveVehcileComponents() throws SQLException, ClassNotFoundException {
+        con = DBConnectionUtil.getConnection();
+        ArrayList<VehicleComponent> list_Vehicle_Com = new ArrayList<>();
+        String getVehcileComQuery = "SELECT `ItemId`, `ItemName` FROM `repairitem`";
+        PreparedStatement preparedStatement = con.prepareStatement(getVehcileComQuery);
+        ResultSet ListVehicleComponents =  preparedStatement.executeQuery();
+        while (ListVehicleComponents.next()){
+             VehicleComponent vehicleComponent = new VehicleComponent(
+                     ListVehicleComponents.getString(1),
+                     ListVehicleComponents.getString(2)
+             );
+             list_Vehicle_Com.add(vehicleComponent);
+
+
+        }
+
+
+        return list_Vehicle_Com;
+    }
+
+
 }
