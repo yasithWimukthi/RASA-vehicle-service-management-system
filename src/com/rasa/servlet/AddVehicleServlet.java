@@ -48,11 +48,12 @@ public class AddVehicleServlet extends HttpServlet {
         System.out.println(regID);
 
         if (update){
-            if (brand.equals("Other")){
-                isSuccess = vehicleService.updateVehicle(registrationNumber,manufactureYear,otherBrand,model,color);
-            }else {
-                isSuccess = vehicleService.updateVehicle(registrationNumber,manufactureYear,brand,model,color);
-            }
+//            if (brand.equals("Other")){
+//                isSuccess = vehicleService.updateVehicle(registrationNumber,manufactureYear,otherBrand,model,color);
+//            }else {
+//                isSuccess = vehicleService.updateVehicle(registrationNumber,manufactureYear,brand,model,color);
+//            }
+            isSuccess = vehicleService.updateVehicle(registrationNumber,manufactureYear,brand,model,color);
         }else {
             if (brand.equals("Other")){
                 isSuccess = vehicleService.addVehicle(regID,manufactureYear,otherBrand,model,color,"980971422V");
