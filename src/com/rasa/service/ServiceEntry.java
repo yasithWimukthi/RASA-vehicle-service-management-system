@@ -84,6 +84,7 @@ public class ServiceEntry implements IServiceEntry{
                 repair.setProgress(resultSet.getString("progress"));
                 repair.setPaymentType(resultSet.getString("type"));
                 repair.setRepairId(resultSet.getInt("serivceID"));
+                repair.setProgress(resultSet.getString("progress"));
 
                 repairList.add(repair);
             }

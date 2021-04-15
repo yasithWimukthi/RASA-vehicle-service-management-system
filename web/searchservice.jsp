@@ -25,6 +25,10 @@
     List<Repair> repairsList = new ArrayList<>();
     repairsList = (List<Repair>) request.getAttribute("services");
     boolean isEmpty = false;
+    String progress;
+    String icon;
+    String color;
+    String serviceType;
 
     try {
         isEmpty = (boolean) request.getAttribute("isEmpty");
@@ -74,14 +78,14 @@
             <div class="ui grid search-bar-container">
                 <div class="sixteen wide column">
                     <div class="search-wrapper">
-                        <form method="get " action="SearchServiceServlet">
+                        <form method="get" action="SearchServiceServlet">
                             <div class="ui action input searchBar" style="height: 50px">
                                 <input type="text" placeholder="Search..." name="key">
                                 <select class="ui compact selection dropdown" name="type">
                                     <option value="nicNumber">NIC Number</option>
                                     <option selected="" value="registrationNumber" default>Registration Number</option>
                                 </select>
-                                <button type="submit"class="ui button">
+                                <button type="submit" class="ui button">
                                     <i class="search icon"></i>
                                 </button>
                             </div>
@@ -103,7 +107,7 @@
             <%} %>
 
             <!-- SERVICE ENTRY TABLE -->
-            <% if (repairsList != null){%>
+            <% if (repairsList.size() !=0 ){%>
                 <div class="ui grid form-container">
                     <div class="sixteen  wide column">
                         <table class="ui celled table">
@@ -115,33 +119,39 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="negative">
-                                <td> <i class="icon close"></i>No Name Specified</td>
-                                <td>Unknown</td>
-                                <td class="negative">None</td>
-                                <td class="negative">None</td>
-                            </tr>
-                            <tr class="positive">
-                                <td><i class="icon checkmark"></i>Jimmy</td>
-                                <td>> Approved</td>
-                                <td>None</td>
-                                <td class="negative">None</td>
-                            </tr>
+                                <% for (Repair repair : repairsList) {
+                                        progress = repair.getProgress().toLowerCase();
+                                        if (progress.equals("complete")){
+                                            icon = "checkmark";
+                                            color = "positive";
+                                        }else {
+                                            icon = "close";
+                                            color = "negative";
+                                        }
 
-                            <% for (Repair repair : repairsList) {%>
+                                        if (repair.getPaymentType().toLowerCase().equals("insurance")){
+                                            serviceType = "Insurance";
+                                        }else {
+                                            serviceType = "Non Insurance";
+                                        }
+                                %>
 
-                                <tr class="positive">
-                                    <td><i class="icon checkmark"></i> <%= repair.getVehicleRegistrationNo()%> </td>
-                                    <td>> <%=repair.getEntryDate()%></td>
-                                    <td><%=repair.getPaymentType()%></td>
-                                    <td class="negative">
-                                        <form>
-                                            <input type="hidden" name="serviceID" value="<%=repair.getRepairId()%>">
-                                            <input type="submit" value="view" class="btn btn-primary">
-                                        </form>
-                                    </td>
-                                </tr>
-                            <%}%>
+                                    <tr class="<%=color%>">
+                                        <td>
+                                            <i class="icon <%=icon%> "></i>
+                                            <%= repair.getVehicleRegistrationNo()%>
+                                        </td>
+                                        <td> <%=repair.getEntryDate()%></td>
+                                        <td><%=serviceType%></td>
+                                        <td class="negative" style="text-align: center">
+                                            <form>
+                                                <input type="hidden" name="serviceID" value="<%=repair.getRepairId()%>">
+                                                <input type="submit" value="view" class="ui primary big button">
+                                            </form>
+                                        </td>
+                                    </tr>
+
+                                <%}%>
                             </tbody>
                         </table>
                     </div>
