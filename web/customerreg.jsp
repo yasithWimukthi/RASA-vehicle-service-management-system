@@ -56,12 +56,12 @@
 <body>
 
 <%
-    Customer customer ;
+    Customer customer = null;
 
     try {
         customer = (Customer) request.getAttribute("customer");
     }catch (Exception e){
-        customer = null;
+//        customer = null;
         e.printStackTrace();
     }
 
@@ -74,6 +74,7 @@
     String mobile = "";
     String email = "";
     boolean update = false;
+    boolean isExist = false;
 
     try {
         if(customer != null){
@@ -86,6 +87,9 @@
             update = true;
         }
     }catch (Exception e){
+        firstName = "";
+        lastName = "";
+        isExist = true;
         e.printStackTrace();
     }
 
@@ -169,6 +173,27 @@
                     </div>
                 </div>
             </div>
+
+            <!-- MESSAGE -->
+            <% if(customer != null && update) {%>
+                <div class="ui success message" style="width: 90%">
+                    <i class="close icon"></i>
+                    <div class="header">
+                        Customer is already exist.
+                    </div>
+                    <p>You can update client details. </p>
+                </div>
+            <% } %>
+
+            <% if(isExist) {%>
+            <div class="ui error message" style="width: 90%">
+                <i class="close icon"></i>
+                <div class="header">
+                    Customer is not exist.
+                </div>
+                <p>You can enter client details. </p>
+            </div>
+            <% } %>
 
             <!-- CUSTOMER DETAILS FORM -->
             <div class="ui grid form-container">

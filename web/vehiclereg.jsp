@@ -72,6 +72,7 @@
     String color = "";
     String brand = "";
     boolean update = false;
+    boolean isExist = false;
 
     try {
         if (vehicle != null){
@@ -84,6 +85,7 @@
         }
     }catch (NullPointerException e){
         e.printStackTrace();
+        isExist = true;
     }
 
 
@@ -167,6 +169,28 @@
                     </div>
                 </div>
             </div>
+
+            <!-- MESSAGE -->
+            <% if(vehicle != null && update) {%>
+            <div class="ui success message" style="width: 90%">
+                <i class="close icon"></i>
+                <div class="header">
+                    Vehicle is already exist.
+                </div>
+                <p>You can update vehicle details. </p>
+            </div>
+            <% } %>
+
+            <% if(isExist) {%>
+            <div class="ui error message" style="width: 90%">
+                <i class="close icon"></i>
+                <div class="header">
+                    Vehicle is not exist.
+                </div>
+                <p>You can enter vehicle details. </p>
+            </div>
+            <% } %>
+
 
 
             <!-- VEHICLE DETAILS FORM -->

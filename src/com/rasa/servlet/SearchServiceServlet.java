@@ -46,6 +46,7 @@ public class SearchServiceServlet extends HttpServlet {
         String key = request.getParameter("key");
         String type = request.getParameter("type");
         List <Repair> repairsList;
+        boolean isEmpty = false;
 
         if (type.equals("nicNumber")){
             repairsList = serviceEntry.searchByRegistrationNic(key);
@@ -53,8 +54,13 @@ public class SearchServiceServlet extends HttpServlet {
             repairsList = serviceEntry.searchByRegistrationNumber(key);
         }
 
+        if (repairsList.isEmpty()){
+            isEmpty = true;
+        }
+
         RequestDispatcher dispatcher ;
         request.setAttribute("services",repairsList);
+        request.setAttribute("isEmpty",isEmpty);
         dispatcher = getServletContext().getRequestDispatcher("/searchservice.jsp");
         dispatcher.forward(request, response);
 

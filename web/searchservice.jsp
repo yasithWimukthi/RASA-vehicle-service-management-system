@@ -24,6 +24,13 @@
 <%
     List<Repair> repairsList = new ArrayList<>();
     repairsList = (List<Repair>) request.getAttribute("services");
+    boolean isEmpty = false;
+
+    try {
+        isEmpty = (boolean) request.getAttribute("isEmpty");
+    }catch (Exception e){
+        isEmpty =false;
+    }
 
 %>
 
@@ -82,6 +89,19 @@
                     </div>
                 </div>
             </div>
+
+            <!-- MESSAGE -->
+            <% if(isEmpty) {%>
+                <div class="ui negative icon message" style="width: 90%; margin-top: 35px">
+                    <i class="frown outline icon"></i>
+                    <div class="content">
+                        <div class="header">
+                            Service entries can not be found.
+                        </div>
+                    </div>
+                </div>
+            <%} %>
+
             <!-- SERVICE ENTRY TABLE -->
             <% if (repairsList != null){%>
                 <div class="ui grid form-container">
