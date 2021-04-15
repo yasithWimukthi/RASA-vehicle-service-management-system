@@ -78,3 +78,15 @@ customerRegForm.addEventListener("submit",e =>{
 });
 
 
+/**************************************************
+                        jQuery
+ ***************************************************/
+
+$('.message .close')
+    .on('click', function() {
+        $(this)
+            .closest('.message')
+            .transition('fade')
+        ;
+    })
+;
