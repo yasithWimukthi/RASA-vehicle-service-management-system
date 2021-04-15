@@ -1,6 +1,8 @@
 package com.rasa.service;
 
+import com.rasa.model.RepairComponent;
 import com.rasa.model.RepairService;
+import com.rasa.model.VehicleComponent;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,7 +16,8 @@ public interface Iworkprogress_service {
    public ArrayList<RepairService> displayServicelist(String pid) throws SQLException, ClassNotFoundException;
    public RepairService retirvedatabyID(String ser_id) throws SQLException, ClassNotFoundException;
    public boolean updateServiceStatus(RepairService repairService) throws SQLException, ClassNotFoundException;
-
-
+   public Boolean addRepairComponent(RepairComponent repairComponent) throws SQLException, ClassNotFoundException;
+   public ArrayList<RepairComponent> retriveRepairComponents(String ser_id) throws SQLException, ClassNotFoundException;
+   public ArrayList<VehicleComponent> retriveVehcileComponents() throws SQLException, ClassNotFoundException;
 
 }
