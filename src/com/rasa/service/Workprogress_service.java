@@ -264,5 +264,18 @@ public class Workprogress_service implements Iworkprogress_service{
 
     }
 
+    @Override
+    public Boolean deleteRepairComponent(String ser_id, String item_id) throws SQLException, ClassNotFoundException {
+        con = DBConnectionUtil.getConnection();
+        String deleteQuery = "DELETE FROM `vehiclerepair_item` WHERE ser_id = ? AND ItemId = ?";
+        PreparedStatement preparedStatement = con.prepareStatement(deleteQuery);
+
+        preparedStatement.setString(1,ser_id);
+        preparedStatement.setString(2,item_id);
+        Boolean res = preparedStatement.execute();
+        System.out.println(res);
+        return res;
+    }
+
 
 }
