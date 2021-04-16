@@ -19,5 +19,5 @@ public interface Iworkprogress_service {
    public Boolean addRepairComponent(RepairComponent repairComponent) throws SQLException, ClassNotFoundException;
    public ArrayList<RepairComponent> retriveRepairComponents(String ser_id) throws SQLException, ClassNotFoundException;
    public ArrayList<VehicleComponent> retriveVehcileComponents() throws SQLException, ClassNotFoundException;
-
+   public RepairComponent retriveRepairComponentById(String ser_id,String Item_id,String s_name) throws SQLException, ClassNotFoundException;
 }

@@ -218,5 +218,33 @@ public class Workprogress_service implements Iworkprogress_service{
         return list_Vehicle_Com;
     }
 
+    @Override
+    public RepairComponent retriveRepairComponentById(String ser_id,String Item_id,String s_name) throws SQLException, ClassNotFoundException {
+        con = DBConnectionUtil.getConnection();
+        RepairComponent repairComponent = null;
+        String VehicleComponentQuery = "SELECT `ser_id`, `ItemId`, `estimateAmount` FROM `vehiclerepair_item` WHERE ser_id = ? AND ItemId = ?";
+        PreparedStatement preparedStatement = con.prepareStatement(VehicleComponentQuery);
+        preparedStatement.setString(1,ser_id);
+        preparedStatement.setString(2,Item_id);
+
+        ResultSet ObjectVehicleComponent = preparedStatement.executeQuery();
+
+        while (ObjectVehicleComponent.next()){
+            VehicleComponent vehicleComponent = new VehicleComponent();
+            RepairService repairService = new RepairService();
+
+            repairService.setSer_Id(ObjectVehicleComponent.getString(1));
+            vehicleComponent.setV_itemId(ObjectVehicleComponent.getString(2));
+            vehicleComponent.setV_Item_name(s_name);
+
+            repairComponent = new RepairComponent(
+                    repairService,
+                    ObjectVehicleComponent.getInt(3),
+                    vehicleComponent
+                    );
+        }
+        return repairComponent;
+    }
+
 
 }
