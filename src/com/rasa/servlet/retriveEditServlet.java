@@ -24,9 +24,10 @@ public class retriveEditServlet extends HttpServlet {
 
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            int payId = Integer.parseInt(request.getParameter("payId"));
+        int payId = Integer.parseInt(request.getParameter("payId"));
         paymentList p =  paydao.selectPayment(payId);
 
+        request.setAttribute("payId",p.getPayId());
         request.setAttribute("vehicleRegiNo",p.getVehicleRegiNo());
         request.setAttribute("customerName",p.getCustomerName());
         request.setAttribute("estimateAmount",p.getEstimateAmount());
@@ -35,8 +36,9 @@ public class retriveEditServlet extends HttpServlet {
 
         request.getRequestDispatcher("editPayment.jsp").forward(request,response);
 
-        }
-
-
     }
+
+
+
+}
 
