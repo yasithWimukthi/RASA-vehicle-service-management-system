@@ -75,6 +75,7 @@
                                     <a href="<%=request.getContextPath()%>/add_services.jsp"><button class="ui positive button">Show Estimate</button></a>
                               </div>
                               <div class="btn-container">
+                                    <h1><i class="wrench icon"></i>Add Components</h1>
                                     <%for(RepairService repairService : rlist){%>
                                     <form method="post" action="<%=request.getContextPath()%>/RetriveWorkServiceServlet">
                                           <button id="s01" class="ui positive button"><%=repairService.getSer_type()%></button>

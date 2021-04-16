@@ -26,15 +26,16 @@
 </head>
 <body>
 <!--session variable spaces -->
-<%String ser_id = (String)session.getAttribute("serviceId");
-  String ser_name = (String)session.getAttribute("serviceName");
-  Iworkprogress_service iworkprogress_service = new Workprogress_service();
-  ArrayList<RepairComponent> LrepairCom = iworkprogress_service.retriveRepairComponents(ser_id);
-  ArrayList<VehicleComponent> LVehcileCom = iworkprogress_service.retriveVehcileComponents();
+<%
+    String ser_id = (String)session.getAttribute("serviceId");
+    String ser_name = (String)session.getAttribute("serviceName");
+    Iworkprogress_service iworkprogress_service = new Workprogress_service();
+    ArrayList<RepairComponent> LrepairCom = iworkprogress_service.retriveRepairComponents(ser_id);
+    ArrayList<VehicleComponent> LVehcileCom = iworkprogress_service.retriveVehcileComponents();
 
 %>
+<!-- session variable spaces end-->
 
-<!-- -->
 <div class="container">
     <div class="content">
         <div class="sidebar">
@@ -115,9 +116,13 @@
                             <td><%=repairComponent.getVehicleComponent().getV_Item_name()%></td>
                             <td><%=repairComponent.getEstimateAmount()%></td>
                      <!-- for Update method -->
-                            <form method="post" action="<%=request.getContextPath()%>/addrepaircomponent.jsp">
+                            <form method="post" action="<%=request.getContextPath()%>/RetriveUpdateEstimateServlet">
                                <td><button id="Ubutton"  class="ui positive button"><i class="edit icon"></i></button></td>
-                               <input type="hidden" name="serId" value="">
+                                <!--Hidden values -->
+                                <input type="hidden" name="serId" value="<%=repairComponent.getRepairService().getSer_Id()%>">
+                                <input type="hidden" name="Item_id" value="<%=repairComponent.getVehicleComponent().getV_itemId()%>">
+                                <input type="hidden" name="ser_name" value="<%=repairComponent.getVehicleComponent().getV_Item_name()%>">
+                                <!--Hidden values end -->
                              </form>
                      <!--for delete method -->
                             <form method="post" action="<%=request.getContextPath()%>/addrepaircomponent.jsp">
@@ -130,7 +135,33 @@
             </div>
             <!-- Display list  end-->
 
-
+            <!--Update form -->
+            <%if(request.getAttribute("Object_rcom") != null){%>
+            <%RepairComponent r = (RepairComponent)request.getAttribute("Object_rcom");%>
+            <div class="update-form-estimate">
+                <div class="modal_container">
+                    <i class="sync alternate icon"></i>
+                    <h1>Edit Estimate</h1>
+                    <form class="ui form" method="post" action="<%=request.getContextPath()%>/UpdateWorkServiceServlet">
+                        <center>
+                            <div class="Udesc">
+                                <input type="text" name="Udesc" value="<%=r.getVehicleComponent().getV_Item_name()%>">
+                            </div>
+                        </center>
+                        <center>
+                            <div class="Udesc">
+                                <input type="text" name="Udesc" value="<%=r.getEstimateAmount()%>">
+                            </div>
+                        </center>
+                        <center><div class="updateBtn">
+                            <button class="ui button positive" type="submit">Save Changes</button>
+                        </div></center>
+                        <!-- hidden inputs-->
+                    </form>
+                </div>
+            </div>
+            <%}%>
+            <!-- update form-->
         </div>
     </div>
 </div>

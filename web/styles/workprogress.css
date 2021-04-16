@@ -266,6 +266,7 @@
     justify-content:center;
     align-items:center;
     top:0px;
+    transition-delay:4s;
 }
 .modal_container{
     width:400px;
@@ -366,4 +367,17 @@
     position:absolute;
     top:12%;
     left:20%;
+}
+/*****estimate update form ****/
+.update-form-estimate{
+    height:100%;
+    width:100%;
+    background-color:rgba(0,0,0,0.7);
+    position:absolute;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    top:0px;
+    left:0;
+
 }
