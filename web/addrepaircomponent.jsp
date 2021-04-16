@@ -142,17 +142,23 @@
                 <div class="modal_container">
                     <i class="sync alternate icon"></i>
                     <h1>Edit Estimate</h1>
-                    <form class="ui form" method="post" action="<%=request.getContextPath()%>/UpdateWorkServiceServlet">
+                    <form class="ui form" method="post" action="<%=request.getContextPath()%>/UpdateEstimateServlet">
                         <center>
                             <div class="Udesc">
-                                <input type="text" name="Udesc" value="<%=r.getVehicleComponent().getV_Item_name()%>">
+                                <input type="text" value="<%=r.getVehicleComponent().getV_Item_name()%>" disabled>
                             </div>
                         </center>
+
                         <center>
                             <div class="Udesc">
-                                <input type="text" name="Udesc" value="<%=r.getEstimateAmount()%>">
+                                <input type="text" name="U_estimate" value="<%=r.getEstimateAmount()%>">
                             </div>
                         </center>
+                        <!-- hidden values -->
+                        <input type="hidden" name="ser_id"  value="<%=r.getRepairService().getSer_Id()%>">
+                        <input type="hidden" name="item_id" value="<%=r.getVehicleComponent().getV_itemId()%>">
+                        <!-- hidden values -->
+
                         <center><div class="updateBtn">
                             <button class="ui button positive" type="submit">Save Changes</button>
                         </div></center>
