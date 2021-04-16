@@ -246,5 +246,23 @@ public class Workprogress_service implements Iworkprogress_service{
         return repairComponent;
     }
 
+    @Override
+    public Boolean UpdateRepairComponent(String ser_id , String item_id , int estimateA) throws SQLException, ClassNotFoundException {
+        con = DBConnectionUtil.getConnection();
+
+        String UpdateVehicleComponentQ = "UPDATE `vehiclerepair_item` SET `estimateAmount`= ? WHERE ser_id= ? AND ItemId =?";
+        PreparedStatement preparedStatement = con.prepareStatement(UpdateVehicleComponentQ);
+        preparedStatement.setInt(1,estimateA);
+        preparedStatement.setString(2,ser_id);
+        preparedStatement.setString(3,item_id);
+
+        int res = preparedStatement.executeUpdate();
+        if(res == 1)
+            return true;
+        else
+            return false;
+
+    }
+
 
 }
