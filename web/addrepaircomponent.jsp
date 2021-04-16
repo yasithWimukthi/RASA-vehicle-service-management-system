@@ -125,9 +125,12 @@
                                 <!--Hidden values end -->
                              </form>
                      <!--for delete method -->
-                            <form method="post" action="<%=request.getContextPath()%>/addrepaircomponent.jsp">
+                            <form method="post" action="<%=request.getContextPath()%>/DeleteVeCompServlet">
                                 <td><button id="Dbutton"  class="negative ui button"><i class="trash icon"></i></button></td>
-                                <input type="hidden" name="serId" value="">
+                                <!-- hidden values -->
+                                <input type="hidden" name="DserId" value="<%=repairComponent.getRepairService().getSer_Id()%>">
+                                <input type="hidden" name="DItem_id" value="<%=repairComponent.getVehicleComponent().getV_itemId()%>">
+                                <!--hidden values -->
                             </form>
                             <%}%>
                       </tbody>

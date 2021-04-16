@@ -12,7 +12,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-      <title>assign Employee</title>
+      <title>progress</title>
       <link href="styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
       <link href="styles/style.css" rel="stylesheet">
       <link href="styles/workprogress.css" rel="stylesheet">
