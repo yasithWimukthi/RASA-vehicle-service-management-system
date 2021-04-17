@@ -34,6 +34,10 @@ public class AddRepairItemsServlet extends HttpServlet {
             if(!res){
                 request.getRequestDispatcher("addrepaircomponent.jsp").forward(request,response);
             }
+            else{
+                request.setAttribute("error","already Added Component");
+                request.getRequestDispatcher("addrepaircomponent.jsp").forward(request,response);
+            }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {
