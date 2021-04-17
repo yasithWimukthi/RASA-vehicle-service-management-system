@@ -129,7 +129,7 @@
                                             color = "negative";
                                         }
 
-                                        if (repair.getPaymentType().toLowerCase().equals("insurance")){
+                                        if (repair.getPaymentType().toLowerCase().equals("insuarance")){
                                             serviceType = "Insurance";
                                         }else {
                                             serviceType = "Non Insurance";
@@ -144,7 +144,7 @@
                                         <td> <%=repair.getEntryDate()%></td>
                                         <td><%=serviceType%></td>
                                         <td class="negative" style="text-align: center">
-                                            <form method="post" action="">
+                                            <form method="post" action="GetServiceDetailsServlet">
                                                 <input type="hidden" name="serviceID" value="<%=repair.getRepairId()%>">
                                                 <input type="submit" value="view" class="ui primary big button">
                                             </form>

@@ -136,4 +136,37 @@ public class ServiceEntry implements IServiceEntry{
         }
         return repairList;
     }
+
+    @Override
+    public Repair getRepairByServiceID(int serviceID) {
+        Repair repair = new Repair();
+
+        try {
+            conn = DBConnectionUtil.getConnection();
+            String sql = CustomerManagementQuery.GET_SERVICE_BY_SERVICE_ID;
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(QueryConstants.COLUMN_ONE,serviceID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()){
+                repair.setRepairId(resultSet.getInt("serivceID"));
+                repair.setVehicleRegistrationNo(resultSet.getString("registrationNumber"));
+                repair.setEntryDate(resultSet.getString("entryDate"));
+                repair.setAccidentDate(resultSet.getString("accidentDate"));
+                repair.setCustomerNoObjection(resultSet.getBoolean("customerNoObjection"));
+                repair.setLeasingNoObjection(resultSet.getBoolean("insuranceNoObjection"));
+                repair.setClaimForm(resultSet.getBoolean("claimForm"));
+                repair.setPaymentType(resultSet.getString("type"));
+                repair.setProgress(resultSet.getString("progress"));
+                repair.setNICno(resultSet.getString("NICnumber"));
+            }
+
+        }catch (SQLException | ClassNotFoundException e){
+            e.printStackTrace();
+        }finally {
+            DBConnectionUtil.closeConnection(preparedStatement, conn);
+        }
+
+        return repair;
+    }
 }
