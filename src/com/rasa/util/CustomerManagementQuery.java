@@ -14,4 +14,5 @@ public class CustomerManagementQuery {
     public static final String SEARCH_ENTRY_BY_NIC_NUM = "SELECT * FROM service,veicleOwner WHERE service.registrationNumber = veicleOwner.registrationNumber AND veicleOwner.NICnumber = ? " ;
     public static final String ADD_INSURANCE_SERVICE_ENTRY = "INSERT INTO service (registrationNumber,entryDate,accidentDate,customerNoObjection,insuranceNoObjection,claimForm) VALUES (?,?,?,?,?,?)" ;
     public static final String ADD_NORMAL_SERVICE_ENTRY = "INSERT INTO service (registrationNumber,entryDate,accidentDate) VALUES (?,?,?)" ;
+    public static final String GET_SERVICE_BY_SERVICE_ID = "SELECT * FROM service WHERE serivceID = ? " ;
 }

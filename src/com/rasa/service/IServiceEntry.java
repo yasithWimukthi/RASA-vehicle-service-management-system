@@ -51,4 +51,12 @@ public interface IServiceEntry {
      * @return Service object for given nic number
      */
     ArrayList<Repair> searchByRegistrationNic(String nicNumber);
+
+    /**
+     * getRepairByServiceID
+     * get repair details of given service id
+     * @param serviceID
+     * @return
+     */
+    Repair getRepairByServiceID(int serviceID);
 }
