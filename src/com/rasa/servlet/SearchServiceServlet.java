@@ -61,6 +61,7 @@ public class SearchServiceServlet extends HttpServlet {
         RequestDispatcher dispatcher ;
         request.setAttribute("services",repairsList);
         request.setAttribute("isEmpty",isEmpty);
+        request.setAttribute("isSuccess",false);
         dispatcher = getServletContext().getRequestDispatcher("/searchservice.jsp");
         dispatcher.forward(request, response);
 

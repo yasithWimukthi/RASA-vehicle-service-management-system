@@ -24,6 +24,7 @@
 <%
     List<Repair> repairsList ;
     repairsList = (List<Repair>) request.getAttribute("services");
+    boolean isSuccess = false;
     boolean isEmpty = false;
     String progress;
     String icon;
@@ -34,6 +35,12 @@
         isEmpty = (boolean) request.getAttribute("isEmpty");
     }catch (Exception e){
         isEmpty =false;
+    }
+
+    try {
+        isSuccess = (boolean) request.getAttribute("isSuccess");
+    }catch (Exception e){
+        e.printStackTrace();
     }
 
 %>
@@ -157,6 +164,18 @@
                     </div>
                 </div>
             <% }%>
+
+            <% if (isSuccess){%>
+                <div class="ui modal" style="padding-top:50px " >
+                    <i class="close icon"></i>
+                    <div style="display:flex;justify-content: center;">
+                        <i class="check circle outline icon green" style="font-size:200px; margin-top:50px "></i>
+                    </div>
+                    <div style="display:flex;justify-content: center;" class="header">
+                        <p style="font-size:50px; margin-bottom:50px" class="red">DELETE  SUCCESSFULY !</p>
+                    </div>
+                </div>
+            <%}%>
         </div>
     </div>
 </div>
@@ -165,6 +184,9 @@
     $('select.dropdown')
         .dropdown()
     ;
+
+    $('.ui.modal')
+        .modal('show');
 </script>
 
 
