@@ -32,10 +32,12 @@ public class SearchVehicleServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         String registrationNumber = request.getParameter("registrationNumber");
+        String nic = request.getParameter("nic");
 
         Vehicle vehicle = vehicleService.searchByRegistrationNumber(registrationNumber);
 
         request.setAttribute("vehicle",vehicle);
+        request.setAttribute("nic",nic);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/vehiclereg.jsp");
         dispatcher.forward(request, response);
     }
