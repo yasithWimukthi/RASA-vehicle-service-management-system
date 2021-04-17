@@ -27,8 +27,13 @@ public class DeleteServiceEntryServlet extends HttpServlet {
 
         boolean isSuccess = serviceEntry.deleteServiceEntry(Integer.parseInt(serviceID));
 
-        request.setAttribute("success",isSuccess);
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("searchservice.jsp");
+
+        if (isSuccess){
+            request.setAttribute("isSuccess",true);
+        }else{
+            request.setAttribute("isSuccess",false);
+        }
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/searchservice.jsp");
         dispatcher.forward(request, response);
     }
 
