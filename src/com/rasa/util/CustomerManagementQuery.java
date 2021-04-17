@@ -15,4 +15,5 @@ public class CustomerManagementQuery {
     public static final String ADD_INSURANCE_SERVICE_ENTRY = "INSERT INTO service (registrationNumber,entryDate,accidentDate,customerNoObjection,insuranceNoObjection,claimForm) VALUES (?,?,?,?,?,?)" ;
     public static final String ADD_NORMAL_SERVICE_ENTRY = "INSERT INTO service (registrationNumber,entryDate,accidentDate) VALUES (?,?,?)" ;
     public static final String GET_SERVICE_BY_SERVICE_ID = "SELECT * FROM service WHERE serivceID = ? " ;
+    public static final String DELETE_SERVICE_ENTRY = "DELETE FROM service WHERE serivceID = ? " ;
 }

@@ -56,7 +56,15 @@ public interface IServiceEntry {
      * getRepairByServiceID
      * get repair details of given service id
      * @param serviceID
-     * @return
+     * @return Service object for given registration number
      */
     Repair getRepairByServiceID(int serviceID);
+
+    /**
+     * deleteServiceEntry
+     * delete service entry of given service ID
+     * @param serviceID
+     * @return return true if delete successfully, otherwise false
+     */
+    Boolean deleteServiceEntry(int serviceID);
 }

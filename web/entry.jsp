@@ -1,4 +1,6 @@
-<%--
+<%@ page import="com.rasa.model.Repair" %>
+<%@ page import="com.rasa.model.Customer" %>
+<%@ page import="com.rasa.model.Vehicle" %><%--
   Created by IntelliJ IDEA.
   User: ACER
   Date: 3/31/2021
@@ -18,6 +20,24 @@
     <script src="styles/Semantic-UI-CSS-master/semantic.min.js"></script>
 </head>
 <body>
+
+<%
+    Repair repair = (Repair) request.getAttribute("repair");
+    Customer customer = (Customer) request.getAttribute("client");
+    Vehicle vehicle = (Vehicle) request.getAttribute("vehicle");
+    String documents = "";
+
+    if (repair.isCustomerNoObjection()){
+        documents = documents+", "+"Customer No Objection";
+    }
+    if (repair.isLeasingNoObjection()){
+        documents = documents+", "+"Leasing No Objection";
+    }
+    if (repair.isClaimForm())
+    {
+        documents = documents+", "+"Claim Form";
+    }
+%>
 
 <div class="container">
     <div class="content">
@@ -68,35 +88,35 @@
                                 <div class="event">
                                     <div class="content">
                                         <div class="summary">
-                                            <p>Repair Type </p>
+                                            <p>Repair Type      : <%=repair.getPaymentType()%></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="event">
                                     <div class="content">
                                         <div class="summary">
-                                            <p>Entry Date </p>
+                                            <p>Entry Date       : <%=repair.getEntryDate()%></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="event">
                                     <div class="content">
                                         <div class="summary">
-                                            <p>Accident Date </p>
+                                            <p>Accident Date    : <%=repair.getAccidentDate()%></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="event">
                                     <div class="content">
                                         <div class="summary">
-                                            <p>Repair Type</p>
+                                            <p>Progress         : <%=repair.getProgress()%></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="event">
                                     <div class="content">
                                         <div class="summary">
-                                            <p>Douments</p>
+                                            <p>Documents : <%=documents%></p>
                                         </div>
                                     </div>
                                 </div>
@@ -123,35 +143,35 @@
                                 <div class="event">
                                     <div class="content">
                                         <div class="summary">
-                                            <p>Client Name </p>
+                                            <p>Client Name : <%=customer.getFirstName()%> <%=customer.getLastName()%></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="event">
                                     <div class="content">
                                         <div class="summary">
-                                            <p>NIC Number </p>
+                                            <p>NIC Number : <%=customer.getNICno()%></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="event">
                                     <div class="content">
                                         <div class="summary">
-                                            <p> Email </p>
+                                            <p> Email : <%=customer.getEmail()%></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="event">
                                     <div class="content">
                                         <div class="summary">
-                                            <p> Telephone Number</p>
+                                            <p> Telephone Number : <%=customer.getPhoneNo()%></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="event">
                                     <div class="content">
                                         <div class="summary">
-                                            <p> Address </p>
+                                            <p> Address : <%=customer.getAddress()%></p>
                                         </div>
                                     </div>
                                 </div>
@@ -182,35 +202,35 @@
                                 <div class="event">
                                     <div class="content">
                                         <div class="summary">
-                                            <p>Registration Number </p>
+                                            <p>Registration Number : <%=vehicle.getRegistrationNo()%></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="event">
                                     <div class="content">
                                         <div class="summary">
-                                            <p>Manufactured Year </p>
+                                            <p>Manufactured Year : <%=vehicle.getYear()%></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="event">
                                     <div class="content">
                                         <div class="summary">
-                                            <p>Brand </p>
+                                            <p>Brand : <%=vehicle.getBrand()%></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="event">
                                     <div class="content">
                                         <div class="summary">
-                                            <p>Model</p>
+                                            <p>Model : <%=vehicle.getModel()%></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="event">
                                     <div class="content">
                                         <div class="summary">
-                                            <p>Color</p>
+                                            <p>Color : <%=vehicle.getColor()%></p>
                                         </div>
                                     </div>
                                 </div>
@@ -228,10 +248,13 @@
                 <!-- Buttons -->
                 <div class="class= eight wide column button-container" >
 
-                    <button class="ui red fluid button" style="width:95%; height:35px">
-                        <i class="trash icon"> </i>
-                        Delete Entry
-                    </button>
+                    <form method="post" action="DeleteServiceEntryServlet">
+                        <input type="hidden" name="serviceID" value="<%=repair.getRepairId()%>">
+                        <button class="ui red fluid button" type="submit" style="width:95%; height:35px">
+                            <i class="trash icon"> </i>
+                            Delete Entry
+                        </button>
+                    </form>
 
                     <button class="ui blue fluid button" style="width:95%; height:35px">
                         <i class="address card outline icon"> </i>
