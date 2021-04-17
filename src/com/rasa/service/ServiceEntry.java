@@ -169,4 +169,22 @@ public class ServiceEntry implements IServiceEntry{
 
         return repair;
     }
+
+    @Override
+    public Boolean deleteServiceEntry(int serviceID) {
+        try {
+            conn = DBConnectionUtil.getConnection();
+            String sql = CustomerManagementQuery.DELETE_SERVICE_ENTRY;
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(QueryConstants.COLUMN_ONE,serviceID);
+            preparedStatement.execute();
+
+        }catch (SQLException | ClassNotFoundException e){
+            e.printStackTrace();
+            return false;
+        }finally {
+            DBConnectionUtil.closeConnection(preparedStatement, conn);
+        }
+        return true;
+    }
 }
