@@ -12,7 +12,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-      <title>assign Employee</title>
+      <title>progress</title>
       <link href="styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
       <link href="styles/style.css" rel="stylesheet">
       <link href="styles/workprogress.css" rel="stylesheet">
@@ -75,6 +75,7 @@
                                     <a href="<%=request.getContextPath()%>/add_services.jsp"><button class="ui positive button">Show Estimate</button></a>
                               </div>
                               <div class="btn-container">
+                                    <h1><i class="wrench icon"></i>Add Components</h1>
                                     <%for(RepairService repairService : rlist){%>
                                     <form method="post" action="<%=request.getContextPath()%>/RetriveWorkServiceServlet">
                                           <button id="s01" class="ui positive button"><%=repairService.getSer_type()%></button>

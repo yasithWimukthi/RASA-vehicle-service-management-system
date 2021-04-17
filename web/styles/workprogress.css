@@ -236,8 +236,10 @@
 }
 #s01{
     background-color:#0e8c8c;
-    width:17%;
+    width:20%;
     height:17%;
+    border-radius:8px;
+    font-size:12px;
 
 }
 #s01:hover{
@@ -264,6 +266,7 @@
     justify-content:center;
     align-items:center;
     top:0px;
+    transition-delay:4s;
 }
 .modal_container{
     width:400px;
@@ -357,4 +360,24 @@
     width:20%;
     left:60%;
     top:10%;
+}
+.header_container_repair h1{
+    color:black;
+    font-size:200%;
+    position:absolute;
+    top:12%;
+    left:20%;
+}
+/*****estimate update form ****/
+.update-form-estimate{
+    height:100%;
+    width:100%;
+    background-color:rgba(0,0,0,0.7);
+    position:absolute;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    top:0px;
+    left:0;
+
 }
