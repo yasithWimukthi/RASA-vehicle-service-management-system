@@ -26,7 +26,7 @@ public class ServiceEntry implements IServiceEntry{
     private PreparedStatement preparedStatement;
 
     @Override
-    public boolean addServiceEntry(String registrationNumber, String ServiceType, String entryDate, String accidentDate, boolean customerNoObjection, boolean insuranceNoObjection, boolean claimForm) {
+    public boolean addServiceEntry(String registrationNumber,String nic, String ServiceType, String entryDate, String accidentDate, boolean customerNoObjection, boolean insuranceNoObjection, boolean claimForm) {
 
         try {
             conn = DBConnectionUtil.getConnection();
@@ -39,6 +39,8 @@ public class ServiceEntry implements IServiceEntry{
                 preparedStatement.setString(QueryConstants.COLUMN_TWO,entryDate);
                 preparedStatement.setString(QueryConstants.COLUMN_THREE,accidentDate);
                 preparedStatement.setString(QueryConstants.COLUMN_FOUR,ServiceType);
+                preparedStatement.setString(QueryConstants.COLUMN_FIVE,nic);
+                preparedStatement.setString(QueryConstants.COLUMN_SIX,"incomplete");
             }else {
                 sql = CustomerManagementQuery.ADD_INSURANCE_SERVICE;
                 preparedStatement = conn.prepareStatement(sql);
@@ -49,6 +51,8 @@ public class ServiceEntry implements IServiceEntry{
                 preparedStatement.setBoolean(QueryConstants.COLUMN_FIVE,insuranceNoObjection);
                 preparedStatement.setBoolean(QueryConstants.COLUMN_SIX,claimForm);
                 preparedStatement.setString(QueryConstants.COLUMN_SEVEN,ServiceType);
+                preparedStatement.setString(QueryConstants.COLUMN_EIGHT,nic);
+                preparedStatement.setString(QueryConstants.COLUMN_NINE,"incomplete");
             }
 
             preparedStatement.execute();

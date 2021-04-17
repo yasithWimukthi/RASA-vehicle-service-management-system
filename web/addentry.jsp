@@ -22,6 +22,7 @@
 <%
     //String fullName = (String) request.getAttribute("fullName");
     String regID = (String) request.getAttribute("regID");
+    String nic = (String) request.getAttribute("nic");
 %>
 
 <div class="container">
@@ -107,6 +108,11 @@
                                 <input placeholder="Registration Number" type="text" name="regID" value="<%=regID%>" disabled>
                             </div>
 
+                            <div class="field">
+                                <label>NIC Number</label>
+                                <input placeholder="NIC Number" type="text" name="nic" value="<%=nic%>" disabled>
+                            </div>
+
                             <div class="field" id="entryDateContainer">
                                 <label>Entry Date</label>
                                 <input placeholder="Entry Date" type="date" name="entryDate" id="entryDate">
@@ -153,6 +159,7 @@
                             </div>
 
                             <input type="hidden" value="<%=regID%>" name="registrationNumber">
+                            <input type="hidden" value="<%=nic%>" name="nicNumber">
 
                             <div class="ui error message">
                                 <div class="header">Action Forbidden</div>

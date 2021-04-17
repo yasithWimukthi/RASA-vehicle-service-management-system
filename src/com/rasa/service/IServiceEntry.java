@@ -27,6 +27,7 @@ public interface IServiceEntry {
      */
     boolean addServiceEntry(
             String registrationNumber,
+            String nic,
             String ServiceType,
             String entryDate,
             String accidentDate,

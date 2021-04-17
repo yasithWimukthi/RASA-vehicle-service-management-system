@@ -22,7 +22,7 @@
 <body>
 
 <%
-    List<Repair> repairsList = new ArrayList<>();
+    List<Repair> repairsList ;
     repairsList = (List<Repair>) request.getAttribute("services");
     boolean isEmpty = false;
     String progress;
@@ -107,7 +107,7 @@
             <%} %>
 
             <!-- SERVICE ENTRY TABLE -->
-            <% if (repairsList.size() !=0 ){%>
+            <% if (repairsList !=null && repairsList.size()>0 ){%>
                 <div class="ui grid form-container">
                     <div class="sixteen  wide column">
                         <table class="ui celled table">
@@ -144,7 +144,7 @@
                                         <td> <%=repair.getEntryDate()%></td>
                                         <td><%=serviceType%></td>
                                         <td class="negative" style="text-align: center">
-                                            <form>
+                                            <form method="post" action="">
                                                 <input type="hidden" name="serviceID" value="<%=repair.getRepairId()%>">
                                                 <input type="submit" value="view" class="ui primary big button">
                                             </form>
