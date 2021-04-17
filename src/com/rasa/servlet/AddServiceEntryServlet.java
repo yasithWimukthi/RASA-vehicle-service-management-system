@@ -37,10 +37,13 @@ public class AddServiceEntryServlet extends HttpServlet {
         String customerNoObjection = request.getParameter("customerNoObjection") ;
         String insuranceNoObjection = request.getParameter("insuranceNoObjection");
         String claimForm = request.getParameter("claimForm");
+        String nic = request.getParameter("nicNumber");
         boolean hasCustomerNoObjection = false;
         boolean hasInsuranceNoObjection = false;
         boolean hasClaimForm = false;
         boolean isSuccess = false;
+
+        System.out.println("nic "+nic);
 
         try {
             if(customerNoObjection.equals("on")){
@@ -71,7 +74,7 @@ public class AddServiceEntryServlet extends HttpServlet {
 //        System.out.println("insuranceNoObjection " + hasInsuranceNoObjection);
 //        System.out.println("Claim Form " + hasClaimForm);
 
-        isSuccess = serviceEntry.addServiceEntry(registrationNumber,repair,entryDate,accidentDate,hasCustomerNoObjection,hasInsuranceNoObjection,hasClaimForm);
+        isSuccess = serviceEntry.addServiceEntry(registrationNumber,nic,repair,entryDate,accidentDate,hasCustomerNoObjection,hasInsuranceNoObjection,hasClaimForm);
         RequestDispatcher dispatcher;
 
         if (isSuccess){

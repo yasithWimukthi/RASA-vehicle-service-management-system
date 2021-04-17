@@ -36,7 +36,7 @@ public class AddVehicleServlet extends HttpServlet {
         String otherBrand = request.getParameter("otherBrand");
         String model = request.getParameter("model");
         String color = request.getParameter("color");
-        String nicNumber = request.getParameter("nicNumber");
+        String nicNumber = request.getParameter("nic");
         String fullName = request.getParameter("fullName");
         int manufactureYear = Integer.parseInt(request.getParameter("manufactureYear"));
         boolean update = Boolean.parseBoolean(request.getParameter("update"));
@@ -44,8 +44,9 @@ public class AddVehicleServlet extends HttpServlet {
 
         boolean isSuccess = false;
 
-        System.out.println(update);
-        System.out.println(regID);
+//        System.out.println(update);
+//        System.out.println(nicNumber);
+
 
         if (update){
 //            if (brand.equals("Other")){
@@ -56,24 +57,24 @@ public class AddVehicleServlet extends HttpServlet {
             isSuccess = vehicleService.updateVehicle(registrationNumber,manufactureYear,brand,model,color);
         }else {
             if (brand.equals("Other")){
-                isSuccess = vehicleService.addVehicle(regID,manufactureYear,otherBrand,model,color,"980971422V");
+                isSuccess = vehicleService.addVehicle(regID,manufactureYear,otherBrand,model,color,nicNumber);
             }else {
-                isSuccess = vehicleService.addVehicle(regID,manufactureYear,brand,model,color,"980971422V");
+                isSuccess = vehicleService.addVehicle(regID,manufactureYear,brand,model,color,nicNumber);
             }
         }
+
+
+        RequestDispatcher dispatcher;
 
         if(update){
             request.setAttribute("regID",registrationNumber);
         }else {
             request.setAttribute("regID",regID);
         }
+        request.setAttribute("nic",nicNumber);
 
-        RequestDispatcher dispatcher;
-        //request.setAttribute("regID",registrationNumber);
-        //request.setAttribute("fullName",fullName);
-
-        System.out.println(regID);
-        System.out.println(fullName);
+//        System.out.println(regID);
+//        System.out.println(fullName);
 
         if (isSuccess){
             dispatcher = getServletContext().getRequestDispatcher("/addentry.jsp");

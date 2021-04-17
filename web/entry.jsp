@@ -8,7 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Service Entry</title>
+    <link href="styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="styles/Semantic-UI-CSS-master/semantic.min.js"></script>
 </head>
 <body>
 
@@ -82,7 +89,7 @@
                                 <div class="event">
                                     <div class="content">
                                         <div class="summary">
-                                            <p>Payment Type</p>
+                                            <p>Repair Type</p>
                                         </div>
                                     </div>
                                 </div>
@@ -277,22 +284,22 @@
                     Update Entry
                 </div>
 
-                <form method="post" id="vehicleRegForm">
-                    <div class="ui huge form error"style="margin:50px">
+                <form method="post" id="entryUpdateForm">
+                    <div class="ui huge form" style="margin:50px" id="form-container">
                         <div class="two fields">
-                            <div class="field error">
+                            <div class="field">
                                 <label>Customer Name</label>
-                                <input placeholder="Customer Name" type="text">
+                                <input placeholder="Customer Name" type="text" >
                             </div>
-                            <div class="field error">
+                            <div class="field">
                                 <label>Vehicle Registration Number</label>
-                                <input placeholder="Registration Number" type="text">
+                                <input placeholder="Registration Number" type="text" disabled>
                             </div>
                         </div>
 
-                        <div class="field error">
+                        <div class="field" id="entryDateContainer">
                             <label>Entry Date</label>
-                            <input placeholder="Entry Date" type="date">
+                            <input placeholder="Entry Date" type="date" id="entryDate">
                         </div>
 
                         <div class="inline fields">
@@ -312,7 +319,7 @@
                             </div>
                         </div>
 
-                        <div class="field error">
+                        <div class="field">
                             <label>Accident Date</label>
                             <input placeholder="Accident Date" type="date">
                         </div>
@@ -488,35 +495,7 @@
     </div>
 </div>
 
-<script>
-    $('select.dropdown')
-        .dropdown();
-
-    $( "#entry-edit" ).click(function () {
-        //alert( "Handler for .submit() called." );
-        $('.ui.modal.entry-edit-form')
-            .modal('show');
-    });
-
-    $( "#update-client" ).click(function () {
-        //alert( "Handler for .submit() called." );
-        $('.ui.modal.client-edit-form')
-            .modal('show');
-    });
-
-    $( "#update-vehicle" ).click(function () {
-        //alert( "Handler for .submit() called." );
-        $('.ui.modal.vehicle-edit-form')
-            .modal('show');
-    });
-
-    $('.ui.radio.checkbox')
-        .checkbox();
-
-    $('.ui.checkbox')
-        .checkbox();
-
-</script>
+<script src="scripts/entry.js"></script>
 
 </body>
 </html>

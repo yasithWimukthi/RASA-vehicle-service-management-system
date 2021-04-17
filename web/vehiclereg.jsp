@@ -71,8 +71,11 @@
     String model = "";
     String color = "";
     String brand = "";
+    String nic= (String) request.getAttribute("nic");
     boolean update = false;
     boolean isExist = false;
+
+
 
     try {
         if (vehicle != null){
@@ -139,6 +142,7 @@
                         <form method="post" id="search-form" action="SearchVehicleServlet">
                             <div class="ui action input massive searchBar">
                                 <input type="text" placeholder="Enter Registration Number..." id="input-box" class="searchWord" name="registrationNumber" >
+                                <input type="hidden" value="<%=nic%>" name="nic">
                                 <button type="submit" class="ui icon button" style="height: 69%">
                                     <i class="search icon" ></i>
                                 </button>
@@ -196,8 +200,6 @@
             </div>
             <% } %>
 
-
-
             <!-- VEHICLE DETAILS FORM -->
             <div class="ui grid form-container">
                 <div class="sixteen wide column">
@@ -252,6 +254,7 @@
                             <input type="hidden" value="<%=update%>" name="update">
                             <input type="hidden" value="<%=registrationNumber%>" name="vehicleNumber">
                             <input type="hidden" value="<%=fullName%>" name="fullName">
+                            <input type="hidden" value="<%=nic%>" name="nic">
 
                             <div class="ui error message">
                                 <div class="header">Action Forbidden</div>

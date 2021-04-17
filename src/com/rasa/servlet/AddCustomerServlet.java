@@ -43,16 +43,18 @@ public class AddCustomerServlet extends HttpServlet {
 
         String fullName = fname +" "+lname;
 
-
-        System.out.println("Full name " + fullName);
+//        System.out.println("nic "+nic);
+//        System.out.println("nic Number "+nicNumber);
+        RequestDispatcher dispatcher;
 
         if(update){
             isSuccess = clientService.updateCustomer(nicNumber,fname,lname,mobile,address,email);
+            request.setAttribute("nic",nicNumber);
         }else {
             isSuccess = clientService.addCustomer(nic,fname,lname,mobile,address,email,"1");
+            request.setAttribute("nic",nic);
         }
 
-        RequestDispatcher dispatcher;
         request.setAttribute("fullName",fullName);
         if(isSuccess){
             dispatcher = getServletContext().getRequestDispatcher("/vehiclereg.jsp");
