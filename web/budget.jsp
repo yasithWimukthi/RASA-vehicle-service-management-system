@@ -1,6 +1,8 @@
-<%--
+<%@ page import="com.rasa.service.budgetService" %>
+
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
-  User: asus
+  User: Tharukshi
   Date: 3/22/2021
   Time: 10:18 PM
   To change this template use File | Settings | File Templates.
@@ -8,8 +10,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <<html>
 <head>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+    >
     <link rel="stylesheet" href="styles/budget.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
     <title>Budget</title>
 </head>
 <body>
@@ -48,21 +56,39 @@
 
         <div class="main-content">
             <div class="maintitle">
-                <h1>Budget</h1>
+                <h1>Budget/month</h1>
             </div>
 
-            <button class="report-button">Budget Report</button>
-
-
-
-
-
-            <div class="wrapper">
-
-                <input type="month" class="input">
-                <button type="button" class="month-button" >Month</button>
+            <div class="report-button">
+                <button class="ui right labeled icon orange button">
+                    <i class="right arrow icon"></i>
+                    Report
+                </button>
             </div>
 
+
+            <div class="box">
+                <form method="post" class="form" action="<%=request.getContextPath()%>/budgetServlet">
+                    <div class="form-control">
+                        <input type="text"  name="year">
+                        <select name="month" >
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                        <button class="ui primary button">Show</button>
+                    </div>
+                </form>
+            </div>
 
 
 
@@ -77,15 +103,29 @@
                                     <h3 class="title">Income</h3>
                                 </div>
                                 <div class="pricing-content">
+                                    <div class="price-value">
+
+                                        <span class="amount">Rs:<%=request.getAttribute("income")%></span>
+
+                                    </div>
 
                                     <table>
+
+                                        <th>Vehicle Repairs</th>
                                         <tr>
-                                            <td>Repairs</td>
-                                            <td>Rs:10000000</td>
+                                            <%if(request.getAttribute("Ramount") == null){%>
+                                            <td>0.0</td>
+                                            <%}else{%>
+                                            <td>Rs:<%=request.getAttribute("Ramount")%></td>
+                                            <%}%>
                                         </tr>
+                                        <th>Rental income</th>
                                         <tr>
-                                            <td>Rental</td>
-                                            <td>Rs:60000</td>
+                                            <%if(request.getAttribute("rentalAmount") == null){%>
+                                            <td>0.0</td>
+                                            <%}else{%>
+                                            <td>Rs:<%=request.getAttribute("rentalAmount")%></td>
+                                            <%}%>
                                         </tr>
                                         </ul>
                                     </table>
@@ -104,8 +144,11 @@
 
                                     <table>
                                         <tr>
-                                            <td>Profit</td>
-                                            <td>Rs:50000</td>
+                                            <%if(request.getAttribute("profit") == null){%>
+                                            <td>0.0</td>
+                                            <%}else{%>
+                                            <td>Rs:<%=request.getAttribute("profit")%></td>
+                                            <%}%>
                                         </tr>
 
 
@@ -122,15 +165,26 @@
                                     <h3 class="title">Expenses</h3>
                                 </div>
                                 <div class="pricing-content_Ex">
+                                    <div class="price-value">
+                                        <span class="amount">Rs:<%=request.getAttribute("expenses")%></span>
 
+                                    </div>
                                     <table>
+                                        <th>Employee payments</th>
                                         <tr>
-                                            <td>Payments</td>
-                                            <td>Rs:50000</td>
+                                            <%if(request.getAttribute("empPayments") == null){%>
+                                            <td>0.0</td>
+                                            <%}else{%>
+                                            <td>Rs:<%=request.getAttribute("empPayments")%></td>
+                                            <%}%>
                                         </tr>
+                                        <th>Inventory expenses</th>
                                         <tr>
-                                            <td>inventory</td>
-                                            <td>Rs:60000</td>
+                                            <%if(request.getAttribute("inventoryExpenses") == null){%>
+                                            <td>0.0</td>
+                                            <%}else{%>
+                                            <td>Rs:<%=request.getAttribute("inventoryExpenses")%></td>
+                                            <%}%>
                                         </tr>
 
 
@@ -151,6 +205,8 @@
         </div>
     </div>
 </div>
+</div>
 
 </body>
 </html>
+
