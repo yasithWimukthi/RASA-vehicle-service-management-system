@@ -235,9 +235,9 @@
     display:inline;
 }
 #s01{
-    background-color:#0e8c8c;
+    background-color: #067579;
     width:20%;
-    height:17%;
+    height:50%;
     border-radius:8px;
     font-size:12px;
 
@@ -380,4 +380,18 @@
     top:0px;
     left:0;
 
+}
+.p_container{
+    position:absolute;
+    left:35%;
+    top:67%;
+    width:30%;
+    height:20%;
+}
+.table_estimate{
+    width:50%;
+    position:absolute;
+    height:20%;
+    left:35%;
+    top:30%;
 }
