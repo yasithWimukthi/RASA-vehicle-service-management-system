@@ -70,9 +70,8 @@ public class Workprogress_service implements Iworkprogress_service{
 
         String ser_id = this.createServiceId(repairService.getPid(),repairService.getSer_type());
         //check weather already added services
-        System.out.println(this.retirvedatabyID(ser_id));
         if(this.retirvedatabyID(ser_id).getSer_Id()!= null){
-            System.out.println(this.retirvedatabyID(ser_id));
+
             return true;
         }
 
