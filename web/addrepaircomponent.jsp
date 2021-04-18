@@ -67,6 +67,17 @@
             </div>
         </div>
         <div class="main-content">
+            <!-- error space -->
+            <%if(request.getAttribute("error") !=null){%>
+            <div class="ui negative message">
+                <i class="close icon"></i>
+                <div class="header">
+                    <p><%=request.getAttribute("error")%></p>
+                </div>
+                <p>Please check again !</p>
+            </div>
+            <%}%>
+            <!-- error space -->
             <div class="header_container_repair">
                 <h1><i class="plus icon"></i>Add Repair Components</h1>
             </div>

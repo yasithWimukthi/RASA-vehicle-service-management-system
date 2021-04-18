@@ -17,7 +17,7 @@
     <link href="styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
     <link href="styles/style.css" rel="stylesheet">
     <link href="styles/workprogress.css" rel="stylesheet">
-    <script src="scripts/workprogress.js"></script>
+
 </head>
 <body>
 <%-- get vehcile entry Id using session --%>
@@ -65,6 +65,17 @@
         </div>
 
         <div class="main-content">
+            <!-- error space -->
+            <%if(request.getAttribute("error") !=null){%>
+                <div class="ui negative message">
+                     <i class="close icon"></i>
+                    <div class="header">
+                         <p><%=request.getAttribute("error")%></p>
+                    </div>
+                    <p>Please check again !</p>
+                </div>
+            <%}%>
+            <!-- error space -->
 
             <div class="ui grid form-container">
                 <div class="sixteen wide column">
