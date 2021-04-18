@@ -58,12 +58,11 @@
                   <div class="form-box-assignEmp">
                         <%-- if pid null page is redirect to add services page--%>
                         <%if(pid == null){%>
-                              <div class="ser_header">
+
+                              <div class="form-createP">
                                     <h1><i class="cogs icon"></i>Currently No progress!</h1>
-                              </div>
-                              <div class="form-assign">
                                     <form method="post" action="<%=request.getContextPath()%>/CreateWorkProgressServlet">
-                                          <button class="ui positive button"  id="estimatebtn">+ Add Services</button>
+                                          <button class="ui positive button"  id="estimatebtn"><i class="plus icon"></i>Add Services</button>
                                           <input type="hidden" name ="sid" value="<%=sid%>">
                                     </form>
                                </div>
@@ -73,8 +72,8 @@
 
                                     <div class="header_container">
                                           <h1><i class="tint icon"></i>Vehicle Service Onprogress..!</h1>
-                                          <a href="<%=request.getContextPath()%>/add_services.jsp"><button class="ui positive button">Show Progress</button></a>
-                                          <a href="<%=request.getContextPath()%>/add_services.jsp"><button class="ui positive button">Show Estimate</button></a>
+                                          <a href="<%=request.getContextPath()%>/add_services.jsp"><button class="ui positive button"><i class="plus icon"></i>Show Progress</button></a>
+                                          <a href="<%=request.getContextPath()%>/add_services.jsp"><button class="ui positive button"><i class="calendar icon"></i>Show Estimate</button></a>
                                     </div>
                               <div class="p_container">
                                     <div class="btn-container">
