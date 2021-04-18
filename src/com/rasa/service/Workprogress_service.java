@@ -67,7 +67,14 @@ public class Workprogress_service implements Iworkprogress_service{
     @Override
     public Boolean InsertService(RepairService repairService) throws SQLException, ClassNotFoundException {
         //create serviceID and return ID
+
         String ser_id = this.createServiceId(repairService.getPid(),repairService.getSer_type());
+        //check weather already added services
+        if(this.retirvedatabyID(ser_id).getSer_Id()!= null){
+
+            return true;
+        }
+
         con = DBConnectionUtil.getConnection();
         String sqlInsert ="INSERT INTO `repair_service`(`ser_id`, `ser_type`, `description`, `status`, `s_date`, `pid`) VALUES (?,?,?,?,?,?)";
         PreparedStatement preparedStatement = con.prepareStatement(sqlInsert);
@@ -147,6 +154,10 @@ public class Workprogress_service implements Iworkprogress_service{
 
     @Override
     public Boolean addRepairComponent(RepairComponent repairComponent) throws SQLException, ClassNotFoundException {
+        //check dublicate elements
+        if(this.retriveRepairComponentById(repairComponent.getRepairService().getSer_Id(),repairComponent.getVehicleComponent().getV_itemId(),"") != null){
+            return true;
+        }
 
         con = DBConnectionUtil.getConnection();
         String insertQuery = "INSERT INTO `vehiclerepair_item`(`ser_id`, `ItemId`, `estimateAmount`) VALUES (?,?,?)";
@@ -276,6 +287,28 @@ public class Workprogress_service implements Iworkprogress_service{
         System.out.println(res);
         return res;
     }
+
+    public double CalcTotalEstimates(String type , int sid) throws SQLException, ClassNotFoundException {
+        con = DBConnectionUtil.getConnection();
+        double Totalestimate = 0.0;
+        double Eamount = 0.0;
+
+        String query = "SELECT vi.estimateAmount FROM  workprogress w , repair_service rs , vehiclerepair_item vi WHERE  w.pid = rs.pid AND rs.ser_id = vi.ser_id AND w.sid = ? AND rs.ser_type =?";
+        PreparedStatement preparedStatement = con.prepareStatement(query);
+        preparedStatement.setInt(1,sid);
+        preparedStatement.setString(2,type);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        while (resultSet.next()){
+            Eamount= resultSet.getDouble(1);
+            Totalestimate = Totalestimate +Eamount;
+        }
+
+        return Totalestimate;
+
+    }
+
 
 
 }

@@ -2,7 +2,8 @@
 <%@ page import="com.rasa.service.Workprogress_service" %>
 <%@ page import="java.lang.reflect.Array" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.rasa.model.RepairService" %><%--
+<%@ page import="com.rasa.model.RepairService" %>
+<%@ page import="com.rasa.model.RepairComponent" %><%--
   Created by IntelliJ IDEA.
   User: Tharindu
   Date: 3/25/2021
@@ -57,37 +58,63 @@
                   <div class="form-box-assignEmp">
                         <%-- if pid null page is redirect to add services page--%>
                         <%if(pid == null){%>
-                              <div class="ser_header">
+
+                              <div class="form-createP">
                                     <h1><i class="cogs icon"></i>Currently No progress!</h1>
-                              </div>
-                              <div class="form-assign">
                                     <form method="post" action="<%=request.getContextPath()%>/CreateWorkProgressServlet">
-                                          <button class="ui positive button"  id="estimatebtn">+ Add Services</button>
+                                          <button class="ui positive button"  id="estimatebtn"><i class="plus icon"></i>Add Services</button>
                                           <input type="hidden" name ="sid" value="<%=sid%>">
                                     </form>
                                </div>
 
                               <%-- if pid not null user can add items--%>
                               <%} else{%>
-                              <div class="header_container">
-                                    <h1><i class="tint icon"></i>Vehicle Service Onprogress..!</h1>
-                                    <a href="<%=request.getContextPath()%>/add_services.jsp"><button class="ui positive button">Show Progress</button></a>
-                                    <a href="<%=request.getContextPath()%>/add_services.jsp"><button class="ui positive button">Show Estimate</button></a>
-                              </div>
-                              <div class="btn-container">
-                                    <h1><i class="wrench icon"></i>Add Components</h1>
-                                    <%for(RepairService repairService : rlist){%>
-                                    <form method="post" action="<%=request.getContextPath()%>/RetriveWorkServiceServlet">
-                                          <button id="s01" class="ui positive button"><%=repairService.getSer_type()%></button>
+
+                                    <div class="header_container">
+                                          <h1><i class="tint icon"></i>Vehicle Service Onprogress..!</h1>
+                                          <a href="<%=request.getContextPath()%>/add_services.jsp"><button class="ui positive button"><i class="plus icon"></i>Show Progress</button></a>
+                                          <a href="<%=request.getContextPath()%>/add_services.jsp"><button class="ui positive button"><i class="calendar icon"></i>Show Estimate</button></a>
+                                    </div>
+                              <div class="p_container">
+                                    <div class="btn-container">
+                                          <h1><i class="wrench icon"></i>Add Components</h1>
+                                          <%for(RepairService repairService : rlist){%>
+                                          <form method="post" action="<%=request.getContextPath()%>/RetriveWorkServiceServlet">
+                                                 <button id="s01" class="ui positive button"><%=repairService.getSer_type()%></button>
                                           <!--hidden types -->
-                                          <input type="hidden" name="ser_id" value="<%=repairService.getSer_Id()%>">
-                                          <input type="hidden" name="pid" value="<%=pid%>">
-                                          <input type="hidden" name="ser_name" value="<%=repairService.getSer_type()%>">
+                                                <input type="hidden" name="ser_id" value="<%=repairService.getSer_Id()%>">
+                                                <input type="hidden" name="pid" value="<%=pid%>">
+                                                <input type="hidden" name="ser_name" value="<%=repairService.getSer_type()%>">
                                           <!--hidden types -->
-                                    </form>
-                                    <%}%>
+                                          </form>
+                                          <%}%>
+                                    </div>
                               </div>
                               <%}%>
+                              <!-- estimate total amounts-->
+                              <div class="table_estimate">
+                                    <h4>Current total estimate</h4>
+                                    <table class="ui celled table">
+                                          <thead>
+                                          <tr>
+                                                <th>Service type</th>
+                                                <th>Total estimate Amount</th>
+                                                <th>Total Components</th>
+                                          </tr>
+                                          </thead>
+                                          <tbody>
+                                          <%for(RepairService repairService : rlist){%>
+                                          <%ArrayList<RepairComponent> LCount = iworkprogress_service.retriveRepairComponents(repairService.getSer_Id());%>
+                                          <tr>
+                                                <td data-label=""><%=repairService.getSer_type()%></td>
+                                                <td data-label=""><%=iworkprogress_service.CalcTotalEstimates(repairService.getSer_type(),sid)%></td>
+                                                <td data-label=""><%=LCount.size()%></td>
+                                          </tr>
+                                          <%}%>
+                                          </tbody>
+                                    </table>
+                              </div>
+                              <!-- estimate total amount-->
                   </div>
             </div>
       </div>

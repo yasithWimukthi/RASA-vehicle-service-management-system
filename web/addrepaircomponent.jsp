@@ -23,6 +23,7 @@
     <link href="styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
     <link href="styles/style.css" rel="stylesheet">
     <link href="styles/workprogress.css" rel="stylesheet">
+    <script src="scripts/workprogress.js"></script>
 </head>
 <body>
 <!--session variable spaces -->
@@ -67,6 +68,24 @@
             </div>
         </div>
         <div class="main-content">
+            <!-- error space -->
+            <div class="error_container1">
+                <div class="ui negative message" id="errCon" style="display:none">
+                    <div class="header">
+                        <p id="errID"></p>
+                    </div>
+                </div>
+                <%if(request.getAttribute("error") !=null){%>
+                    <div class="ui negative message">
+                        <i class="close icon"></i>
+                        <div class="header">
+                             <p><%=request.getAttribute("error")%></p>
+                        </div>
+                     <p>Please check again !</p>
+            </div>
+            <%}%>
+            <!-- error space -->
+            </div>
             <div class="header_container_repair">
                 <h1><i class="plus icon"></i>Add Repair Components</h1>
             </div>
@@ -75,7 +94,7 @@
                 <div class="addItems_form-contenter">
                     <h1><%=ser_name%></h1>
 
-                    <form method="post" action="<%=request.getContextPath()%>/AddRepairItemsServlet">
+                    <form method="post" action="<%=request.getContextPath()%>/AddRepairItemsServlet" onsubmit="return checkComponentForm()">
                         <center>
                             <select name="RItems">
                                 <%for(VehicleComponent v :LVehcileCom){%>
@@ -84,15 +103,23 @@
                             </select>
                         </center>
                         <center>
-                            <input type="text" name="estimateAmount">
+                            <input type="text" id="estiID" name="estimateAmount">
                         </center>
                         <center>
                             <button class="ui positive button">Add and Display</button>
                         </center>
+
                         <!-- hidden values-->
                         <input type="hidden" name="ser_id" value="<%=ser_id%>">
                         <!-- hidden values -->
                     </form>
+                    <!-- back button space-->
+                    <div class="backbtn">
+                        <center>
+                            <a href="<%=request.getContextPath()%>/progress.jsp"><button class="ui positive button"><i class="long arrow alternate left icon"></i>Back</button></a>
+                        </center>
+                    </div>
+
                 </div>
             </div>
 <!-- Display list -->
@@ -135,6 +162,7 @@
                             <%}%>
                       </tbody>
                 </table>
+
             </div>
             <!-- Display list  end-->
 

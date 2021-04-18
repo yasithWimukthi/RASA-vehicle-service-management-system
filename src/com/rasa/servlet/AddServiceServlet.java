@@ -30,7 +30,9 @@ public class AddServiceServlet extends HttpServlet {
                request.getRequestDispatcher("add_services.jsp").forward(request,response);
            }
            else{
-               request.getRequestDispatcher("progress.jsp").forward(request,response);
+               request.setAttribute("error","Already added service");
+               request.getRequestDispatcher("add_services.jsp").forward(request,response);
+
            }
 
         } catch (SQLException throwables) {

@@ -18,6 +18,7 @@
     <link href="styles/style.css" rel="stylesheet">
     <link href="styles/workprogress.css" rel="stylesheet">
     <script src="scripts/workprogress.js"></script>
+
 </head>
 <body>
 <%-- get vehcile entry Id using session --%>
@@ -65,6 +66,25 @@
         </div>
 
         <div class="main-content">
+            <!-- error space -->
+            <div class="error_container">
+                <div id="errID" class="ui negative message" style="display:none">
+                    <p id="error"></p>
+                </div>
+            </div>
+
+            <%if(request.getAttribute("error") !=null){%>
+            <div class="error_container">
+                <div class="ui negative message">
+                     <i class="close icon"></i>
+                    <div class="header">
+                         <p><%=request.getAttribute("error")%></p>
+                    </div>
+                    <p>Please check again !</p>
+                </div>
+            </div>
+            <%}%>
+            <!-- error space -->
 
             <div class="ui grid form-container">
                 <div class="sixteen wide column">
@@ -75,7 +95,7 @@
                     <%-- Header end--%>
 
                     <%-- add service form start --%>
-                    <form class="ui form" method="post" action="<%=request.getContextPath()%>/AddServiceServlet">
+                    <form class="ui form" method="post" action="<%=request.getContextPath()%>/AddServiceServlet" onsubmit="return checkform()">
                         <div class="field">
                             <label>Select service</label>
                             <select class="fluid dropdown" id="select_service" name="services">
@@ -108,8 +128,7 @@
                                 <th>description</th>
                                 <th>Status</th>
                                 <th>Action</th>
-                                <th>Action</th>
-                                <th>Action</th>
+
                             </thead>
                             <tbody>
                             <%for(RepairService r : rList){%>
@@ -125,6 +144,12 @@
                             </tbody>
                             <%}%>
                         </table>
+                        <!-- back button space-->
+                        <div class="backbtn1">
+                            <center>
+                                <a href="<%=request.getContextPath()%>/progress.jsp"><button class="ui positive button"><i class="long arrow alternate left icon"></i>Back</button></a>
+                            </center>
+                        </div>
 
                     </div>
                     <%-- estimate servie table --%>
