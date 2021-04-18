@@ -266,7 +266,6 @@
     justify-content:center;
     align-items:center;
     top:0px;
-    transition-delay:4s;
 }
 .modal_container{
     width:400px;
@@ -394,4 +393,38 @@
     height:20%;
     left:35%;
     top:30%;
+}
+.form-createP{
+    position:absolute;
+    left:50%;
+    top:43%;
+
+}
+form-createP h1{
+
+}
+
+
+/*******error container ******/
+.error_container{
+    width:30%;
+    height:3%;
+}
+.error_container1{
+    width:30%;
+    height:3%;
+    position:absolute;
+    left:60%;
+}
+/*** **/
+.backbtn{
+    position:absolute;
+    left:40%;
+    top:60%;
+
+}
+.backbtn1{
+    position:absolute;
+    left:1%;
+    top:54%;
 }
