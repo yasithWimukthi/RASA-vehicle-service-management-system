@@ -67,7 +67,6 @@
                 </br>
                 <div>
                     <table>
-
                         <tr>
                             <th>Rent ID</th>
                             <th>First Name</th>
@@ -94,8 +93,14 @@
                             <td><%=rent.getDropOffDate()%></td>
                             <td><%=rent.getRentalPrice()%></td>
                             <td><%=rent.getRegistrationNo()%></td>
-                            <td><button class="button button2">Update</button></td>
-                            <td><button class="button button2">Delete</button></td>
+                            <form action="<%=request.getContextPath()%>/RetriveUpdateRentalDServlet" method="post">
+                                <input type="hidden" name="rid" value="<%=rent.getRentID()%>">
+                                <td><button class="button button2">Update</button></td>
+                            </form>
+                            <form action="<%=request.getContextPath()%>/DeleteRentalDetailsServlet" method="post">
+                                <input type="hidden" name="rid" value="<%=rent.getRentID()%>">
+                                <td><button class="button button2">Delete</button></td>
+                            </form>
                         </tr>
                     <%}%>
                     </table>
