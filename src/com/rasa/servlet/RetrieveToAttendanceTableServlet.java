@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/RetriveToPaymentTableServlet")
-public class RetrieveToPaymentTableServlet extends HttpServlet {
+@WebServlet(name = "RetrieveToAttendanceTableServlet")
+public class RetrieveToAttendanceTableServlet extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
 
     EmployeeLoadingService load;
@@ -21,25 +22,22 @@ public class RetrieveToPaymentTableServlet extends HttpServlet {
         this.load = new EmployeeLoadingService ();
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         try{
-            List<Employee> list = load.loadToPaymentTable();
+            List<Employee> list = load.loadToAttendanceTable();
 
             request.setAttribute("list",list);
 
 
-            RequestDispatcher dis = request.getRequestDispatcher("employeePayment.jsp");
+            RequestDispatcher dis = request.getRequestDispatcher("attendance.jsp");
             dis.forward(request, response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 }
-
