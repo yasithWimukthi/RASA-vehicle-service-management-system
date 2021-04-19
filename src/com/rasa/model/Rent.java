@@ -31,6 +31,19 @@ public class Rent {
         this.operatorID = operatorID;
     }
 
+    public Rent(int rentID, String firstName, String lastName, String email, String mobile, String address, String pickUpDate, String dropOffDate, Double rentalPrice, int registrationNo) {
+        RentID = rentID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.mobile = mobile;
+        this.address = address;
+        this.pickUpDate = pickUpDate;
+        this.dropOffDate = dropOffDate;
+        this.rentalPrice = rentalPrice;
+        this.registrationNo = registrationNo;
+    }
+
     public int getRentID() {
         return RentID;
     }
