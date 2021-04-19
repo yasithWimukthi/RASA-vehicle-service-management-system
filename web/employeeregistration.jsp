@@ -54,7 +54,7 @@
                     <div class="col-lg-3"></div>
                     <div class="col-lg-6"></div>
                     <div id="ui">
-                        <form class="form-group" method="post">
+                        <form class="form-group" method="post" id="reg-form" action="<%=request.getContextPath()%>/AddEmployeeServlet">
                             <center><h1><b>Register Form</b></h1></center><br>
                             <div class="row">
                                 <div class="col-lg-6">
@@ -68,8 +68,8 @@
                                 </div><br>
                                 <div class="col-lg-6">
                                     <%--@declare id="gender"--%><label for="gender">Gender:</label>
-                                    <input type="radio" id="male" name="male"><label for="male">Male</label>
-                                    <input type="radio" id="female" name="female"><label for="female">Female</label><br>
+                                    <input type="radio" id="male" name="gender" value="male"><label for="male">Male</label>
+                                    <input type="radio" id="female" name="gender" value="female"><label for="female">Female</label><br>
                                 </div>
 
                             </div>
@@ -78,15 +78,15 @@
                                 <br>
                                 <div class="col-lg-6">
                                     <label for="date">Choose your DOB:</label>
-                                    <input type="date" class="nam" id="date" name="date">
+                                    <input type="date" class="nam" id="date" name="DOB">
                                 </div><br>
                                 <div class="col-lg-6">
                                     <label for="nic">NIC:</label><br>
-                                    <input type="text" class="name" id="nic" name="nic">
+                                    <input type="text" class="name" id="nic" name="NIC">
                                 </div><br>
                                 <div class="col-lg-6">
                                     <label for="sal">Basic Salary:</label><br>
-                                    <input type="text" class="name"  id="sal" name="sal">
+                                    <input type="text" class="name"  id="sal" name="basicSalary">
                                 </div><br>
                                 <div class="col-lg-6">
                                     <label for="mobile">Mobile Number:</label><br>
@@ -102,7 +102,7 @@
                                 </div>
                             </div>
                                 <br>
-                                <input  class="button" type="submit" class="name" name="submit" value="Add Employee" class="btn btn-primary btn-block">
+                                <input  class="button" type="submit" class="name" name="submit" value="Add Employee" class="btn btn-primary btn-block" id="reg-submit">
 
                         </form>
                     </div>

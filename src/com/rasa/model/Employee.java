@@ -1,33 +1,38 @@
 package com.rasa.model;
 
-import java.util.Date;
-
 public class Employee {
-    private int employeeID;
+    private String employeeID;
     private String fname;
     private String lname;
     private String gender;
-    private Date DOB;
-    private String address;
-    private String email;
+    private String DOB;
+    private String NIC;
+    private String basicSalary;
     private String mobile;
-    private double basicSalary;
-    private Date joinDate;
+    private String email;
+    private String address;
+    private String joinDate;
 
-    public Employee(String fname, String lname, String gender, Date dob, String address, String email, String mobile, double basicSalary, Date joinDate) {
+    public Employee(String fname, String lname, String gender, String DOB, String NIC, String basicSalary,String mobile,String email,String address,String joinDate) {
         this.fname = fname;
         this.lname = lname;
         this.gender = gender;
-        this.DOB = dob;
-        this.address = address;
-        this.email = email;
-        this.mobile = mobile;
+        this.DOB = DOB;
+        this.NIC = NIC;
         this.basicSalary = basicSalary;
+        this.mobile = mobile;
+        this.email = email;
+        this.address = address;
         this.joinDate = joinDate;
     }
 
-    public Employee(String fname, String lname, String gender, double basicSalary, Date dob, String address, String email, String mobile, Date joinDate) {
+    public Employee() {
 
+    }
+
+    public Employee(String employeeID, String fname) {
+        this.employeeID=employeeID;
+        this.fname = fname;
     }
 
     public String getFname() {
@@ -54,11 +59,11 @@ public class Employee {
         this.gender = gender;
     }
 
-    public java.sql.Date getDOB() {
-        return (java.sql.Date) DOB;
+    public String getDOB() {
+        return  DOB;
     }
 
-    public void setDOB(Date DOB) {
+    public void setDOB(String DOB) {
         this.DOB = DOB;
     }
 
@@ -86,19 +91,35 @@ public class Employee {
         this.mobile = mobile;
     }
 
-    public double getBasicSalary() {
+    public String getBasicSalary() {
         return basicSalary;
     }
 
-    public void setBasicSalary(double basicSalary) {
+    public void setBasicSalary(String basicSalary) {
         this.basicSalary = basicSalary;
     }
 
-    public java.sql.Date getJoinDate() {
-        return (java.sql.Date) joinDate;
+    public String getJoinDate() {
+        return joinDate;
     }
 
-    public void setJoinDate(Date joinDate) {
+    public void setJoinDate(String joinDate) {
         this.joinDate = joinDate;
+    }
+
+    public String getEmployeeID() {
+        return employeeID;
+    }
+
+    public void setEmployeeID(String employeeID) {
+        this.employeeID = employeeID;
+    }
+
+    public String getNIC() {
+        return NIC;
+    }
+
+    public void setNIC(String NIC) {
+        this.NIC = NIC;
     }
 }

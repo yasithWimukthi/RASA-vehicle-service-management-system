@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: User
-  Date: 3/10/2021
-  Time: 12:40 PM
+  Date: 4/19/2021
+  Time: 4:09 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -102,7 +102,7 @@
                                 </div>
                             </div>
 
-                                <input  class="button" type="submit" class="name" name="submit" value="Reset" class="btn btn-primary btn-block">
+                            <input  class="button" type="submit" class="name" name="submit" value="Reset" class="btn btn-primary btn-block">
                         </form>
                     </div>
                 </div>
