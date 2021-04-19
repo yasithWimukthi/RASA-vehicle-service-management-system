@@ -13,4 +13,9 @@ public interface IRentCarService {
     public ArrayList<Rent> retrieveRentalDetails() throws SQLException, ClassNotFoundException;
 
     public ArrayList<AvailableCars> retrieveAvailableCars() throws SQLException, ClassNotFoundException;
+
+    public Rent retrieveDataByRentID(int RentID) throws SQLException, ClassNotFoundException;
+
+    public boolean updateRentDetails(Rent rent) throws SQLException, ClassNotFoundException;
+
 }
