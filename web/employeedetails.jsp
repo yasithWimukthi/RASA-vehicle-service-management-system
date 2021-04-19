@@ -1,4 +1,6 @@
-<%--
+<%@ page import="com.rasa.service.employeeService" %>
+<%@ page import="com.rasa.model.Employee" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: User
   Date: 3/25/2021
@@ -53,6 +55,8 @@
             <center><h1>EMPLOYEE DETAILS</h1></center>
             <section class="details">
                 <div class="card">
+                    <% employeeService retrieve = new employeeService();
+                        List<Employee> list = retrieve.viewEmployeeDetails();%>
                     <table>
                         <thead>
                         <tr>
@@ -65,49 +69,22 @@
                         </thead>
 
                         <tbody>
+                        <%for(Employee i:list){%>
                         <tr>
-                            <td>001</td>
-                            <td>Saman</td>
+                            <td><%=i.getEmployeeID()%></td>
+                            <td><%=i.getFname()%></td>
                             <td><a href ="view?"> <i class="fa fa-eye" aria-hidden="true" style="color:black"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;
                                 <a  href="edit? >" ><i class= "fa fa-pencil" aria-hidden ="true" style="color:darkblue;width:20px"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;
                                 <a  href="delete?>" ><i class="fa fa-trash-o" aria-hidden="true" style="color:Red"></i></a></td>
                         </tr>
-                        <tr>
-                            <td>002</td>
-                            <td>Malan</td>
-                            <td><a href ="view?" ><i class="fa fa-eye" aria-hidden="true" style="color:black"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;
-                                <a  href="edit? >" ><i class= "fa fa-pencil" aria-hidden ="true" style="color:darkblue;width:20px"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;
-                                <a  href="delete?>" ><i class="fa fa-trash-o" aria-hidden="true" style="color:Red"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td>003</td>
-                            <td>Bimal</td>
-                            <td><a href ="view?" ><i class="fa fa-eye" aria-hidden="true" style="color:black"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;
-                                <a  href="edit? >" ><i class= "fa fa-pencil" aria-hidden ="true" style="color:darkblue;width:20px"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;
-                                <a  href="delete?>" ><i class="fa fa-trash-o" aria-hidden="true" style="color:Red"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td>004</td>
-                            <td>Pubudu</td>
-                            <td><a href ="view?"> <i class="fa fa-eye" aria-hidden="true" style="color:black"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;
-                                <a  href="edit? >" ><i class= "fa fa-pencil" aria-hidden ="true" style="color:darkblue;width:20px"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;
-                                <a  href="delete?>" ><i class="fa fa-trash-o" aria-hidden="true" style="color:Red"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td>005</td>
-                            <td>Kumara</td>
-                            <td><a href ="view?"> <i class="fa fa-eye" aria-hidden="true" style="color:black"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;
-                                <a  href="edit? >" ><i class= "fa fa-pencil" aria-hidden ="true" style="color:darkblue;width:20px"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;
-                                <a  href="delete?>" ><i class="fa fa-trash-o" aria-hidden="true" style="color:Red"></i></a>
-                            </td>
-                        </tr>
+                       <%}%>
                         </tbody>
                     </table>
                 </div>
             </section>
             <br>
-
-            <input  class="button" type="submit" class="name" name="submit" value="ADD NEW EMPLOYEE" class="btn btn-primary btn-block">
+          <a href="<%=request.getContextPath()%>/employeeregistration.jsp">
+              <button class="button" type="submit" class="name" name="submit" class="btn btn-primary btn-block">ADD EMPLOYEE</button></a>
 
         </div>
     </div>
