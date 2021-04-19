@@ -22,6 +22,10 @@ public class EmployeePayment {
         this.amount = amount;
     }
 
+    public EmployeePayment() {
+
+    }
+
 
     //getters
 

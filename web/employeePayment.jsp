@@ -1,4 +1,8 @@
-<%@ page import="com.rasa.service.EmployeeLoadingService" %><%--
+<%@ page import="com.rasa.service.EmployeeLoadingService" %>
+<%@ page import="com.rasa.model.Employee" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.rasa.servlet.ShowLatestEmployeeAdvanceServlet" %>
+<%@ page import="com.rasa.servlet.ShowAllAdvanceServlet" %><%--
   Created by IntelliJ IDEA.
   User: Yasith Wimukthi
   Date: 3/9/2021
@@ -9,9 +13,9 @@
 <html>
 <head>
     <title>Initial Template</title>
-    <link href="styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
-    <link href="styles/style.css" rel="stylesheet">
-    <link href="styles/employeePayment.css" rel="stylesheet">
+    <link href="../../a/employeePayment/web/styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
+    <link href="../../a/employeePayment/web/styles/style.css" rel="stylesheet">
+    <link href="../../a/employeePayment/web/styles/employeePayment.css" rel="stylesheet">
 </head>
 <body>
 
@@ -70,7 +74,7 @@
                             <td><%=i.getFname()%></td>
                             <td><%=i.getLname()%> </td>
                             <td><a class="btn_adv" href="addAdvance.jsp">advance</a></td>
-                            <td><a class="btn_pay">payment</a></td>
+                            <td><a class="btn_pay"href="paymentForm.jsp.jsp">payment</a></td>
                         </tr>
                         <%} %>
                         </tbody>
@@ -84,14 +88,17 @@
                         <center><h5> Latest advance record</h5></center><br>
                         <input type="text" name="empID" value="<%=request.getAttribute("empID")%>" placeholder="ID"><br>
                         <input type="text" name="amount"  value="<%=request.getAttribute("amount")%>"  placeholder="advance amount"><br><br>
-                        <button class="btn_frm" id="btn_frm_update">update</button>
-                        <button class="btn_frm" id="btn_frm_delete">delete</button>
+                        <a class="btn_frm" id="btn_frm_get" href="<%=request.getContextPath()%>/ShowLatestEmployeeAdvanceServlet">get</a>
+                        <a class="btn_frm" id="btn_frm_update" href="<%=request.getContextPath()%>/UpdateAdvanceServlet">update</a>
+                        <a class="btn_frm" id="btn_frm_delete" href="<%=request.getContextPath()%>/DeleteAdvanceServlet">delete</a>
 
-                    </form>
+                    </form> 
 
                 </div>
-                <button>monthly payment</button>
-                <button>advance</button>
+                <form method="get" action="<%=request.getContextPath()%>/ShowAllPaymentServlet">
+                <button class="btn_frm">monthly payment</button></form>
+                <form method="get" action="<%=request.getContextPath()%>/ShowAllAdvanceServlet">
+                    <button class="btn_frm">advance</button></form>
                 <div class="show">
 
                 </div>

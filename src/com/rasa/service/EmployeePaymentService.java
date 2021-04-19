@@ -1,12 +1,13 @@
 package com.rasa.service;
 
+import com.rasa.model.EmployeeAdvance;
+import com.rasa.model.EmployeePayment;
 import com.rasa.util.DBConnectionUtil;
 import com.rasa.util.EmpQuery;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EmployeePaymentService implements IEmpPay {
 
@@ -14,18 +15,18 @@ public class EmployeePaymentService implements IEmpPay {
     private PreparedStatement preparedStatement;
 
     @Override
-    public boolean addPayement(int empID, int adminID, Date date, double bonus, double deduct, double amount) {
+    public boolean addPayement(EmployeePayment employeePayment) {
         try{
             con = DBConnectionUtil.getConnection();
             String sql= EmpQuery.add_sal;
             preparedStatement=con.prepareStatement(sql);
 
-            preparedStatement.setInt(1,empID);
-            preparedStatement.setInt(2,adminID);
-            preparedStatement.setDate(3,date);
-            preparedStatement.setDouble(4,bonus);
-            preparedStatement.setDouble(5,deduct);
-            preparedStatement.setDouble(6,amount);
+            preparedStatement.setInt(1,employeePayment.getEmpID());
+            preparedStatement.setInt(2,employeePayment.getAdminID());
+            preparedStatement.setDate(3,employeePayment.getDate());
+            preparedStatement.setDouble(4,employeePayment.getBonus());
+            preparedStatement.setDouble(5,employeePayment.getDeduct());
+            preparedStatement.setDouble(6,employeePayment.getAmount());
 
             preparedStatement.execute();
 
@@ -40,27 +41,36 @@ public class EmployeePaymentService implements IEmpPay {
     }
 
     @Override
-    public boolean showPayement(int paymentID, int empID, int adminID, Date date, double bonus, double deduct, double amount) {
+    public List<EmployeePayment> showAllPayment() {
+
+        List <EmployeePayment> list = new ArrayList<>();
+ 
         try {
+
             con = DBConnectionUtil.getConnection();
-            String sql = EmpQuery.all_sal;
+            String sql=EmpQuery.all_sal;
+
             preparedStatement = con.prepareStatement(sql);
+            System.out.println(preparedStatement);
 
-            preparedStatement.execute();
+            ResultSet rs = preparedStatement.executeQuery();
 
-        } catch (SQLException throwables) {
+            while (rs.next()) {
 
-            throwables.printStackTrace();
-            return false;
+                int empID = Integer.parseInt(rs.getString(1));
+                int adminID = Integer.parseInt(rs.getString(2));
+                Date date=Date.valueOf(rs.getString(3));
+                double bonus=Double.parseDouble(rs.getString(4));
+                double deduct=Double.parseDouble(rs.getString(5));
+                double amount=Double.parseDouble(rs.getString(6));
 
-        } catch (ClassNotFoundException e) {
+
+                list.add(new EmployeePayment(empID,adminID,date,bonus,deduct,amount));
+            }
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
-            return false;
         }
-        finally {
-            DBConnectionUtil.closeConnection(preparedStatement,con);
-        }
-        return true;
+        return list;
 
     }
 

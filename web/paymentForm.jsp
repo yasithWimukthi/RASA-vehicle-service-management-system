@@ -9,9 +9,9 @@
 <html>
 <head>
     <title>Initial Template</title>
-    <link href="styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
-    <link href="styles/style.css" rel="stylesheet">
-    <link href="styles/popup.css" rel="stylesheet">
+    <link href="../../a/employeePayment/web/styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
+    <link href="../../a/employeePayment/web/styles/style.css" rel="stylesheet">
+    <link href="../../a/employeePayment/web/styles/popup.css" rel="stylesheet">
 </head>
 <body>
 
@@ -52,7 +52,7 @@
             <!-- implement fuctions here -->
            <div id="clr_div">
             <div class="form_div" >
-                <form class="add_frm">
+                <form class="add_frm" method="post" action="<%=request.getContextPath()%>/AddPaymentServlet">
                     <a href="#" class="close">X</a>
                     <center><h2>ADD NEW PAYMENT</h2></center><br>
                     <label > ID </label><p class="valuep"> 0001</p><br>
