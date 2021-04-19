@@ -1,8 +1,10 @@
-<%--
+<%@ page import="com.rasa.service.EmployeePaymentService" %>
+<%@ page import="com.rasa.model.EmployeePayment" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
-  User: Yasith Wimukthi
-  Date: 3/9/2021
-  Time: 12:09 PM
+  User: Kavindu Balasooriya
+  Date: 4/10/2021
+  Time: 6:25 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -11,9 +13,10 @@
     <title>Initial Template</title>
     <link href="../../a/employeePayment/web/styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
     <link href="../../a/employeePayment/web/styles/style.css" rel="stylesheet">
-    <link href="../../a/employeePayment/web/styles/popup.css" rel="stylesheet">
+    <link href="../../a/employeePayment/web/styles/attendance.css" rel="stylesheet">
 </head>
 <body>
+
 
 <div class="container">
     <div class="content">
@@ -40,6 +43,7 @@
                         <div class="side-nav__text">Work Progress</div>
                     </a>
                 </li>
+
             </ul>
 
             <div class="legal">
@@ -50,22 +54,49 @@
         <div class="main-content">
             <!-- implement fuctions here -->
             <div id="clr_div">
-            <div class="form_div" >
-                <form class="add_frm" method="POST" action="<%=request.getContextPath()%>/AddAdvanceServlet">
-                    <a href="#" class="close">X</a>
-                    <center><h2>ADD NEW ADVANCE</h2></center><br>
-                    <label> ID </label><br>
-                    <input type="text" name="empID"><br>
+                <div id="act_div">
+                    <% EmployeePaymentService retrieve = new EmployeePaymentService();
 
-                    <label> advance </label><br>
-                    <input type="number" name="amount"><br>
-                    <button class="btn_save">save</button>
-                </form>
+                        List<EmployeePayment> list=  retrieve.showAllPayment(); %>
+                    <table id="act_tbl">
+                        <thead>
+                        <th> ID </th>
+
+
+                        <th> payment</th>
+                        </thead>
+                        <tbody>
+                        <%for(EmployeePayment i:list){ %>
+
+                        <tr>
+
+                            <td>
+                                <%=i.getEmpID()  %>
+                            </td>
+
+                            <td>
+                                <%=i.getBonus()  %>
+                            </td>
+
+                            <td>
+                                <%=i.getDeduct() %>
+                            </td>
+
+                            <td>
+                                <%=i.getAmount() %>
+                            </td>
+
+                        </tr>
+
+                        <%} %>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
-
-        </div>
     </div>
+</div>
 </div>
 
 </body>

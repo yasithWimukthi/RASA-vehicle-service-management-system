@@ -12,7 +12,6 @@ public class EmployeePayment {
     private double deduct;
     private double amount;
 
-
     public EmployeePayment(int empID, int adminID, Date date, double bonus, double deduct, double amount) {
         this.empID = empID;
         this.adminID = adminID;
@@ -20,6 +19,10 @@ public class EmployeePayment {
         this.bonus = bonus;
         this.deduct = deduct;
         this.amount = amount;
+    }
+
+    public EmployeePayment() {
+
     }
 
 

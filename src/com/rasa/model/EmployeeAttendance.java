@@ -1,6 +1,6 @@
 package com.rasa.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class EmployeeAttendance {
 
@@ -18,10 +18,19 @@ public class EmployeeAttendance {
         this.status = status;
     }
 
+    public EmployeeAttendance(){}
+
     //getters
+    public int getAttID() {
+        return attID;
+    }
 
     public int getEmpID() {
         return empID;
+    }
+
+    public int getAdminID() {
+        return adminID;
     }
 
     public Date getDate() {
@@ -32,31 +41,31 @@ public class EmployeeAttendance {
         return status;
     }
 
-    public int getAdminID() { return adminID; }
+//setters
 
-    public int getAttID() {
-        return attID;
+    public void setAttID(int attID) {
+        this.attID = attID;
     }
-
-
-
-    //setters
 
     public void setEmpID(int empID) {
         this.empID = empID;
+    }
+
+    public void setAdminID(int adminID) {
+        this.adminID = adminID;
     }
 
     public void setDate(Date date) {
         this.date = date;
     }
 
-    public void setAttendance(String attendance) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public void setAdminID(int adminID) { this.adminID = adminID; }
 
-    public void setAttID(int attID) {
-        this.attID = attID;
-    }
+
+
+
+
 }

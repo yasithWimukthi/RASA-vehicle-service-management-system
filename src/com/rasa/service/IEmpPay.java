@@ -1,14 +1,16 @@
 package com.rasa.service;
 
+import com.rasa.model.EmployeePayment;
+
 import java.sql.Date;
+import java.util.List;
 
 public interface IEmpPay {
     //payment
 
-    public boolean addPayement(int empID, int adminID, Date date, double bonus, double deduct, double amount);
+    public boolean addPayement(EmployeePayment employeePayment);
 
-    public boolean showPayement(int paymentID,int empID, int adminID, Date date,double bonus, double deduct,double amount);
+    public List<EmployeePayment> showAllPayment();
 
-    public boolean upodatePayement(int paymentID,int empID,double bonus, double deduct,double amount);
+    public boolean updatePayement(int paymentID,int empID,double bonus, double deduct,double amount);
 }
-
