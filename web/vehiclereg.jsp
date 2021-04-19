@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.rasa.model.Vehicle" %><%--
   Created by IntelliJ IDEA.
   User: yasith wimukthi
   Date: 3/23/2021
@@ -11,6 +11,11 @@
     <title>vehicle registration</title>
     <link href="styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
     <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="styles/Semantic-UI-CSS-master/semantic.min.js"></script>
     <style>
         .search-bar-container {
             height: 50px;
@@ -55,6 +60,45 @@
 </head>
 <body>
 
+<%
+    Vehicle vehicle = new Vehicle();
+    vehicle = (Vehicle) request.getAttribute("vehicle");
+
+    String fullName = (String) request.getAttribute("fullName");
+
+    String registrationNumber = "";
+    String year = "";
+    String model = "";
+    String color = "";
+    String brand = "";
+    String nic= (String) request.getAttribute("nic");
+    boolean update = false;
+    boolean isExist = false;
+
+
+
+    try {
+        if (vehicle != null){
+            registrationNumber = vehicle.getRegistrationNo().toUpperCase();
+            year = String.valueOf(vehicle.getYear());
+            model = vehicle.getModel();
+            color = vehicle.getColor();
+            brand = vehicle.getBrand();
+            update = true;
+        }
+    }catch (NullPointerException e){
+        e.printStackTrace();
+        registrationNumber = "";
+        year = "";
+        model = "";
+        color = "";
+        brand = "";
+        isExist = true;
+    }
+
+
+%>
+
 <div class="container">
     <div class="content">
         <div class="sidebar">
@@ -95,9 +139,10 @@
             <div class="ui grid search-bar-container">
                 <div class="sixteen wide column">
                     <div class="search-wrapper">
-                        <form method="get">
+                        <form method="post" id="search-form" action="SearchVehicleServlet">
                             <div class="ui action input massive searchBar">
-                                <input type="text" placeholder="Enter Registration Number..." id="input-box">
+                                <input type="text" placeholder="Enter Registration Number..." id="input-box" class="searchWord" name="registrationNumber" >
+                                <input type="hidden" value="<%=nic%>" name="nic">
                                 <button type="submit" class="ui icon button" style="height: 69%">
                                     <i class="search icon" ></i>
                                 </button>
@@ -134,50 +179,82 @@
                 </div>
             </div>
 
+            <!-- MESSAGE -->
+            <% if(vehicle != null && update) {%>
+            <div class="ui success message" style="width: 90%">
+                <i class="close icon"></i>
+                <div class="header">
+                    Vehicle is already exist.
+                </div>
+                <p>You can update vehicle details. </p>
+            </div>
+            <% } %>
+
+            <% if(isExist) {%>
+            <div class="ui error message" style="width: 90%">
+                <i class="close icon"></i>
+                <div class="header">
+                    Vehicle is not exist.
+                </div>
+                <p>You can enter vehicle details. </p>
+            </div>
+            <% } %>
 
             <!-- VEHICLE DETAILS FORM -->
             <div class="ui grid form-container">
                 <div class="sixteen wide column">
-                    <form method="post">
-                        <div class="ui huge form error">
+                    <form method="post" id="vehicleRegForm" action="AddVehicleServlet">
+                        <div class="ui huge form" id="form-container">
 
-                            <div class="field error">
+                            <div class="field">
                                 <label>Vehicle Registration Number</label>
-                                <input type="text" placeholder="Registration Number" name="regID" id="regID">
+                                <input type="text" placeholder="Registration Number" name="regID" id="regID" value="<%= registrationNumber%>" <%=update ? "disabled" : "null"%>>
                             </div>
 
-                            <div class="field error" >
-                                <label>Brand Name</label>
-                                <select class="ui search dropdown" name="brand" id="brand">
-                                    <option value="Toyota">Toyota</option>
-                                    <option value="Nissan">Nissan</option>
-                                    <option value="Susuki">Susuki</option>
-                                    <option value="BMW">BMW</option>
-                                    <option value="Benze">Benze</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                            </div>
+                            <% if(!update) {%>
+                                <div class="field" id="brandContainer" >
+                                    <label>Brand Name</label>
+                                    <select class="ui search dropdown" name="brand" id="brand">
+                                        <option value="Toyota">Toyota</option>
+                                        <option value="Nissan">Nissan</option>
+                                        <option value="Susuki">Susuki</option>
+                                        <option value="BMW">BMW</option>
+                                        <option value="Benze">Benze</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
 
-                            <div class="field error">
-                                <label>Brand Name</label>
-                                <input type="text" placeholder="Brand Name" name="otherBrand" id="otherBrand">
-                            </div>
+                                <div class="field" id="OtherBrandContainer" style="display: none">
+                                    <label>Brand Name</label>
+                                    <input type="text" placeholder="Brand Name" name="otherBrand" id="otherBrand" >
+                                </div>
+                            <% }else {%>
+                                <div class="field" id="updateBrandContainer" style="display: block">
+                                    <label>Brand Name</label>
+                                    <input type="text" placeholder="Brand Name" name="brand" id="updateBrand" value="<%=vehicle.getBrand()%>">
+                                </div>
+                            <% }%>
 
                             <div class="two fields">
-                                <div class="field error">
+                                <div class="field" id="modelContainer">
                                     <label>Model</label>
-                                    <input placeholder="Vehile Model" type="text" name="model" id="model">
+                                    <input placeholder="Vehile Model" type="text" name="model" id="model" value="<%= model%>">
                                 </div>
-                                <div class="field error">
+                                <div class="field" id="colorContainer">
                                     <label>Color</label>
-                                    <input placeholder="Vehicle Color" type="text" name="color" id="color">
+                                    <input placeholder="Vehicle Color" type="text" name="color" id="color" value="<%= color%>">
                                 </div>
                             </div>
 
-                            <div class="field error">
+                            <div class="field" id="manufactYearContainer">
                                 <label>Manufactured Year</label>
-                                <input type="text" placeholder="Brand Name" name="manufactureYear" id="manufactureYear">
+                                <input type="text" placeholder="Brand Name" name="manufactureYear" id="manufactureYear" value="<%= year%>">
                             </div>
+
+                            <input type="hidden" value="<%=update%>" name="update">
+                            <input type="hidden" value="<%=registrationNumber%>" name="vehicleNumber">
+                            <input type="hidden" value="<%=fullName%>" name="fullName">
+                            <input type="hidden" value="<%=nic%>" name="nic">
 
                             <div class="ui error message">
                                 <div class="header">Action Forbidden</div>
@@ -197,13 +274,7 @@
     </div>
 </div>
 
-
-<script>
-    $('select.dropdown')
-        .dropdown()
-    ;
-</script>
-
+<script src="scripts/vehicleRegistration.js"></script>
 
 </body>
 </html>

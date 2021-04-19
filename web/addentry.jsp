@@ -19,6 +19,12 @@
 </head>
 <body>
 
+<%
+    //String fullName = (String) request.getAttribute("fullName");
+    String regID = (String) request.getAttribute("regID");
+    String nic = (String) request.getAttribute("nic");
+%>
+
 <div class="container">
     <div class="content">
         <div class="sidebar">
@@ -83,64 +89,77 @@
             <!-- ADD ENTRY FORM -->
             <div class="ui grid form-container">
                 <div class="sixteen wide column">
-                    <form method="post" id="entry-form">
-                        <div class="ui huge form error">
+                    <form method="post" id="entry-form"action="AddServiceEntryServlet">
+                        <div class="ui huge form" id="form-container">
 
-                            <div class="two fields">
-                                <div class="field error">
-                                    <label>Customer Name</label>
-                                    <input placeholder="Customer Name" type="text">
-                                </div>
-                                <div class="field error">
-                                    <label>Vehicle Registration Number</label>
-                                    <input placeholder="Registration Number" type="text">
-                                </div>
+<%--                            <div class="two fields">--%>
+<%--                                <div class="field">--%>
+<%--                                    <label>Customer Name</label>--%>
+<%--                                    <input placeholder="Customer Name" type="text" name="customerName" value="<%=fullName%>">--%>
+<%--                                </div>--%>
+<%--                                <div class="field">--%>
+<%--                                    <label>Vehicle Registration Number</label>--%>
+<%--                                    <input placeholder="Registration Number" type="text" name="registrationNumber" value="<%=regID%>">--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+
+                            <div class="field">
+                                <label>Vehicle Registration Number</label>
+                                <input placeholder="Registration Number" type="text" name="regID" value="<%=regID%>" disabled>
                             </div>
 
-                            <div class="field error">
+                            <div class="field">
+                                <label>NIC Number</label>
+                                <input placeholder="NIC Number" type="text" name="nic" value="<%=nic%>" disabled>
+                            </div>
+
+                            <div class="field" id="entryDateContainer">
                                 <label>Entry Date</label>
-                                <input placeholder="Entry Date" type="date" name="entryDate">
+                                <input placeholder="Entry Date" type="date" name="entryDate" id="entryDate">
+                            </div>
+
+                            <div class="field" id="accidentDateContainer">
+                                <label>Accident Date</label>
+                                <input placeholder="Accident Date" type="date" id="accidentDate" name="accidentDate">
                             </div>
 
                             <div class="inline fields">
                                 <label for="repair">Repair Type:</label>
                                 <div class="field">
                                     <div class="ui radio checkbox">
-                                        <input type="radio" name="repair" checked="" tabindex="10" class="hidden">
+                                        <input type="radio" name="repair" tabindex="10" class="hidden" id="insurance" value="Insuarance">
                                         <label>Insuarance</label>
                                     </div>
                                 </div>
 
                                 <div class="field">
                                     <div class="ui radio checkbox">
-                                        <input type="radio" name="repair" checked="" tabindex="0" class="hidden">
+                                        <input type="radio" name="repair" checked="" tabindex="0" class="hidden" id="nonInsurance" value="nonInsurance">
                                         <label>Non-Insuarance</label>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="field error">
-                                <label>Accident Date</label>
-                                <input placeholder="Accident Date" type="date">
-                            </div>
-
-                            <div class="inline field">
+                            <div class="inline field" id="document-container" style="display: none">
                                 <label >Repair Type:</label>
                                 <div class="ui checkbox">
-                                    <input type="checkbox" tabindex="0" class="hidden">
+                                    <input type="checkbox" tabindex="0" class="hidden" name="customerNoObjection">
                                     <label>Customer No objection</label>
                                 </div>
 
                                 <div class="ui checkbox">
-                                    <input type="checkbox" tabindex="0" class="hidden">
+                                    <input type="checkbox" tabindex="0" class="hidden" name="insuranceNoObjection">
                                     <label>Insuarance No objection</label>
                                 </div>
 
                                 <div class="ui checkbox">
-                                    <input type="checkbox" tabindex="0" class="hidden">
+                                    <input type="checkbox" tabindex="0" class="hidden" name="claimForm">
                                     <label>Claim Form</label>
                                 </div>
                             </div>
+
+                            <input type="hidden" value="<%=regID%>" name="registrationNumber">
+                            <input type="hidden" value="<%=nic%>" name="nicNumber">
 
                             <div class="ui error message">
                                 <div class="header">Action Forbidden</div>
@@ -151,27 +170,6 @@
                                 <i class="right check icon" style="font-size: 1.5em;"></i>
                                 complete
                             </button>
-
-                            <div class="ui basic modal">
-                                <div class="ui icon header">
-                                    <i class="archive icon"></i>
-                                    Archive Old Messages
-                                </div>
-                                <div class="content">
-                                    <p>Your inbox is getting full, would you like us to enable automatic archiving of old messages?</p>
-                                </div>
-                                <div class="actions">
-                                    <div class="ui red basic cancel inverted button">
-                                        <i class="remove icon"></i>
-                                        No
-                                    </div>
-                                    <div class="ui green ok inverted button">
-                                        <i class="checkmark icon"></i>
-                                        Yes
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
                     </form>
                 </div>
@@ -180,24 +178,24 @@
     </div>
 </div>
 
-<script>
-    $('.ui.radio.checkbox')
-        .checkbox();
-
-    $('.ui.checkbox')
-        .checkbox();
-
-    // $( "#submit-btn" ).click(function() {
+<script src="scripts/entryValidate.js">
+    // $('.ui.radio.checkbox')
+    //     .checkbox();
+    //
+    // $('.ui.checkbox')
+    //     .checkbox();
+    //
+    // // $( "#submit-btn" ).click(function() {
+    // //     $('.ui.basic.modal')
+    // //     .modal('show');
+    // // });
+    //
+    // $( "#entry-form" ).submit(function( event ) {
+    //     //alert( "Handler for .submit() called." );
+    //     event.preventDefault();
     //     $('.ui.basic.modal')
-    //     .modal('show');
+    //         .modal('show');
     // });
-
-    $( "#entry-form" ).submit(function( event ) {
-        //alert( "Handler for .submit() called." );
-        event.preventDefault();
-        $('.ui.basic.modal')
-            .modal('show');
-    });
 </script>
 
 

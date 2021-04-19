@@ -77,6 +77,16 @@ customerRegForm.addEventListener("submit",e =>{
     return 1;
 });
 
+
 /**************************************************
- VEHICLE INFORMATION VALIDATION
+                        jQuery
  ***************************************************/
+
+$('.message .close')
+    .on('click', function() {
+        $(this)
+            .closest('.message')
+            .transition('fade')
+        ;
+    })
+;

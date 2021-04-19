@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.rasa.model.Customer" %><%--
   Created by IntelliJ IDEA.
   User: yasith wimukthi
   Date: 3/23/2021
@@ -55,6 +55,47 @@
 </head>
 <body>
 
+<%
+    Customer customer = null;
+
+    try {
+        customer = (Customer) request.getAttribute("customer");
+    }catch (Exception e){
+//        customer = null;
+        e.printStackTrace();
+    }
+
+    //customer = (Customer) request.getAttribute("customer");
+
+    String firstName = "";
+    String lastName = "";
+    String nicNumber = "";
+    String address = "";
+    String mobile = "";
+    String email = "";
+    boolean update = false;
+    boolean isExist = false;
+
+    try {
+        if(customer != null){
+            firstName = customer.getFirstName();
+            lastName = customer.getLastName();
+            nicNumber = customer.getNICno().toUpperCase();
+            address = customer.getAddress();
+            mobile = customer.getPhoneNo();
+            email = customer.getEmail();
+            update = true;
+        }
+    }catch (Exception e){
+        firstName = "";
+        lastName = "";
+        isExist = true;
+        e.printStackTrace();
+    }
+
+
+%>
+
 <div class="container">
     <div class="content">
         <div class="sidebar">
@@ -95,9 +136,9 @@
             <div class="ui grid search-bar-container">
                 <div class="sixteen wide column">
                     <div class="search-wrapper">
-                        <form method="POST" id="search-form">
+                        <form method="POST" id="search-form" action="SearchClientServlet">
                             <div class="ui action input massive searchBar">
-                                <input type="text" placeholder="Enter NIC Number..." id="input-box" class="searchWord" >
+                                <input type="text" placeholder="Enter NIC Number..." id="input-box" class="searchWord" name="nic_number">
                                 <button type="submit" class="ui icon button" style="height: 69%" id="search-submit">
                                     <i class="search icon"></i>
                                 </button>
@@ -133,43 +174,67 @@
                 </div>
             </div>
 
+            <!-- MESSAGE -->
+            <% if(customer != null && update) {%>
+                <div class="ui success message" style="width: 90%">
+                    <i class="close icon"></i>
+                    <div class="header">
+                        Customer is already exist.
+                    </div>
+                    <p>You can update client details. </p>
+                </div>
+            <% } %>
+
+            <% if(isExist) {%>
+            <div class="ui error message" style="width: 90%">
+                <i class="close icon"></i>
+                <div class="header">
+                    Customer is not exist.
+                </div>
+                <p>You can enter client details. </p>
+            </div>
+            <% } %>
+
             <!-- CUSTOMER DETAILS FORM -->
             <div class="ui grid form-container">
                 <div class="sixteen wide column">
-                    <form method="post" id="customerRegForm">
+                    <form method="post" id="customerRegForm" action="AddCustomerServlet">
                         <div class="ui huge form" id="form-container">
 
                             <div class="two fields">
                                 <div class="field" id="fnameContainer">
                                     <label>First Name</label>
-                                    <input placeholder="First Name" type="text" name="fname" id="fname">
+                                    <input placeholder="First Name" type="text" name="fname" id="fname" value="<%= firstName%>">
                                 </div>
                                 <div class="field" id="lnameContainer">
                                     <label>Last Name</label>
-                                    <input placeholder="Last Name" type="text" name="lname" id="lname">
+                                    <input placeholder="Last Name" type="text" name="lname" id="lname" value="<%=lastName%>">
                                 </div>
                             </div>
 
                             <div class="two fields">
                                 <div class="field" id="nicContainer">
                                     <label>NIC Number</label>
-                                    <input placeholder="NIC Number" type="text" name="nic" id="nic">
+                                    <input placeholder="NIC Number" type="text" name="nic" id="nic" value="<%=nicNumber%>" <%=update ? "disabled" : "null"%>>
                                 </div>
                                 <div class="field" id="mobileContainer">
                                     <label>Phone Number</label>
-                                    <input placeholder="Phone Number" type="text" name="mobile" id="mobile">
+                                    <input placeholder="Phone Number" type="text" name="mobile" id="mobile" value="<%=mobile%>">
                                 </div>
                             </div>
 
                             <div class="field" id="addressContainer">
                                 <label>Address</label>
-                                <input placeholder="Address" type="text" name="address" id="address">
+                                <input placeholder="Address" type="text" name="address" id="address" value="<%=address%>">
                             </div>
 
                             <div class="field " id="emailContainer">
                                 <label>Email</label>
-                                <input placeholder="Email" type="Email" name="email" id="email">
+                                <input placeholder="Email" type="Email" name="email" id="email" value="<%=email%>">
                             </div>
+
+                            <input type="hidden" name="update" value="<%=update%>">
+                            <input type="hidden" name="nicNumber" value="<%=nicNumber%>">
 
                             <div class="ui error message">
                                 <div class="header">Action Forbidden</div>
