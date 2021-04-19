@@ -98,5 +98,66 @@ public class RentCarService implements IRentCarService{
 
     }
 
+    @Override
+    public Rent retrieveDataByRentID(int RentID) throws SQLException, ClassNotFoundException {
+
+        Connection con = DBConnectionUtil.getConnection();
+        String selectQuery = "SELECT `rent`.`rentID`, `rent`.`firstName`, `rent`.`lastName`, `rent`.`email`, `rent`.`phone`, `rent`.`address`, `rent`.`pickUpDate`, `rent`.`dropOffDate`, `rent`.`rentalPrice`, `rent`.`registrationNumber` FROM `rasa`.`rent` WHERE `rent`.`rentID`=?;";
+        PreparedStatement preparedStatement = con.prepareStatement(selectQuery);
+
+        preparedStatement.setInt(1, RentID);
+        ResultSet rs = preparedStatement.executeQuery();
+
+        Rent rent = new Rent();
+
+        while(rs.next()){
+
+            rent.setRentID(rs.getInt(1));
+            rent.setFirstName(rs.getString(2));
+            rent.setLastName(rs.getString(3));
+            rent.setEmail(rs.getString(4));
+            rent.setMobile(rs.getString(5));
+            rent.setAddress(rs.getString(6));
+            rent.setPickUpDate(rs.getString(7));
+            rent.setDropOffDate(rs.getString(8));
+            rent.setRentalPrice(rs.getDouble(9));
+            rent.setRegistrationNo(rs.getInt(10));
+
+        }
+
+        return rent;
+
+    }
+
+    @Override
+    public boolean updateRentDetails(Rent rent) throws SQLException, ClassNotFoundException {
+        Connection con = DBConnectionUtil.getConnection();
+
+        String updateQuery = "UPDATE `rasa`.`rent` SET `rentID` = ?, `firstName` = ?, `lastName` = ?, `email` = ?, `phone` = ?, `address` = ?, `pickUpDate` = ?, `dropOffDate` = ?, `rentalPrice` = ?, `registrationNumber` = ? WHERE `rentID` = ?";
+        PreparedStatement preparedStatement = con.prepareStatement(updateQuery);
+
+        preparedStatement.setInt(1, rent.getRentID());
+        preparedStatement.setString(2, rent.getFirstName());
+        preparedStatement.setString(3, rent.getLastName());
+        preparedStatement.setString(4, rent.getEmail());
+        preparedStatement.setString(5, rent.getMobile());
+        preparedStatement.setString(6, rent.getAddress());
+        preparedStatement.setString(7, rent.getPickUpDate());
+        preparedStatement.setString(8, rent.getDropOffDate());
+        preparedStatement.setDouble(9, rent.getRentalPrice());
+        preparedStatement.setInt(10, rent.getRegistrationNo());
+        preparedStatement.setInt(11, rent.getRentID());
+
+        int result = preparedStatement.executeUpdate();
+
+        if(result == 1){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
+
 
 }
