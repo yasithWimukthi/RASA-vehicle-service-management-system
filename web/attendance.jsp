@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.rasa.service.EmployeeLoadingService" %><%--
   Created by IntelliJ IDEA.
   User: Yasith Wimukthi
   Date: 3/9/2021
@@ -9,9 +9,9 @@
 <html>
 <head>
     <title>Initial Template</title>
-    <link href="styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
-    <link href="styles/style.css" rel="stylesheet" >
-    <link href="styles/attendance.css" rel="stylesheet" >
+    <link href="../../a/employeePayment/web/styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
+    <link href="../../a/employeePayment/web/styles/style.css" rel="stylesheet" >
+    <link href="../../a/employeePayment/web/styles/attendance.css" rel="stylesheet" >
 
 
 </head>
@@ -54,6 +54,9 @@
             <!-- implement fuctions here -->
             <div id="clr_div">
                 <div id="att_div" class="div">
+                    <% EmployeeLoadingService retrieve = new EmployeeLoadingService();
+
+                        List<Employee> list=  retrieve.loadToPaymentTable();%>
                     <center>
                         <table>
                             <thead>
@@ -66,167 +69,26 @@
                             </tr>
                             </thead>
                             <tbody>
+                            <%for(Employee i:list){ %>
                             <tr>
-                                <td>001</td>
-                                <td>kavindu</td>
-                                <td>blasooriya</td>
+                                <td><%=i.getEmployeeID()%></td>
+                                <td><%=i.getFname()%></td>
+                                <td><%=i.getLname()%></td>
                                 <td>
-                                    <input type="radio" name="att" id="present">
+                                    <input type="radio" name="att" value="present" id="present">
                                     <label>present</label>
-                                    <input type="radio" name="att" id="absent">
+                                    <input type="radio" name="att" value="absent" id="absent">
                                     <label>absent</label>
-                                    <input type="radio" name="att" id="half day">
+                                    <input type="radio" name="att" value="hald day" id="half day">
                                     <label>half day</label>
-                                    <input type="radio" name="att" id="short leave">
+                                    <input type="radio" name="att" value="short leave"  id="short leave">
                                     <label>short leave</label>
                                 </td>
                                 <td>
                                     <center><button type=submit class="btn_tbl">save</button></center>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>002</td>
-                                <td>naduni</td>
-                                <td>dilmika</td>
-                                <td>
-                                    <input type="radio" name="att1" id="present">
-                                    <label>present</label>
-                                    <input type="radio" name="att1" id="absent">
-                                    <label>absent</label>
-                                    <input type="radio" name="att1" id="half day">
-                                    <label>half day</label>
-                                    <input type="radio" name="att1" id="short leave">
-                                    <label>short leave</label>
-                                </td>
-                                <td>
-                                    <center><button type=submit class="btn_tbl">save</button></center>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>003</td>
-                                <td>tharindu</td>
-                                <td>siriwardane</td>
-                                <td>
-                                    <input type="radio" name="att2" id="present">
-                                    <label>present</label>
-                                    <input type="radio" name="att2" id="absent">
-                                    <label>absent</label>
-                                    <input type="radio" name="att2" id="half day">
-                                    <label>half day</label>
-                                    <input type="radio" name="att2" id="short leave">
-                                    <label>short leave</label>
-                                </td>
-                                <td>
-                                    <center><button type=submit class="btn_tbl">save</button></center>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>004</td>
-                                <td>thilina</td>
-                                <td>madushanka</td>
-                                <td>
-                                    <input type="radio" name="att3" id="present">
-                                    <label>present</label>
-                                    <input type="radio" name="att3" id="absent">
-                                    <label>absent</label>
-                                    <input type="radio" name="att3" id="half day">
-                                    <label>half day</label>
-                                    <input type="radio" name="att3" id="short leave">
-                                    <label>short leave</label>
-                                <td>
-                                    <center><button type=submit class="btn_tbl">save</button></center>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>003</td>
-                                <td>tharukshi</td>
-                                <td>wickramasinghe</td>
-                                <td>
-                                    <input type="radio" name="att4" id="present">
-                                    <label>present</label>
-                                    <input type="radio" name="att4" id="absent">
-                                    <label>absent</label>
-                                    <input type="radio" name="att4" id="half day">
-                                    <label>half day</label>
-                                    <input type="radio" name="att4" id="short leave">
-                                    <label>short leave</label>
-                                </td>
-                                <td>
-                                    <center><button type=submit class="btn_tbl">save</button></center>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>003</td>
-                                <td>tharukshi</td>
-                                <td>wickramasinghe</td>
-                                <td>
-                                    <input type="radio" name="att4" id="present">
-                                    <label>present</label>
-                                    <input type="radio" name="att4" id="absent">
-                                    <label>absent</label>
-                                    <input type="radio" name="att4" id="half day">
-                                    <label>half day</label>
-                                    <input type="radio" name="att4" id="short leave">
-                                    <label>short leave</label>
-                                </td>
-                                <td>
-                                    <center><button type=submit class="btn_tbl">save</button></center>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>003</td>
-                                <td>tharukshi</td>
-                                <td>wickramasinghe</td>
-                                <td>
-                                    <input type="radio" name="att4" id="present">
-                                    <label>present</label>
-                                    <input type="radio" name="att4" id="absent">
-                                    <label>absent</label>
-                                    <input type="radio" name="att4" id="half day">
-                                    <label>half day</label>
-                                    <input type="radio" name="att4" id="short leave">
-                                    <label>short leave</label>
-                                </td>
-                                <td>
-                                    <center><button type=submit class="btn_tbl">save</button></center>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>003</td>
-                                <td>tharukshi</td>
-                                <td>wickramasinghe</td>
-                                <td>
-                                    <input type="radio" name="att4" id="present">
-                                    <label>present</label>
-                                    <input type="radio" name="att4" id="absent">
-                                    <label>absent</label>
-                                    <input type="radio" name="att4" id="half day">
-                                    <label>half day</label>
-                                    <input type="radio" name="att4" id="short leave">
-                                    <label>short leave</label>
-                                </td>
-                                <td>
-                                    <center><button type=submit class="btn_tbl">save</button></center>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>003</td>
-                                <td>tharukshi</td>
-                                <td>wickramasinghe</td>
-                                <td>
-                                    <input type="radio" name="att4" id="present">
-                                    <label>present</label>
-                                    <input type="radio" name="att4" id="absent">
-                                    <label>absent</label>
-                                    <input type="radio" name="att4" id="half day">
-                                    <label>half day</label>
-                                    <input type="radio" name="att4" id="short leave">
-                                    <label>short leave</label>
-                                </td>
-                                <td>
-                                    <center><button type=submit class="btn_tbl">save</button></center>
-                                </td>
-                            </tr>
+                            <%} %>
                             </tbody>
                         </table>
                     </center>
@@ -235,7 +97,6 @@
             </div>
     </div>
 </div>
-
 </body>
 </html>
 

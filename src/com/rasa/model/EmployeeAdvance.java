@@ -17,6 +17,9 @@ public class EmployeeAdvance {
         this.amount = amount;
     }
 
+    public EmployeeAdvance() {
+    }
+
     //getters
 
     public int getEmpID() {
