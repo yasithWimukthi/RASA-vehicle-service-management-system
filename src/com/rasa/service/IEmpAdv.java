@@ -10,9 +10,9 @@ public interface IEmpAdv {
     //advance
     public boolean addAdvance(EmployeeAdvance employeeAdvance);
 
-    public boolean updateAdvance(int advanceID, int empID, double amount);
+    public boolean updateAdvance(EmployeeAdvance employeeAdvance);
 
-    public boolean deleteAdvance(int advanceID);
+    public boolean deleteAdvance();
 
     public EmployeeAdvance showLatestAdvance();
 

@@ -9,9 +9,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeeAdvanceService implements IEmpAdv {
+public class EmployeeAdvanceService  implements IEmpAdv{
 
-    private  Connection con;
+    private   Connection con;
     private PreparedStatement preparedStatement;
 
     public boolean addAdvance(EmployeeAdvance advance) {
@@ -22,8 +22,8 @@ public class EmployeeAdvanceService implements IEmpAdv {
             preparedStatement=con.prepareStatement(sql);
 
             preparedStatement.setInt(1,advance.getEmpID());
-            preparedStatement.setInt(2,advance.getAdminID());
-            preparedStatement.setDate(3,advance.getDate());
+          //  preparedStatement.setInt(2,advance.getAdminID());
+           // preparedStatement.setDate(3,advance.getDate());
             preparedStatement.setDouble(2,advance.getAmount());
 
             preparedStatement.execute();
@@ -44,50 +44,44 @@ public class EmployeeAdvanceService implements IEmpAdv {
 
 
 
-    public boolean updateAdvance(int advanceID, int empID, double amount) {
-        try{
+    public boolean updateAdvance(EmployeeAdvance employeeAdvance) {
+        boolean rowUpdated = false;
+        try {
+
+
             con = DBConnectionUtil.getConnection();
-            String sql= EmpQuery.update_adv;
-            preparedStatement=con.prepareStatement(sql);
+            String sql = EmpQuery.update_adv;
+            PreparedStatement statement = con.prepareStatement(sql);
 
-            preparedStatement.setInt(1,empID);
-            preparedStatement.setDouble(4,amount);
+            preparedStatement.setInt(1, employeeAdvance.getEmpID());
+            preparedStatement.setDouble(2,employeeAdvance.getAmount());
 
-            preparedStatement.execute();
-
-        } catch (SQLException | ClassNotFoundException throwables) {
-            throwables.printStackTrace();
-            return false;
+           System.out.println(preparedStatement);
+            rowUpdated = statement.executeUpdate() > 0;//return number of rows updated
+        }catch (SQLException | ClassNotFoundException e) {
+           e.printStackTrace();
         }
-        finally {
-            DBConnectionUtil.closeConnection(preparedStatement,con);
-        }
-        return true;
+        return rowUpdated;
     }
 
 
-    public boolean deleteAdvance(int advanceID) {
-        try{
+    public boolean deleteAdvance() {
+        EmployeeAdvance employeeAdvance=null;
+        boolean rowDeleted = false;
+        try {
+
             con = DBConnectionUtil.getConnection();
-            String sql = EmpQuery.del_adv;
+            String sql=EmpQuery.del_adv;
             preparedStatement = con.prepareStatement(sql);
+            System.out.println(preparedStatement);
 
-            preparedStatement.setInt(1,advanceID);
 
-            preparedStatement.execute();
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-            return false;
-
-        } catch (ClassNotFoundException e) {
+            //use to update the query
+            rowDeleted = preparedStatement.executeUpdate() > 0;//return number of rows deleted
+        }catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
-            return false;
         }
-        finally {
-            DBConnectionUtil.closeConnection(preparedStatement,con);
-        }
-        return true;
+        return rowDeleted;
     }
 
 
@@ -104,17 +98,21 @@ public class EmployeeAdvanceService implements IEmpAdv {
             String sql=EmpQuery.show_adv;
 
             preparedStatement = con.prepareStatement(sql);
+
             System.out.println(preparedStatement);
 
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                employeeAdvance.setEmpID(Integer.parseInt(rs.getString("empID")));
-                employeeAdvance.setAmount(rs.getDouble("amount"));
+                int empID = rs.getInt("empID");
+                double amount = rs.getDouble("amount");
 
 
-
+                employeeAdvance = new EmployeeAdvance();
+                employeeAdvance.setEmpID(empID);
+                employeeAdvance.setAmount(amount);
             }
+
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -139,12 +137,16 @@ public class EmployeeAdvanceService implements IEmpAdv {
             while (rs.next()) {
 
                 int empID = Integer.parseInt(rs.getString(1));
-                int adminID = Integer.parseInt(rs.getString(2));
-                Date date=Date.valueOf(rs.getString(3));
-                double amount=Double.parseDouble(rs.getString(4));
+               // int adminID = Integer.parseInt(rs.getString(2));
+               // Date date=Date.valueOf(rs.getString(3));
+                double amount=Double.parseDouble(rs.getString(2));
 
+                EmployeeAdvance advance =new EmployeeAdvance();
+                advance.setEmpID(empID);
+               // advance.setDate(date);
+                advance.setAmount(amount);
 
-                list.add(new EmployeeAdvance(empID,adminID,date,amount));
+                list.add(advance);
             }
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
