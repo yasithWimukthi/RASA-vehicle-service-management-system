@@ -18,4 +18,6 @@ public interface IRentCarService {
 
     public boolean updateRentDetails(Rent rent) throws SQLException, ClassNotFoundException;
 
+    public boolean deleteRentalDetails(int rentID) throws SQLException, ClassNotFoundException;
+
 }
