@@ -159,5 +159,20 @@ public class RentCarService implements IRentCarService{
 
     }
 
+    @Override
+    public boolean deleteRentalDetails(int rentID) throws SQLException, ClassNotFoundException {
+
+        Connection con = DBConnectionUtil.getConnection();
+        String deleteQuery = "DELETE FROM `rasa`.`rent` WHERE `rentID` = ?";
+        PreparedStatement preparedStatement = con.prepareStatement(deleteQuery);
+
+        preparedStatement.setInt(1, rentID);
+
+        boolean isDeleted = preparedStatement.execute();
+
+        return isDeleted;
+
+    }
+
 
 }
