@@ -1,14 +1,17 @@
 package com.rasa.service;
 
+import com.rasa.model.EmployeeAttendance;
+
 import java.sql.Date;
+import java.util.List;
 
 public interface IEmpAttendance {
 
-    public boolean addAttendance(int empID, int adminID, Date date, String status);
+    public boolean addAttendance(EmployeeAttendance employeeAttendance);
 
-    public boolean updateAttendance(int empID, int adminID, Date date, String status);
+    public boolean updateAttendance(EmployeeAttendance employeeAttendance);
 
-    public boolean showAttendance();
+    public List<EmployeeAttendance> showAttendance();
 
 }
 

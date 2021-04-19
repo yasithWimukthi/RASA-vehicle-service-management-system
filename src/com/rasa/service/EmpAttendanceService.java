@@ -8,12 +8,12 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class EmpAttendanceService implements IEmpAttendance{
+public class EmpAttendanceService {
 
     private static Connection con;
     private PreparedStatement preparedStatement;
 
-    @Override
+
     public boolean addAttendance(int empID, int adminID, Date date, String status) {
         try{
             con = DBConnectionUtil.getConnection();
@@ -37,12 +37,12 @@ public class EmpAttendanceService implements IEmpAttendance{
         return true;
     }
 
-    @Override
+
     public boolean updateAttendance(int empID, int adminID, Date date, String status) {
         return false;
     }
 
-    @Override
+
     public boolean showAttendance() {
         try {
             con = DBConnectionUtil.getConnection();
