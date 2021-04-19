@@ -27,8 +27,6 @@ public class InsertRentalDetailsServlet extends HttpServlet {
         int registrationNumber = Integer.parseInt(request.getParameter("registrationnumber"));
         int operatorID = 2;
 
-        System.out.println(registrationNumber);
-
         Rent rent = new Rent(firstName, lastName, email, phone, address, pickUpDate, dropOffDate, rentalPrice, registrationNumber, operatorID);
 
         IRentCarService iRentCarService = new RentCarService();
