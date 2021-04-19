@@ -248,7 +248,7 @@
                 <!-- Buttons -->
                 <div class="class= eight wide column button-container" >
 
-                    <form method="post" action="DeleteServiceEntryServlet">
+                    <form method="post" action="DeleteServiceEntryServlet" class="mb-10">
                         <input type="hidden" name="serviceID" value="<%=repair.getRepairId()%>">
                         <button class="ui red fluid button" type="submit" style="width:95%; height:35px">
                             <i class="trash icon"> </i>
@@ -256,17 +256,17 @@
                         </button>
                     </form>
 
-                    <button class="ui blue fluid button" style="width:95%; height:35px">
+                    <button class="ui blue fluid button" style="width:95%; height:35px; margin-bottom: 10px;" class="mb-10">
                         <i class="address card outline icon"> </i>
                         Client Report
                     </button>
 
-                    <button class="ui blue fluid button" style="width:95%; height:35px">
+                    <button class="ui blue fluid button" style="width:95%; height:35px;margin-bottom: 10px" class="mb-10">
                         <i class="clipboard outline icon"> </i>
                         Entry Report
                     </button>
 
-                    <button class="ui green fluid button" style="width:95%; height:35px">
+                    <button class="ui green fluid button" style="width:95%; height:35px" class="mb-10">
                         <i class="chart line icon"> </i>
                         Work Progress
                     </button>
