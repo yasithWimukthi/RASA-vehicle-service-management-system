@@ -1,6 +1,6 @@
 package com.rasa.servlet;
 
-import javax.jms.Session;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

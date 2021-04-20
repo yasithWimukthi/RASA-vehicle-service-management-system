@@ -19,8 +19,11 @@ public class DeleteVeCompServlet extends HttpServlet {
 
             Iworkprogress_service iworkprogress_service = new Workprogress_service();
         try {
-            Boolean res = iworkprogress_service.deleteRepairComponent(ser_id,item_id);
-            if(!res){
+            Boolean Is_delete = iworkprogress_service.deleteRepairComponent(ser_id,item_id);
+
+
+            if(!Is_delete){
+                request.setAttribute("deletemsg","deleted successfully!");
                 request.getRequestDispatcher("addrepaircomponent.jsp").forward(request,response);
             }
             else{
