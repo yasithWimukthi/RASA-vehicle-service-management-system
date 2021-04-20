@@ -1,7 +1,7 @@
 package com.rasa.servlet;
 
 import com.rasa.model.paymentList;
-import com.rasa.service.paymentdao;
+import com.rasa.service.paymentService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,10 +19,10 @@ public class paymentRetriveServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
 
-    private paymentdao paydao;
+    private paymentService paydao;
 
     public void init() {
-        this.paydao = new paymentdao ();
+        this.paydao = new paymentService();
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
