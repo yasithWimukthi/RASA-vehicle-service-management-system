@@ -63,7 +63,7 @@
             <div id="wrapper">
                 <h1>Estimate Amount</h1>
                 <%--get verhicle service id using session--%>
-                <%int serivceID = (int)session.getAttribute("serivceID");
+                <%int serviceID = (int)session.getAttribute("sid");
                     addPaymentService paymentService = new addPaymentService();%>
                 <table id="keywords" cellspacing="0" cellpadding="0">
                     <thead>
@@ -79,21 +79,21 @@
 
                         <td>1</td>
                         <td>Painting</td>
-                        <td><%=paymentService.CalcTotalEstimates("painting",serivceID)%></td>
+                        <td><%=paymentService.CalcTotalEstimates("painting",serviceID)%></td>
 
                     </tr>
                     <tr>
 
                         <td>2</td>
                         <td>Remove and Refting</td>
-                        <td><%=paymentService.CalcTotalEstimates("Remove and refting",serivceID)%></td>
+                        <td><%=paymentService.CalcTotalEstimates("Remove and refting",serviceID)%></td>
 
                     </tr>
                     <tr>
 
                         <td>3</td>
                         <td>Replace items</td>
-                        <td><%=paymentService.CalcTotalEstimates("Remove items",serivceID)%></td>
+                        <td><%=paymentService.CalcTotalEstimates("Remove items",serviceID)%></td>
 
                     </tr>
 
@@ -102,7 +102,7 @@
 
                         <td>4</td>
                         <td>items to be replace</td>
-                        <td><%=paymentService.CalcTotalEstimates("replace items",serivceID)%></td>
+                        <td><%=paymentService.CalcTotalEstimates("replace items",serviceID)%></td>
 
                     </tr>
 
@@ -147,7 +147,7 @@
                         <input type="text" name="estimateAmount"  id="estimateAmount"  >
                         <i class="fa fa-check-circle" aria-hidden="true"></i>
                         <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                        <small>Please Enter estimation amount</small>
+                        <small>Please Enter estimation amount and invalid input cannot be entered</small>
                     </div>
 
                     <div class="form-control" id="form-container3">
@@ -155,7 +155,7 @@
                         <input type="text"   name="cash" id="cash"  >
                         <i class="fa fa-check-circle" aria-hidden="true"></i>
                         <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                        <small>Please enter cash amount</small>
+                        <small>Please enter cash amount and invalid input cannot be entered</small>
                     </div>
 
 
@@ -170,7 +170,7 @@
 
 
 
-                            <input type="text"  name="serivceID" value="<%=serivceID%>">
+                            <input type="hidden"  name="serviceID" value="<%=serviceID%>">
 
 
 
