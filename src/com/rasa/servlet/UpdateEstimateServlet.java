@@ -24,6 +24,7 @@ public class UpdateEstimateServlet extends HttpServlet {
         try {
             boolean is_update = iworkprogress_service.UpdateRepairComponent(ser_id,item_id,estimateAmount);
             if(is_update){
+                request.setAttribute("updateMsg","Save Changes to "+ estimateAmount);
                 request.getRequestDispatcher("addrepaircomponent.jsp").forward(request,response);
             }
         } catch (SQLException throwables) {
