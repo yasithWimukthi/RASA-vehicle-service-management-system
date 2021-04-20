@@ -44,4 +44,14 @@ paymentForm.addEventListener("submit", e =>{
         document.querySelector("#paymentDate").classList.remove("error");
 
     }
+    if(isNaN(estimateAmount)){
+        e.preventDefault();
+        document.querySelector("#form-container2").classList.add("error");
+        document.querySelector("#paymentDate").classList.add("error");
+    }
+    if(isNaN(cash)){
+        e.preventDefault();
+        document.querySelector("#form-container3").classList.add("error");
+        document.querySelector("#paymentDate").classList.add("error");
+    }
 });

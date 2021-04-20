@@ -60,7 +60,7 @@
             </div>
 
             <div class="report-button">
-                <button class="ui right labeled icon orange button">
+                <button class="big ui right labeled icon orange button">
                     <i class="right arrow icon"></i>
                     Report
                 </button>
@@ -68,9 +68,11 @@
 
 
             <div class="box">
-                <form method="post" class="form" action="<%=request.getContextPath()%>/budgetServlet">
+                <form method="post" name="myForm" id="budget" onsubmit="return validation()"
+                      class="form" action="<%=request.getContextPath()%>/budgetServlet">
                     <div class="form-control">
-                        <input type="text"  name="year">
+                        <input type="text"  name="year" id="year">
+
                         <select name="month" >
                             <option value="1">January</option>
                             <option value="2">February</option>
@@ -85,7 +87,7 @@
                             <option value="11">November</option>
                             <option value="12">December</option>
                         </select>
-                        <button class="ui primary button">Show</button>
+                        <button type="submit" value="submit" class="ui primary button">Show</button>
                     </div>
                 </form>
             </div>
@@ -204,6 +206,7 @@
 
         </div>
     </div>
+<script src="financial_script/budget.js"></script>
 </div>
 </div>
 

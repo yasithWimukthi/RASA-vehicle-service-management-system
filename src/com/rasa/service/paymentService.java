@@ -20,7 +20,7 @@ public class paymentService {
 
         try{
             connection = DBConnectionUtil.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO rasa.payment "+" (registrationNumber,estimateAmount,cash,paymentDate,serivceID)VALUES "+" (?,?,?,?,?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO rasa.payment "+" (registrationNumber,estimateAmount,cash,paymentDate,serviceID)VALUES "+" (?,?,?,?,?)");
             preparedStatement.setString(1,paymentlist.getRegistrationNumber());
 
             preparedStatement.setDouble(2,paymentlist.getEstimateAmount());
@@ -91,9 +91,9 @@ public class paymentService {
 
                 double cash = rs.getDouble("cash");
                 Date paymentDate = rs.getDate("paymentDate");
-                int serivceID = rs.getInt("serivceID");
+                int serviceID = rs.getInt("serviceID");
 
-                pays.add(new paymentList(payId,registrationNumber,estimateAmount,cash,paymentDate,serivceID));
+                pays.add(new paymentList(payId,registrationNumber,estimateAmount,cash,paymentDate,serviceID));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
