@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.rasa.service.addPaymentService" %><%--
   Created by IntelliJ IDEA.
   User: Tharukshi
   Date: 3/22/2021
@@ -62,7 +62,9 @@
 
             <div id="wrapper">
                 <h1>Estimate Amount</h1>
-
+                <%--get verhicle service id using session--%>
+                <%int serivceID = (int)session.getAttribute("serivceID");
+                    addPaymentService paymentService = new addPaymentService();%>
                 <table id="keywords" cellspacing="0" cellpadding="0">
                     <thead>
                     <tr>
@@ -77,30 +79,34 @@
 
                         <td>1</td>
                         <td>Painting</td>
-                        <td>10000</td>
+                        <td><%=paymentService.CalcTotalEstimates("painting",serivceID)%></td>
 
                     </tr>
                     <tr>
 
                         <td>2</td>
                         <td>Remove and Refting</td>
-                        <td>5000</td>
+                        <td><%=paymentService.CalcTotalEstimates("Remove and refting",serivceID)%></td>
 
                     </tr>
                     <tr>
 
                         <td>3</td>
                         <td>Replace items</td>
-                        <td>5000</td>
+                        <td><%=paymentService.CalcTotalEstimates("Remove items",serivceID)%></td>
 
                     </tr>
+
+
                     <tr>
 
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>4</td>
+                        <td>items to be replace</td>
+                        <td><%=paymentService.CalcTotalEstimates("replace items",serivceID)%></td>
 
                     </tr>
+
+
 
 
                     </tbody>
@@ -117,71 +123,70 @@
             </div>
 
             <div class="box">
-                <form method="post" class="form" id="form" action="<%=request.getContextPath()%>/paymentListServlet">
+                <form method="post" class="form" id="form" action="<%=request.getContextPath()%>/paymentListServlet" >
 
 
                     <%--@declare id="vehicleregino"--%><%--@declare id="customername"--%><%--@declare id="estimateamount"--%>
                     <%--@declare id="cash"--%><%--@declare id="paymentdate"--%>
 
-                    <div class="form-main-text">Add payment</div>
+                    <div class="header">Add payment</div>
 
                     <br>
                     <input type ="hidden" name="payId">
-                    <div class="form-control">
-                        <label for="vehicleRegiNo">RegiNo</label>
-                        <input type="text" name="vehicleRegiNo" id="vehicleRegiNo"  >
+                    <div class="form-control" id="form-container">
+                        <label for="vehicleRegiNo">Vehicle Registation number</label>
+                        <input type="text" name="registrationNumber" id="vehicleRegiNo" >
                         <i class="fa fa-check-circle" aria-hidden="true"></i>
                         <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                        <small>Error</small>
+                        <small>Please enter vehicle Registration number</small>
                     </div>
 
-                    <div class="form-control">
-                        <label for="customerName">Customer Name</label>
-                        <input type="text" name="customerName" id="customerName" >
-                        <i class="fa fa-check-circle" aria-hidden="true"></i>
-                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                        <small>Error</small>
-                    </div>
 
-                    <div class="form-control">
+                    <div class="form-control" id="form-container2">
                         <label  for="estimateAmount">Estimation Amount</label>
                         <input type="text" name="estimateAmount"  id="estimateAmount"  >
                         <i class="fa fa-check-circle" aria-hidden="true"></i>
                         <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                        <small>Error</small>
+                        <small>Please Enter estimation amount</small>
                     </div>
 
-                    <div class="form-control">
+                    <div class="form-control" id="form-container3">
                         <label for="cash">Cash</label>
                         <input type="text"   name="cash" id="cash"  >
                         <i class="fa fa-check-circle" aria-hidden="true"></i>
                         <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                        <small>Error</small>
+                        <small>Please enter cash amount</small>
                     </div>
 
 
 
-                    <div class="form-control">
+                    <div class="form-control" id="form-container4">
                         <label for="paymentDate">Date of Payment</label>
                         <input type="date"  name="paymentDate" id="paymentDate" >
                         <i class="fa fa-check-circle" aria-hidden="true"></i>
                         <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                        <small>Error</small>
+                        <small>Please enter payment date</small>
                     </div>
 
 
 
+                            <input type="text"  name="serivceID" value="<%=serivceID%>">
 
 
 
-                    <button>submit</button>
+
+
+
+                    <button type="submit">submit</button>
                 </form>
 
             </div>
 
         </div>
+
     </div>
 </div>
+<script src="financial_script/addpayment.js"></script>
 </body>
 </html>
 
