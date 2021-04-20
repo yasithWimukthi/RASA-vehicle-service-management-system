@@ -82,7 +82,7 @@
 
                 <h2 class="main-title">Payments</h2>
                 <div class="bill_button">
-                    <button class="ui right labeled icon green button">
+                    <button class="big ui right labeled icon green button">
                         <i class="arrow alternate circle right icon"></i>
                         Bill
                     </button>
