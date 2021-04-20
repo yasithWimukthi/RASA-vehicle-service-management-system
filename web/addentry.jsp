@@ -128,14 +128,14 @@
                                 <div class="field">
                                     <div class="ui radio checkbox">
                                         <input type="radio" name="repair" tabindex="10" class="hidden" id="insurance" value="Insuarance">
-                                        <label>Insuarance</label>
+                                        <label style="font-size: 16px">Insuarance</label>
                                     </div>
                                 </div>
 
                                 <div class="field">
                                     <div class="ui radio checkbox">
                                         <input type="radio" name="repair" checked="" tabindex="0" class="hidden" id="nonInsurance" value="nonInsurance">
-                                        <label>Non-Insuarance</label>
+                                        <label style="font-size: 16px">Non-Insuarance</label>
                                     </div>
                                 </div>
                             </div>
@@ -144,17 +144,17 @@
                                 <label >Repair Type:</label>
                                 <div class="ui checkbox">
                                     <input type="checkbox" tabindex="0" class="hidden" name="customerNoObjection">
-                                    <label>Customer No objection</label>
+                                    <label style="font-size: 16px; margin-right: 15px;margin-bottom: 30px">Customer No objection</label>
                                 </div>
 
                                 <div class="ui checkbox">
                                     <input type="checkbox" tabindex="0" class="hidden" name="insuranceNoObjection">
-                                    <label>Insuarance No objection</label>
+                                    <label style="font-size: 16px; margin-right: 15px">Insuarance No objection</label>
                                 </div>
 
                                 <div class="ui checkbox">
                                     <input type="checkbox" tabindex="0" class="hidden" name="claimForm">
-                                    <label>Claim Form</label>
+                                    <label style="font-size: 16px">Claim Form</label>
                                 </div>
                             </div>
 
@@ -167,7 +167,7 @@
                             </div>
 
                             <button type="submit" class="ui fluid inverted green labeled icon button submit-btn" id="entry-submit">
-                                <i class="right check icon" style="font-size: 1.5em;"></i>
+                                <i class="right check icon" style="font-size: 1.5em;margin-top: 10px"></i>
                                 complete
                             </button>
                         </div>

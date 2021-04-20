@@ -214,8 +214,8 @@
                             <% if(!update) {%>
                                 <div class="field" id="brandContainer" >
                                     <label>Brand Name</label>
-                                    <select class="ui search dropdown" name="brand" id="brand">
-                                        <option value="Toyota">Toyota</option>
+                                    <select class="ui search dropdown" name="brand" id="brand" style="font-size: x-large">
+                                        <option value="Toyota" ><span >Toyota</span></option>
                                         <option value="Nissan">Nissan</option>
                                         <option value="Susuki">Susuki</option>
                                         <option value="BMW">BMW</option>
