@@ -36,6 +36,7 @@ public class SearchClientServlet extends HttpServlet {
 
         customer = clientService.searchByNic(NICnumber);
         request.setAttribute("customer",customer);
+        request.setAttribute("isSuccess",false);
 
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/customerreg.jsp");
         dispatcher.forward(request, response);
