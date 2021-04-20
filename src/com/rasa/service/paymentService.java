@@ -1,18 +1,17 @@
 package com.rasa.service;
 
 
-import com.rasa.util.DBConnectionUtil;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.rasa.model.paymentList;
+import com.rasa.util.DBConnectionUtil;
 
-public class paymentdao {
+public class paymentService {
 
 
-    public paymentdao() {
+    public paymentService() {
 
     }
     static Connection connection;
@@ -21,13 +20,14 @@ public class paymentdao {
 
         try{
             connection = DBConnectionUtil.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO rasa.payment "+" (vehicleRegiNo,customerName,estimateAmount,cash,paymentDate)VALUES "+" (?,?,?,?,?)");
-            preparedStatement.setString(1,paymentlist.getVehicleRegiNo());
-            preparedStatement.setString(2,paymentlist.getCustomerName());
-            preparedStatement.setDouble(3,paymentlist.getEstimateAmount());
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO rasa.payment "+" (registrationNumber,estimateAmount,cash,paymentDate,serivceID)VALUES "+" (?,?,?,?,?)");
+            preparedStatement.setString(1,paymentlist.getRegistrationNumber());
 
-            preparedStatement.setDouble(4,paymentlist.getCash());
-            preparedStatement.setDate(5, paymentlist.getPaymentDate());
+            preparedStatement.setDouble(2,paymentlist.getEstimateAmount());
+
+            preparedStatement.setDouble(3,paymentlist.getCash());
+            preparedStatement.setDate(4, paymentlist.getPaymentDate());
+            preparedStatement.setInt(5, paymentlist.getSerivceID());
 
             System.out.println(preparedStatement);
             preparedStatement.executeLargeUpdate();
@@ -46,19 +46,20 @@ public class paymentdao {
 
         try{
             connection = DBConnectionUtil.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT payId,vehicleRegiNo,customerName,estimateAmount,claimAmount,cash,paymentDate FROM rasa.payment WHERE payId = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT payId,registrationNumber,estimateAmount,cash,paymentDate FROM rasa.payment WHERE payId = ?");
             preparedStatement.setInt(1,payId);
             ResultSet rs = preparedStatement.executeQuery();
 
             while(rs.next()){
-                String vehicleRegiNo = rs.getString("vehicleRegiNo");
-                String customerName = rs.getString("customerName");
+                String registrationNumber = rs.getString("registrationNumber");
+
                 double estimateAmount = rs.getDouble("estimateAmount");
 
                 double cash = rs.getDouble("cash");
                 Date paymentDate= rs.getDate("paymentDate");
 
-                paymentlist = new paymentList(payId,vehicleRegiNo,customerName,estimateAmount,cash,paymentDate);
+
+                paymentlist = new paymentList(payId,registrationNumber, estimateAmount, cash, paymentDate);
             }
             System.out.println(preparedStatement);
         } catch (SQLException throwables) {
@@ -84,14 +85,15 @@ public class paymentdao {
 
             while(rs.next()){
                 int payId = rs.getInt("payId");
-                String vehicleRegiNo = rs.getString("vehicleRegiNo");
-                String customerName = rs.getString("customerName");
+                String registrationNumber = rs.getString("registrationNumber");
+
                 double estimateAmount = rs.getDouble("estimateAmount");
 
                 double cash = rs.getDouble("cash");
                 Date paymentDate = rs.getDate("paymentDate");
+                int serivceID = rs.getInt("serivceID");
 
-                pays.add(new paymentList(payId,vehicleRegiNo,customerName,estimateAmount,cash,paymentDate));
+                pays.add(new paymentList(payId,registrationNumber,estimateAmount,cash,paymentDate,serivceID));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -132,16 +134,16 @@ public class paymentdao {
 
 
             connection = DBConnectionUtil.getConnection();
-            PreparedStatement statement = connection.prepareStatement("UPDATE payment set vehicleRegiNo = ?,customerName = ?,estimateAmount = ?,cash = ? ,paymentDate = ? where payId = ?");
+            PreparedStatement statement = connection.prepareStatement("UPDATE payment set registrationNumber = ?,estimateAmount = ?,cash = ? ,paymentDate = ? where payId = ?");
 
-            statement.setString(1, paymentlist.getVehicleRegiNo());
-            statement.setString(2,paymentlist.getCustomerName());
-            statement.setDouble(3, paymentlist.getEstimateAmount());
+            statement.setString(1, paymentlist.getRegistrationNumber());
 
-            statement.setDouble(4,paymentlist.getCash());
-            statement.setDate(5,paymentlist.getPaymentDate());
+            statement.setDouble(2, paymentlist.getEstimateAmount());
 
-            statement.setInt(6, paymentlist.getPayId());
+            statement.setDouble(3,paymentlist.getCash());
+            statement.setDate(4,paymentlist.getPaymentDate());
+
+            statement.setInt(5, paymentlist.getPayId());
             System.out.println(statement);
 
             rowUpdated = statement.executeUpdate() > 0;//return number of rows updated
