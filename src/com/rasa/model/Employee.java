@@ -1,7 +1,7 @@
 package com.rasa.model;
 
 public class Employee {
-    private String employeeID;
+    private int employeeID;
     private String fname;
     private String lname;
     private String gender;
@@ -30,7 +30,7 @@ public class Employee {
 
     }
 
-    public Employee(String employeeID, String fname) {
+    public Employee(int employeeID, String fname) {
         this.employeeID=employeeID;
         this.fname = fname;
     }
@@ -107,11 +107,11 @@ public class Employee {
         this.joinDate = joinDate;
     }
 
-    public String getEmployeeID() {
+    public int getEmployeeID() {
         return employeeID;
     }
 
-    public void setEmployeeID(String employeeID) {
+    public void setEmployeeID(int employeeID) {
         this.employeeID = employeeID;
     }
 
