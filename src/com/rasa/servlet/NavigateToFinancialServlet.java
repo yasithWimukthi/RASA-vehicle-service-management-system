@@ -14,7 +14,7 @@ public class NavigateToFinancialServlet extends HttpServlet {
         String sid = request.getParameter("sid");
         RequestDispatcher dispatcher ;
         request.setAttribute("sid",sid);
-        dispatcher = getServletContext().getRequestDispatcher("/progress.jsp");
+        dispatcher = getServletContext().getRequestDispatcher("/addpayment.jsp");
         dispatcher.forward(request, response);
     }
 
