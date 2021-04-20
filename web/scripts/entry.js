@@ -28,3 +28,9 @@ $('.ui.radio.checkbox')
 
 $('.ui.checkbox')
     .checkbox();
+
+
+$( "#deleteBtn" ).click(function () {
+    $('.ui.tiny.modal')
+        .modal('show');
+});

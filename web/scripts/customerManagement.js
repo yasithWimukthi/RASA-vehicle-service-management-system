@@ -90,3 +90,6 @@ $('.message .close')
         ;
     })
 ;
+
+$('.ui.modal')
+    .modal('show');
