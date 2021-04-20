@@ -3,7 +3,7 @@ package com.rasa.servlet;
 
 import com.rasa.model.paymentList;
 
-import com.rasa.service.paymentdao;
+import com.rasa.service.paymentService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,8 +18,8 @@ import java.sql.SQLException;
 public class paymentEditServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int payId = Integer.parseInt(request.getParameter("payId"));
-        String vehicleRegiNo = request.getParameter("vehicleRegiNo");
-        String customerName = request.getParameter("customerName");
+        String registrationNumber = request.getParameter("registrationNumber");
+
         double estimateAmount = Double.parseDouble(request.getParameter("estimateAmount"));
 
         double cash = Double.parseDouble(request.getParameter("cash"));
@@ -27,9 +27,10 @@ public class paymentEditServlet extends HttpServlet {
 
 
 
-        paymentList existingPayment = new paymentList(payId,vehicleRegiNo,customerName,estimateAmount,cash,paymentDate);
+
+        paymentList existingPayment = new paymentList(payId,registrationNumber, estimateAmount, cash, paymentDate);
         try {
-            paymentdao.updatePayment(existingPayment);
+            paymentService.updatePayment(existingPayment);
             response.sendRedirect("paymentlist.jsp");
         } catch (SQLException throwables) {
             throwables.printStackTrace();

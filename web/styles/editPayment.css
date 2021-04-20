@@ -45,7 +45,6 @@ body {
     background-size: cover;
     background-repeat:round;
     min-height: 100vh;
-
 }
 
 .container {
@@ -203,131 +202,27 @@ body {
     }
 }
 
-/*************************************************
-            ESTIMATION TABLE
-*************************************************/
-
-::selection { background: #5f74a0; color: #fff; }
-::-moz-selection { background: #5f74a0; color: #fff; }
-
-
-
-
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
-ol, ul { list-style: none; }
-
-
-
-
-table { border-collapse: collapse; border-spacing: 0; }
-
-
-h1 {
-    font-family: Monospace;
-    font-weight: bold;
-    font-size: 29px;
-    line-height: 1.7em;
-    margin-bottom: 8px;
-    text-align: center;
-}
-
-
-/** page structure **/
-#wrapper {
-    display: block;
-    width: 850px;
-    background: #fff;
-    margin: 0 auto;
-    padding: 10px 17px;
-    -webkit-box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.35);
-}
-
-#keywords {
-    margin: 0 auto;
-    font-size: 1.2em;
-    margin-bottom: 10px;
-}
-
-
-#keywords thead {
-    cursor: pointer;
-    background: #4da6ff;
-}
-#keywords thead tr th {
-    font-weight: bold;
-    padding: 12px 29px;
-    padding-left: 30px;
-    font-size:19px;
-    font-family:Monospace;
-
-
-}
-#keywords thead tr th span {
-    padding-right: 30px;
-    background-repeat: no-repeat;
-    background-position: 100% 100%;
-    align:right;
-}
-
-#keywords thead tr th.headerSortUp, #keywords thead tr th.headerSortDown {
-    background: #acc8dd;
-    color:white;
-}
-
-
-
-
-#keywords tbody tr {
-    color: #555;
-}
-#keywords tbody tr td {
-    text-align:center;
-    padding: 10px 7px;
-    font-size:15px;
-    font-family:Monospace;
-}
-#keywords tbody tr td.align {
-    text-align: left;
-}
-
-.amount{
-    font-size:20px;
-    color:#0269A4;
-    font-weight:bold;
-    font-family:Monospace;
-}
-
 .box{
-    background-color:#fff;
-    border-radius:5px;
-    box-shadow:0 2px 5px rgba(0,0,0,0.3);
-    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     width:400px;
-    max-width:100%;
+    max-width: 100%;
+    rigth:50px;
 
 }
 .form{
     padding:30px 40px;
+}
 
-}
-.header{
-    text-align: center;
-    color:cornflowerblue;
-    font-size: 25px;
-    font-family: inherit;
-}
 .form-control{
-    margin-bottom:10px;
-    padding-bottom:20px;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
     position:relative;
 }
 .form-control label{
     display:inline-block;
     margin-bottom:5px;
-    font-family: inherit;
-    color:lightslategray;
-    font-size:12px;
-
 }
 .form-control input{
     border:2px solid #f0f0f0;
@@ -389,6 +284,6 @@ h1 {
     display:block;
     padding:10px;
     font-size: 16px;
-    width:320px;
+    width:300px;
 
 }

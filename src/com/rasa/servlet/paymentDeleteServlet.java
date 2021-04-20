@@ -9,16 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
-import com.rasa.service.paymentdao;
+import com.rasa.service.paymentService;
 
 @WebServlet("/paymentDeleteServlet")
 public class paymentDeleteServlet extends HttpServlet {
 
-    private paymentdao sv;
+    private paymentService sv;
 
     public paymentDeleteServlet() {
         super();
-        sv = new paymentdao();
+        sv = new paymentService();
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
