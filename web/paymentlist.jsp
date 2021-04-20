@@ -1,7 +1,7 @@
-<%@ page import="com.rasa.service.paymentdao" %>
+<%@ page import="com.rasa.service.paymentService" %>
 <%@ page import="com.rasa.model.paymentList" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.rasa.service.paymentdao" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Tharukshi
   Date: 3/22/2021
@@ -71,7 +71,7 @@
 
 
 
-            <div class="ui container">
+            <section class="ui container">
 
 
 
@@ -81,62 +81,69 @@
 
 
                 <h2 class="main-title">Payments</h2>
-                <% paymentdao pays = new paymentdao();
+                <div class="bill_button">
+                    <button class="ui right labeled icon green button">
+                        <i class="arrow alternate circle right icon"></i>
+                        Bill
+                    </button>
+                </div>
+                    <% paymentService pays = new paymentService();
 
                     List<paymentList> payList=  pays.selectAllPayment(); %>
-                <table class="ui selectable compact blue table">
-                    <thead>
-                    <tr>
-                        <th>payId</th>
-                        <th >vehicleRegiNo</th>
-                        <th>customerName</th>
-                        <th>estimateAmount</th>
+                <section class="details">
+                    <div class="card">
+                        <table class="ui selectable compact blue table">
+                            <thead>
+                            <tr>
+                                <th>Payment ID</th>
+                                <th>Registration Number</th>
 
-                        <th>cash</th>
-                        <th>payment</th>
+                                <th>Estimate Amount</th>
+                                <th>Cash</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!-- table data -->
+                            <%for(paymentList i:payList){ %>
+                            <tr>
+                                <td>
+                                    <%=i.getPayId() %>
+                                </td>
+                                <td>
+                                    <%=i.getRegistrationNumber() %>
+                                </td>
 
-                        <th>Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <!-- table data -->
-                    <%for(paymentList i:payList){ %>
-                    <tr>
-                        <td>
-                            <%=i.getPayId() %>
-                        </td>
-                        <td>
-                            <%=i.getVehicleRegiNo() %>
-                        </td>
-                        <td>
-                            <%=i.getCustomerName() %>
-                        </td>
-                        <td>
-                            <%=i.getEstimateAmount() %>
-                        </td>
+                                <td>
+                                    <%=i.getEstimateAmount() %>
+                                </td>
 
-                        <td>
-                            <%=i.getCash() %>
-                        </td>
-                        <td>
-                            <%=i.getPaymentDate() %>
-                        </td>
-                        <td><a href="retriveEditServlet?payId=<%=i.getPayId()%>" id="button"   > <i class="fa fa-pencil" aria-hidden="true" style="color:Red"></i></a> &nbsp;&nbsp;&nbsp;&nbsp; <a  href="paymentDeleteServlet?payId=<%=i.getPayId()%>"  /> <i class="fa fa-trash-o" aria-hidden="true" style="color:Red"></i></a></td>
-                    </tr>
-                    <%} %>
+                                <td>
+                                    <%=i.getCash() %>
+                                </td>
+                                <td>
+                                    <%=i.getPaymentDate() %>
+                                </td>
+                                <td><a href="retriveEditServlet?payId=<%=i.getPayId()%>" > <i class="yellow pen square icon"></i></a> &nbsp;&nbsp;&nbsp;&nbsp; <a  href="paymentDeleteServlet?payId=<%=i.getPayId()%>" > <i class="red trash icon"></i></a></td>
+                            </tr>
+                            <%} %>
 
 
 
 
-                    </tbody>
+                            </tbody>
 
-                </table>
+                        </table>
+
+                    </div>
+                </section>
 
 
 
-            </div>
         </div>
     </div>
+</div>
 </div>
 
 
