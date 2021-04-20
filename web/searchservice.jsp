@@ -166,7 +166,7 @@
             <% }%>
 
             <% if (isSuccess){%>
-                <div class="ui modal" style="padding-top:50px " >
+                <div class="ui modal" style="padding-top:50px;z-index: 100 " >
                     <i class="close icon"></i>
                     <div style="display:flex;justify-content: center;">
                         <i class="check circle outline icon green" style="font-size:200px; margin-top:50px "></i>
