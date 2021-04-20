@@ -20,7 +20,7 @@ public class budgetService {
         double totalAmount = 0;
         try {
             connection = DBConnectionUtil.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT cash FROM payment WHERE EXTRACT(year FROM paymentDate) =? AND EXTRACT(month FROM paymentDate) = ?; ");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT cash FROM rasa.payment WHERE EXTRACT(year FROM paymentDate) =? AND EXTRACT(month FROM paymentDate) = ?; ");
 
             preparedStatement.setString(1, year);
             preparedStatement.setString(2, month);
@@ -49,7 +49,7 @@ public class budgetService {
 
         try{
             connection = DBConnectionUtil.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT rentPrice FROM rent WHERE EXTRACT(year FROM dropOffDate) =? AND EXTRACT(month FROM dropOffDate) = ?; ");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT rentalPrice FROM rasa.rent WHERE EXTRACT(year FROM dropOffDate) =? AND EXTRACT(month FROM dropOffDate) = ?; ");
 
 
             preparedStatement.setString(1, year);
@@ -78,7 +78,7 @@ public class budgetService {
         double totalEmpPayments= 0;
         try{
             connection = DBConnectionUtil.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT advance.amount + emppayment.amount FROM advance,emppayment WHERE advance.empID = emppayment.empID AND EXTRACT(year FROM emppayment.date) =? AND EXTRACT(month FROM emppayment.date) = ?;");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT amount FROM employeepayment  WHERE  EXTRACT(year FROM date) =? AND EXTRACT(month FROM date) = ?;");
 
             preparedStatement.setString(1, year);
             preparedStatement.setString(2, month);
@@ -107,7 +107,7 @@ public class budgetService {
             double totalInventoryExpenses= 0;
         try{
             connection = DBConnectionUtil.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT (inventory.unitPrice*inventory.qty) FROM item,inventory WHERE item.inventoryId = inventory.inventoryId and EXTRACT(year FROM item.date) =? AND EXTRACT(month FROM item.date) = ?;");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT (price * quntity) FROM rasa.item WHERE EXTRACT(year FROM date) =? AND EXTRACT(month FROM date) = ?;");
 
             preparedStatement.setString(1, year);
             preparedStatement.setString(2, month);
