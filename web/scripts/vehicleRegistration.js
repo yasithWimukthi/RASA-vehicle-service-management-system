@@ -84,6 +84,8 @@ vehicleRegistrationForm.addEventListener("submit", e =>{
 $('.ui.search.dropdown')
     .dropdown();
 
+// $('.ui.search.dropdown').innerText.fontsize(30);
+
 $('.message .close')
     .on('click', function() {
         $(this)
