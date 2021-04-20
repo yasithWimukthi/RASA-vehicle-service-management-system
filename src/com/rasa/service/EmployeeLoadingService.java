@@ -1,6 +1,7 @@
 package com.rasa.service;
 
 
+import com.rasa.model.Employee;
 import com.rasa.util.DBConnectionUtil;
 import com.rasa.util.EmpQuery;
 
