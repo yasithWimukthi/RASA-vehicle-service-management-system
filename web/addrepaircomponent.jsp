@@ -79,11 +79,26 @@
                     <div class="ui negative message">
                         <i class="close icon"></i>
                         <div class="header">
-                             <p><%=request.getAttribute("error")%></p>
+                           <p><i class="x icon"></i><%=request.getAttribute("error")%></p>
                         </div>
-                     <p>Please check again !</p>
             </div>
+                <%}%>
+                <%if(request.getAttribute("deletemsg") !=null){%>
+                <div class="ui negative message">
+                    <i class="close icon"></i>
+                    <div class="header">
+                       <p> <i class="check icon"></i><%=request.getAttribute("deletemsg")%></p>
+                    </div>
+                </div>
             <%}%>
+                <%if(request.getAttribute("updateMsg") !=null){%>
+                <div class="ui positive message">
+                    <i class="close icon"></i>
+                    <div class="header">
+                        <p> <i class="check icon"></i><%=request.getAttribute("updateMsg")%></p>
+                    </div>
+                </div>
+                <%}%>
             <!-- error space -->
             </div>
             <div class="header_container_repair">
