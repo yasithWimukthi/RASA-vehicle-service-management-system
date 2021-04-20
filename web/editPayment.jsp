@@ -56,7 +56,7 @@
                 <div class="header">Edit Payment</div>
 
 
-                <input type ="text" name="payId" value="<%=request.getAttribute("payId")%>">
+                <input type ="hidden" name="payId" value="<%=request.getAttribute("payId")%>">
                 <div class="form-control" id="form-container">
                     <label for="vehicleRegiNo">Vehicle Registration number</label>
                     <input type="text" name="registrationNumber" id="vehicleRegiNo" value="<%=request.getAttribute("registrationNumber")%>" >
