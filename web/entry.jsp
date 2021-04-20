@@ -28,7 +28,7 @@
     String documents = "";
 
     if (repair.isCustomerNoObjection()){
-        documents = documents+", "+"Customer No Objection";
+        documents = documents+" "+"Customer No Objection";
     }
     if (repair.isLeasingNoObjection()){
         documents = documents+", "+"Leasing No Objection";
@@ -202,7 +202,7 @@
                                 <div class="event">
                                     <div class="content">
                                         <div class="summary">
-                                            <p>Registration Number : <%=vehicle.getRegistrationNo()%></p>
+                                            <p>Registration Number : <%=vehicle.getRegistrationNo().toUpperCase()%></p>
                                         </div>
                                     </div>
                                 </div>
@@ -255,6 +255,10 @@
                             Delete Entry
                         </button>
                     </form>
+<%--                    <button class="ui red fluid button " type="button" id="deleteBtn" style="width:95%; height:35px">--%>
+<%--                        <i class="trash icon"> </i>--%>
+<%--                        Delete Entry--%>
+<%--                    </button>--%>
 
                     <button class="ui blue fluid button" style="width:95%; height:35px; margin-bottom: 10px;" class="mb-10">
                         <i class="address card outline icon"> </i>
@@ -266,11 +270,21 @@
                         Entry Report
                     </button>
 
-                    <button class="ui green fluid button" style="width:95%; height:35px" class="mb-10">
-                        <i class="chart line icon"> </i>
-                        Work Progress
-                    </button>
+                    <form method="post" action="NavigateToWorkprogressServlet">
+                        <input type="hidden" name="sid" value="<%=repair.getRepairId()%>">
+                        <button type="submit" class="ui green fluid button" style="width:95%; height:35px;margin-bottom: 10px" class="mb-10">
+                            <i class="chart line icon"> </i>
+                            Work Progress
+                        </button>
+                    </form>
 
+                    <form method="post" action="NavigateToWorkprogressServlet">
+                        <input type="hidden" name="sid" value="<%=repair.getRepairId()%>">
+                        <button type="submit" class="ui green fluid button" style="width:95%; height:35px" class="mb-10">
+                            <i class="dollar sign icon icon"> </i>
+                            Financial Management
+                        </button>
+                    </form>
                 </div>
 
             </div>
@@ -510,7 +524,18 @@
 
                     </div>
                 </form>
+            </div>
 
+<%--                confirm delete model--%>
+            <div class=" ui tiny modal ">
+                <div class="header">Header</div>
+                <div class="content">
+                    <p>Are You Want To Delete This Service Entry ?</p>
+                </div>
+                <div class="actions">
+                    <button class="ui approve button">Delete</button>
+                    <div class="ui cancel button">Cancel</div>
+                </div>
             </div>
 
         </div>

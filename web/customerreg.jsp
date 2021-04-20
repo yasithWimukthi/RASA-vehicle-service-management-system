@@ -11,6 +11,11 @@
     <title>Customer Registration</title>
     <link href="styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
     <link href="styles/style.css" rel="stylesheet" type="text/css">
+    <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    <script src="styles/Semantic-UI-CSS-master/semantic.min.js"></script>
     <style>
         .search-bar-container {
             height: 50px;
@@ -75,6 +80,7 @@
     String email = "";
     boolean update = false;
     boolean isExist = false;
+    boolean isSuccess = false;
 
     try {
         if(customer != null){
@@ -90,6 +96,12 @@
         firstName = "";
         lastName = "";
         isExist = true;
+        e.printStackTrace();
+    }
+
+    try {
+        isSuccess = (boolean) request.getAttribute("isSuccess");
+    }catch (Exception e){
         e.printStackTrace();
     }
 
@@ -130,6 +142,18 @@
         </div>
 
         <div class="main-content">
+
+            <%--            <% if (isSuccess){%>--%>
+            <div class="ui modal" style="padding-top:50px; z-index: 1000" >
+                <i class="close icon"></i>
+                <div style="display:flex;justify-content: center;">
+                    <i class="check circle outline icon green" style="font-size:200px; margin-top:50px "></i>
+                </div>
+                <div style="display:flex;justify-content: center;" class="header">
+                    <p style="font-size:40px; margin-bottom:50px" class="red">SERVICE ADDED SUCCESSFULY !</p>
+                </div>
+            </div>
+            <%--            <%}%>--%>
 
             <!-- TOP SERARCH BAR -->
 
@@ -245,7 +269,7 @@
                                 <i class="right arrow icon" style="font-size: 1.5em;"></i>
                                 Next
                             </button>
-
+                            <%=isSuccess%>
                         </div>
                     </form>
                 </div>
