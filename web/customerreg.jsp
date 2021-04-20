@@ -142,19 +142,17 @@
         </div>
 
         <div class="main-content">
-
-            <%--            <% if (isSuccess){%>--%>
-            <div class="ui modal" style="padding-top:50px; z-index: 1000" >
-                <i class="close icon"></i>
-                <div style="display:flex;justify-content: center;">
-                    <i class="check circle outline icon green" style="font-size:200px; margin-top:50px "></i>
+            <% if (isSuccess){%>
+                <div class="ui modal" style="padding-top:50px;z-index: 100 " >
+                    <i class="close icon"></i>
+                    <div style="display:flex;justify-content: center;">
+                        <i class="check circle outline icon green" style="font-size:200px; margin-top:50px "></i>
+                    </div>
+                    <div style="display:flex;justify-content: center;" class="header">
+                        <p style="font-size:50px; margin-bottom:50px" class="red">SERVICE ADDED SUCCESSFULLY !</p>
+                    </div>
                 </div>
-                <div style="display:flex;justify-content: center;" class="header">
-                    <p style="font-size:40px; margin-bottom:50px" class="red">SERVICE ADDED SUCCESSFULY !</p>
-                </div>
-            </div>
-            <%--            <%}%>--%>
-
+            <%}%>
             <!-- TOP SERARCH BAR -->
 
             <div class="ui grid search-bar-container">
@@ -269,7 +267,7 @@
                                 <i class="right arrow icon" style="font-size: 1.5em;"></i>
                                 Next
                             </button>
-                            <%=isSuccess%>
+<%--                            <%=isSuccess%>--%>
                         </div>
                     </form>
                 </div>
