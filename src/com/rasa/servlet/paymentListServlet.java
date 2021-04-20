@@ -24,11 +24,11 @@ public class paymentListServlet extends HttpServlet {
 
         double cash = Double.parseDouble(request.getParameter("cash"));
         Date paymentDate = Date.valueOf(request.getParameter("paymentDate"));
-        int serivceID = Integer.parseInt(request.getParameter("serivceID"));
+        int serviceID = Integer.parseInt(request.getParameter("serviceID"));
 
 
 
-        paymentList newPayment = new paymentList(registrationNumber,estimateAmount,cash,paymentDate,serivceID);
+        paymentList newPayment = new paymentList(registrationNumber,estimateAmount,cash,paymentDate,serviceID);
         try {
             paymentService.addPayment(newPayment);
             response.sendRedirect("paymentlist.jsp");
