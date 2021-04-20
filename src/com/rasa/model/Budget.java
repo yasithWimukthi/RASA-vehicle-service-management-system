@@ -1,4 +1,4 @@
-package model;
+package com.rasa.model;
 
 import java.util.Date;
 
