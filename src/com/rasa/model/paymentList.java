@@ -6,31 +6,45 @@ import java.sql.Date;
 public class paymentList {
 
     int payId;
-    String vehicleRegiNo;
+    String registrationNumber;
     String customerName;
     double estimateAmount;
     double cash;
     Date paymentDate;
+    int serivceID;
 
-    public paymentList(int payId,String vehicleRegiNo,String customerName,double estimateAmount,double cash,Date paymentDate) {
+    public paymentList(int payId,String registrationNumber,double estimateAmount,double cash,Date paymentDate,int serivceID) {
         this.payId = payId;
-        this.vehicleRegiNo = vehicleRegiNo;
-        this.customerName = customerName;
+        this.registrationNumber = registrationNumber;
+
         this.estimateAmount = estimateAmount;
 
         this.cash = cash;
         this.paymentDate = paymentDate;
+        this.serivceID = serivceID;
     }
 
-    public paymentList(String vehicleRegiNo,String customerName,double estimateAmount,double cash,Date paymentDate) {
+    public paymentList(String registrationNumber,double estimateAmount,double cash,Date paymentDate,int serivceID) {
 
 
-        this.vehicleRegiNo = vehicleRegiNo;
-        this.customerName = customerName;
+        this.registrationNumber = registrationNumber;
+
         this.estimateAmount = estimateAmount;
 
         this.cash = cash;
         this.paymentDate = paymentDate;
+        this.serivceID = serivceID;
+    }
+    public paymentList(int payId,String registrationNumber,double estimateAmount,double cash,Date paymentDate) {
+      this.payId = payId;
+
+        this.registrationNumber = registrationNumber;
+
+        this.estimateAmount = estimateAmount;
+
+        this.cash = cash;
+        this.paymentDate = paymentDate;
+
     }
 
 
@@ -43,21 +57,15 @@ public class paymentList {
         this.payId = payId;
     }
 
-    public String getVehicleRegiNo() {
-        return vehicleRegiNo;
+    public String getRegistrationNumber() {
+        return registrationNumber;
     }
 
-    public void setVehicleRegiNo(String vehicleRegiNo) {
-        this.vehicleRegiNo = vehicleRegiNo;
+    public void setRegistrationNumber(String registrationNumber) {
+        this.registrationNumber =registrationNumber;
     }
 
-    public String getCustomerName() {
-        return customerName;
-    }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
 
     public double getEstimateAmount() {
         return estimateAmount;
@@ -83,5 +91,13 @@ public class paymentList {
 
     public void setPaymentDate(Date paymentDate) {
         this.paymentDate = paymentDate;
+    }
+
+    public int getSerivceID() {
+        return serivceID;
+    }
+
+    public void setSerivceID(int serivceID) {
+        this.serivceID = serivceID;
     }
 }
