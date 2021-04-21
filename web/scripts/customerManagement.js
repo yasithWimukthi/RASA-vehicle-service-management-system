@@ -62,6 +62,7 @@ customerRegForm.addEventListener("submit",e =>{
     if(mobile.trim().length !== 10){
         document.querySelector("#form-container").classList.add("error");
         document.querySelector("#mobileContainer").classList.add("error");
+        document.querySelector(".mobile-error").style.visibility = "visible";
         e.preventDefault();
     }
 
