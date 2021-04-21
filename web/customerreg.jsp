@@ -283,6 +283,7 @@
                             <div class="field " id="emailContainer">
                                 <label>Email</label>
                                 <input placeholder="Email" type="Email" name="email" id="email" value="<%=email%>">
+                                <p class="email-error" style="color: red;visibility: hidden;">Invalid email address. Ex: abc@example.com</p>
                             </div>
 
                             <input type="hidden" name="update" value="<%=update%>">
