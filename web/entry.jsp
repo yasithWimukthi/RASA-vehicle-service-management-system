@@ -278,7 +278,7 @@
                         </button>
                     </form>
 
-                    <form method="post" action="NavigateToWorkprogressServlet">
+                    <form method="post" action="NavigateToWorkprogressServlet" style="margin-bottom: 100px">
                         <input type="hidden" name="sid" value="<%=repair.getRepairId()%>">
                         <button type="submit" class="ui green fluid button" style="width:95%; height:35px" class="mb-10">
                             <i class="dollar sign icon icon"> </i>
@@ -290,29 +290,29 @@
             </div>
             <!-- second row end -->
 
-            <div class="ui grid">
-                <div class="sixteen wide column">
-                    <div class="ui placeholder segment" style="width:95%">
-                        <div class="ui icon header">
-                            <i class="file image outline icon"></i>
-                            No images are listed for this customer.
-                        </div>
-                        <div class="ui primary button">Add Images</div>
-                    </div>
-                </div>
-            </div>
+<%--            <div class="ui grid">--%>
+<%--                <div class="sixteen wide column">--%>
+<%--                    <div class="ui placeholder segment" style="width:95%">--%>
+<%--                        <div class="ui icon header">--%>
+<%--                            <i class="file image outline icon"></i>--%>
+<%--                            No images are listed for this customer.--%>
+<%--                        </div>--%>
+<%--                        <div class="ui primary button">Add Images</div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
 
-            <div class="ui grid" style="margin-bottom: 100px;">
-                <div class="sixteen wide column">
-                    <div class="ui placeholder segment" style="width:95%">
-                        <div class="ui icon header">
-                            <i class="file image outline icon"></i>
-                            No images are listed for this customer.
-                        </div>
-                        <div class="ui primary button">Add Images</div>
-                    </div>
-                </div>
-            </div>
+<%--            <div class="ui grid" style="margin-bottom: 100px;">--%>
+<%--                <div class="sixteen wide column">--%>
+<%--                    <div class="ui placeholder segment" style="width:95%">--%>
+<%--                        <div class="ui icon header">--%>
+<%--                            <i class="file image outline icon"></i>--%>
+<%--                            No images are listed for this customer.--%>
+<%--                        </div>--%>
+<%--                        <div class="ui primary button">Add Images</div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
 
             <!-- entry model form -->
             <div class="ui modal entry-edit-form" style="padding:50px">

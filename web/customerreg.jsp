@@ -238,6 +238,7 @@
                                 <div class="field" id="nicContainer">
                                     <label>NIC Number</label>
                                     <input placeholder="NIC Number" type="text" name="nic" id="nic" value="<%=nicNumber%>" <%=update ? "disabled" : "null"%>>
+                                    <p class="nic-error" style="color: red;visibility: hidden;">Invalid NIC number. Ex: 98XXXXXX2V</p>
                                 </div>
                                 <div class="field" id="mobileContainer">
                                     <label>Phone Number</label>

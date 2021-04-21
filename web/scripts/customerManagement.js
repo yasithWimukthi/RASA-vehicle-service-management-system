@@ -9,6 +9,8 @@ const idRegex = /^([0-9]{9}[x|X|v|V]|[0-9]{12})$/;
 const tldEmailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
+let nicError = document.querySelector(".nic-error");
+
 
 /**************************************************
  TOP SEARCH BAR VALIDATION
@@ -53,6 +55,7 @@ customerRegForm.addEventListener("submit",e =>{
     if(nic.trim().length == 0 || !idRegex.test(nic.trim())){
         document.querySelector("#form-container").classList.add("error");
         document.querySelector("#nicContainer").classList.add("error");
+        nicError.style.visibility="visible";
         e.preventDefault();
     }
 
