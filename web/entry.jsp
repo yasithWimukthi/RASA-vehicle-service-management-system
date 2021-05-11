@@ -44,14 +44,14 @@
         <div class="sidebar">
             <ul class="side-nav">
 
-                <li class="side-nav__item side-nav__item--active">
+                <li class="side-nav__item ">
                     <a href="#" class="side-nav__link">
                         <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
                         <div class="side-nav__text">Add Service Entry</div>
                     </a>
                 </li>
 
-                <li class="side-nav__item">
+                <li class="side-nav__item side-nav__item--active">
                     <a href="searchservice.jsp" class="side-nav__link">
                         <i class="search icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
                         <div class="side-nav__text">Search Entry</div>
@@ -349,7 +349,7 @@
                     Update Entry
                 </div>
 
-                <form method="post" id="entryUpdateForm">
+                <form method="post" id="entryUpdateForm" action="UpdateEntryServlet">
                     <div class="ui huge form" style="margin:50px" id="form-container">
                         <div class="two fields">
                             <div class="field">
@@ -371,25 +371,25 @@
                             <label for="repair">Repair Type:</label>
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" name="reapir" checked="" tabindex="10" class="hidden">
+                                    <input type="radio" name="reapir" checked="" tabindex="10" class="hidden" id="insurance" value="Insuarance">
                                     <label>Insuarance</label>
                                 </div>
                             </div>
 
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" name="reapir" checked="" tabindex="0" class="hidden">
+                                    <input type="radio" name="reapir" checked="" tabindex="0" class="hidden" id="nonInsurance" value="nonInsurance">
                                     <label>Non-Insuarance</label>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="field">
+                        <div class="field"  id="accidentDateContainer">
                             <label>Accident Date</label>
-                            <input placeholder="Accident Date" type="date">
+                            <input placeholder="Accident Date" type="date" id="accidentDate" name="accidentDate">
                         </div>
 
-                        <div class="inline field">
+                        <div class="inline field" id="document-container" style="display: none">
                             <label for="repair">Repair Type:</label>
                             <div class="ui checkbox">
                                 <input type="checkbox" tabindex="0" class="hidden">
