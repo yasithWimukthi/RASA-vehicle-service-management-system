@@ -50,6 +50,11 @@ const showUpdateClientModel = () =>{
         .modal('show');
 }
 
+const showUpdateVehicleModel = () =>{
+    $('.ui.modal.vehicle-edit-form')
+        .modal('show');
+}
+
 const entryUpdateForm = document.querySelector("#entryUpdateForm");
 
 document.querySelector("#insurance").addEventListener("change",()=>{
@@ -148,5 +153,55 @@ clientUpdateForm.addEventListener("submit",e =>{
         showUpdateClientModel();
     }else {
         document.querySelector("#emailContainer").classList.remove("error");
+    }
+});
+
+
+/*************************************************
+ *              Vehicle form validation
+ *************************************************/
+const vehicleUpdateForm = document.querySelector("#vehicleUpdateForm");
+
+
+vehicleUpdateForm.addEventListener("submit",e=>{
+    let brand = document.querySelector("#brand").value;
+    let model = document.querySelector("#model").value;
+    let color = document.querySelector("#color").value;
+    let manufactYear = document.querySelector("#manufactureYear").value;
+
+    if(brand === ""){
+        e.preventDefault();
+        showUpdateVehicleModel();
+        document.querySelector("#vehicleUpdateFormContainer").classList.add("error");
+        document.querySelector("#brandContainer").classList.add("error");
+    }else {
+        document.querySelector("#brandContainer").classList.remove("error");
+    }
+
+    if (model.trim() === "") {
+        e.preventDefault();
+        showUpdateVehicleModel();
+        document.querySelector("#vehicleUpdateFormContainer").classList.add("error");
+        document.querySelector("#modelContainer").classList.add("error");
+    }else {
+        document.querySelector("#modelContainer").classList.remove("error")
+    }
+
+    if (color.trim() === "") {
+        e.preventDefault();
+        showUpdateVehicleModel();
+        document.querySelector("#vehicleUpdateFormContainer").classList.add("error");
+        document.querySelector("#colorContainer").classList.add("error");
+    }else{
+        document.querySelector("#colorContainer").classList.remove("error")
+    }
+
+    if (manufactYear.trim() === "" || !numbersRegex.test(manufactYear.trim())) {
+        e.preventDefault();
+        showUpdateVehicleModel();
+        document.querySelector("#vehicleUpdateFormContainer").classList.add("error");
+        document.querySelector("#manufactYearContainer").classList.add("error");
+    }else{
+        document.querySelector("#manufactYearContainer").classList.remove("error");
     }
 });

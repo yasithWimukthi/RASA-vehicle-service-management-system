@@ -492,52 +492,42 @@
             </div>
 
             <!-- edit vehicle information form -->
-            <div class="ui modal vehicle-edit-form" style="padding:50px">
+            <div class="ui modal vehicle-edit-form" style="padding:50px" >
 
                 <i class="close icon"></i>
                 <div class="header">
                     Update Vihicle Information
                 </div>
 
-                <form method="post" id="vehicleUpdateForm">
-                    <div class="ui huge form error"style="margin:50px">
+                <form method="post" id="vehicleUpdateForm" action="UpdateVehicleServlet">
+                    <div class="ui huge form" style="margin:50px" id="vehicleUpdateFormContainer">
                         <div class="field">
                             <label>Vehicle Registration Number</label>
-                            <input type="text" placeholder="Registration Number">
+                            <input type="text" placeholder="Registration Number" value="<%=vehicle.getRegistrationNo().toUpperCase()%>" disabled>
                         </div>
 
                         <div class="field" id="brandContainer" >
                             <label>Brand Name</label>
-                            <select class="ui search dropdown" id="brand">
-                                <option value="Toyota">Toyota</option>
-                                <option value="Nissan">Nissan</option>
-                                <option value="Susuki">Susuki</option>
-                                <option value="BMW">BMW</option>
-                                <option value="Benze">Benze</option>
-                                <option value="Other" id="other">Other</option>
-                            </select>
-                        </div>
-
-                        <div class="field" id="OtherBrandContainer" style="display: none">
-                            <label>Brand Name</label>
-                            <input type="text" placeholder="Brand Name" id="otherBrand">
+                            <input type="text" placeholder="Brand Name" id="brand" value="<%=vehicle.getBrand()%>" name="brand">
                         </div>
 
                         <div class="two fields">
                             <div class="field" id="modelContainer">
                                 <label>Model</label>
-                                <input placeholder="Vehile Model" type="text" id="model">
+                                <input placeholder="Vehicle Model" type="text" id="model" name="model" value="<%=vehicle.getModel()%>">
                             </div>
                             <div class="field" id="colorContainer">
                                 <label>Color</label>
-                                <input placeholder="Vehicle Color" type="text" id="color">
+                                <input placeholder="Vehicle Color" type="text" id="color" name="color" value="<%=vehicle.getColor()%>">
                             </div>
                         </div>
 
                         <div class="field" id="manufactYearContainer">
                             <label>Manufactured Year</label>
-                            <input type="text" placeholder="Brand Name" id="manufactYear">
+                            <input type="text" placeholder="Manufacture Year" name="manufactureYear" id="manufactureYear" value="<%=vehicle.getYear()%>">
                         </div>
+
+                        <input type="hidden" value="<%=vehicle.getRegistrationNo().toUpperCase()%>" name="registrationNumber">
 
                         <div class="ui error message">
                             <div class="header">Action Forbidden</div>
