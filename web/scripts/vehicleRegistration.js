@@ -73,7 +73,7 @@ vehicleRegistrationForm.addEventListener("submit", e =>{
         e.preventDefault();
         document.querySelector("#form-container").classList.add("error");
         document.querySelector("#manufactYearContainer").classList.add("error");
-        document.querySelector(".email-error").style.visibility="visible";
+       // document.querySelector(".email-error").style.visibility="visible";
     }else{
         document.querySelector("#manufactYearContainer").classList.remove("error");
     }

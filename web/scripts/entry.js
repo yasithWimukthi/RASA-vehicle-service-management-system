@@ -40,8 +40,12 @@ $( "#deleteBtn" ).click(function () {
  *              Entry form validation
  *************************************************/
 
+const showUpdateEntryModel = ()=>{
+        $('.ui.modal.entry-edit-form')
+            .modal('show');
+}
+
 const entryUpdateForm = document.querySelector("#entryUpdateForm");
-alert("event")
 
 document.querySelector("#insurance").addEventListener("change",()=>{
     if(document.querySelector("#insurance").checked){
@@ -63,6 +67,8 @@ entryUpdateForm.addEventListener("submit",e=>{
         e.preventDefault();
         document.querySelector("#form-container").classList.add("error");
         document.querySelector("#entryDateContainer").classList.add("error");
+        showUpdateEntryModel();
+
     }else{
         document.querySelector("#entryDateContainer").classList.remove("error");
     }
@@ -71,6 +77,7 @@ entryUpdateForm.addEventListener("submit",e=>{
         e.preventDefault();
         document.querySelector("#form-container").classList.add("error");
         document.querySelector("#accidentDateContainer").classList.add("error");
+        showUpdateEntryModel();
     }else{
         document.querySelector("#accidentDateContainer").classList.remove("error");
     }

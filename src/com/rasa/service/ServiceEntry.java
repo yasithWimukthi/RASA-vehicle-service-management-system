@@ -187,4 +187,48 @@ public class ServiceEntry implements IServiceEntry{
         }
         return true;
     }
+
+    @Override
+    public Boolean updateServiceEntry(
+            int serviceID,
+            String ServiceType,
+            String entryDate,
+            String accidentDate,
+            boolean  customerNoObjection,
+            boolean insuranceNoObjection,
+            boolean claimForm
+    ) {
+        try{
+            conn = DBConnectionUtil.getConnection();
+            String sql = "";
+
+            if (ServiceType.equals("insurance")){
+                sql = CustomerManagementQuery.UPDATE_CASH_SERVICE_ENTRY;
+                preparedStatement = conn.prepareStatement(sql);
+
+                preparedStatement.setString(QueryConstants.COLUMN_ONE,entryDate);
+                preparedStatement.setString(QueryConstants.COLUMN_TWO,accidentDate);
+                preparedStatement.setInt(QueryConstants.COLUMN_THREE,serviceID);
+            }else {
+                sql = CustomerManagementQuery.UPDATE_INSURANCE_SERVICE_ENTRY;
+                preparedStatement = conn.prepareStatement(sql);
+
+                preparedStatement.setString(QueryConstants.COLUMN_ONE,entryDate);
+                preparedStatement.setString(QueryConstants.COLUMN_TWO,accidentDate);
+                preparedStatement.setBoolean(QueryConstants.COLUMN_THREE,customerNoObjection);
+                preparedStatement.setBoolean(QueryConstants.COLUMN_FOUR,insuranceNoObjection);
+                preparedStatement.setBoolean(QueryConstants.COLUMN_FIVE,claimForm);
+                preparedStatement.setInt(QueryConstants.COLUMN_SIX,serviceID);
+            }
+
+            preparedStatement.execute();
+
+        }catch (SQLException | ClassNotFoundException e){
+            e.printStackTrace();
+            return false;
+        }finally {
+            DBConnectionUtil.closeConnection(preparedStatement, conn);
+        }
+        return true;
+    }
 }

@@ -67,4 +67,19 @@ public interface IServiceEntry {
      * @return return true if delete successfully, otherwise false
      */
     Boolean deleteServiceEntry(int serviceID);
+
+    /**
+     * update service entry of given service id
+     * @param serviceID
+     * @return return true if delete successfully, otherwise false
+     */
+    Boolean updateServiceEntry(
+            int serviceID,
+            String ServiceType,
+            String entryDate,
+            String accidentDate,
+            boolean  customerNoObjection,
+            boolean insuranceNoObjection,
+            boolean claimForm
+    ) ;
 }
