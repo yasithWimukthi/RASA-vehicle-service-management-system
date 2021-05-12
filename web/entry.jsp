@@ -371,14 +371,14 @@
                             <label for="repair">Repair Type:</label>
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" name="reapir" checked tabindex="10" class="hidden" id="insurance" value="Insuarance">
+                                    <input type="radio" name="reapir" checked tabindex="10" class="hidden" id="insurance" value="insurance">
                                     <label>Insuarance</label>
                                 </div>
                             </div>
 
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" name="reapir"   tabindex="0" class="hidden" id="nonInsurance" value="nonInsurance">
+                                    <input type="radio" name="reapir"  tabindex="0" class="hidden" id="nonInsurance" value="nonInsurance">
                                     <label>Non-Insuarance</label>
                                 </div>
                             </div>
@@ -435,40 +435,42 @@
                     Update Client Information
                 </div>
 
-                <form method="post" id="clientUpdateForm">
-                    <div class="ui huge form error"style="margin:50px">
+                <form method="post" id="clientUpdateForm" action="UpdateClientServlet">
+                    <div class="ui huge form" id="client-form-container" style="margin:50px">
 
                         <div class="two fields">
                             <div class="field " id="fnameContainer">
                                 <label>First Name</label>
-                                <input placeholder="First Name" type="text" id="fname">
+                                <input placeholder="First Name" type="text" id="fname" name="fname" value="<%=customer.getFirstName()%>">
                             </div>
                             <div class="field" id="lnameContainer">
                                 <label>Last Name</label>
-                                <input placeholder="Last Name" type="text" id="lname">
+                                <input placeholder="Last Name" type="text" id="lname" name="lname" value="<%=customer.getLastName()%>">
                             </div>
                         </div>
 
                         <div class="two fields">
                             <div class="field" id="nicContainer">
                                 <label>NIC Number</label>
-                                <input placeholder="NIC Number" type="text" id="nic">
+                                <input placeholder="NIC Number" type="text" id="nic" name="nicNumber" value="<%=customer.getNICno()%>" disabled>
                             </div>
                             <div class="field" id="mobileContainer">
                                 <label>Phone Number</label>
-                                <input placeholder="Phone Number" type="text" id="mobile">
+                                <input placeholder="Phone Number" type="text" id="mobile" name="mobile" value="<%=customer.getPhoneNo()%>">
                             </div>
                         </div>
 
                         <div class="field" id="addressContainer">
                             <label>Address</label>
-                            <input placeholder="Address" type="text" id="address">
+                            <input placeholder="Address" type="text" id="address" name="address" value="<%=customer.getAddress()%>">
                         </div>
 
                         <div class="field" id="emailContainer">
                             <label>Email</label>
-                            <input placeholder="Email" type="Email" id="email">
+                            <input placeholder="Email" type="Email" id="email" name="email" value="<%=customer.getEmail()%>">
                         </div>
+
+                        <input type="hidden" name="nic" value="<%=customer.getNICno()%>">
 
                         <div class="ui error message">
                             <div class="header">Action Forbidden</div>

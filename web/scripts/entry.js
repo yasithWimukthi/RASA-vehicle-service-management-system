@@ -45,6 +45,11 @@ const showUpdateEntryModel = ()=>{
             .modal('show');
 }
 
+const showUpdateClientModel = () =>{
+    $('.ui.modal.client-edit-form')
+        .modal('show');
+}
+
 const entryUpdateForm = document.querySelector("#entryUpdateForm");
 
 document.querySelector("#insurance").addEventListener("change",()=>{
@@ -80,5 +85,68 @@ entryUpdateForm.addEventListener("submit",e=>{
         showUpdateEntryModel();
     }else{
         document.querySelector("#accidentDateContainer").classList.remove("error");
+    }
+});
+
+/*************************************************
+ *              Client form validation
+ *************************************************/
+
+const clientUpdateForm = document.querySelector("#clientUpdateForm");
+
+const tldEmailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+clientUpdateForm.addEventListener("submit",e =>{
+    let fname = document.getElementById("fname").value;
+    let lname = document.getElementById("lname").value;
+    let mobile = document.getElementById("mobile").value;
+    let address = document.getElementById("address").value;
+    let email = document.getElementById("email").value;
+
+    if(fname.trim().length == 0){
+        document.querySelector("#client-form-container").classList.add("error");
+        document.querySelector("#fnameContainer").classList.add("error");
+        e.preventDefault();
+        showUpdateClientModel();
+    }else {
+        document.querySelector("#fnameContainer").classList.remove("error");
+    }
+
+    if(lname.trim().length == 0){
+        document.querySelector("#client-form-container").classList.add("error");
+        document.querySelector("#lnameContainer").classList.add("error");
+        e.preventDefault();
+        showUpdateClientModel();
+    }else{
+        document.querySelector("#lnameContainer").classList.remove("error");
+    }
+
+
+    if(mobile.trim().length !== 10){
+        document.querySelector("#client-form-container").classList.add("error");
+        document.querySelector("#mobileContainer").classList.add("error");
+        e.preventDefault();
+        showUpdateClientModel();
+    }else{
+        document.querySelector("#mobileContainer").classList.remove("error");
+    }
+
+    if(address.trim().length == 0 ){
+        document.querySelector("#client-form-container").classList.add("error");
+        document.querySelector("#addressContainer").classList.add("error");
+        e.preventDefault();
+        showUpdateClientModel();
+    }else {
+        document.querySelector("#addressContainer").classList.remove("error");
+    }
+
+    if(!tldEmailRegex.test(email.trim()) || !emailRegex.test(email.trim())){
+        document.querySelector("#client-form-container").classList.add("error");
+        document.querySelector("#emailContainer").classList.add("error");
+        e.preventDefault();
+        showUpdateClientModel();
+    }else {
+        document.querySelector("#emailContainer").classList.remove("error");
     }
 });

@@ -155,14 +155,14 @@
                                 <label for="repair">Repair Type:</label>
                                 <div class="field">
                                     <div class="ui radio checkbox">
-                                        <input type="radio" name="repair" tabindex="10" class="hidden" id="insurance" value="Insuarance">
+                                        <input type="radio" name="repair" checked tabindex="10" class="hidden" id="insurance" value="Insuarance">
                                         <label style="font-size: 16px">Insuarance</label>
                                     </div>
                                 </div>
 
                                 <div class="field">
                                     <div class="ui radio checkbox">
-                                        <input type="radio" name="repair" checked="" tabindex="0" class="hidden" id="nonInsurance" value="nonInsurance">
+                                        <input type="radio" name="repair"  tabindex="0" class="hidden" id="nonInsurance" value="nonInsurance">
                                         <label style="font-size: 16px">Non-Insuarance</label>
                                     </div>
                                 </div>
