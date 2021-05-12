@@ -349,36 +349,36 @@
                     Update Entry
                 </div>
 
-                <form method="post" id="entryUpdateForm" action="UpdateEntryServlet">
+                <form method="post" id="entryUpdateForm" action="UpdateEntryServlet" >
                     <div class="ui huge form" style="margin:50px" id="form-container">
                         <div class="two fields">
                             <div class="field">
                                 <label>Customer Name</label>
-                                <input placeholder="Customer Name" type="text" >
+                                <input placeholder="Customer Name" type="text"  value="<%=customer.getFirstName()%> <%=customer.getLastName()%>" disabled>
                             </div>
                             <div class="field">
                                 <label>Vehicle Registration Number</label>
-                                <input placeholder="Registration Number" type="text" disabled>
+                                <input placeholder="Registration Number" type="text" value="<%=vehicle.getRegistrationNo().toUpperCase()%>" disabled>
                             </div>
                         </div>
 
                         <div class="field" id="entryDateContainer">
                             <label>Entry Date</label>
-                            <input placeholder="Entry Date" type="date" id="entryDate">
+                            <input placeholder="Entry Date" type="date" id="entryDate" value="<%=repair.getEntryDate()%>">
                         </div>
 
                         <div class="inline fields">
                             <label for="repair">Repair Type:</label>
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" name="reapir" checked="" tabindex="10" class="hidden" id="insurance" value="Insuarance">
+                                    <input type="radio" name="reapir" checked tabindex="10" class="hidden" id="insurance" value="insurance">
                                     <label>Insuarance</label>
                                 </div>
                             </div>
 
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" name="reapir" checked="" tabindex="0" class="hidden" id="nonInsurance" value="nonInsurance">
+                                    <input type="radio" name="reapir"  tabindex="0" class="hidden" id="nonInsurance" value="nonInsurance">
                                     <label>Non-Insuarance</label>
                                 </div>
                             </div>
@@ -386,26 +386,28 @@
 
                         <div class="field"  id="accidentDateContainer">
                             <label>Accident Date</label>
-                            <input placeholder="Accident Date" type="date" id="accidentDate" name="accidentDate">
+                            <input placeholder="Accident Date" type="date" id="accidentDate" name="accidentDate" value="<%=repair.getAccidentDate()%>">
                         </div>
 
-                        <div class="inline field" id="document-container" style="display: none">
+                        <div class="inline field" id="document-container" style="display: none; ">
                             <label for="repair">Repair Type:</label>
                             <div class="ui checkbox">
-                                <input type="checkbox" tabindex="0" class="hidden">
+                                <input type="checkbox" tabindex="0" class="hidden" name="customerNoObjection">
                                 <label>Customer No objection</label>
                             </div>
 
                             <div class="ui checkbox">
-                                <input type="checkbox" tabindex="0" class="hidden">
+                                <input type="checkbox" tabindex="0" class="hidden" name="insuranceNoObjection">
                                 <label>Insuarance No objection</label>
                             </div>
 
                             <div class="ui checkbox">
-                                <input type="checkbox" tabindex="0" class="hidden">
+                                <input type="checkbox" tabindex="0" class="hidden" name="claimForm">
                                 <label>Claim Form</label>
                             </div>
                         </div>
+
+                        <input type="hidden" value="<%=repair.getRepairId()%>" name="repairId">
 
                         <div class="ui error message">
                             <div class="header">Action Forbidden</div>
@@ -433,40 +435,42 @@
                     Update Client Information
                 </div>
 
-                <form method="post" id="clientUpdateForm">
-                    <div class="ui huge form error"style="margin:50px">
+                <form method="post" id="clientUpdateForm" action="UpdateClientServlet">
+                    <div class="ui huge form" id="client-form-container" style="margin:50px">
 
                         <div class="two fields">
                             <div class="field " id="fnameContainer">
                                 <label>First Name</label>
-                                <input placeholder="First Name" type="text" id="fname">
+                                <input placeholder="First Name" type="text" id="fname" name="fname" value="<%=customer.getFirstName()%>">
                             </div>
                             <div class="field" id="lnameContainer">
                                 <label>Last Name</label>
-                                <input placeholder="Last Name" type="text" id="lname">
+                                <input placeholder="Last Name" type="text" id="lname" name="lname" value="<%=customer.getLastName()%>">
                             </div>
                         </div>
 
                         <div class="two fields">
                             <div class="field" id="nicContainer">
                                 <label>NIC Number</label>
-                                <input placeholder="NIC Number" type="text" id="nic">
+                                <input placeholder="NIC Number" type="text" id="nic" name="nicNumber" value="<%=customer.getNICno()%>" disabled>
                             </div>
                             <div class="field" id="mobileContainer">
                                 <label>Phone Number</label>
-                                <input placeholder="Phone Number" type="text" id="mobile">
+                                <input placeholder="Phone Number" type="text" id="mobile" name="mobile" value="<%=customer.getPhoneNo()%>">
                             </div>
                         </div>
 
                         <div class="field" id="addressContainer">
                             <label>Address</label>
-                            <input placeholder="Address" type="text" id="address">
+                            <input placeholder="Address" type="text" id="address" name="address" value="<%=customer.getAddress()%>">
                         </div>
 
                         <div class="field" id="emailContainer">
                             <label>Email</label>
-                            <input placeholder="Email" type="Email" id="email">
+                            <input placeholder="Email" type="Email" id="email" name="email" value="<%=customer.getEmail()%>">
                         </div>
+
+                        <input type="hidden" name="nic" value="<%=customer.getNICno()%>">
 
                         <div class="ui error message">
                             <div class="header">Action Forbidden</div>
