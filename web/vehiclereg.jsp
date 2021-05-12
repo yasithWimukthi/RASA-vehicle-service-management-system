@@ -276,7 +276,7 @@
 
                             <div class="field" id="manufactYearContainer">
                                 <label>Manufactured Year</label>
-                                <input type="text" placeholder="Brand Name" name="manufactureYear" id="manufactureYear" value="<%= year%>">
+                                <input type="text" placeholder="Manufacture Year" name="manufactureYear" id="manufactureYear" value="<%= year%>">
                                 <p class="year-error" style="color: red;visibility: hidden;">Invalid Year</p>
                             </div>
 
