@@ -408,6 +408,8 @@
                         </div>
 
                         <input type="hidden" value="<%=repair.getRepairId()%>" name="repairId">
+                        <input type="hidden" value="<%=customer.getNICno()%>" name="nic">
+                        <input type="hidden" value="<%=vehicle.getRegistrationNo()%>" name="registrationNumber" >
 
                         <div class="ui error message">
                             <div class="header">Action Forbidden</div>
@@ -471,6 +473,8 @@
                         </div>
 
                         <input type="hidden" name="nic" value="<%=customer.getNICno()%>">
+                        <input type="hidden" value="<%=repair.getRepairId()%>" name="repairId">
+                        <input type="hidden" value="<%=vehicle.getRegistrationNo()%>" name="registrationNumber" >
 
                         <div class="ui error message">
                             <div class="header">Action Forbidden</div>
@@ -528,6 +532,8 @@
                         </div>
 
                         <input type="hidden" value="<%=vehicle.getRegistrationNo().toUpperCase()%>" name="registrationNumber">
+                        <input type="hidden" name="nic" value="<%=customer.getNICno()%>">
+                        <input type="hidden" value="<%=repair.getRepairId()%>" name="repairId">
 
                         <div class="ui error message">
                             <div class="header">Action Forbidden</div>
