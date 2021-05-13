@@ -408,6 +408,8 @@
                         </div>
 
                         <input type="hidden" value="<%=repair.getRepairId()%>" name="repairId">
+                        <input type="hidden" value="<%=customer.getNICno()%>" name="nic">
+                        <input type="hidden" value="<%=vehicle.getRegistrationNo()%>" name="registrationNumber" >
 
                         <div class="ui error message">
                             <div class="header">Action Forbidden</div>
@@ -471,6 +473,8 @@
                         </div>
 
                         <input type="hidden" name="nic" value="<%=customer.getNICno()%>">
+                        <input type="hidden" value="<%=repair.getRepairId()%>" name="repairId">
+                        <input type="hidden" value="<%=vehicle.getRegistrationNo()%>" name="registrationNumber" >
 
                         <div class="ui error message">
                             <div class="header">Action Forbidden</div>
@@ -528,6 +532,8 @@
                         </div>
 
                         <input type="hidden" value="<%=vehicle.getRegistrationNo().toUpperCase()%>" name="registrationNumber">
+                        <input type="hidden" name="nic" value="<%=customer.getNICno()%>">
+                        <input type="hidden" value="<%=repair.getRepairId()%>" name="repairId">
 
                         <div class="ui error message">
                             <div class="header">Action Forbidden</div>
@@ -559,6 +565,18 @@
                     <div class="ui cancel button">Cancel</div>
                 </div>
             </div>
+
+            <% if (true){%>
+                <div class="ui modal update-message" style="padding-top:50px;z-index: 100 " >
+                    <i class="close icon"></i>
+                    <div style="display:flex;justify-content: center;">
+                        <i class="check circle outline icon green" style="font-size:200px; margin-top:50px "></i>
+                    </div>
+                    <div style="display:flex;justify-content: center;" class="header">
+                        <p style="font-size:50px; margin-bottom:50px" class="red">DELETE  SUCCESSFULY !</p>
+                    </div>
+                </div>
+            <%}%>
 
         </div>
 
