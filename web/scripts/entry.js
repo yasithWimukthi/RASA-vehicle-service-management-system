@@ -23,6 +23,9 @@ $( "#update-vehicle" ).click(function () {
         .modal('show');
 });
 
+$('.ui.modal.update-message')
+    .modal('show');
+
 $('.ui.radio.checkbox')
     .checkbox();
 

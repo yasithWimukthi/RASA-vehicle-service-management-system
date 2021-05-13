@@ -566,6 +566,18 @@
                 </div>
             </div>
 
+            <% if (true){%>
+                <div class="ui modal update-message" style="padding-top:50px;z-index: 100 " >
+                    <i class="close icon"></i>
+                    <div style="display:flex;justify-content: center;">
+                        <i class="check circle outline icon green" style="font-size:200px; margin-top:50px "></i>
+                    </div>
+                    <div style="display:flex;justify-content: center;" class="header">
+                        <p style="font-size:50px; margin-bottom:50px" class="red">DELETE  SUCCESSFULY !</p>
+                    </div>
+                </div>
+            <%}%>
+
         </div>
 
     </div>
