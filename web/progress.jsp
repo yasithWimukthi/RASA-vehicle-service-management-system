@@ -82,11 +82,15 @@
                                           <form method="post" action="<%=request.getContextPath()%>/CreateWorkProgressServlet">
                                                 <h1><i class="tint icon"></i>Vehicle Service Onprogress..!</h1>
                                                 <input type="hidden" value="<%=sid%>" name="sid">
-                                                <button class="ui positive button"><i class="plus icon"></i>Show Progress</button>
+                                                <div style="position:absolute;top:63%;left:36%">
+                                                <button class="ui positive button"><i class="plus icon"></i>Add Services</button>
+                                                </div>
                                           </form>
                                           <!-- navigate estimate report -->
-                                          <button class="ui positive button"><i class="calendar icon"></i>Show Estimate</button>
-                                          <!-- navigate estimate report-->
+                                           <%session.setAttribute("pid",pid);%>
+                                           <%session.setAttribute("sid",sid);%>
+                                           <a href="<%=request.getContextPath()%>/estimatereportview.jsp"><button class="ui positive button"><i class="calendar icon"></i>Show Estimate</button></a>
+                                          <!-- navigate estimate report end -->
                                     </div>
                               <div class="p_container">
                                     <div class="btn-container">
