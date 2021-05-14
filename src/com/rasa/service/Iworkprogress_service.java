@@ -26,8 +26,12 @@ public interface Iworkprogress_service {
    public Boolean UpdateRepairComponent(String ser_id , String item_id , int estimateA) throws SQLException, ClassNotFoundException;
    public Boolean deleteRepairComponent(String ser_id , String item_id) throws SQLException, ClassNotFoundException;
 
+
    //calculation
    public double CalcTotalEstimates(String type , int sid) throws SQLException, ClassNotFoundException;
+
+   //pdf generator
+
 
 
 }

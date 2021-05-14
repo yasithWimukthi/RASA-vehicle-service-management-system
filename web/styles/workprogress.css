@@ -428,3 +428,9 @@ form-createP h1{
     left:1%;
     top:54%;
 }
+.table-content{
+    width:100%;
+    padding:10%;
+    position:relative;
+    top:-10%;
+}
