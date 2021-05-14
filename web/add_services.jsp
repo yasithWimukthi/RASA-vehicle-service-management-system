@@ -22,7 +22,7 @@
 </head>
 <body>
 <%-- get vehcile entry Id using session --%>
-<%int sid = (int)session.getAttribute("sid");%>;
+<%int sid = (int)request.getAttribute("sid");%>
 <%-- gather pid--%>
 <%Iworkprogress_service iworkprogress_service = new Workprogress_service();%>
 <%String pid = iworkprogress_service.getProgressId(sid);%>
@@ -112,6 +112,7 @@
                             <input type="text" placeholder="description" id="description3" name="desc" value="--">
                         </div>
                         <%-- Hidden value--%>
+                        <input type="hidden" name="sid" value="<%=sid%>">
                         <input type="hidden" name="status" value="Onprogress">
                         <input type="hidden" name="pid" value="<%=pid%>">
                         <input type="hidden" name="Wdate" value="<%=date%>">
@@ -139,6 +140,7 @@
                                 <!-- for Update method -->
                                <form method="post" action="<%=request.getContextPath()%>/EditserviceInfoServlet">
                                    <td><button id="Ubutton"  class="ui positive button"><i class="edit icon"></i></button></td>
+                                   <input type="hidden" value="<%=sid%>" name="sid">
                                    <input type="hidden" name="serId" value="<%=r.getSer_Id()%>">
                                </form>
                             </tbody>
@@ -147,7 +149,10 @@
                         <!-- back button space-->
                         <div class="backbtn1">
                             <center>
-                                <a href="<%=request.getContextPath()%>/progress.jsp"><button class="ui positive button"><i class="long arrow alternate left icon"></i>Back</button></a>
+                                <form method="post" action="<%=request.getContextPath()%>/NavigatetoServlet">
+                                    <input type="hidden" name="sid" value="<%=sid%>">
+                                    <button class="ui positive button"><i class="long arrow alternate left icon"></i>Back</button>
+                                </form>
                             </center>
                         </div>
 
@@ -195,6 +200,7 @@
 
             <!-- hidden inputs-->
             <input type="hidden" name="serId" value="<%=repairService.getSer_Id()%>">
+            <input type="hidden" name="sid" value="<%=sid%>">
 
         </form>
     </div>
