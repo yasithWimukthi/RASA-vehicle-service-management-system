@@ -17,7 +17,9 @@ public class UpdateWorkServiceServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
            String serId = request.getParameter("serId");
            String Ustatus = request.getParameter("Ustatus");
+           int sid = Integer.parseInt(request.getParameter("sid"));
            String des = request.getParameter("Udesc");
+
            RepairService repairService = new RepairService();
            repairService.setSer_Id(serId);
            repairService.setStatus(Ustatus);
@@ -26,6 +28,7 @@ public class UpdateWorkServiceServlet extends HttpServlet {
         try {
            Boolean IsUpdate = iworkprogress_service.updateServiceStatus(repairService);
            if(IsUpdate){
+               request.setAttribute("sid",sid);
                request.getRequestDispatcher("add_services.jsp").forward(request,response);
            }
            else{

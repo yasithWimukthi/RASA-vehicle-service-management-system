@@ -47,7 +47,7 @@ public class Workprogress_service implements Iworkprogress_service{
         String pid = this.createProgressId(sid);
         //if user refresh page twice page will redirect to the add_service.jsp
         if(getProgressId(sid) != null){
-            return false;
+            return true;
         }
         //if it was not create pid
         con = DBConnectionUtil.getConnection();

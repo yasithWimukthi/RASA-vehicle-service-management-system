@@ -30,6 +30,7 @@
 <%
     String ser_id = (String)session.getAttribute("serviceId");
     String ser_name = (String)session.getAttribute("serviceName");
+    int sid = (int)session.getAttribute("sid");
     Iworkprogress_service iworkprogress_service = new Workprogress_service();
     ArrayList<RepairComponent> LrepairCom = iworkprogress_service.retriveRepairComponents(ser_id);
     ArrayList<VehicleComponent> LVehcileCom = iworkprogress_service.retriveVehcileComponents();
@@ -131,7 +132,10 @@
                     <!-- back button space-->
                     <div class="backbtn">
                         <center>
-                            <a href="<%=request.getContextPath()%>/progress.jsp"><button class="ui positive button"><i class="long arrow alternate left icon"></i>Back</button></a>
+                            <form method="post" action="<%=request.getContextPath()%>/NavigatetoServlet">
+                                <input type="hidden" name="sid" value="<%=sid%>">
+                                <button class="ui positive button"><i class="long arrow alternate left icon"></i>Back</button>
+                            </form>
                         </center>
                     </div>
 

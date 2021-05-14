@@ -18,11 +18,13 @@ public class EditserviceInfoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //get service Id from jsp pages
         String ser_Id = request.getParameter("serId");
+        int sid = Integer.parseInt(request.getParameter("sid"));
         Iworkprogress_service iworkprogress_service = new Workprogress_service();
         try {
             //get data from given service Id
             RepairService ObjectSer = iworkprogress_service.retirvedatabyID(ser_Id);
             request.setAttribute("ObjectServ",ObjectSer);
+            request.setAttribute("sid",sid);
             request.getRequestDispatcher("add_services.jsp").forward(request,response);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
