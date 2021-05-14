@@ -25,6 +25,7 @@
     Repair repair = (Repair) request.getAttribute("repair");
     Customer customer = (Customer) request.getAttribute("client");
     Vehicle vehicle = (Vehicle) request.getAttribute("vehicle");
+    boolean isUpdate = (boolean) request.getAttribute("isUpdate");
     String documents = "";
 
     if (repair.isCustomerNoObjection()){
@@ -573,7 +574,7 @@
                         <i class="check circle outline icon green" style="font-size:200px; margin-top:50px "></i>
                     </div>
                     <div style="display:flex;justify-content: center;" class="header">
-                        <p style="font-size:50px; margin-bottom:50px" class="red">DELETE  SUCCESSFULY !</p>
+                        <p style="font-size:50px; margin-bottom:50px" class="red">UPDATE  SUCCESSFULLY !</p>
                     </div>
                 </div>
             <%}%>
