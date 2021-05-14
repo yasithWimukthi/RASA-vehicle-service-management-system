@@ -23,6 +23,12 @@ $( "#update-vehicle" ).click(function () {
         .modal('show');
 });
 
+$( "#deleteBtn" ).click(function () {
+    //alert( "Handler for .submit() called." );
+    $('.ui.tiny.modal.delete-modal')
+        .modal('show');
+});
+
 $('.ui.modal.update-message')
     .modal('show');
 

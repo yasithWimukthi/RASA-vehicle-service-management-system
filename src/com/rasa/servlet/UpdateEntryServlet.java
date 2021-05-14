@@ -8,8 +8,14 @@ package com.rasa.servlet;
  **/
 
 
+import com.rasa.model.Customer;
+import com.rasa.model.Repair;
+import com.rasa.model.Vehicle;
+import com.rasa.service.ClientService;
 import com.rasa.service.ServiceEntry;
+import com.rasa.service.VehicleService;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,19 +26,29 @@ import java.io.IOException;
 @WebServlet("/UpdateEntryServlet")
 public class UpdateEntryServlet extends HttpServlet {
 
+    private VehicleService vehicleService;
+    private Repair repair;
+    private Vehicle vehicle;
+    private Customer customer;
     private ServiceEntry serviceEntry;
+    private ClientService clientService;
 
     @Override
     public void init() throws ServletException {
         super.init();
+        vehicleService = new VehicleService();
         serviceEntry = new ServiceEntry();
+        clientService = new ClientService();
+        repair = new Repair();
+        vehicle = new Vehicle();
+        customer = new Customer();
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         String entryDate = request.getParameter("entryDate");
         String accidentDate = request.getParameter("accidentDate");
-        String repair = request.getParameter("repair");
+        String repairType = request.getParameter("repair");
         String customerNoObjection = request.getParameter("customerNoObjection") ;
         String insuranceNoObjection = request.getParameter("insuranceNoObjection");
         String claimForm = request.getParameter("claimForm");
@@ -66,7 +82,19 @@ public class UpdateEntryServlet extends HttpServlet {
             hasClaimForm = false;
         }
 
-        isSuccess = serviceEntry.updateServiceEntry(serviceId,repair,entryDate,accidentDate,hasCustomerNoObjection,hasInsuranceNoObjection,hasClaimForm);
+        isSuccess = serviceEntry.updateServiceEntry(serviceId,repairType,entryDate,accidentDate,hasCustomerNoObjection,hasInsuranceNoObjection,hasClaimForm);
+
+        repair = serviceEntry.getRepairByServiceID(serviceId);
+        customer = clientService.searchByNic(repair.getNICno().toUpperCase());
+        vehicle = vehicleService.searchByRegistrationNumber(repair.getVehicleRegistrationNo().toUpperCase());
+
+        request.setAttribute("repair",repair);
+        request.setAttribute("client",customer);
+        request.setAttribute("vehicle",vehicle);
+        request.setAttribute("isUpdate",true);
+
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/entry.jsp");
+        dispatcher.forward(request, response);
 
     }
 
