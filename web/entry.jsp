@@ -277,17 +277,17 @@
                 <!-- Buttons -->
                 <div class="class= eight wide column button-container" >
 
-                    <form method="post" action="DeleteServiceEntryServlet" class="mb-10">
-                        <input type="hidden" name="serviceID" value="<%=repair.getRepairId()%>">
-                        <button class="ui red fluid button" type="submit" style="width:95%; height:35px">
-                            <i class="trash icon"> </i>
-                            Delete Entry
-                        </button>
-                    </form>
-<%--                    <button class="ui red fluid button " type="button" id="deleteBtn" style="width:95%; height:35px">--%>
-<%--                        <i class="trash icon"> </i>--%>
-<%--                        Delete Entry--%>
-<%--                    </button>--%>
+<%--                    <form method="post" action="DeleteServiceEntryServlet" class="mb-10">--%>
+<%--                        <input type="hidden" name="serviceID" value="<%=repair.getRepairId()%>">--%>
+<%--                        <button class="ui red fluid button" type="submit" style="width:95%; height:35px">--%>
+<%--                            <i class="trash icon"> </i>--%>
+<%--                            Delete Entry--%>
+<%--                        </button>--%>
+<%--                    </form>--%>
+                    <button class="ui red fluid button " type="button" id="deleteBtn" style="width:95%; height:35px;margin-bottom: 10px">
+                        <i class="trash icon"> </i>
+                        Delete Entry
+                    </button>
 
                     <button class="ui blue fluid button" style="width:95%; height:35px; margin-bottom: 10px;" class="mb-10">
                         <i class="address card outline icon"> </i>
@@ -556,18 +556,24 @@
             </div>
 
 <%--                confirm delete model--%>
-            <div class=" ui tiny modal ">
-                <div class="header">Header</div>
+            <div class=" ui tiny modal delete-modal">
+                <div class="header">Delete Service Entry</div>
                 <div class="content">
-                    <p>Are You Want To Delete This Service Entry ?</p>
+                    <p style="font-size: 16px">Are You Want To Delete This Service Entry ?</p>
                 </div>
-                <div class="actions">
-                    <button class="ui approve button">Delete</button>
+                <div class="actions" style="display: flex;justify-content: flex-end">
+<%--                    <button class="ui approve button">Delete</button>--%>
+                    <form method="post" action="DeleteServiceEntryServlet" >
+                        <input type="hidden" name="serviceID" value="<%=repair.getRepairId()%>">
+                        <button class="ui red button" type="submit" >
+                            Delete
+                        </button>
+                    </form>
                     <div class="ui cancel button">Cancel</div>
                 </div>
             </div>
 
-            <% if (true){%>
+            <% if (isUpdate){%>
                 <div class="ui modal update-message" style="padding-top:50px;z-index: 100 " >
                     <i class="close icon"></i>
                     <div style="display:flex;justify-content: center;">

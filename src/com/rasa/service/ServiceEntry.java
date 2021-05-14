@@ -202,6 +202,8 @@ public class ServiceEntry implements IServiceEntry{
             conn = DBConnectionUtil.getConnection();
             String sql = "";
 
+            ServiceType="insurance";
+
             if (ServiceType.equals("insurance")){
                 sql = CustomerManagementQuery.UPDATE_CASH_SERVICE_ENTRY;
                 preparedStatement = conn.prepareStatement(sql);
