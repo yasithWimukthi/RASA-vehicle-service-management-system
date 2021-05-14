@@ -15,14 +15,20 @@ import java.sql.SQLException;
 @WebServlet("/AddServiceServlet")
 public class AddServiceServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+               //navigate sid for sessions
+               int sid = Integer.parseInt(request.getParameter("sid"));
+
                String service_type = request.getParameter("services").trim();
                String description = request.getParameter("desc");
                String status = request.getParameter("status").trim();
                String date = request.getParameter("Wdate");
                String pid = request.getParameter("pid").trim();
+
                //assign values for Repair services class
                RepairService repairService = new RepairService(service_type,description,status,date,pid);
                Iworkprogress_service iworkprogress_service = new Workprogress_service();
+               request.setAttribute("sid",sid);
+
 
         try {
            Boolean Is_add = iworkprogress_service.InsertService(repairService);
