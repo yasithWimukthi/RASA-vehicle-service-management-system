@@ -1,4 +1,7 @@
-<%@ page import="com.rasa.service.EmployeeLoadingService" %><%--
+<%@ page import="com.rasa.service.EmployeeLoadingService" %>
+<%@ page import="com.rasa.model.Employee" %>
+<%@ page import="java.util.List" %>
+<%--
   Created by IntelliJ IDEA.
   User: Yasith Wimukthi
   Date: 3/9/2021
@@ -9,9 +12,9 @@
 <html>
 <head>
     <title>Initial Template</title>
-    <link href="../../a/employeePayment/web/styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
-    <link href="../../a/employeePayment/web/styles/style.css" rel="stylesheet" >
-    <link href="../../a/employeePayment/web/styles/attendance.css" rel="stylesheet" >
+    <link href="styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
+    <link href="styles/style.css" rel="stylesheet" >
+    <link href="styles/attendance.css" rel="stylesheet" >
 
 
 </head>
