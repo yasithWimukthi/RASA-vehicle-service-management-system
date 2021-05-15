@@ -88,7 +88,7 @@
                                     <label>short leave</label>
                                 </td>
                                 <td>
-                                    <center><button type=submit class="btn_tbl">save</button></center>
+                                    <center><a href="<%=request.getContextPath()%>/AddAttendanceServlet?id=<%=i.getEmployeeID()%>" type=submit class="btn_tbl">save</a></center>
                                 </td>
                             </tr>
                             <%} %>
