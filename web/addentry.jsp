@@ -162,7 +162,7 @@
 
                                 <div class="field">
                                     <div class="ui radio checkbox">
-                                        <input type="radio" name="repair"  tabindex="0" class="hidden" id="nonInsurance" value="nonInsurance">
+                                        <input type="radio" name="repair"  tabindex="0" class="hidden" id="nonInsurance" value="Non Insurance">
                                         <label style="font-size: 16px">Non-Insuarance</label>
                                     </div>
                                 </div>
