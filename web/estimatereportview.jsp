@@ -101,8 +101,24 @@
                     </tbody>
                 </table>
                 <%}%>
+                <form method="post" action="<%=request.getContextPath()%>/EstimateReportServlet">
 
-                <button class="ui positive button">DownLoad Estimate Report</button>
+                    <!-- hidden values--->
+                     <input type="hidden" name="pid" value="<%=pid%>">
+                    <!-- hidden values -->
+
+                    <button class="ui positive button">DownLoad Estimate Report</button>
+                     <%if(request.getAttribute("IsConfirmed") != null){%>
+                    <div class="ui success message">
+                        <i class="close icon"></i>
+                        <div class="header">
+                            Download Completed
+                        </div>
+                        <p>Please Check Your folder</p>
+                    </div>
+                    <%}%>
+                </form>
+
             </div>
 
         </div>

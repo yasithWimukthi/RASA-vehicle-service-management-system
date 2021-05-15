@@ -1,9 +1,12 @@
 package com.rasa.service;
 
+import com.itextpdf.text.DocumentException;
 import com.rasa.model.RepairComponent;
 import com.rasa.model.RepairService;
 import com.rasa.model.VehicleComponent;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -31,6 +34,7 @@ public interface Iworkprogress_service {
    public double CalcTotalEstimates(String type , int sid) throws SQLException, ClassNotFoundException;
 
    //pdf generator
+   public boolean createEstimatePdf(ArrayList<RepairService> repairServices) throws IOException, DocumentException, SQLException, ClassNotFoundException;
 
 
 
