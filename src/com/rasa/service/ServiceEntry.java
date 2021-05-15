@@ -303,7 +303,11 @@ public class ServiceEntry implements IServiceEntry{
         document.add(VehicleNo);
         document.add(space2);
 
-        // customer table
+        Paragraph customerTableHeading = new Paragraph("Client Details ");
+        document.add(customerTableHeading);
+        document.add(space2);
+
+        /**Customer details table*/
         PdfPTable pTable = new PdfPTable(2);
 
 //        table.setWidthPercentage(100); //Width 100%
@@ -337,6 +341,44 @@ public class ServiceEntry implements IServiceEntry{
         PdfPCell addressValue = new PdfPCell(new Paragraph(customer.getAddress()));
         pTable.addCell(address);
         pTable.addCell(addressValue);
+
+        /**vehicle details table*/
+
+        Paragraph vehicleTableHeading = new Paragraph("Vehicle Details ");
+        document.add(space2);
+        document.add(vehicleTableHeading);
+        document.add(space2);
+
+        PdfPCell registrationNumber = new PdfPCell(new Paragraph("Registration Number"));
+        PdfPCell registrationNumberValue = new PdfPCell(new Paragraph(vehicle.getRegistrationNo().toUpperCase()));
+        pTable.addCell(registrationNumber);
+        pTable.addCell(registrationNumberValue);
+
+        PdfPCell brand = new PdfPCell(new Paragraph("Vehicle Brand"));
+        PdfPCell brandValue = new PdfPCell(new Paragraph(vehicle.getBrand()));
+        pTable.addCell(brand);
+        pTable.addCell(brandValue);
+
+        PdfPCell modal = new PdfPCell(new Paragraph("Vehicle Model"));
+        PdfPCell modalValue = new PdfPCell(new Paragraph(vehicle.getModel()));
+        pTable.addCell(modal);
+        pTable.addCell(modalValue);
+
+        PdfPCell color = new PdfPCell(new Paragraph("Vehicle Color"));
+        PdfPCell colorValue = new PdfPCell(new Paragraph(vehicle.getColor()));
+        pTable.addCell(color);
+        pTable.addCell(colorValue);
+
+        PdfPCell manufactYear = new PdfPCell(new Paragraph("Manufacture Year"));
+        PdfPCell manufactYearValue = new PdfPCell(new Paragraph(vehicle.getYear()));
+        pTable.addCell(manufactYear);
+        pTable.addCell(manufactYearValue);
+
+        /**Service details table*/
+        Paragraph serviceTableHeading = new Paragraph("Service Details ");
+        document.add(space2);
+        document.add(serviceTableHeading);
+        document.add(space2);
 
         document.add(pTable);
         pTable.deleteBodyRows();
