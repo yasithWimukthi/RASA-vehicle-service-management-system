@@ -1,14 +1,24 @@
 package com.rasa.service;
 
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfDocument;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.rasa.model.Customer;
 import com.rasa.model.Repair;
+import com.rasa.model.Vehicle;
 import com.rasa.util.CustomerManagementQuery;
 import com.rasa.util.DBConnectionUtil;
 import com.rasa.util.QueryConstants;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -231,6 +241,107 @@ public class ServiceEntry implements IServiceEntry{
         }finally {
             DBConnectionUtil.closeConnection(preparedStatement, conn);
         }
+        return true;
+    }
+
+    @Override
+    public boolean generateServiceReport(Customer customer, Vehicle vehicle, Repair repair) throws IOException, DocumentException, SQLException, ClassNotFoundException{
+
+        //date
+        LocalDate date = LocalDate.now();
+
+        Document document = new Document();
+        //pdf path
+        PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\ACER\\Desktop\\estimate"+date+".pdf"));
+        document.open();
+
+
+        //header part
+        //font
+//        Font heading1 = new Font(Font.FontFamily.HELVETICA,13,Font.BOLD, BaseColor.BLUE);
+//        Font heading2 = new Font(Font.FontFamily.HELVETICA,12,Font.NORMAL,BaseColor.BLUE);
+//
+//        Chunk head = new Chunk("RASA MOTERS PRIVATE LIMITED",heading1);
+//        Chunk head3 = new Chunk("rasa moters",heading1);
+//        Chunk head2 = new Chunk("54/3 New Kandy Road ,Kotalawela,Kaduwela\nHotline:072323435\nemail:Rasa@gmail.com",heading2);
+//
+//        //image path
+//        String path = "C:\\Users\\USER\\Desktop\\reports\\rasa.jpg";
+//
+//        Image img = Image.getInstance(path);
+//        PdfPTable table1 = new PdfPTable(2); // 3 columns.
+//        PdfPTable table2 = new PdfPTable(1); // 1 column
+//
+//        Paragraph p1 = new Paragraph();
+//        p1.add(head);
+//        p1.add(head2);
+//
+//        PdfPCell cell1 = new PdfPCell(img);
+//        PdfPCell cell2 = new PdfPCell(p1);
+//        PdfPCell cell3 = new PdfPCell(new Paragraph(head3));
+//
+//        cell1.setBorderWidth(0);
+//        cell2.setBorderWidth(0);
+//        cell3.setBorderWidth(0);
+//        cell1.setFixedHeight(100);
+//        cell3.setBackgroundColor(BaseColor.LIGHT_GRAY);
+//        table1.setWidthPercentage(100);
+//        table2.setWidthPercentage(200);
+//
+//        table1.addCell(cell1);
+//        table1.addCell(cell2);
+//        table2.addCell(cell3);
+//        document.add(table2);
+//        document.add(table1);
+//        document.add(table2);
+
+        //report body
+        Paragraph headingEstimate = new Paragraph("Service Report : "+ date);
+        Paragraph VehicleNo = new Paragraph("Vehicle No :"+ vehicle.getRegistrationNo().toUpperCase());
+        Paragraph space2 = new Paragraph(" ");
+        document.add(headingEstimate);
+        document.add(VehicleNo);
+        document.add(space2);
+
+        // customer table
+        PdfPTable pTable = new PdfPTable(2);
+
+//        table.setWidthPercentage(100); //Width 100%
+//        table.setSpacingBefore(10f); //Space before table
+//        table.setSpacingAfter(10f); //Space after table
+//
+//        Set Column widths
+//        float[] columnWidths = {1f, 1f, 1f};
+//        table.setWidths(columnWidths);
+        PdfPCell name = new PdfPCell(new Paragraph("Customer Name"));
+        PdfPCell nameValue = new PdfPCell(new Paragraph(customer.getFirstName() + " " + customer.getLastName()));
+        pTable.addCell(name);
+        pTable.addCell(nameValue);
+
+        PdfPCell nic = new PdfPCell(new Paragraph("Customer NIC"));
+        PdfPCell nicValue = new PdfPCell(new Paragraph(customer.getNICno().toUpperCase()));
+        pTable.addCell(nic);
+        pTable.addCell(nicValue);
+
+        PdfPCell email = new PdfPCell(new Paragraph("Email Address"));
+        PdfPCell emailValue = new PdfPCell(new Paragraph(customer.getEmail()));
+        pTable.addCell(email);
+        pTable.addCell(emailValue);
+
+        PdfPCell mobile = new PdfPCell(new Paragraph("Mobile"));
+        PdfPCell mobileValue = new PdfPCell(new Paragraph(customer.getPhoneNo()));
+        pTable.addCell(mobile);
+        pTable.addCell(mobileValue);
+
+        PdfPCell address = new PdfPCell(new Paragraph("Customer Address"));
+        PdfPCell addressValue = new PdfPCell(new Paragraph(customer.getAddress()));
+        pTable.addCell(address);
+        pTable.addCell(addressValue);
+
+        document.add(pTable);
+        pTable.deleteBodyRows();
+        document.close();
+
         return true;
     }
 }

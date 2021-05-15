@@ -1,7 +1,12 @@
 package com.rasa.service;
 
+import com.itextpdf.text.DocumentException;
+import com.rasa.model.Customer;
 import com.rasa.model.Repair;
+import com.rasa.model.Vehicle;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -82,4 +87,13 @@ public interface IServiceEntry {
             boolean insuranceNoObjection,
             boolean claimForm
     ) ;
+
+    /**
+     * generate detailed report about service
+     * @param customer
+     * @param vehicle
+     * @param repair
+     * @return
+     */
+    boolean generateServiceReport(Customer customer, Vehicle vehicle,Repair repair)  throws IOException, DocumentException, SQLException, ClassNotFoundException;
 }

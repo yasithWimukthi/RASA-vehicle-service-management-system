@@ -289,10 +289,15 @@
                         Delete Entry
                     </button>
 
-                    <button class="ui blue fluid button" style="width:95%; height:35px; margin-bottom: 10px;" class="mb-10">
-                        <i class="address card outline icon"> </i>
-                        Client Report
-                    </button>
+                    <form method="post" action="CreateEntryReportServlet" class="mb-10">
+                        <input type="hidden" name="nic" value="<%=customer.getNICno()%>">
+                        <input type="hidden" value="<%=repair.getRepairId()%>" name="repairId">
+                        <input type="hidden" value="<%=vehicle.getRegistrationNo()%>" name="registrationNumber" >
+                        <button class="ui blue fluid button" style="width:95%; height:35px; margin-bottom: 10px;" type="submit">
+                            <i class="address card outline icon"> </i>
+                            Client Report
+                        </button>
+                    </form>
 
                     <button class="ui blue fluid button" style="width:95%; height:35px;margin-bottom: 10px" class="mb-10">
                         <i class="clipboard outline icon"> </i>
