@@ -58,6 +58,7 @@ public class UpdateVehicleServlet extends HttpServlet {
         request.setAttribute("client",customer);
         request.setAttribute("vehicle",vehicle);
         request.setAttribute("isUpdate",true);
+        request.setAttribute("isCreate",false);
 
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/entry.jsp");
         dispatcher.forward(request, response);

@@ -26,6 +26,7 @@
     Customer customer = (Customer) request.getAttribute("client");
     Vehicle vehicle = (Vehicle) request.getAttribute("vehicle");
     boolean isUpdate = (boolean) request.getAttribute("isUpdate");
+    boolean isCreate = (boolean) request.getAttribute("isCreate");
     String documents = "";
 
     if (repair.isCustomerNoObjection()){
@@ -151,12 +152,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="extra content">
-                            <button class="ui active green fluid button huge " id="entry-edit">
-                                <i class="edit icon"></i>
-                                edit
-                            </button>
-                        </div>
+<%--                        <div class="extra content">--%>
+<%--                            <button class="ui active green fluid button huge " id="entry-edit">--%>
+<%--                                <i class="edit icon"></i>--%>
+<%--                                edit--%>
+<%--                            </button>--%>
+<%--                        </div>--%>
                     </div>
                 </div>
 
@@ -294,15 +295,15 @@
                         <input type="hidden" value="<%=repair.getRepairId()%>" name="repairId">
                         <input type="hidden" value="<%=vehicle.getRegistrationNo()%>" name="registrationNumber" >
                         <button class="ui blue fluid button" style="width:95%; height:35px; margin-bottom: 10px;" type="submit">
-                            <i class="address card outline icon"> </i>
-                            Client Report
+                            <i class="clipboard outline icon"> </i>
+                            Entry Report
                         </button>
                     </form>
 
-                    <button class="ui blue fluid button" style="width:95%; height:35px;margin-bottom: 10px" class="mb-10">
-                        <i class="clipboard outline icon"> </i>
-                        Entry Report
-                    </button>
+<%--                    <button class="ui blue fluid button" style="width:95%; height:35px;margin-bottom: 10px" class="mb-10">--%>
+<%--                        <i class="clipboard outline icon"> </i>--%>
+<%--                        Entry Report--%>
+<%--                    </button>--%>
 
                     <form method="post" action="NavigateToWorkprogressServlet">
                         <input type="hidden" name="sid" value="<%=repair.getRepairId()%>">
@@ -588,6 +589,18 @@
                         <p style="font-size:50px; margin-bottom:50px" class="red">UPDATE  SUCCESSFULLY !</p>
                     </div>
                 </div>
+            <%}%>
+
+            <% if (isCreate){%>
+            <div class="ui modal create-message" style="padding-top:50px;z-index: 100 " >
+                <i class="close icon"></i>
+                <div style="display:flex;justify-content: center;">
+                    <i class="check circle outline icon green" style="font-size:200px; margin-top:50px "></i>
+                </div>
+                <div style="display:flex;justify-content: center;" class="header">
+                    <p style="font-size:50px; margin-bottom:50px" class="red">REPORT GENERATED!</p>
+                </div>
+            </div>
             <%}%>
 
         </div>
