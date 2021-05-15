@@ -9,9 +9,9 @@
 <html>
 <head>
     <title>Initial Template</title>
-    <link href="../../a/employeePayment/web/styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
-    <link href="../../a/employeePayment/web/styles/style.css" rel="stylesheet">
-    <link href="../../a/employeePayment/web/styles/popup.css" rel="stylesheet">
+    <link href="styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
+    <link href="styles/style.css" rel="stylesheet">
+    <link href="styles/popup.css" rel="stylesheet">
 </head>
 <body>
 
