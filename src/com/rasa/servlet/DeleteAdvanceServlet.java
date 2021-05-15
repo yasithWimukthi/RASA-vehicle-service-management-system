@@ -25,7 +25,6 @@ public class DeleteAdvanceServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-
         try {
             service.deleteAdvance();
             response.sendRedirect("employeePayment.jsp");
