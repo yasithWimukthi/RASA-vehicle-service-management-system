@@ -8,6 +8,7 @@ import com.rasa.service.ClientService;
 import com.rasa.service.ServiceEntry;
 import com.rasa.service.VehicleService;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -56,6 +57,15 @@ public class CreateEntryReportServlet extends HttpServlet {
         } catch (DocumentException e) {
         e.printStackTrace();
         }
+
+        request.setAttribute("repair",repair);
+        request.setAttribute("client",customer);
+        request.setAttribute("vehicle",vehicle);
+        request.setAttribute("isUpdate",false);
+        request.setAttribute("isCreate",true);
+
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/entry.jsp");
+        dispatcher.forward(request, response);
 
     }
 

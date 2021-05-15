@@ -47,6 +47,7 @@ public class GetServiceDetailsServlet extends HttpServlet {
         request.setAttribute("client",customer);
         request.setAttribute("vehicle",vehicle);
         request.setAttribute("isUpdate",false);
+        request.setAttribute("isCreate",false);
 
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/entry.jsp");
         dispatcher.forward(request, response);

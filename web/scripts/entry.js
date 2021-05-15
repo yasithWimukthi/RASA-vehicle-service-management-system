@@ -32,6 +32,9 @@ $( "#deleteBtn" ).click(function () {
 $('.ui.modal.update-message')
     .modal('show');
 
+$('.ui.modal.create-message')
+    .modal('show');
+
 $('.ui.radio.checkbox')
     .checkbox();
 
