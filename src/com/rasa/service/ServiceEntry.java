@@ -50,7 +50,7 @@ public class ServiceEntry implements IServiceEntry{
                 preparedStatement.setString(QueryConstants.COLUMN_THREE,accidentDate);
                 preparedStatement.setString(QueryConstants.COLUMN_FOUR,ServiceType);
                 preparedStatement.setString(QueryConstants.COLUMN_FIVE,nic);
-                preparedStatement.setString(QueryConstants.COLUMN_SIX,"incomplete");
+                preparedStatement.setString(QueryConstants.COLUMN_SIX,"Incomplete");
             }else {
                 sql = CustomerManagementQuery.ADD_INSURANCE_SERVICE;
                 preparedStatement = conn.prepareStatement(sql);
@@ -62,7 +62,7 @@ public class ServiceEntry implements IServiceEntry{
                 preparedStatement.setBoolean(QueryConstants.COLUMN_SIX,claimForm);
                 preparedStatement.setString(QueryConstants.COLUMN_SEVEN,ServiceType);
                 preparedStatement.setString(QueryConstants.COLUMN_EIGHT,nic);
-                preparedStatement.setString(QueryConstants.COLUMN_NINE,"incomplete");
+                preparedStatement.setString(QueryConstants.COLUMN_NINE,"Incomplete");
             }
 
             preparedStatement.execute();
@@ -379,6 +379,21 @@ public class ServiceEntry implements IServiceEntry{
         document.add(space2);
         document.add(serviceTableHeading);
         document.add(space2);
+
+        PdfPCell serviceType = new PdfPCell(new Paragraph("Service Type"));
+        PdfPCell serviceTypeYearValue = new PdfPCell(new Paragraph(repair.getPaymentType()));
+        pTable.addCell(serviceType);
+        pTable.addCell(serviceTypeYearValue);
+
+        PdfPCell entryDate = new PdfPCell(new Paragraph("Entry Date"));
+        PdfPCell entryDateValue = new PdfPCell(new Paragraph(repair.getEntryDate()));
+        pTable.addCell(entryDate);
+        pTable.addCell(entryDateValue);
+
+        PdfPCell accidentDate = new PdfPCell(new Paragraph("Accident Date"));
+        PdfPCell accidentDateValue = new PdfPCell(new Paragraph(repair.getAccidentDate()));
+        pTable.addCell(accidentDate);
+        pTable.addCell(accidentDateValue);
 
         document.add(pTable);
         pTable.deleteBodyRows();
