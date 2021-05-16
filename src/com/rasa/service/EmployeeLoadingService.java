@@ -2,6 +2,7 @@ package com.rasa.service;
 
 
 import com.rasa.model.Employee;
+import com.rasa.model.EmployeePayment;
 import com.rasa.util.DBConnectionUtil;
 import com.rasa.util.EmpQuery;
 
@@ -12,11 +13,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeeLoadingService {
+public class EmployeeLoadingService  implements IEmpLoad{
 
     private static Connection con;
     private PreparedStatement preparedStatement;
+    private PreparedStatement preparedStatement1;
 
+    @Override
     public List<Employee> loadToPaymentTable(){
 
         List<Employee> list =new ArrayList<>();
@@ -51,6 +54,7 @@ public class EmployeeLoadingService {
 
     }
 
+    @Override
     public List<Employee> loadToAttendanceTable(){
 
         List<Employee> list =new ArrayList<>();
@@ -58,14 +62,12 @@ public class EmployeeLoadingService {
         try {
 
             con = DBConnectionUtil.getConnection();
-            String sql= EmpQuery.to_EmpAtt_table;
-
-            preparedStatement = con.prepareStatement(sql);
-            System.out.println(preparedStatement);
+            String sql2=EmpQuery.to_EmpAtt_table;
+            preparedStatement = con.prepareStatement(sql2);
 
             ResultSet rs = preparedStatement.executeQuery();
 
-            while (rs.next()) {
+            while(rs.next()){
 
                 int empID = Integer.parseInt(rs.getString(1));
                 String fname =(rs.getString(2));
@@ -77,6 +79,7 @@ public class EmployeeLoadingService {
                 emp.setLname(lname);
 
                 list.add(emp);
+
             }
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -84,5 +87,11 @@ public class EmployeeLoadingService {
         return list;
 
     }
+
+    public EmployeePayment toPaymentForm(int id){
+
+        return null;
+    }
+
 
 }
