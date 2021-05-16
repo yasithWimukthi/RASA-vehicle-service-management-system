@@ -25,24 +25,52 @@
         <div class="sidebar">
             <ul class="side-nav">
 
-                <li class="side-nav__item side-nav__item--active">
+                <li class="side-nav_item side-nav_item--active">
                     <a href="#" class="side-nav__link">
-                        <i class="car icon side-nav__icon"></i>
-                        <div class="side-nav__text">Service Entry</div>
+                        <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Add Service Entry</div>
                     </a>
                 </li>
 
                 <li class="side-nav__item">
-                    <a href="#" class="side-nav__link">
-                        <i class="search icon side-nav__icon"></i>
+                    <a href="searchservice.jsp" class="side-nav__link">
+                        <i class="search icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
                         <div class="side-nav__text">Search Entry</div>
                     </a>
                 </li>
 
                 <li class="side-nav__item">
                     <a href="#" class="side-nav__link">
-                        <i class="tasks icon side-nav__icon"></i>
-                        <div class="side-nav__text">Work Progress</div>
+                        <i class="dollar sign icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Budget Management</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="truck icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Inventory Management</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="address book outline icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Employee Management</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Car Rent</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="file outline icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Car Record</div>
                     </a>
                 </li>
 
@@ -65,7 +93,7 @@
                     </div>
                     </br>
                     <div class="search-bar-container">
-                        <form action="availableCars">
+                        <form action="<%=request.getContextPath()%>/SearchAvailableCarsServlet" method="post">
                             <input type="text" placeholder="Search.." name="search">
                             <button type="submit" id="search-submit-btn"><i class="fa fa-search" style="font-size:24px"></i></button>
                         </form>
