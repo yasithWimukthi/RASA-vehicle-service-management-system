@@ -211,7 +211,7 @@ body {
 .main-title{
     font-size:35px;
     color:#006699;
-    font-weight:bold;
+
 
 }
 .bill_button {
@@ -239,18 +239,17 @@ body {
 
 }
 .card{
-    background:#87CEEB;
-    border-radius:7px;
+
+    position:absolute;
+    top:30%;
+    left:35%;
+
+
+
     font-size:14px;
-    font-family:"monospace";
+
 
 }
-.card table{
-    width:100px;
-    border-collapse:collapse;
-    box-shadow:2px 2px 14px gray;
-    border-radius:5px;
 
-}
 
 
