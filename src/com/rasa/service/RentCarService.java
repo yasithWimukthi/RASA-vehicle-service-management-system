@@ -1,7 +1,12 @@
 package com.rasa.service;
 import com.rasa.model.AvailableCars;
+import com.rasa.model.Customer;
 import com.rasa.model.Rent;
+import com.rasa.util.CustomerManagementQuery;
 import com.rasa.util.DBConnectionUtil;
+import com.rasa.util.QueryConstants;
+
+import java.awt.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -173,6 +178,39 @@ public class RentCarService implements IRentCarService{
         return isDeleted;
 
     }
+
+    @Override
+    public ArrayList<AvailableCars> searchByBrand(String brand) throws SQLException, ClassNotFoundException {
+        ArrayList<AvailableCars> list = new ArrayList<>();
+
+        try{
+            Connection con = DBConnectionUtil.getConnection();
+            String searchQuery = "SELECT * FROM `rasa`.`rentalvehicle` WHERE brand = ?";
+            PreparedStatement preparedStatement = con.prepareStatement(searchQuery);
+
+            preparedStatement.setString(1, brand);
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while(rs.next()){
+                AvailableCars availableCars = new AvailableCars();
+
+                availableCars.setRegistrationNumber(rs.getInt(1));
+                availableCars.setBrand(rs.getString(2));
+                availableCars.setModel(rs.getString(3));
+                availableCars.setNumberOfSeats(rs.getInt(4));
+                availableCars.setPricePerDay(rs.getDouble(5));
+                //availableCars.setStatus(rs.getString(6));
+
+                list.add(availableCars);
+            }
+
+        }catch (SQLException | ClassNotFoundException | NullPointerException e){
+            e.printStackTrace();
+        }
+        return list;
+    }
+
 
 
 }

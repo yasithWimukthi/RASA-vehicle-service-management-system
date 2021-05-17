@@ -82,10 +82,6 @@
         </div>
 
         <div class="main-content">
-            <%
-                IRentCarService iRentCarService = new RentCarService();
-                ArrayList<AvailableCars> list = iRentCarService.retrieveAvailableCars();
-            %>
             <div class="form-container">
                 <div>
                     <div>
@@ -111,7 +107,12 @@
                             <th></th>
                             <th></th>
                         </tr>
-                        <%for(AvailableCars availableCars : list){%>
+                        <%  ArrayList<AvailableCars> list = (ArrayList<AvailableCars>)request.getAttribute("object");
+
+                            if(list.isEmpty()){
+
+                            }
+                            for(AvailableCars availableCars : list){%>
                         <tr>
                             <td><%=availableCars.getRegistrationNumber()%></td>
                             <td><%=availableCars.getBrand()%></td>
