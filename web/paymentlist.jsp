@@ -120,6 +120,10 @@
                     </form>
                 </div>
 
+                    <% paymentService retrieve = new paymentService ();
+
+                        paymentList pay=  retrieve.showLatestPayment();%>
+
                 <div class="card">
                 <div class="ui grid form-container">
                     <div class="sixteen  wide column">
@@ -141,23 +145,23 @@
                             <tr>
 
                                 <td>
-                                    <%=request.getAttribute("payId") %>
+                                    <%=pay.getPayId() %>
                                 </td>
                                 <td>
-                                    <%=request.getAttribute("registationNumber") %>
+                                    <%=pay.getPayId() %>
                                 </td>
 
                                 <td>
-                                    <%=request.getAttribute("estimateAmount") %>
+                                    <%=pay.getPayId() %>
                                 </td>
 
                                 <td>
-                                    <%=request.getAttribute("cash") %>
+                                    <%=pay.getPayId() %>
                                 </td>
                                 <td>
-                                    <%=request.getAttribute("paymentDate") %>
+                                    <%=pay.getPayId() %>
                                 </td>
-                                <td><a href="retriveEditServlet?payId=<%=request.getAttribute("payId")%>" > <i class="yellow pen square icon"></i></a> &nbsp;&nbsp;&nbsp;&nbsp; <a  href="paymentDeleteServlet?payId=<%=request.getAttribute("payId")%>" > <i class="red trash icon"></i></a> &nbsp;&nbsp;&nbsp<a href="BillServlet?payId=<%=request.getAttribute("payId")%>" ><i class="blue file icon"></i></a></td>
+                                <td><a href="retriveEditServlet?payId=<%=pay.getPayId()%>" > <i class="yellow pen square icon"></i></a> &nbsp;&nbsp;&nbsp;&nbsp; <a  href="paymentDeleteServlet?payId=<%=pay.getPayId()%>" > <i class="red trash icon"></i></a> &nbsp;&nbsp;&nbsp<a href="BillServlet?payId=<%=pay.getPayId()%>" ><i class="blue file icon"></i></a></td>
                             </tr>
 
 
