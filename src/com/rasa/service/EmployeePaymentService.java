@@ -22,11 +22,11 @@ public class EmployeePaymentService implements IEmpPay {
             preparedStatement=con.prepareStatement(sql);
 
             preparedStatement.setInt(1,employeePayment.getEmpID());
-            preparedStatement.setInt(2,employeePayment.getAdminID());
-            preparedStatement.setDate(3,employeePayment.getDate());
-            preparedStatement.setDouble(4,employeePayment.getBonus());
-            preparedStatement.setDouble(5,employeePayment.getDeduct());
-            preparedStatement.setDouble(6,employeePayment.getAmount());
+           // preparedStatement.setInt(2,employeePayment.getAdminID());
+           // preparedStatement.setDate(3,employeePayment.getDate());
+            preparedStatement.setDouble(2,employeePayment.getBonus());
+            preparedStatement.setDouble(3,employeePayment.getDeduct());
+            preparedStatement.setDouble(4,employeePayment.getAmount());
 
             preparedStatement.execute();
 
@@ -57,15 +57,21 @@ public class EmployeePaymentService implements IEmpPay {
 
             while (rs.next()) {
 
-                int empID = Integer.parseInt(rs.getString(1));
-                int adminID = Integer.parseInt(rs.getString(2));
-                Date date=Date.valueOf(rs.getString(3));
+                int empID = Integer.parseInt(rs.getString(3));
+              //  int adminID = Integer.parseInt(rs.getString(2));
+                Date date=Date.valueOf(rs.getString(2));
                 double bonus=Double.parseDouble(rs.getString(4));
                 double deduct=Double.parseDouble(rs.getString(5));
                 double amount=Double.parseDouble(rs.getString(6));
 
 
-                list.add(new EmployeePayment(empID,adminID,date,bonus,deduct,amount));
+                EmployeePayment p = new EmployeePayment();
+                p.setEmpID(empID);
+                p.setDate(date);
+                p.setBonus(bonus);
+                p.setDeduct(deduct);
+                p.setAmount(amount);
+                list.add(p);
             }
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
