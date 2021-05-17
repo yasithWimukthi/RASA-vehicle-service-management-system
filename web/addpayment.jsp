@@ -91,7 +91,7 @@
             <div id="wrapper">
             <h1>Estimate Amount</h1>
                 <%--get verhicle service id using session--%>
-           <%--     <%
+               <%
 
 
                     addPaymentService paymentService = new addPaymentService();
@@ -153,7 +153,7 @@
                 </table>
             </div>
 
-            --%>
+
             <div class="box">
                 <form method="post" class="form" id="form" action="<%=request.getContextPath()%>/paymentListServlet" >
 
@@ -202,7 +202,7 @@
 
 
 
-                    <%--<input type="hidden"  name="sid" value="<%=sid%>">--%>
+                    <input type="hidden"  name="sid" value="<%=sid%>">
 
 
 
