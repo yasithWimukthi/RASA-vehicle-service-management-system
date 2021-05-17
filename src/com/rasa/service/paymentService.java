@@ -14,7 +14,6 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.rasa.model.paymentList;
-import com.rasa.util.DBConnectionUtil;
 
 public class paymentService implements ipayment{
 
