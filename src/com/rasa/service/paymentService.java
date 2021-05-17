@@ -255,8 +255,14 @@ public class paymentService implements ipayment{
             Paragraph p = new Paragraph("Bill Information",BillName);
             p.setAlignment(Paragraph.ALIGN_CENTER);
 
-            p.setSpacingAfter(60);
+
             document.add(p);
+
+            document.add(new Paragraph("  "));
+            document.add(new Paragraph("  "));
+            document.add(new Paragraph("......................... "));
+            document.add(new Paragraph("Manager signature "));
+            p.setSpacingAfter(60);
 
             float colWidth[] = {150 ,250,100,80};
 
@@ -292,28 +298,19 @@ public class paymentService implements ipayment{
 
             PdfPCell cell12 = new PdfPCell(new Paragraph("Estimated Amount"));
             cell12.setHorizontalAlignment(Element.ALIGN_CENTER);
-            PdfPCell cell13 = new PdfPCell(new Paragraph(String.valueOf(pay.getEstimateAmount())));
+            PdfPCell cell13 = new PdfPCell(new Paragraph("Rs :"+String.valueOf(pay.getEstimateAmount())));
 
 
             PdfPCell cell14 = new PdfPCell(new Paragraph("Paid Cash"));
             cell14.setHorizontalAlignment(Element.ALIGN_CENTER);
-            PdfPCell cell15 = new PdfPCell(new Paragraph(String.valueOf(pay.getCash())));
-
-            table4.setSpacingAfter(70);
+            PdfPCell cell15 = new PdfPCell(new Paragraph("Rs :"+String.valueOf(pay.getCash())));
 
 
-            Paragraph p4 = new Paragraph("................");
-            p4.setAlignment(Element.ALIGN_RIGHT);
-            document.add(p4);
 
-            Paragraph p5 = new Paragraph("Signature");
-            p5.setAlignment(Element.ALIGN_RIGHT);
-            document.add(p5);
-            p4.setSpacingBefore(70);
-            p4.setSpacingAfter(20);
 
-            PdfPTable table6 = new PdfPTable(1);
-            PdfPCell cell16 = new PdfPCell(new Paragraph("**************End**************"));
+
+
+
 
 
 
@@ -348,12 +345,11 @@ public class paymentService implements ipayment{
             table4.addCell(cell13);
             table4.addCell(cell14);
             table4.addCell(cell15);
-            table6.addCell(cell16);
 
 
             document.add(table3);
             document.add(table4);
-            document.add(table6);
+
 
 
             document.close();
