@@ -16,6 +16,12 @@ import java.sql.SQLException;
 
 @WebServlet("/paymentEditServlet")
 public class paymentEditServlet extends HttpServlet {
+    private paymentService sv;
+
+    public paymentEditServlet() {
+        super();
+        sv = new paymentService();
+    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int payId = Integer.parseInt(request.getParameter("payId"));
         String registrationNumber = request.getParameter("registrationNumber");
@@ -30,7 +36,7 @@ public class paymentEditServlet extends HttpServlet {
 
         paymentList existingPayment = new paymentList(payId,registrationNumber, estimateAmount, cash, paymentDate);
         try {
-            paymentService.updatePayment(existingPayment);
+            sv.updatePayment(existingPayment);
             response.sendRedirect("paymentlist.jsp");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
