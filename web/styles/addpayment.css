@@ -298,11 +298,14 @@ h1 {
 }
 
 .box{
+    position: absolute;
+    top:50%;
+    left:40%;
     background-color:#fff;
     border-radius:5px;
     box-shadow:0 2px 5px rgba(0,0,0,0.3);
     margin: 0 auto;
-    width:400px;
+    width:550px;
     max-width:100%;
 
 }
@@ -389,6 +392,6 @@ h1 {
     display:block;
     padding:10px;
     font-size: 16px;
-    width:320px;
+    width:100%;
 
 }
