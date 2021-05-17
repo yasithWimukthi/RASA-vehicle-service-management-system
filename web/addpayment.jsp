@@ -31,22 +31,50 @@
 
                 <li class="side-nav__item side-nav__item--active">
                     <a href="#" class="side-nav__link">
-                        <i class="car icon side-nav__icon"></i>
-                        <div class="side-nav__text">Service Entry</div>
+                        <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Add Service Entry</div>
                     </a>
                 </li>
 
                 <li class="side-nav__item">
-                    <a href="#" class="side-nav__link">
-                        <i class="search icon side-nav__icon"></i>
+                    <a href="searchservice.jsp" class="side-nav__link">
+                        <i class="search icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
                         <div class="side-nav__text">Search Entry</div>
                     </a>
                 </li>
 
                 <li class="side-nav__item">
+                    <a href="budget.jsp" class="side-nav__link">
+                        <i class="dollar sign icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Budget Management</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
                     <a href="#" class="side-nav__link">
-                        <i class="tasks icon side-nav__icon"></i>
-                        <div class="side-nav__text">Work Progress</div>
+                        <i class="truck icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Inventory Management</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="address book outline icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Employee Management</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Car Rent</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="file outline icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Car Record</div>
                     </a>
                 </li>
 
@@ -61,10 +89,13 @@
 
 
             <div id="wrapper">
-                <h1>Estimate Amount</h1>
+            <h1>Estimate Amount</h1>
                 <%--get verhicle service id using session--%>
-                <%int serviceID = (int)session.getAttribute("sid");
-                    addPaymentService paymentService = new addPaymentService();%>
+           <%--     <%
+
+
+                    addPaymentService paymentService = new addPaymentService();
+                    int sid = (int) request.getAttribute("sid");%>
                 <table id="keywords" cellspacing="0" cellpadding="0">
                     <thead>
                     <tr>
@@ -79,21 +110,21 @@
 
                         <td>1</td>
                         <td>Painting</td>
-                        <td><%=paymentService.CalcTotalEstimates("painting",serviceID)%></td>
+                        <td><%=paymentService.CalcTotalEstimates("painting",sid)%></td>
 
                     </tr>
                     <tr>
 
                         <td>2</td>
                         <td>Remove and Refting</td>
-                        <td><%=paymentService.CalcTotalEstimates("Remove and refting",serviceID)%></td>
+                        <td><%=paymentService.CalcTotalEstimates("Remove and refting",sid)%></td>
 
                     </tr>
                     <tr>
 
                         <td>3</td>
                         <td>Replace items</td>
-                        <td><%=paymentService.CalcTotalEstimates("Remove items",serviceID)%></td>
+                        <td><%=paymentService.CalcTotalEstimates("Remove items",sid)%></td>
 
                     </tr>
 
@@ -102,7 +133,7 @@
 
                         <td>4</td>
                         <td>items to be replace</td>
-                        <td><%=paymentService.CalcTotalEstimates("replace items",serviceID)%></td>
+                        <td><%=paymentService.CalcTotalEstimates("replace items",sid)%></td>
 
                     </tr>
 
@@ -113,15 +144,16 @@
 
                     <tfoot class="amount" align="center">
                     <tr>
-                        <td>CB1234</td>
+                        <td></td>
                         <td>Total Amount</td>
-                        <td>Rs 20000</td>
+                        <td><%=paymentService.totEstimates(sid)%></td>
                     </tr>
 
                     </tfoot>
                 </table>
             </div>
 
+            --%>
             <div class="box">
                 <form method="post" class="form" id="form" action="<%=request.getContextPath()%>/paymentListServlet" >
 
@@ -147,7 +179,7 @@
                         <input type="text" name="estimateAmount"  id="estimateAmount"  >
                         <i class="fa fa-check-circle" aria-hidden="true"></i>
                         <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                        <small>Please Enter estimation amount and invalid input cannot be entered</small>
+                        <small>Please Enter valid estimation amount </small>
                     </div>
 
                     <div class="form-control" id="form-container3">
@@ -170,7 +202,7 @@
 
 
 
-                            <input type="hidden"  name="serviceID" value="<%=serviceID%>">
+                    <%--<input type="hidden"  name="sid" value="<%=sid%>">--%>
 
 
 

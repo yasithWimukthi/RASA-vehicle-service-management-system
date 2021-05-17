@@ -89,7 +89,6 @@
                 </li>
 
             </ul>
-
             <div class="legal">
                 &copy; 2021 by RASA. All rights reserved.
             </div>
@@ -108,58 +107,49 @@
 
 
 
-                <h2 class="main-title">Latest Payment</h2>
-                <div class="bill_button">
-                    <form method="post" action="<%=request.getContextPath()%>/AllPaymentsServlet">
+                <h2 class="main-title">Payments</h2>
 
+                    <% paymentService pays = new paymentService();
 
-                    <button class="big ui right labeled icon green button">
-                        <i class="arrow alternate circle right icon"></i>
-                        All Payments
-                    </button>
-                    </form>
-                </div>
-
-                <div class="card">
-                <div class="ui grid form-container">
-                    <div class="sixteen  wide column">
-                        <table class="ui celled table">
+                    List<paymentList> payList=  pays.selectAllPayment(); %>
+                <section class="details">
+                    <div class="card">
+                        <table class="ui selectable compact blue table">
                             <thead>
                             <tr>
-
                                 <th>Payment ID</th>
                                 <th>Registration Number</th>
+
                                 <th>Estimate Amount</th>
-                                <th>Cash Amount</th>
-                                <th>Payment Date</th>
-                                <th>Action</th>
+                                <th>Cash</th>
+                                <th>Date</th>
+
                             </tr>
                             </thead>
                             <tbody>
                             <!-- table data -->
-
+                            <%for(paymentList i:payList){ %>
                             <tr>
-
                                 <td>
-                                    <%=request.getAttribute("payId") %>
+                                    <%=i.getPayId() %>
                                 </td>
                                 <td>
-                                    <%=request.getAttribute("registationNumber") %>
-                                </td>
-
-                                <td>
-                                    <%=request.getAttribute("estimateAmount") %>
+                                    <%=i.getRegistrationNumber() %>
                                 </td>
 
                                 <td>
-                                    <%=request.getAttribute("cash") %>
+                                    <%=i.getEstimateAmount() %>
+                                </td>
+
+                                <td>
+                                    <%=i.getCash() %>
                                 </td>
                                 <td>
-                                    <%=request.getAttribute("paymentDate") %>
+                                    <%=i.getPaymentDate() %>
                                 </td>
-                                <td><a href="retriveEditServlet?payId=<%=request.getAttribute("payId")%>" > <i class="yellow pen square icon"></i></a> &nbsp;&nbsp;&nbsp;&nbsp; <a  href="paymentDeleteServlet?payId=<%=request.getAttribute("payId")%>" > <i class="red trash icon"></i></a> &nbsp;&nbsp;&nbsp<a href="BillServlet?payId=<%=request.getAttribute("payId")%>" ><i class="blue file icon"></i></a></td>
+
                             </tr>
-
+                            <%} %>
 
 
 
@@ -169,12 +159,11 @@
                         </table>
 
                     </div>
-
+                </section>
 
 
 
         </div>
-                </div>
     </div>
 </div>
 </div>

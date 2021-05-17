@@ -11,9 +11,13 @@ public class paymentList {
     double estimateAmount;
     double cash;
     Date paymentDate;
-    int serivceID;
+    int sid;
 
-    public paymentList(int payId,String registrationNumber,double estimateAmount,double cash,Date paymentDate,int serivceID) {
+
+    public paymentList(){
+
+    }
+    public paymentList(int payId,String registrationNumber,double estimateAmount,double cash,Date paymentDate,int sid) {
         this.payId = payId;
         this.registrationNumber = registrationNumber;
 
@@ -21,10 +25,10 @@ public class paymentList {
 
         this.cash = cash;
         this.paymentDate = paymentDate;
-        this.serivceID = serivceID;
+        this.sid =  sid;
     }
 
-    public paymentList(String registrationNumber,double estimateAmount,double cash,Date paymentDate,int serivceID) {
+    public paymentList(String registrationNumber,double estimateAmount,double cash,Date paymentDate,int  sid) {
 
 
         this.registrationNumber = registrationNumber;
@@ -33,10 +37,10 @@ public class paymentList {
 
         this.cash = cash;
         this.paymentDate = paymentDate;
-        this.serivceID = serivceID;
+        this.sid =  sid;
     }
     public paymentList(int payId,String registrationNumber,double estimateAmount,double cash,Date paymentDate) {
-      this.payId = payId;
+        this.payId = payId;
 
         this.registrationNumber = registrationNumber;
 
@@ -93,11 +97,11 @@ public class paymentList {
         this.paymentDate = paymentDate;
     }
 
-    public int getSerivceID() {
-        return serivceID;
+    public int getSid() {
+        return  sid;
     }
 
-    public void setSerivceID(int serivceID) {
-        this.serivceID = serivceID;
+    public void setSid(int serivceID) {
+        this.sid =  sid;
     }
 }

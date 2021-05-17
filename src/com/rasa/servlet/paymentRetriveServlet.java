@@ -29,26 +29,28 @@ public class paymentRetriveServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
+        try{
+            paymentService load = new  paymentService();
+            paymentList pay= load.showLatestPayment();
 
 
-            List<paymentList> payList = paydao.selectAllPayment();
+            request.setAttribute("payId",pay.getPayId());
+            request.setAttribute("registrationNumber",pay.getRegistrationNumber());
+            request.setAttribute("estimateAmount",pay.getEstimateAmount());
+            request.setAttribute("cash",pay.getCash());
+            request.setAttribute("paymentDate",pay.getPaymentDate());
+
+
+            request.getRequestDispatcher("paymentList.jsp").forward(request,response);
 
 
 
-
-
-            request.setAttribute("payList", payList);
-
-            RequestDispatcher dis = request.getRequestDispatcher("paymentlist.jsp");
-            dis.forward(request, response);
-
-        }catch(Exception e) {
+        } catch (ServletException e) {
             e.printStackTrace();
-
-
-
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         }
 
     }
-}
+
