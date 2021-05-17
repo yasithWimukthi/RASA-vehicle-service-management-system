@@ -161,7 +161,11 @@
                                 <div class="pricing-content">
                                     <div class="price-value">
 
-                                        <span class="amount">Rs:<%=request.getAttribute("income")%></span>
+                                        <%if(request.getAttribute("income") == null){%>
+                                        <span class="amount">0.0</span>
+                                        <%}else{%>
+                                        <td>Rs:<%=request.getAttribute("income")%></td>
+                                        <%}%>
 
                                     </div>
 
@@ -222,7 +226,11 @@
                                 </div>
                                 <div class="pricing-content_Ex">
                                     <div class="price-value">
-                                        <span class="amount">Rs:<%=request.getAttribute("expenses")%></span>
+                                        <%if(request.getAttribute("expenses") == null){%>
+                                        <span class="amount">0.0</span>
+                                        <%}else{%>
+                                        <td>Rs:<%=request.getAttribute("expenses")%></td>
+                                        <%}%>
 
                                     </div>
                                     <table>
