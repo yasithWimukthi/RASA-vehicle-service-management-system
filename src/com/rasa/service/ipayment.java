@@ -10,12 +10,13 @@ public interface ipayment {
 
     public void addPayment(paymentList paymentlist) throws SQLException;
 
-    public paymentList selectPayment(String payId);
+    public paymentList selectPayment(int payId);
 
     public List<paymentList> selectAllPayment();
 
-    public boolean deletePayment(String payId) throws SQLException;
+    public boolean deletePayment(int payId) throws SQLException;
 
     public boolean updatePayment(paymentList paymentlist) throws SQLException;
+    public paymentList showLatestPayment();
 
 }
