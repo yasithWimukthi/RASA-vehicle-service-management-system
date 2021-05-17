@@ -1,5 +1,5 @@
 #clr_div{
-    background: #e6e6e6;
+    background: #ffffff;
     font-family: arial;
 }
 
@@ -14,7 +14,7 @@
 }
 
 #act_tbl{
-    box-shadow:gray 0 3px 4px;
+
     height: 275px;
     width: auto;
     margin-left: 20px;
@@ -148,10 +148,16 @@ tbody{
 
 }
 
-#btn_frm_update{
+#btn_frm_get{
 
     background-color: skyblue;
     margin-left: 80px;
+}
+
+#btn_frm_update{
+
+    background-color: skyblue;
+
 }
 
 #btn_frm_delete{
@@ -192,7 +198,7 @@ hr{
     background-color: black;
 
 }#clr_div{
-     background: #e6e6e6;
+     background: #ffffff;
      font-family: arial;
  }
 
@@ -341,6 +347,30 @@ tbody{
 
 }
 
+
+.btn_frm_btm{
+
+    border: none;
+    width: 100px;
+    height: 25px;
+    font-weight: bold;
+    border-radius: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 25px;
+    background-color: #0E566C;
+
+
+}
+
+.btn_frm_btm a{
+
+    font-weight: bold;
+    color: #ffffff;
+
+
+
+}
 #btn_frm_update{
 
     background-color: skyblue;
