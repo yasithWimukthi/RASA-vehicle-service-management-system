@@ -15,6 +15,12 @@ import com.rasa.service.paymentService;
 
 @WebServlet("/paymentListServlet")
 public class paymentListServlet extends HttpServlet {
+    private paymentService sv;
+
+    public paymentListServlet() {
+        super();
+        sv = new paymentService();
+    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
@@ -24,13 +30,12 @@ public class paymentListServlet extends HttpServlet {
 
         double cash = Double.parseDouble(request.getParameter("cash"));
         Date paymentDate = Date.valueOf(request.getParameter("paymentDate"));
-        int serviceID = Integer.parseInt(request.getParameter("serviceID"));
+        int sid = Integer.parseInt(request.getParameter("sid"));
 
 
-
-        paymentList newPayment = new paymentList(registrationNumber,estimateAmount,cash,paymentDate,serviceID);
+        paymentList newPayment = new paymentList(registrationNumber,estimateAmount,cash,paymentDate,sid);
         try {
-            paymentService.addPayment(newPayment);
+            sv.addPayment(newPayment);
             response.sendRedirect("paymentlist.jsp");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
