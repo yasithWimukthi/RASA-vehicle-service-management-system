@@ -41,22 +41,50 @@
 
                 <li class="side-nav__item side-nav__item--active">
                     <a href="#" class="side-nav__link">
-                        <i class="car icon side-nav__icon"></i>
-                        <div class="side-nav__text">Service Entry</div>
+                        <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Add Service Entry</div>
                     </a>
                 </li>
 
                 <li class="side-nav__item">
-                    <a href="#" class="side-nav__link">
-                        <i class="search icon side-nav__icon"></i>
+                    <a href="searchservice.jsp" class="side-nav__link">
+                        <i class="search icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
                         <div class="side-nav__text">Search Entry</div>
                     </a>
                 </li>
 
                 <li class="side-nav__item">
+                    <a href="budget.jsp" class="side-nav__link">
+                        <i class="dollar sign icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Budget Management</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
                     <a href="#" class="side-nav__link">
-                        <i class="tasks icon side-nav__icon"></i>
-                        <div class="side-nav__text">Work Progress</div>
+                        <i class="truck icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Inventory Management</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="address book outline icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Employee Management</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Car Rent</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="file outline icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Car Record</div>
                     </a>
                 </li>
 
@@ -80,54 +108,58 @@
 
 
 
-                <h2 class="main-title">Payments</h2>
+                <h2 class="main-title">Latest Payment</h2>
                 <div class="bill_button">
+                    <form method="post" action="<%=request.getContextPath()%>/AllPaymentsServlet">
+
+
                     <button class="big ui right labeled icon green button">
                         <i class="arrow alternate circle right icon"></i>
-                        Bill
+                        All Payments
                     </button>
+                    </form>
                 </div>
-                    <% paymentService pays = new paymentService();
 
-                    List<paymentList> payList=  pays.selectAllPayment(); %>
-                <section class="details">
-                    <div class="card">
-                        <table class="ui selectable compact blue table">
+                <div class="card">
+                <div class="ui grid form-container">
+                    <div class="sixteen  wide column">
+                        <table class="ui celled table">
                             <thead>
                             <tr>
+
                                 <th>Payment ID</th>
                                 <th>Registration Number</th>
-
                                 <th>Estimate Amount</th>
-                                <th>Cash</th>
-                                <th>Date</th>
-                                <th>Actions</th>
+                                <th>Cash Amount</th>
+                                <th>Payment Date</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
                             <!-- table data -->
-                            <%for(paymentList i:payList){ %>
+
                             <tr>
+
                                 <td>
-                                    <%=i.getPayId() %>
+                                    <%=request.getAttribute("payId") %>
                                 </td>
                                 <td>
-                                    <%=i.getRegistrationNumber() %>
+                                    <%=request.getAttribute("registationNumber") %>
                                 </td>
 
                                 <td>
-                                    <%=i.getEstimateAmount() %>
+                                    <%=request.getAttribute("estimateAmount") %>
                                 </td>
 
                                 <td>
-                                    <%=i.getCash() %>
+                                    <%=request.getAttribute("cash") %>
                                 </td>
                                 <td>
-                                    <%=i.getPaymentDate() %>
+                                    <%=request.getAttribute("paymentDate") %>
                                 </td>
-                                <td><a href="retriveEditServlet?payId=<%=i.getPayId()%>" > <i class="yellow pen square icon"></i></a> &nbsp;&nbsp;&nbsp;&nbsp; <a  href="paymentDeleteServlet?payId=<%=i.getPayId()%>" > <i class="red trash icon"></i></a></td>
+                                <td><a href="retriveEditServlet?payId=<%=request.getAttribute("payId")%>" > <i class="yellow pen square icon"></i></a> &nbsp;&nbsp;&nbsp;&nbsp; <a  href="paymentDeleteServlet?payId=<%=request.getAttribute("payId")%>" > <i class="red trash icon"></i></a> &nbsp;&nbsp;&nbsp<a href="BillServlet?payId=<%=request.getAttribute("payId")%>" ><i class="blue file icon"></i></a></td>
                             </tr>
-                            <%} %>
+
 
 
 
@@ -137,11 +169,12 @@
                         </table>
 
                     </div>
-                </section>
+
 
 
 
         </div>
+                </div>
     </div>
 </div>
 </div>
