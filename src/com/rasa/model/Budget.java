@@ -16,7 +16,9 @@ public class Budget {
     double profit;
 
 
+public Budget(){
 
+}
     public Budget(double repairAmount) {
         this.repairAmount = repairAmount;
     }
