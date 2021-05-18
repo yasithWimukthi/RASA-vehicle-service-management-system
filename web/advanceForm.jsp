@@ -55,7 +55,7 @@
                     <a href="#" class="close">X</a>
                     <center><h2>ADD NEW ADVANCE</h2></center><br>
                     <label> ID </label><br>
-                    <input type="text" name="empID"><br>
+                    <input type="text" name="empID" value="<%=request.getAttribute("id")%>"><br>
 
                     <label> advance </label><br>
                     <input type="number" name="amount"><br>
