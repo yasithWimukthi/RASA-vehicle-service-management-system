@@ -86,8 +86,8 @@
 
 
                         <center><h5> Latest advance record</h5></center><br>
-                        <input type="text" name="empID" value=id="<%=request.getAttribute("empID")%>" placeholder="ID"><br>
-                        <input type="text" name="amount"  value="<%=request.getAttribute("amount")%>"  placeholder="advance amount"><br><br>
+                        <input type="number" name="empID" value="<%=request.getAttribute("empID")%>" placeholder="ID"><br>
+                        <input type="number" name="amount"  value="<%=request.getAttribute("amount")%>"  placeholder="advance amount"><br><br>
                         <a class="btn_frm" id="btn_frm_get" href="<%=request.getContextPath()%>/ShowLatestEmployeeAdvanceServlet">get</a>
                         <a class="btn_frm" id="btn_frm_update" href="<%=request.getContextPath()%>/UpdateAdvanceServlet">update</a>
                         <a class="btn_frm" id="btn_frm_delete" href="<%=request.getContextPath()%>/DeleteAdvanceServlet">delete</a>
