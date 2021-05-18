@@ -204,7 +204,7 @@ public class employeeService implements IEmployee_Details{
 
 
         Employee emp  =  viewEmployeeProfile(ID);
-      /*  //LocalDate date = LocalDate.now();
+       //LocalDate date = LocalDate.now();
         Document document = new Document();
         PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\User\\reports\\emp" + ".pdf"));
         document.open();
@@ -251,7 +251,7 @@ public class employeeService implements IEmployee_Details{
         LocalDate date = LocalDate.now();
         Paragraph main = new Paragraph("Date  " + date);
         main.setSpacingAfter(40);
-        document.add(main);*/
+        document.add(main);
 
         PdfPTable table = new PdfPTable(2); // 3 columns.
 
@@ -301,8 +301,8 @@ public class employeeService implements IEmployee_Details{
 
 
 
-        //document.add(table);
-      //  document.close();
+        document.add(table);
+       document.close();
     }
 
 }
