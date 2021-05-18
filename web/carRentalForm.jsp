@@ -23,6 +23,7 @@
             let fName = document.myForm.firstname.value;
             let lName = document.myForm.lastname.value;
             let email = document.myForm.email.value;
+            let mobile = document.myForm.mobile.value;
             let atPosition = email.indexOf("@");
             let dotPosition = email.lastIndexOf(".");
             let address = document.myForm.address.value;
@@ -30,27 +31,39 @@
             let dropOffDate = document.myForm.dropoffdate.value;
 
             if(fName==null || fName==""){
+                document.getElementById("fname").style.borderColor="red";
                 document.getElementById("fnameloc").innerHTML="First name can't be blank";
                 return false;
             }if(lName==null || lName==""){
+                document.getElementById("lname").style.borderColor="red";
                 document.getElementById("lnameloc").innerHTML="Last name can't be blank";
                 return false;
             }if(atPosition<1 || dotPosition<atPosition+2 || dotPosition+2>=email.length){
+                document.getElementById("email").style.borderColor="red";
                 document.getElementById("emailloc").innerHTML="Please enter a valid e-mail address.Ex:abc@gmail.com"
                 return false;
+            }if(mobile==null || mobile==""){
+                document.getElementById("mobile").style.borderColor="red";
+                document.getElementById("mobileloc").innerHTML="Mobile number can't be blank"
+                return false;
             }if(address==null || address==""){
+                document.getElementById("address").style.borderColor="red";
                 document.getElementById("addressloc").innerHTML="Address can't be blank";
                 return false;
             }if(pickUpDate==null || pickUpDate==""){
+                document.getElementById("pickupdate").style.borderColor="red";
                 document.getElementById("pickuploc").innerHTML="Pick up date can't be blank";
                 return false;
             }if(dropOffDate==null || dropOffDate==""){
+                document.getElementById("dropoffdate").style.borderColor="red";
                 document.getElementById("dropoffloc").innerHTML="Drop off date can't be blank";
                 return false;
             }if(num==null || num=="") {
-                document.getElementById("rentpriceloc").innerHTML = "Rent price can't be blanck";
+                document.getElementById("rprice").style.borderColor="red";
+                document.getElementById("numloc").innerHTML = "Rent price can't be blanck";
                 return false;
             }if(isNaN(num)) {
+                document.getElementById("rprice").style.borderColor="red";
                 document.getElementById("numloc").innerHTML = "Enter Numeric values only";
                 return false;
             }
@@ -156,7 +169,7 @@
                                     <label>Mobile Number</label>
                                 </div>
                                 <div class="col-75">
-                                    <input type="phone" name="mobile" id="mobile" pattern="[0-9]{10}" placeholder="1234567890" required>
+                                    <input type="phone" name="mobile" id="mobile" pattern="[0-9]{10}" placeholder="1234567890"><div class="ui-icon-alert"><span style="color:red"id="mobileloc"></span></div>
                                 </div>
                             </div>
                             <div class="row">
@@ -172,7 +185,7 @@
                                     <label>Pick up Date</label>
                                 </div>
                                 <div class="col-75">
-                                    <input type="date" name="pickupdate" placeholder="Pick up date"><div class="ui-icon-alert"><span style="color:red"id="pickuploc"></span></div>
+                                    <input type="date" name="pickupdate" id="pickupdate" placeholder="Pick up date"><div class="ui-icon-alert"><span style="color:red"id="pickuploc"></span></div>
                                 </div>
                             </div>
                             <div class="row">
@@ -180,7 +193,7 @@
                                     <label>Drop off Date</label>
                                 </div>
                                 <div class="col-75">
-                                    <input type="date" name="dropoffdate" placeholder="Drop off date"><div class="ui-icon-alert"><span style="color:red"id="dropoffloc"></span></div>
+                                    <input type="date" name="dropoffdate" id="dropoffdate" placeholder="Drop off date"><div class="ui-icon-alert"><span style="color:red"id="dropoffloc"></span></div>
                                 </div>
                             </div>
                             <div class="row">
@@ -196,7 +209,7 @@
                                     <label>Registration Number</label>
                                 </div>
                                 <div class="col-75">
-                                    <input type="text" name="registrationnumber" placeholder="Registration Number" value="<%=request.getAttribute("regNo")%>">
+                                    <input type="text" name="registrationnumber" placeholder="Registration Number" value="<%=request.getAttribute("regNo")%>" required>
                                 </div>
                             </div></br>
                             <div class="row">
