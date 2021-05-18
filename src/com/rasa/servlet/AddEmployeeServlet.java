@@ -35,6 +35,7 @@ public class AddEmployeeServlet extends HttpServlet {
 
             employeeService empS = new employeeService();
             empS.addEmployee(employee);
+
             response.sendRedirect("employeedetails.jsp");
         } catch (Exception e) {
             e.printStackTrace();
