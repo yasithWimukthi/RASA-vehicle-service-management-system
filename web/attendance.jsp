@@ -59,7 +59,7 @@
                 <div id="att_div" class="div">
                     <% EmployeeLoadingService retrieve = new EmployeeLoadingService();
 
-                        List<Employee> list=  retrieve.loadToPaymentTable();%>
+                        List<Employee> list=  retrieve.loadToAttendanceTable();%>
                     <center>
                         <table>
                             <thead>
@@ -82,9 +82,9 @@
                                     <label>present</label>
                                     <input type="radio" name="att" value="absent" id="absent">
                                     <label>absent</label>
-                                    <input type="radio" name="att" value="hald day" id="half day">
+                                    <input type="radio" name="att" value="halfday" id="halfday">
                                     <label>half day</label>
-                                    <input type="radio" name="att" value="short leave"  id="short leave">
+                                    <input type="radio" name="att" value="shortleave"  id="shortleave">
                                     <label>short leave</label>
                                 </td>
                                 <td>
