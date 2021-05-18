@@ -53,9 +53,9 @@ public class EmployeeAdvanceService  implements IEmpAdv{
             String sql = EmpQuery.update_adv;
             PreparedStatement statement = con.prepareStatement(sql);
 
-            statement.setInt(1, employeeAdvance.getEmpID());
-            statement.setDouble(2,employeeAdvance.getAmount());
-            statement.setInt(3, employeeAdvance.getEmpID());
+
+            statement.setDouble(1,employeeAdvance.getAmount());
+            statement.setInt(2, employeeAdvance.getEmpID());
 
            System.out.println(statement);
 
