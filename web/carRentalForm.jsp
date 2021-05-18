@@ -34,6 +34,10 @@
                 document.getElementById("fname").style.borderColor="red";
                 document.getElementById("fnameloc").innerHTML="First name can't be blank";
                 return false;
+            }if(lName==null || lName==""){
+                document.getElementById("lname").style.borderColor="red";
+                document.getElementById("lnameloc").innerHTML="Last name can't be blank";
+                return false;
             }if(atPosition<1 || dotPosition<atPosition+2 || dotPosition+2>=email.length){
                 document.getElementById("email").style.borderColor="red";
                 document.getElementById("emailloc").innerHTML="Please enter a valid e-mail address.Ex:abc@gmail.com"
