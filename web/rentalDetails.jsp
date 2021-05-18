@@ -20,21 +20,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
-    <title>Rental Details</title>
     <script type="text/javascript">
         function selectYear(){
-
             let d = new Date();
             let currentYear = d.getFullYear();
             let str = "<option value='0'>Select Year</option>";
-
             for(let i=0; i<10; i++){
                 str+="<option value="+(currentYear+i)+">"+(currentYear+i)+"</option>";
             }
             document.getElementById('year').innerHTML = str;
-
         }
     </script>
+    <title>Rental Details</title>
 </head>
 <body onload="selectYear()">
 <div class="container">
@@ -78,7 +75,7 @@
                 </li>
 
                 <li class="side-nav__item">
-                    <a href="#" class="side-nav__link">
+                    <a href="availableCars.jsp" class="side-nav__link">
                         <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
                         <div class="side-nav__text">Car Rent</div>
                     </a>
@@ -137,11 +134,11 @@
                             <td><%=rent.getRegistrationNo()%></td>
                             <form action="<%=request.getContextPath()%>/RetriveUpdateRentalDServlet" method="post">
                                 <input type="hidden" name="rid" value="<%=rent.getRentID()%>">
-                                <td><button class="button button2">Update</button></td>
+                                <td><button class="button1">Update</button></td>
                             </form>
                             <form action="<%=request.getContextPath()%>/DeleteRentalDetailsServlet" method="post">
                                 <input type="hidden" name="rid" value="<%=rent.getRentID()%>">
-                                <td><button class="button button2">Delete</button></td>
+                                <td><button class="button2">Delete</button></td>
                             </form>
                         </tr>
                     <%}%>
@@ -149,30 +146,30 @@
                 </div>
                 </br>
                 <div>
-                    <div>
+                    <form action="<%=request.getContextPath()%>/RentDetailsReportServlet" method="post">
                         <span>Select the year and month to generate report</span>
                         <select name="year" id="year">
                         </select>
                         <select name="month" id="month">
                             <option value="">Select Month</option>
-                            <option value="">January</option>
-                            <option value="">February</option>
-                            <option value="">March</option>
-                            <option value="">April</option>
-                            <option value="">May</option>
-                            <option value="">June</option>
-                            <option value="">July</option>
-                            <option value="">August</option>
-                            <option value="">September</option>
-                            <option value="">October</option>
-                            <option value="">November</option>
-                            <option value="">December</option>
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
                         </select>
-                    </div>
-                    </br>
-                    <div id="btn">
-                        <button class="button button2">Generate Report</button>
-                    </div>
+                        </br>
+                        <div id="btn">
+                            <button class="button1">Generate Report</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
