@@ -1,4 +1,7 @@
-<%@ page import="com.rasa.service.EmployeeLoadingService" %><%--
+<%@ page import="com.rasa.service.EmployeeLoadingService" %>
+<%@ page import="com.rasa.model.Employee" %>
+<%@ page import="java.util.List" %>
+<%--
   Created by IntelliJ IDEA.
   User: Yasith Wimukthi
   Date: 3/9/2021
@@ -9,9 +12,9 @@
 <html>
 <head>
     <title>Initial Template</title>
-    <link href="../../a/employeePayment/web/styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
-    <link href="../../a/employeePayment/web/styles/style.css" rel="stylesheet" >
-    <link href="../../a/employeePayment/web/styles/attendance.css" rel="stylesheet" >
+    <link href="styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
+    <link href="styles/style.css" rel="stylesheet" >
+    <link href="styles/attendance.css" rel="stylesheet" >
 
 
 </head>
@@ -56,7 +59,7 @@
                 <div id="att_div" class="div">
                     <% EmployeeLoadingService retrieve = new EmployeeLoadingService();
 
-                        List<Employee> list=  retrieve.loadToPaymentTable();%>
+                        List<Employee> list=  retrieve.loadToAttendanceTable();%>
                     <center>
                         <table>
                             <thead>
@@ -79,13 +82,13 @@
                                     <label>present</label>
                                     <input type="radio" name="att" value="absent" id="absent">
                                     <label>absent</label>
-                                    <input type="radio" name="att" value="hald day" id="half day">
+                                    <input type="radio" name="att" value="halfday" id="halfday">
                                     <label>half day</label>
-                                    <input type="radio" name="att" value="short leave"  id="short leave">
+                                    <input type="radio" name="att" value="shortleave"  id="shortleave">
                                     <label>short leave</label>
                                 </td>
                                 <td>
-                                    <center><button type=submit class="btn_tbl">save</button></center>
+                                    <center><a href="<%=request.getContextPath()%>/AddAttendanceServlet?id=<%=i.getEmployeeID()%>" type=submit class="btn_tbl">save</a></center>
                                 </td>
                             </tr>
                             <%} %>

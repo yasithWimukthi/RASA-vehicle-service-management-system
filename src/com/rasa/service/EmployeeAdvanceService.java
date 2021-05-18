@@ -53,10 +53,13 @@ public class EmployeeAdvanceService  implements IEmpAdv{
             String sql = EmpQuery.update_adv;
             PreparedStatement statement = con.prepareStatement(sql);
 
-            preparedStatement.setInt(1, employeeAdvance.getEmpID());
-            preparedStatement.setDouble(2,employeeAdvance.getAmount());
 
-           System.out.println(preparedStatement);
+            statement.setDouble(1,employeeAdvance.getAmount());
+            statement.setInt(2, employeeAdvance.getEmpID());
+
+           System.out.println(statement);
+
+
             rowUpdated = statement.executeUpdate() > 0;//return number of rows updated
         }catch (SQLException | ClassNotFoundException e) {
            e.printStackTrace();
@@ -104,7 +107,7 @@ public class EmployeeAdvanceService  implements IEmpAdv{
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                int empID = rs.getInt("empID");
+                int empID = rs.getInt("employeeID");
                 double amount = rs.getDouble("amount");
 
 
@@ -136,14 +139,14 @@ public class EmployeeAdvanceService  implements IEmpAdv{
 
             while (rs.next()) {
 
-                int empID = Integer.parseInt(rs.getString(1));
+                int empID = Integer.parseInt(rs.getString(3));
                // int adminID = Integer.parseInt(rs.getString(2));
-               // Date date=Date.valueOf(rs.getString(3));
-                double amount=Double.parseDouble(rs.getString(2));
+               Date date=Date.valueOf(rs.getString(2));
+                double amount=Double.parseDouble(rs.getString(4));
 
                 EmployeeAdvance advance =new EmployeeAdvance();
                 advance.setEmpID(empID);
-               // advance.setDate(date);
+                advance.setDate(date);
                 advance.setAmount(amount);
 
                 list.add(advance);

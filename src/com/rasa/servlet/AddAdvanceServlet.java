@@ -9,20 +9,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Date;
+import java.util.Date;
+
+
 
 @WebServlet("/AddAdvanceServlet")
 public class AddAdvanceServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int empID = Integer.parseInt(request.getParameter("empID"));
        // int adminID = Integer.parseInt(request.getParameter("adminID"));
-       // Date date = Date.valueOf(request.getParameter("date"));
+       //Date date = new Date();
+       //java.sql.Date d = CAST(GETDA);
+
         double amount = Double.parseDouble(request.getParameter("amount"));
 
         EmployeeAdvance advance = new EmployeeAdvance();
         advance.setEmpID(empID);
        // advance.setAdminID(adminID);
-       // advance.setDate(date);
+       // advance.setDate(d.getDate());
         advance.setAmount(amount);
 
         EmployeeAdvanceService service=new EmployeeAdvanceService();

@@ -9,9 +9,9 @@
 <html>
 <head>
     <title>Initial Template</title>
-    <link href="../../a/employeePayment/web/styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
-    <link href="../../a/employeePayment/web/styles/style.css" rel="stylesheet">
-    <link href="../../a/employeePayment/web/styles/popup.css" rel="stylesheet">
+    <link href="styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
+    <link href="styles/style.css" rel="stylesheet">
+    <link href="styles/popup.css" rel="stylesheet">
 </head>
 <body>
 
@@ -55,7 +55,7 @@
                     <a href="#" class="close">X</a>
                     <center><h2>ADD NEW ADVANCE</h2></center><br>
                     <label> ID </label><br>
-                    <input type="text" name="empID"><br>
+                    <input type="text" name="empID" value="<%=request.getAttribute("id")%>"><br>
 
                     <label> advance </label><br>
                     <input type="number" name="amount"><br>

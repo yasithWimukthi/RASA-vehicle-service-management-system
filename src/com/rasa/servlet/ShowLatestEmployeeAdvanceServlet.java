@@ -29,7 +29,6 @@ public class ShowLatestEmployeeAdvanceServlet extends HttpServlet {
             EmployeeAdvanceService load = new EmployeeAdvanceService();
             EmployeeAdvance advance = load.showLatestAdvance();
 
-
             request.setAttribute("empID",advance.getEmpID());
             request.setAttribute("amount",advance.getAmount());
 

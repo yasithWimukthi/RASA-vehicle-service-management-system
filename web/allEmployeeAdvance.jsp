@@ -11,9 +11,9 @@
 <html>
 <head>
     <title>Initial Template</title>
-    <link href="../../a/employeePayment/web/styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
-    <link href="../../a/employeePayment/web/styles/style.css" rel="stylesheet">
-    <link href="../../a/employeePayment/web/styles/attendance.css" rel="stylesheet">
+    <link href="styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
+    <link href="styles/style.css" rel="stylesheet">
+    <link href="styles/alladvance.css" rel="stylesheet">
 </head>
 <body>
 
@@ -61,7 +61,7 @@
                         <thead>
                         <th> ID </th>
 
-
+                        <th> date</th>
                         <th> payment</th>
                         </thead>
                         <tbody>
@@ -75,6 +75,10 @@
                             </td>
 
                             <td>
+                                <%=i.getDate()  %>
+                            </td>
+
+                            <td>
                                 <%=i.getAmount() %>
                             </td>
 
@@ -84,6 +88,9 @@
                         </tbody>
                     </table>
                 </div>
+
+                        <button class="report_btn">Click here to report</button>
+
 
             </div>
         </div>

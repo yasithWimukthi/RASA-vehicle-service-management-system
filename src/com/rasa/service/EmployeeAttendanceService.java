@@ -21,9 +21,9 @@ public class EmployeeAttendanceService implements IEmpAttendance{
             preparedStatement=con.prepareStatement(sql);
 
             preparedStatement.setInt(1,employeeAttendance.getEmpID());
-            preparedStatement.setInt(2,employeeAttendance.getAdminID());
-            preparedStatement.setDate(3,employeeAttendance.getDate());
-            preparedStatement.setString(4,employeeAttendance.getStatus());
+           // preparedStatement.setInt(2,employeeAttendance.getAdminID());
+           // preparedStatement.setDate(3,employeeAttendance.getDate());
+            preparedStatement.setString(2,employeeAttendance.getStatus());
 
             preparedStatement.execute();
             System.out.println(preparedStatement);

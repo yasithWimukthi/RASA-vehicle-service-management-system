@@ -9,9 +9,9 @@
 <html>
 <head>
     <title>Initial Template</title>
-    <link href="../../a/employeePayment/web/styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
-    <link href="../../a/employeePayment/web/styles/style.css" rel="stylesheet">
-    <link href="../../a/employeePayment/web/styles/popup.css" rel="stylesheet">
+    <link href="styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
+    <link href="styles/style.css" rel="stylesheet">
+    <link href="styles/popup.css" rel="stylesheet">
 </head>
 <body>
 
@@ -54,18 +54,21 @@
                 <form class="add_frm" method="post" action="<%=request.getContextPath()%>/AddPaymentServlet">
                     <a href="#" class="close">X</a>
                     <center><h2>ADD NEW PAYMENT</h2></center><br>
-                    <label > ID </label><p class="valuep"> 0001</p><br>
-                    <label> fname </label><p class="valuep"> kavindu</p><br>
-                    <label> lname </label><p class="valuep"> balasooriya</p><br>
-                    <label> paid advance </label><p class="valuep"> 1000</p><br>
-                    <label> to pay </label><p class="valuep"> 20000</p><br>
+                    <input class="btm_inp"type="number" name="empID" value="<%=request.getAttribute("empid")%>"><br>
+                    <input class="btm_inp"type="text" name="fname" value="<%=request.getAttribute("fname")%>"><br>
+                    <input class="btm_inp"type="text" name="lname" value="<%=request.getAttribute("lname")%>"><br>
+
+                    <label class="btm_lbl"> paid advance </label>
+                    <input class="btm_inp"type="number" value="<%=request.getAttribute("advance")%>" name="advance"><br>
+
+                    <label class="btm_lbl"> to pay </label>
+                    <input class="btm_inp"type="number" value="<%=request.getAttribute("topay")%>" name="toPay"><br>
+
                     <label class="btm_lbl">add bouns</label><br>
                     <input class="btm_inp"type="number" name="bonus"><br>
+
                     <label class="btm_lbl"> deduct </label><br>
-                    <input class="btm_inp"type="number" name="deduct">
-                    <button class="btm_btn">save</button><br>
-                    <label> net salary </label>
-                    <p>25000</p><br>
+                    <input class="btm_inp"type="number" name="deduct"><br>
                     <button class="btn_save">save</button>
                 </form>
             </div>
