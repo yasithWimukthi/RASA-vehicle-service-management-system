@@ -1,5 +1,6 @@
 package com.rasa.servlet;
 
+import com.rasa.model.AvailableCars;
 import com.rasa.model.Rent;
 import com.rasa.service.IRentCarService;
 import com.rasa.service.RentCarService;
@@ -28,6 +29,8 @@ public class InsertRentalDetailsServlet extends HttpServlet {
         int operatorID = 2;
 
         Rent rent = new Rent(firstName, lastName, email, phone, address, pickUpDate, dropOffDate, rentalPrice, registrationNumber, operatorID);
+
+        AvailableCars availableCars = new AvailableCars();
 
         IRentCarService iRentCarService = new RentCarService();
         try {
