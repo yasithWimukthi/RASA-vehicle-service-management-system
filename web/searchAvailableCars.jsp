@@ -112,9 +112,10 @@
 
                             if(list.isEmpty()){%>
                                 <tr>
+                                    <br>
                                     <div style="font-size: large">
                                         <i class='far fa-frown' style='font-size:36px'></i>
-                                        <span>No Search Results Found</span>
+                                        <span style="font-style: oblique">No Search Results Found!</span>
                                     </div>
                                 </tr>
                             <%}
