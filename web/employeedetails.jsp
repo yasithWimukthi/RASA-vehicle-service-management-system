@@ -24,22 +24,50 @@
 
                 <li class="side-nav__item side-nav__item--active">
                     <a href="#" class="side-nav__link">
-                        <i class="car icon side-nav__icon"></i>
-                        <div class="side-nav__text">Service Entry</div>
+                        <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Add Service Entry</div>
                     </a>
                 </li>
 
                 <li class="side-nav__item">
-                    <a href="#" class="side-nav__link">
-                        <i class="search icon side-nav__icon"></i>
+                    <a href="searchservice.jsp" class="side-nav__link">
+                        <i class="search icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
                         <div class="side-nav__text">Search Entry</div>
                     </a>
                 </li>
 
                 <li class="side-nav__item">
                     <a href="#" class="side-nav__link">
-                        <i class="tasks icon side-nav__icon"></i>
-                        <div class="side-nav__text">Work Progress</div>
+                        <i class="dollar sign icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Budget Management</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="truck icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Inventory Management</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="address book outline icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Employee Management</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Car Rent</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="file outline icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Car Record</div>
                     </a>
                 </li>
 
@@ -55,7 +83,7 @@
             <center><h1>EMPLOYEE DETAILS</h1></center>
             <section class="details">
                 <div class="card">
-                    <% employeeService retrieve = new employeeService();
+                    <%employeeService retrieve = new employeeService();
                         List<Employee> list = retrieve.viewEmployeeDetails();%>
                     <table>
                         <thead>
@@ -71,20 +99,24 @@
                         <tbody>
                         <%for(Employee i:list){%>
                         <tr>
-                            <td><%=i.getEmployeeID()%></td>
+                            <td name="employeeID"><%=i.getEmployeeID()%></td>
                             <td><%=i.getFname()%></td>
-                            <td><a href ="view?"> <i class="fa fa-eye" aria-hidden="true" style="color:black"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;
-                                <a  href="edit? >" ><i class= "fa fa-pencil" aria-hidden ="true" style="color:darkblue;width:20px"></i></a> &nbsp;&nbsp;&nbsp;&nbsp;
-                                <a  href="delete?>" ><i class="fa fa-trash-o" aria-hidden="true" style="color:Red"></i></a></td>
+                            <td><a href ="view?"></a> <a href="ViewProfileServlet?ID=<%=i.getEmployeeID()%>"><i class="fa fa-eye" aria-hidden="true" style="color:black"></i> &nbsp;&nbsp;&nbsp;&nbsp;
+                                <a  href="edit? >" ></a><a href="LoadServlet?ID=<%=i.getEmployeeID()%>"><i class= "fa fa-pencil" aria-hidden ="true" style="color:darkblue;width:20px"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a  href="delete?>" ></a>  <a href="DeleteEmployeeServlet?employeeID=<%=i.getEmployeeID()%>">
+                                        <i class="fa fa-trash-o" aria-hidden="true" style="color:Red"></i>
+                                    </a></td>
                         </tr>
-                       <%}%>
+                        <%}%>
                         </tbody>
                     </table>
                 </div>
             </section>
             <br>
-          <a href="<%=request.getContextPath()%>/employeeregistration.jsp">
-              <button class="button" type="submit" class="name" name="submit" class="btn btn-primary btn-block">ADD EMPLOYEE</button></a>
+            <a href="<%=request.getContextPath()%>/employeeregistration.jsp">
+                <button class="button" type="submit" class="name" name="submit" class="btn btn-primary btn-block">ADD EMPLOYEE</button></a>
+
+
 
         </div>
     </div>
