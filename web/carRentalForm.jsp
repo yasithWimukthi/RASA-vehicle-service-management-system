@@ -34,10 +34,6 @@
                 document.getElementById("fname").style.borderColor="red";
                 document.getElementById("fnameloc").innerHTML="First name can't be blank";
                 return false;
-            }if(lName==null || lName==""){
-                document.getElementById("lname").style.borderColor="red";
-                document.getElementById("lnameloc").innerHTML="Last name can't be blank";
-                return false;
             }if(atPosition<1 || dotPosition<atPosition+2 || dotPosition+2>=email.length){
                 document.getElementById("email").style.borderColor="red";
                 document.getElementById("emailloc").innerHTML="Please enter a valid e-mail address.Ex:abc@gmail.com"
@@ -115,7 +111,7 @@
                     </li>
 
                     <li class="side-nav__item">
-                        <a href="#" class="side-nav__link">
+                        <a href="availableCars.jsp" class="side-nav__link">
                             <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
                             <div class="side-nav__text">Car Rent</div>
                         </a>
