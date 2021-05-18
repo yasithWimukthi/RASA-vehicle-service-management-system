@@ -13,7 +13,7 @@
     <title>Initial Template</title>
     <link href="styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
     <link href="styles/style.css" rel="stylesheet">
-    <link href="styles/attendance.css" rel="stylesheet">
+    <link href="styles/alladvance.css" rel="stylesheet">
 </head>
 <body>
 
@@ -61,8 +61,9 @@
                     <table id="act_tbl">
                         <thead>
                         <th> ID </th>
-
-
+                        <th> Date</th>
+                        <th> Bonus</th>
+                        <th> Deduct</th>
                         <th> payment</th>
                         </thead>
                         <tbody>
@@ -72,6 +73,10 @@
 
                             <td>
                                 <%=i.getEmpID()  %>
+                            </td>
+
+                            <td>
+                                <%=i.getDate() %>
                             </td>
 
                             <td>
@@ -92,7 +97,7 @@
                         </tbody>
                     </table>
                 </div>
-
+                <button class="report_btn">Click here to Salary Report</button>
             </div>
         </div>
     </div>
