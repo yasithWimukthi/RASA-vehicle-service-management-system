@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: User
-  Date: 3/10/2021
-  Time: 1:04 PM
+  Date: 4/19/2021
+  Time: 4:11 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -21,22 +21,50 @@
 
                 <li class="side-nav__item side-nav__item--active">
                     <a href="#" class="side-nav__link">
-                        <i class="car icon side-nav__icon"></i>
-                        <div class="side-nav__text">Service Entry</div>
+                        <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Add Service Entry</div>
                     </a>
                 </li>
 
                 <li class="side-nav__item">
-                    <a href="#" class="side-nav__link">
-                        <i class="search icon side-nav__icon"></i>
+                    <a href="searchservice.jsp" class="side-nav__link">
+                        <i class="search icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
                         <div class="side-nav__text">Search Entry</div>
                     </a>
                 </li>
 
                 <li class="side-nav__item">
                     <a href="#" class="side-nav__link">
-                        <i class="tasks icon side-nav__icon"></i>
-                        <div class="side-nav__text">Work Progress</div>
+                        <i class="dollar sign icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Budget Management</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="truck icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Inventory Management</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="address book outline icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Employee Management</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Car Rent</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="file outline icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Car Record</div>
                     </a>
                 </li>
 
@@ -46,26 +74,25 @@
                 &copy; 2021 by RASA. All rights reserved.
             </div>
         </div>
-
         <div class="main-content">
             <!-- implement fuctions here -->
             <center>
                 <div class="form_div" >
-                    <form class="add_frm">
+                    <form class="add_frm" action="<%=request.getContextPath()%>/ReportServlet?ID=<%=request.getAttribute("employeeID")%>"  method="post">
                         <center><h1>Employee Profile</h1></center><br>
-                        <label > ID </label><p class="valuep"> 001</p><br>
-                        <label> fname </label><p class="valuep"> kavindu</p><br>
-                        <label> lname </label><p class="valuep"> balasooriya</p><br>
-                        <label> Gender </label><p class="valuep"> Male</p><br>
-                        <label>Date of Birth </label><p class="valuep">1983.02.25</p><br>
-                        <label>NIC </label><p class="valuep">83459723v</p><br>
-                        <label>Basic Salary</label><p class="valuep">25000.00</p><br>
-                        <label>Mobile Number</label><p class="valuep">0762245763</p><br>
-                        <label>Email</label><p class="valuep">kavindu185@gmail.com</p><br>
-                        <label>Address</label><p class="valuep">"kavindu",kanatha road,Athurugiriya.</p><br>
+                        <label > ID </label><p class="valuep"><%=request.getAttribute("employeeID")%></p><br>
+                        <label> fname </label><p class="valuep"><%=request.getAttribute("fname")%></p><br>
+                        <label> lname </label><p class="valuep"><%=request.getAttribute("lname")%></p><br>
+                        <label> Gender </label><p class="valuep"><%=request.getAttribute("gender")%></p><br>
+                        <label>Date of Birth </label><p class="valuep"><%=request.getAttribute("DOB")%></p><br>
+                        <label>NIC </label><p class="valuep"><%=request.getAttribute("NIC")%></p><br>
+                        <label>Basic Salary</label><p class="valuep"><%=request.getAttribute("basicSalary")%></p><br>
+                        <label>Mobile Number</label><p class="valuep"><%=request.getAttribute("mobile")%></p><br>
+                        <label>Email</label><p class="valuep"><%=request.getAttribute("email")%></p><br>
+                        <label>Address</label><p class="valuep"><%=request.getAttribute("address")%></p><br>
 
+                        <input  class="button" type="submit" class="name" name="submit" value="Print Report" class="btn btn-primary btn-block">
                     </form>
-                    <input  class="button" type="submit" class="name" name="submit" value="Print Report" class="btn btn-primary btn-block">
                 </div>
         </div>
     </div>

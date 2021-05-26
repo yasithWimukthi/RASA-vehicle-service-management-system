@@ -1,9 +1,12 @@
 package com.rasa.service;
 
+import com.itextpdf.text.DocumentException;
 import com.rasa.model.RepairComponent;
 import com.rasa.model.RepairService;
 import com.rasa.model.VehicleComponent;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -26,8 +29,13 @@ public interface Iworkprogress_service {
    public Boolean UpdateRepairComponent(String ser_id , String item_id , int estimateA) throws SQLException, ClassNotFoundException;
    public Boolean deleteRepairComponent(String ser_id , String item_id) throws SQLException, ClassNotFoundException;
 
+
    //calculation
    public double CalcTotalEstimates(String type , int sid) throws SQLException, ClassNotFoundException;
+
+   //pdf generator
+   public boolean createEstimatePdf(ArrayList<RepairService> repairServices) throws IOException, DocumentException, SQLException, ClassNotFoundException;
+
 
 
 }

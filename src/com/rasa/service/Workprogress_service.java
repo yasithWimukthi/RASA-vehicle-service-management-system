@@ -1,14 +1,23 @@
 package com.rasa.service;
 
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.rasa.model.RepairComponent;
 import com.rasa.model.RepairService;
 import com.rasa.model.VehicleComponent;
 import com.rasa.util.DBConnectionUtil;
 
+import javax.print.Doc;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Workprogress_service implements Iworkprogress_service{
@@ -47,7 +56,7 @@ public class Workprogress_service implements Iworkprogress_service{
         String pid = this.createProgressId(sid);
         //if user refresh page twice page will redirect to the add_service.jsp
         if(getProgressId(sid) != null){
-            return false;
+            return true;
         }
         //if it was not create pid
         con = DBConnectionUtil.getConnection();
@@ -309,6 +318,101 @@ public class Workprogress_service implements Iworkprogress_service{
 
     }
 
+    @Override
+    public boolean createEstimatePdf(ArrayList<RepairService> repairServices) throws IOException, DocumentException, SQLException, ClassNotFoundException {
+        //date
+        LocalDate date = LocalDate.now();
+
+        Document document = new Document();
+        //pdf path
+        PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\USER\\Desktop\\reports\\estimate"+date+".pdf"));
+        document.open();
+        //header part
+        //font
+        Font heading1 = new Font(Font.FontFamily.HELVETICA,13,Font.BOLD,BaseColor.BLUE);
+        Font heading2 = new Font(Font.FontFamily.HELVETICA,12,Font.NORMAL,BaseColor.BLUE);
+
+        Chunk head = new Chunk("RASA MOTERS PRIVATE LIMITED",heading1);
+        Chunk head3 = new Chunk("rasa moters",heading1);
+        Chunk head2 = new Chunk("54/3 New Kandy Road ,Kotalawela,Kaduwela\nHotline:072323435\nemail:Rasa@gmail.com",heading2);
+
+        //image path
+        String path = "C:\\Users\\USER\\Desktop\\reports\\rasa.jpg";
+
+        Image img = Image.getInstance(path);
+        PdfPTable table1 = new PdfPTable(2); // 3 columns.
+        PdfPTable table2 = new PdfPTable(1); // 1 column
+
+        Paragraph p1 = new Paragraph();
+        p1.add(head);
+        p1.add(head2);
+
+        PdfPCell cell1 = new PdfPCell(img);
+        PdfPCell cell2 = new PdfPCell(p1);
+        PdfPCell cell3 = new PdfPCell(new Paragraph(head3));
+
+        cell1.setBorderWidth(0);
+        cell2.setBorderWidth(0);
+        cell3.setBorderWidth(0);
+        cell1.setFixedHeight(100);
+        cell3.setBackgroundColor(BaseColor.LIGHT_GRAY);
+        table1.setWidthPercentage(100);
+        table2.setWidthPercentage(200);
+
+        table1.addCell(cell1);
+        table1.addCell(cell2);
+        table2.addCell(cell3);
+        document.add(table2);
+        document.add(table1);
+        document.add(table2);
+
+        //header part end
+
+        //body for estimate tables
+        Iworkprogress_service iworkprogress_service = new Workprogress_service();
+        Paragraph headingEstimate = new Paragraph("Estimate Report "+ date);
+        Paragraph VehicleNo = new Paragraph("Vehicle No "+ "1000D");
+        Paragraph space2 = new Paragraph(" ");
+        document.add(headingEstimate);
+        document.add(VehicleNo);
+        document.add(space2);
+
+        PdfPCell namec = new PdfPCell(new Paragraph("Repair Component"));
+        PdfPCell estimateA = new PdfPCell(new Paragraph("Estimate Amount"));
+        PdfPTable pTable = new PdfPTable(2);
+
+        pTable.addCell(namec);
+        pTable.addCell(estimateA);
+
+
+        for(RepairService rs : repairServices){
+              Paragraph paragraph = new Paragraph(rs.getSer_type());
+              Paragraph space = new Paragraph(" ");
+              document.add(paragraph);
+              document.add(space);
+              ArrayList<RepairComponent> rpc = iworkprogress_service.retriveRepairComponents(rs.getSer_Id());
+
+            for(RepairComponent rp : rpc){
+                PdfPCell pdfPCell1 = new PdfPCell(new Paragraph(rp.getVehicleComponent().getV_Item_name()));
+                PdfPCell pdfPCell2 = new PdfPCell(new Paragraph("Rs :"+rp.getEstimateAmount()));
+
+                pTable.addCell(pdfPCell1);
+                pTable.addCell(pdfPCell2);
+
+
+            }
+            document.add(pTable);
+            pTable.deleteBodyRows();
+            rpc.clear();
+
+
+        }
+        document.close();
+
+
+        //body end
+        return true;
+    }
 
 
 }

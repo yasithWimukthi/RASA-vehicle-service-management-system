@@ -21,7 +21,7 @@ import java.io.IOException;
 @WebServlet("/AddVehicleServlet")
 public class AddVehicleServlet extends HttpServlet {
 
-    VehicleService vehicleService;
+    private VehicleService vehicleService;
 
     @Override
     public void init() throws ServletException {

@@ -106,22 +106,50 @@
 
                 <li class="side-nav__item side-nav__item--active">
                     <a href="#" class="side-nav__link">
-                        <i class="car icon side-nav__icon"></i>
-                        <div class="side-nav__text">Service Entry</div>
+                        <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Add Service Entry</div>
                     </a>
                 </li>
 
                 <li class="side-nav__item">
-                    <a href="#" class="side-nav__link">
-                        <i class="search icon side-nav__icon"></i>
+                    <a href="searchservice.jsp" class="side-nav__link">
+                        <i class="search icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
                         <div class="side-nav__text">Search Entry</div>
                     </a>
                 </li>
 
                 <li class="side-nav__item">
                     <a href="#" class="side-nav__link">
-                        <i class="tasks icon side-nav__icon"></i>
-                        <div class="side-nav__text">Work Progress</div>
+                        <i class="dollar sign icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Budget Management</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="truck icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Inventory Management</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="address book outline icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Employee Management</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Car Rent</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="file outline icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Car Record</div>
                     </a>
                 </li>
 
@@ -214,8 +242,8 @@
                             <% if(!update) {%>
                                 <div class="field" id="brandContainer" >
                                     <label>Brand Name</label>
-                                    <select class="ui search dropdown" name="brand" id="brand">
-                                        <option value="Toyota">Toyota</option>
+                                    <select class="ui search dropdown" name="brand" id="brand" style="font-size: x-large">
+                                        <option value="Toyota" ><span >Toyota</span></option>
                                         <option value="Nissan">Nissan</option>
                                         <option value="Susuki">Susuki</option>
                                         <option value="BMW">BMW</option>
@@ -248,7 +276,8 @@
 
                             <div class="field" id="manufactYearContainer">
                                 <label>Manufactured Year</label>
-                                <input type="text" placeholder="Brand Name" name="manufactureYear" id="manufactureYear" value="<%= year%>">
+                                <input type="text" placeholder="Manufacture Year" name="manufactureYear" id="manufactureYear" value="<%= year%>">
+                                <p class="year-error" style="color: red;visibility: hidden;">Invalid Year</p>
                             </div>
 
                             <input type="hidden" value="<%=update%>" name="update">

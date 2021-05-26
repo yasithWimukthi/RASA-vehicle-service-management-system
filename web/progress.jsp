@@ -21,7 +21,16 @@
 <body>
 
 <%-- get vehcile entry Id using session --%>
-<%int sid = (int)session.getAttribute("sid");%>;
+<%--Runtime check sid is invalid --%>
+<%int sid = 0;%>
+<%if(request.getAttribute("sid") != null){%>
+      <%=sid = (int)request.getAttribute("sid")%>
+<%}else{%>
+      <script>
+            alert("internal server error");
+      </script>
+<%}%>
+<%--Runtime check sid is invalid end --%>
 <%-- gather pid--%>
 <%Iworkprogress_service iworkprogress_service = new Workprogress_service();%>
 <%String pid = iworkprogress_service.getProgressId(sid);%>
@@ -66,14 +75,22 @@
                                           <input type="hidden" name ="sid" value="<%=sid%>">
                                     </form>
                                </div>
-
                               <%-- if pid not null user can add items--%>
                               <%} else{%>
 
                                     <div class="header_container">
-                                          <h1><i class="tint icon"></i>Vehicle Service Onprogress..!</h1>
-                                          <a href="<%=request.getContextPath()%>/add_services.jsp"><button class="ui positive button"><i class="plus icon"></i>Show Progress</button></a>
-                                          <a href="<%=request.getContextPath()%>/add_services.jsp"><button class="ui positive button"><i class="calendar icon"></i>Show Estimate</button></a>
+                                          <form method="post" action="<%=request.getContextPath()%>/CreateWorkProgressServlet">
+                                                <h1><i class="tint icon"></i>Vehicle Service Onprogress..!</h1>
+                                                <input type="hidden" value="<%=sid%>" name="sid">
+                                                <div style="position:absolute;top:63%;left:36%">
+                                                <button class="ui positive button"><i class="plus icon"></i>Add Services</button>
+                                                </div>
+                                          </form>
+                                          <!-- navigate estimate report -->
+                                           <%session.setAttribute("pid",pid);%>
+                                           <%session.setAttribute("sid",sid);%>
+                                           <a href="<%=request.getContextPath()%>/estimatereportview.jsp"><button class="ui positive button"><i class="calendar icon"></i>Show Estimate</button></a>
+                                          <!-- navigate estimate report end -->
                                     </div>
                               <div class="p_container">
                                     <div class="btn-container">
@@ -84,6 +101,7 @@
                                           <!--hidden types -->
                                                 <input type="hidden" name="ser_id" value="<%=repairService.getSer_Id()%>">
                                                 <input type="hidden" name="pid" value="<%=pid%>">
+                                                <input type="hidden" name="sid" value="<%=sid%>">
                                                 <input type="hidden" name="ser_name" value="<%=repairService.getSer_type()%>">
                                           <!--hidden types -->
                                           </form>

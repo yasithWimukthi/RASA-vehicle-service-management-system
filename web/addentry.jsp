@@ -32,22 +32,50 @@
 
                 <li class="side-nav__item side-nav__item--active">
                     <a href="#" class="side-nav__link">
-                        <i class="car icon side-nav__icon"></i>
-                        <div class="side-nav__text">Service Entry</div>
+                        <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Add Service Entry</div>
                     </a>
                 </li>
 
                 <li class="side-nav__item">
-                    <a href="#" class="side-nav__link">
-                        <i class="search icon side-nav__icon"></i>
+                    <a href="searchservice.jsp" class="side-nav__link">
+                        <i class="search icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
                         <div class="side-nav__text">Search Entry</div>
                     </a>
                 </li>
 
                 <li class="side-nav__item">
                     <a href="#" class="side-nav__link">
-                        <i class="tasks icon side-nav__icon"></i>
-                        <div class="side-nav__text">Work Progress</div>
+                        <i class="dollar sign icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Budget Management</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="truck icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Inventory Management</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="address book outline icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Employee Management</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Car Rent</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="file outline icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Car Record</div>
                     </a>
                 </li>
 
@@ -127,34 +155,34 @@
                                 <label for="repair">Repair Type:</label>
                                 <div class="field">
                                     <div class="ui radio checkbox">
-                                        <input type="radio" name="repair" tabindex="10" class="hidden" id="insurance" value="Insuarance">
-                                        <label>Insuarance</label>
+                                        <input type="radio" name="repair"  tabindex="10" class="hidden" id="insurance" value="Insuarance">
+                                        <label style="font-size: 16px">Insuarance</label>
                                     </div>
                                 </div>
 
                                 <div class="field">
                                     <div class="ui radio checkbox">
-                                        <input type="radio" name="repair" checked="" tabindex="0" class="hidden" id="nonInsurance" value="nonInsurance">
-                                        <label>Non-Insuarance</label>
+                                        <input type="radio" name="repair" checked tabindex="0" class="hidden" id="nonInsurance" value="Non Insurance">
+                                        <label style="font-size: 16px">Non-Insuarance</label>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="inline field" id="document-container" style="display: none">
-                                <label >Repair Type:</label>
+                                <label >Documents :</label>
                                 <div class="ui checkbox">
                                     <input type="checkbox" tabindex="0" class="hidden" name="customerNoObjection">
-                                    <label>Customer No objection</label>
+                                    <label style="font-size: 16px; margin-right: 15px;margin-bottom: 30px">Customer No objection</label>
                                 </div>
 
                                 <div class="ui checkbox">
                                     <input type="checkbox" tabindex="0" class="hidden" name="insuranceNoObjection">
-                                    <label>Insuarance No objection</label>
+                                    <label style="font-size: 16px; margin-right: 15px">Insuarance No objection</label>
                                 </div>
 
                                 <div class="ui checkbox">
                                     <input type="checkbox" tabindex="0" class="hidden" name="claimForm">
-                                    <label>Claim Form</label>
+                                    <label style="font-size: 16px">Claim Form</label>
                                 </div>
                             </div>
 
@@ -167,7 +195,7 @@
                             </div>
 
                             <button type="submit" class="ui fluid inverted green labeled icon button submit-btn" id="entry-submit">
-                                <i class="right check icon" style="font-size: 1.5em;"></i>
+                                <i class="right check icon" style="font-size: 1.5em;margin-top: 10px"></i>
                                 complete
                             </button>
                         </div>

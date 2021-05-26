@@ -1,6 +1,6 @@
 package com.rasa.servlet;
 
-import javax.jms.Session;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,11 +15,14 @@ public class RetriveWorkServiceServlet extends HttpServlet {
         HttpSession session = request.getSession();
         String ser_id = request.getParameter("ser_id");
         String ser_name = request.getParameter("ser_name");
+        int sid = Integer.parseInt(request.getParameter("sid"));
 
         //store into session varible this is used inside addrepaircomponent.jsp page
         session.setAttribute("serviceId",ser_id);
         session.setAttribute("serviceName",ser_name);
+        session.setAttribute("sid",sid);
         //redirect to the addrepaircomponent.jsp page
+
         request.getRequestDispatcher("addrepaircomponent.jsp").forward(request,response);
 
     }

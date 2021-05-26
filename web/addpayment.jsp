@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.rasa.service.addPaymentService" %><%--
   Created by IntelliJ IDEA.
   User: Tharukshi
   Date: 3/22/2021
@@ -31,22 +31,50 @@
 
                 <li class="side-nav__item side-nav__item--active">
                     <a href="#" class="side-nav__link">
-                        <i class="car icon side-nav__icon"></i>
-                        <div class="side-nav__text">Service Entry</div>
+                        <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Add Service Entry</div>
                     </a>
                 </li>
 
                 <li class="side-nav__item">
-                    <a href="#" class="side-nav__link">
-                        <i class="search icon side-nav__icon"></i>
+                    <a href="searchservice.jsp" class="side-nav__link">
+                        <i class="search icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
                         <div class="side-nav__text">Search Entry</div>
                     </a>
                 </li>
 
                 <li class="side-nav__item">
+                    <a href="budget.jsp" class="side-nav__link">
+                        <i class="dollar sign icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Budget Management</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
                     <a href="#" class="side-nav__link">
-                        <i class="tasks icon side-nav__icon"></i>
-                        <div class="side-nav__text">Work Progress</div>
+                        <i class="truck icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Inventory Management</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="address book outline icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Employee Management</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Car Rent</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="file outline icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Car Record</div>
                     </a>
                 </li>
 
@@ -61,8 +89,13 @@
 
 
             <div id="wrapper">
-                <h1>Estimate Amount</h1>
+            <h1>Estimate Amount</h1>
+                <%--get verhicle service id using session--%>
+               <%
 
+
+                    addPaymentService paymentService = new addPaymentService();
+                    int sid = (int) request.getAttribute("sid");%>
                 <table id="keywords" cellspacing="0" cellpadding="0">
                     <thead>
                     <tr>
@@ -77,111 +110,115 @@
 
                         <td>1</td>
                         <td>Painting</td>
-                        <td>10000</td>
+                        <td><%=paymentService.CalcTotalEstimates("painting",sid)%></td>
 
                     </tr>
                     <tr>
 
                         <td>2</td>
                         <td>Remove and Refting</td>
-                        <td>5000</td>
+                        <td><%=paymentService.CalcTotalEstimates("Remove and refting",sid)%></td>
 
                     </tr>
                     <tr>
 
                         <td>3</td>
                         <td>Replace items</td>
-                        <td>5000</td>
+                        <td><%=paymentService.CalcTotalEstimates("Remove items",sid)%></td>
 
                     </tr>
+
+
                     <tr>
 
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>4</td>
+                        <td>items to be replace</td>
+                        <td><%=paymentService.CalcTotalEstimates("replace items",sid)%></td>
 
                     </tr>
+
+
 
 
                     </tbody>
 
                     <tfoot class="amount" align="center">
                     <tr>
-                        <td>CB1234</td>
+                        <td></td>
                         <td>Total Amount</td>
-                        <td>Rs 20000</td>
+                        <td><%=paymentService.totEstimates(sid)%></td>
                     </tr>
 
                     </tfoot>
                 </table>
             </div>
 
+
             <div class="box">
-                <form method="post" class="form" id="form" action="<%=request.getContextPath()%>/paymentListServlet">
+                <form method="post" class="form" id="form" action="<%=request.getContextPath()%>/paymentListServlet" >
 
 
                     <%--@declare id="vehicleregino"--%><%--@declare id="customername"--%><%--@declare id="estimateamount"--%>
                     <%--@declare id="cash"--%><%--@declare id="paymentdate"--%>
 
-                    <div class="form-main-text">Add payment</div>
+                    <div class="header">Add payment</div>
 
                     <br>
                     <input type ="hidden" name="payId">
-                    <div class="form-control">
-                        <label for="vehicleRegiNo">RegiNo</label>
-                        <input type="text" name="vehicleRegiNo" id="vehicleRegiNo"  >
+                    <div class="form-control" id="form-container">
+                        <label for="vehicleRegiNo">Vehicle Registation number</label>
+                        <input type="text" name="registrationNumber" id="vehicleRegiNo" >
                         <i class="fa fa-check-circle" aria-hidden="true"></i>
                         <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                        <small>Error</small>
+                        <small>Please enter vehicle Registration number</small>
                     </div>
 
-                    <div class="form-control">
-                        <label for="customerName">Customer Name</label>
-                        <input type="text" name="customerName" id="customerName" >
-                        <i class="fa fa-check-circle" aria-hidden="true"></i>
-                        <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                        <small>Error</small>
-                    </div>
 
-                    <div class="form-control">
+                    <div class="form-control" id="form-container2">
                         <label  for="estimateAmount">Estimation Amount</label>
                         <input type="text" name="estimateAmount"  id="estimateAmount"  >
                         <i class="fa fa-check-circle" aria-hidden="true"></i>
                         <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                        <small>Error</small>
+                        <small>Please Enter valid estimation amount </small>
                     </div>
 
-                    <div class="form-control">
+                    <div class="form-control" id="form-container3">
                         <label for="cash">Cash</label>
                         <input type="text"   name="cash" id="cash"  >
                         <i class="fa fa-check-circle" aria-hidden="true"></i>
                         <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                        <small>Error</small>
+                        <small>Please enter cash amount and invalid input cannot be entered</small>
                     </div>
 
 
 
-                    <div class="form-control">
+                    <div class="form-control" id="form-container4">
                         <label for="paymentDate">Date of Payment</label>
                         <input type="date"  name="paymentDate" id="paymentDate" >
                         <i class="fa fa-check-circle" aria-hidden="true"></i>
                         <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                        <small>Error</small>
+                        <small>Please enter payment date</small>
                     </div>
 
 
 
+                    <input type="hidden"  name="sid" value="<%=sid%>">
 
 
 
-                    <button>submit</button>
+
+
+
+                    <button type="submit">submit</button>
                 </form>
 
             </div>
 
         </div>
+
     </div>
 </div>
+<script src="financial_script/addpayment.js"></script>
 </body>
 </html>
 

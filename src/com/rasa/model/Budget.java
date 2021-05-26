@@ -1,4 +1,4 @@
-package model;
+package com.rasa.model;
 
 import java.util.Date;
 
@@ -16,7 +16,9 @@ public class Budget {
     double profit;
 
 
+public Budget(){
 
+}
     public Budget(double repairAmount) {
         this.repairAmount = repairAmount;
     }

@@ -25,10 +25,12 @@
     Repair repair = (Repair) request.getAttribute("repair");
     Customer customer = (Customer) request.getAttribute("client");
     Vehicle vehicle = (Vehicle) request.getAttribute("vehicle");
+    boolean isUpdate = (boolean) request.getAttribute("isUpdate");
+    boolean isCreate = (boolean) request.getAttribute("isCreate");
     String documents = "";
 
     if (repair.isCustomerNoObjection()){
-        documents = documents+", "+"Customer No Objection";
+        documents = documents+" "+"Customer No Objection";
     }
     if (repair.isLeasingNoObjection()){
         documents = documents+", "+"Leasing No Objection";
@@ -46,22 +48,50 @@
 
                 <li class="side-nav__item ">
                     <a href="#" class="side-nav__link">
-                        <i class="car icon side-nav__icon"></i>
-                        <div class="side-nav__text">Service Entry</div>
+                        <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Add Service Entry</div>
                     </a>
                 </li>
 
                 <li class="side-nav__item side-nav__item--active">
-                    <a href="#" class="side-nav__link">
-                        <i class="search icon side-nav__icon"></i>
+                    <a href="searchservice.jsp" class="side-nav__link">
+                        <i class="search icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
                         <div class="side-nav__text">Search Entry</div>
                     </a>
                 </li>
 
                 <li class="side-nav__item">
                     <a href="#" class="side-nav__link">
-                        <i class="tasks icon side-nav__icon"></i>
-                        <div class="side-nav__text">Work Progress</div>
+                        <i class="dollar sign icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Budget Management</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="truck icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Inventory Management</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="address book outline icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Employee Management</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Car Rent</div>
+                    </a>
+                </li>
+
+                <li class="side-nav__item">
+                    <a href="#" class="side-nav__link">
+                        <i class="file outline icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
+                        <div class="side-nav__text">Car Record</div>
                     </a>
                 </li>
 
@@ -122,12 +152,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="extra content">
-                            <button class="ui active green fluid button huge " id="entry-edit">
-                                <i class="edit icon"></i>
-                                edit
-                            </button>
-                        </div>
+<%--                        <div class="extra content">--%>
+<%--                            <button class="ui active green fluid button huge " id="entry-edit">--%>
+<%--                                <i class="edit icon"></i>--%>
+<%--                                edit--%>
+<%--                            </button>--%>
+<%--                        </div>--%>
                     </div>
                 </div>
 
@@ -202,7 +232,7 @@
                                 <div class="event">
                                     <div class="content">
                                         <div class="summary">
-                                            <p>Registration Number : <%=vehicle.getRegistrationNo()%></p>
+                                            <p>Registration Number : <%=vehicle.getRegistrationNo().toUpperCase()%></p>
                                         </div>
                                     </div>
                                 </div>
@@ -248,57 +278,76 @@
                 <!-- Buttons -->
                 <div class="class= eight wide column button-container" >
 
-                    <form method="post" action="DeleteServiceEntryServlet">
-                        <input type="hidden" name="serviceID" value="<%=repair.getRepairId()%>">
-                        <button class="ui red fluid button" type="submit" style="width:95%; height:35px">
-                            <i class="trash icon"> </i>
-                            Delete Entry
+<%--                    <form method="post" action="DeleteServiceEntryServlet" class="mb-10">--%>
+<%--                        <input type="hidden" name="serviceID" value="<%=repair.getRepairId()%>">--%>
+<%--                        <button class="ui red fluid button" type="submit" style="width:95%; height:35px">--%>
+<%--                            <i class="trash icon"> </i>--%>
+<%--                            Delete Entry--%>
+<%--                        </button>--%>
+<%--                    </form>--%>
+                    <button class="ui red fluid button " type="button" id="deleteBtn" style="width:95%; height:35px;margin-bottom: 10px">
+                        <i class="trash icon"> </i>
+                        Delete Entry
+                    </button>
+
+                    <form method="post" action="CreateEntryReportServlet" class="mb-10">
+                        <input type="hidden" name="nic" value="<%=customer.getNICno()%>">
+                        <input type="hidden" value="<%=repair.getRepairId()%>" name="repairId">
+                        <input type="hidden" value="<%=vehicle.getRegistrationNo()%>" name="registrationNumber" >
+                        <button class="ui blue fluid button" style="width:95%; height:35px; margin-bottom: 10px;" type="submit">
+                            <i class="clipboard outline icon"> </i>
+                            Entry Report
                         </button>
                     </form>
 
-                    <button class="ui blue fluid button" style="width:95%; height:35px">
-                        <i class="address card outline icon"> </i>
-                        Client Report
-                    </button>
+<%--                    <button class="ui blue fluid button" style="width:95%; height:35px;margin-bottom: 10px" class="mb-10">--%>
+<%--                        <i class="clipboard outline icon"> </i>--%>
+<%--                        Entry Report--%>
+<%--                    </button>--%>
 
-                    <button class="ui blue fluid button" style="width:95%; height:35px">
-                        <i class="clipboard outline icon"> </i>
-                        Entry Report
-                    </button>
+                    <form method="post" action="NavigateToWorkprogressServlet">
+                        <input type="hidden" name="sid" value="<%=repair.getRepairId()%>">
+                        <button type="submit" class="ui green fluid button" style="width:95%; height:35px;margin-bottom: 10px" class="mb-10">
+                            <i class="chart line icon"> </i>
+                            Work Progress
+                        </button>
+                    </form>
 
-                    <button class="ui green fluid button" style="width:95%; height:35px">
-                        <i class="chart line icon"> </i>
-                        Work Progress
-                    </button>
-
+                    <form method="post" action="NavigateToWorkprogressServlet" style="margin-bottom: 100px">
+                        <input type="hidden" name="sid" value="<%=repair.getRepairId()%>">
+                        <button type="submit" class="ui green fluid button" style="width:95%; height:35px" class="mb-10">
+                            <i class="dollar sign icon icon"> </i>
+                            Financial Management
+                        </button>
+                    </form>
                 </div>
 
             </div>
             <!-- second row end -->
 
-            <div class="ui grid">
-                <div class="sixteen wide column">
-                    <div class="ui placeholder segment" style="width:95%">
-                        <div class="ui icon header">
-                            <i class="file image outline icon"></i>
-                            No images are listed for this customer.
-                        </div>
-                        <div class="ui primary button">Add Images</div>
-                    </div>
-                </div>
-            </div>
+<%--            <div class="ui grid">--%>
+<%--                <div class="sixteen wide column">--%>
+<%--                    <div class="ui placeholder segment" style="width:95%">--%>
+<%--                        <div class="ui icon header">--%>
+<%--                            <i class="file image outline icon"></i>--%>
+<%--                            No images are listed for this customer.--%>
+<%--                        </div>--%>
+<%--                        <div class="ui primary button">Add Images</div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
 
-            <div class="ui grid" style="margin-bottom: 100px;">
-                <div class="sixteen wide column">
-                    <div class="ui placeholder segment" style="width:95%">
-                        <div class="ui icon header">
-                            <i class="file image outline icon"></i>
-                            No images are listed for this customer.
-                        </div>
-                        <div class="ui primary button">Add Images</div>
-                    </div>
-                </div>
-            </div>
+<%--            <div class="ui grid" style="margin-bottom: 100px;">--%>
+<%--                <div class="sixteen wide column">--%>
+<%--                    <div class="ui placeholder segment" style="width:95%">--%>
+<%--                        <div class="ui icon header">--%>
+<%--                            <i class="file image outline icon"></i>--%>
+<%--                            No images are listed for this customer.--%>
+<%--                        </div>--%>
+<%--                        <div class="ui primary button">Add Images</div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
 
             <!-- entry model form -->
             <div class="ui modal entry-edit-form" style="padding:50px">
@@ -307,63 +356,67 @@
                     Update Entry
                 </div>
 
-                <form method="post" id="entryUpdateForm">
+                <form method="post" id="entryUpdateForm" action="UpdateEntryServlet" >
                     <div class="ui huge form" style="margin:50px" id="form-container">
                         <div class="two fields">
                             <div class="field">
                                 <label>Customer Name</label>
-                                <input placeholder="Customer Name" type="text" >
+                                <input placeholder="Customer Name" type="text"  value="<%=customer.getFirstName()%> <%=customer.getLastName()%>" disabled>
                             </div>
                             <div class="field">
                                 <label>Vehicle Registration Number</label>
-                                <input placeholder="Registration Number" type="text" disabled>
+                                <input placeholder="Registration Number" type="text" value="<%=vehicle.getRegistrationNo().toUpperCase()%>" disabled>
                             </div>
                         </div>
 
                         <div class="field" id="entryDateContainer">
                             <label>Entry Date</label>
-                            <input placeholder="Entry Date" type="date" id="entryDate">
+                            <input placeholder="Entry Date" type="date" id="entryDate" value="<%=repair.getEntryDate()%>">
                         </div>
 
                         <div class="inline fields">
                             <label for="repair">Repair Type:</label>
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" name="reapir" checked="" tabindex="10" class="hidden">
+                                    <input type="radio" name="reapir" checked tabindex="10" class="hidden" id="insurance" value="insurance">
                                     <label>Insuarance</label>
                                 </div>
                             </div>
 
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" name="reapir" checked="" tabindex="0" class="hidden">
+                                    <input type="radio" name="reapir"  tabindex="0" class="hidden" id="nonInsurance" value="nonInsurance">
                                     <label>Non-Insuarance</label>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="field">
+                        <div class="field"  id="accidentDateContainer">
                             <label>Accident Date</label>
-                            <input placeholder="Accident Date" type="date">
+                            <input placeholder="Accident Date" type="date" id="accidentDate" name="accidentDate" value="<%=repair.getAccidentDate()%>">
                         </div>
 
-                        <div class="inline field">
+                        <div class="inline field" id="document-container" style="display: none; ">
                             <label for="repair">Repair Type:</label>
                             <div class="ui checkbox">
-                                <input type="checkbox" tabindex="0" class="hidden">
+                                <input type="checkbox" tabindex="0" class="hidden" name="customerNoObjection">
                                 <label>Customer No objection</label>
                             </div>
 
                             <div class="ui checkbox">
-                                <input type="checkbox" tabindex="0" class="hidden">
+                                <input type="checkbox" tabindex="0" class="hidden" name="insuranceNoObjection">
                                 <label>Insuarance No objection</label>
                             </div>
 
                             <div class="ui checkbox">
-                                <input type="checkbox" tabindex="0" class="hidden">
+                                <input type="checkbox" tabindex="0" class="hidden" name="claimForm">
                                 <label>Claim Form</label>
                             </div>
                         </div>
+
+                        <input type="hidden" value="<%=repair.getRepairId()%>" name="repairId">
+                        <input type="hidden" value="<%=customer.getNICno()%>" name="nic">
+                        <input type="hidden" value="<%=vehicle.getRegistrationNo()%>" name="registrationNumber" >
 
                         <div class="ui error message">
                             <div class="header">Action Forbidden</div>
@@ -391,40 +444,44 @@
                     Update Client Information
                 </div>
 
-                <form method="post" id="clientUpdateForm">
-                    <div class="ui huge form error"style="margin:50px">
+                <form method="post" id="clientUpdateForm" action="UpdateClientServlet">
+                    <div class="ui huge form" id="client-form-container" style="margin:50px">
 
                         <div class="two fields">
                             <div class="field " id="fnameContainer">
                                 <label>First Name</label>
-                                <input placeholder="First Name" type="text" id="fname">
+                                <input placeholder="First Name" type="text" id="fname" name="fname" value="<%=customer.getFirstName()%>">
                             </div>
                             <div class="field" id="lnameContainer">
                                 <label>Last Name</label>
-                                <input placeholder="Last Name" type="text" id="lname">
+                                <input placeholder="Last Name" type="text" id="lname" name="lname" value="<%=customer.getLastName()%>">
                             </div>
                         </div>
 
                         <div class="two fields">
                             <div class="field" id="nicContainer">
                                 <label>NIC Number</label>
-                                <input placeholder="NIC Number" type="text" id="nic">
+                                <input placeholder="NIC Number" type="text" id="nic" name="nicNumber" value="<%=customer.getNICno()%>" disabled>
                             </div>
                             <div class="field" id="mobileContainer">
                                 <label>Phone Number</label>
-                                <input placeholder="Phone Number" type="text" id="mobile">
+                                <input placeholder="Phone Number" type="text" id="mobile" name="mobile" value="<%=customer.getPhoneNo()%>">
                             </div>
                         </div>
 
                         <div class="field" id="addressContainer">
                             <label>Address</label>
-                            <input placeholder="Address" type="text" id="address">
+                            <input placeholder="Address" type="text" id="address" name="address" value="<%=customer.getAddress()%>">
                         </div>
 
                         <div class="field" id="emailContainer">
                             <label>Email</label>
-                            <input placeholder="Email" type="Email" id="email">
+                            <input placeholder="Email" type="Email" id="email" name="email" value="<%=customer.getEmail()%>">
                         </div>
+
+                        <input type="hidden" name="nic" value="<%=customer.getNICno()%>">
+                        <input type="hidden" value="<%=repair.getRepairId()%>" name="repairId">
+                        <input type="hidden" value="<%=vehicle.getRegistrationNo()%>" name="registrationNumber" >
 
                         <div class="ui error message">
                             <div class="header">Action Forbidden</div>
@@ -446,52 +503,44 @@
             </div>
 
             <!-- edit vehicle information form -->
-            <div class="ui modal vehicle-edit-form" style="padding:50px">
+            <div class="ui modal vehicle-edit-form" style="padding:50px" >
 
                 <i class="close icon"></i>
                 <div class="header">
                     Update Vihicle Information
                 </div>
 
-                <form method="post" id="vehicleUpdateForm">
-                    <div class="ui huge form error"style="margin:50px">
+                <form method="post" id="vehicleUpdateForm" action="UpdateVehicleServlet">
+                    <div class="ui huge form" style="margin:50px" id="vehicleUpdateFormContainer">
                         <div class="field">
                             <label>Vehicle Registration Number</label>
-                            <input type="text" placeholder="Registration Number">
+                            <input type="text" placeholder="Registration Number" value="<%=vehicle.getRegistrationNo().toUpperCase()%>" disabled>
                         </div>
 
                         <div class="field" id="brandContainer" >
                             <label>Brand Name</label>
-                            <select class="ui search dropdown" id="brand">
-                                <option value="Toyota">Toyota</option>
-                                <option value="Nissan">Nissan</option>
-                                <option value="Susuki">Susuki</option>
-                                <option value="BMW">BMW</option>
-                                <option value="Benze">Benze</option>
-                                <option value="Other" id="other">Other</option>
-                            </select>
-                        </div>
-
-                        <div class="field" id="OtherBrandContainer" style="display: none">
-                            <label>Brand Name</label>
-                            <input type="text" placeholder="Brand Name" id="otherBrand">
+                            <input type="text" placeholder="Brand Name" id="brand" value="<%=vehicle.getBrand()%>" name="brand">
                         </div>
 
                         <div class="two fields">
                             <div class="field" id="modelContainer">
                                 <label>Model</label>
-                                <input placeholder="Vehile Model" type="text" id="model">
+                                <input placeholder="Vehicle Model" type="text" id="model" name="model" value="<%=vehicle.getModel()%>">
                             </div>
                             <div class="field" id="colorContainer">
                                 <label>Color</label>
-                                <input placeholder="Vehicle Color" type="text" id="color">
+                                <input placeholder="Vehicle Color" type="text" id="color" name="color" value="<%=vehicle.getColor()%>">
                             </div>
                         </div>
 
                         <div class="field" id="manufactYearContainer">
                             <label>Manufactured Year</label>
-                            <input type="text" placeholder="Brand Name" id="manufactYear">
+                            <input type="text" placeholder="Manufacture Year" name="manufactureYear" id="manufactureYear" value="<%=vehicle.getYear()%>">
                         </div>
+
+                        <input type="hidden" value="<%=vehicle.getRegistrationNo().toUpperCase()%>" name="registrationNumber">
+                        <input type="hidden" name="nic" value="<%=customer.getNICno()%>">
+                        <input type="hidden" value="<%=repair.getRepairId()%>" name="repairId">
 
                         <div class="ui error message">
                             <div class="header">Action Forbidden</div>
@@ -510,8 +559,49 @@
 
                     </div>
                 </form>
-
             </div>
+
+<%--                confirm delete model--%>
+            <div class=" ui tiny modal delete-modal">
+                <div class="header">Delete Service Entry</div>
+                <div class="content">
+                    <p style="font-size: 16px">Are You Want To Delete This Service Entry ?</p>
+                </div>
+                <div class="actions" style="display: flex;justify-content: flex-end">
+<%--                    <button class="ui approve button">Delete</button>--%>
+                    <form method="post" action="DeleteServiceEntryServlet" >
+                        <input type="hidden" name="serviceID" value="<%=repair.getRepairId()%>">
+                        <button class="ui red button" type="submit" >
+                            Delete
+                        </button>
+                    </form>
+                    <div class="ui cancel button">Cancel</div>
+                </div>
+            </div>
+
+            <% if (isUpdate){%>
+                <div class="ui modal update-message" style="padding-top:50px;z-index: 100 " >
+                    <i class="close icon"></i>
+                    <div style="display:flex;justify-content: center;">
+                        <i class="check circle outline icon green" style="font-size:200px; margin-top:50px "></i>
+                    </div>
+                    <div style="display:flex;justify-content: center;" class="header">
+                        <p style="font-size:50px; margin-bottom:50px" class="red">UPDATE  SUCCESSFULLY !</p>
+                    </div>
+                </div>
+            <%}%>
+
+            <% if (isCreate){%>
+            <div class="ui modal create-message" style="padding-top:50px;z-index: 100 " >
+                <i class="close icon"></i>
+                <div style="display:flex;justify-content: center;">
+                    <i class="check circle outline icon green" style="font-size:200px; margin-top:50px "></i>
+                </div>
+                <div style="display:flex;justify-content: center;" class="header">
+                    <p style="font-size:50px; margin-bottom:50px" class="red">REPORT GENERATED!</p>
+                </div>
+            </div>
+            <%}%>
 
         </div>
 

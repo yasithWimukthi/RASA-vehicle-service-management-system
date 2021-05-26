@@ -30,6 +30,7 @@
 <%
     String ser_id = (String)session.getAttribute("serviceId");
     String ser_name = (String)session.getAttribute("serviceName");
+    int sid = (int)session.getAttribute("sid");
     Iworkprogress_service iworkprogress_service = new Workprogress_service();
     ArrayList<RepairComponent> LrepairCom = iworkprogress_service.retriveRepairComponents(ser_id);
     ArrayList<VehicleComponent> LVehcileCom = iworkprogress_service.retriveVehcileComponents();
@@ -79,11 +80,26 @@
                     <div class="ui negative message">
                         <i class="close icon"></i>
                         <div class="header">
-                             <p><%=request.getAttribute("error")%></p>
+                           <p><i class="x icon"></i><%=request.getAttribute("error")%></p>
                         </div>
-                     <p>Please check again !</p>
             </div>
+                <%}%>
+                <%if(request.getAttribute("deletemsg") !=null){%>
+                <div class="ui negative message">
+                    <i class="close icon"></i>
+                    <div class="header">
+                       <p> <i class="check icon"></i><%=request.getAttribute("deletemsg")%></p>
+                    </div>
+                </div>
             <%}%>
+                <%if(request.getAttribute("updateMsg") !=null){%>
+                <div class="ui positive message">
+                    <i class="close icon"></i>
+                    <div class="header">
+                        <p> <i class="check icon"></i><%=request.getAttribute("updateMsg")%></p>
+                    </div>
+                </div>
+                <%}%>
             <!-- error space -->
             </div>
             <div class="header_container_repair">
@@ -116,7 +132,10 @@
                     <!-- back button space-->
                     <div class="backbtn">
                         <center>
-                            <a href="<%=request.getContextPath()%>/progress.jsp"><button class="ui positive button"><i class="long arrow alternate left icon"></i>Back</button></a>
+                            <form method="post" action="<%=request.getContextPath()%>/NavigatetoServlet">
+                                <input type="hidden" name="sid" value="<%=sid%>">
+                                <button class="ui positive button"><i class="long arrow alternate left icon"></i>Back</button>
+                            </form>
                         </center>
                     </div>
 

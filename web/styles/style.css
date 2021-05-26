@@ -268,3 +268,7 @@ form #search-submit-btn:hover {
 option{
     font-size:1em !important;
 }
+
+.mb-10{
+    margin-bottom: 10px;
+}

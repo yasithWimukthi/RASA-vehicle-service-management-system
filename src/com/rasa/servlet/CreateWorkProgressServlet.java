@@ -19,12 +19,13 @@ public class CreateWorkProgressServlet extends HttpServlet {
         Iworkprogress_service iworkprogress_service = new Workprogress_service();
         try {
             Boolean isCreate = iworkprogress_service.Createprogress(sid);
-            System.out.println(isCreate);
             if(!isCreate){
+                request.setAttribute("sid",sid);
                 request.getRequestDispatcher("add_services.jsp").forward(request,response);
             }
             else{
-                request.getRequestDispatcher("progress.jsp").forward(request,response);
+                request.setAttribute("sid",sid);
+                request.getRequestDispatcher("add_services.jsp").forward(request,response);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();

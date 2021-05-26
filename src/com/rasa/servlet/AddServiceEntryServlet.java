@@ -76,7 +76,7 @@ public class AddServiceEntryServlet extends HttpServlet {
 
         isSuccess = serviceEntry.addServiceEntry(registrationNumber,nic,repair,entryDate,accidentDate,hasCustomerNoObjection,hasInsuranceNoObjection,hasClaimForm);
         RequestDispatcher dispatcher;
-
+        request.setAttribute("isSuccess",true);
         if (isSuccess){
             dispatcher = getServletContext().getRequestDispatcher("/customerreg.jsp");
         }else {

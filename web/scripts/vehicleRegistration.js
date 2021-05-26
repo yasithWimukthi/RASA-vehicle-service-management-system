@@ -10,6 +10,7 @@
  TOP SEARCH BAR VALIDATION
  ***************************************************/
 let topSearchBar = document.querySelector("#search-form");
+const numbersRegex = /^[0-9]+$/;
 
 topSearchBar.addEventListener("submit", e =>{
     let searchWord = document.querySelector(".searchWord").value;
@@ -68,10 +69,11 @@ vehicleRegistrationForm.addEventListener("submit", e =>{
         document.querySelector("#colorContainer").classList.remove("error")
     }
 
-    if (manufactYear.trim() === "") {
+    if (manufactYear.trim() === "" || !numbersRegex.test(manufactYear.trim())) {
         e.preventDefault();
         document.querySelector("#form-container").classList.add("error");
         document.querySelector("#manufactYearContainer").classList.add("error");
+       // document.querySelector(".email-error").style.visibility="visible";
     }else{
         document.querySelector("#manufactYearContainer").classList.remove("error");
     }
@@ -83,6 +85,8 @@ vehicleRegistrationForm.addEventListener("submit", e =>{
 
 $('.ui.search.dropdown')
     .dropdown();
+
+// $('.ui.search.dropdown').innerText.fontsize(30);
 
 $('.message .close')
     .on('click', function() {
