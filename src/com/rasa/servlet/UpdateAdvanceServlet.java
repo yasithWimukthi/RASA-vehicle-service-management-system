@@ -14,15 +14,19 @@ import java.io.IOException;
 public class UpdateAdvanceServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-            int empID = Integer.parseInt(request.getParameter("empID"));
-            double amount = Double.parseDouble(request.getParameter("amount"));
-            System.out.println(empID);
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("hi");
+        int empID = Integer.parseInt(request.getParameter("empID"));
+        double amount = Double.parseDouble(request.getParameter("amount"));
+        System.out.println(empID);
         System.out.println(amount);
 
 
-         EmployeeAdvance exist = new EmployeeAdvance();
-         exist.setEmpID(empID);
-         exist.setAmount(amount);
+        EmployeeAdvance exist = new EmployeeAdvance();
+        exist.setEmpID(empID);
+        exist.setAmount(amount);
 
         try {
             EmployeeAdvanceService service = new EmployeeAdvanceService();
@@ -31,9 +35,5 @@ public class UpdateAdvanceServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }
