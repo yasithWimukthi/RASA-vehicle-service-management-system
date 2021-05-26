@@ -1,6 +1,8 @@
 package com.rasa.service;
 
 import com.itextpdf.text.*;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -8,14 +10,14 @@ import com.rasa.model.Employee;
 import com.rasa.util.DBConnectionUtil;
 
 import java.awt.*;
-import java.awt.Font;
-import java.awt.Image;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.itextpdf.text.Font.FontFamily.HELVETICA;
 
 
 public class employeeService implements IEmployee_Details{
@@ -200,17 +202,18 @@ public class employeeService implements IEmployee_Details{
 
     }
 
+
     public   void employeeProfilePDF(int ID) throws IOException, DocumentException {
 
 
         Employee emp  =  viewEmployeeProfile(ID);
-       //LocalDate date = LocalDate.now();
+        //LocalDate date = LocalDate.now();
         Document document = new Document();
         PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\User\\reports\\emp" + ".pdf"));
         document.open();
-        Font heading1 = new Font(Font.FontFamily.HELVETICA, 13, Font.BOLD, BaseColor.BLUE);
-        Font heading2 = new Font(Font.FontFamily.HELVETICA, 12, Font.NORMAL, BaseColor.BLUE);
-        Font heading3 = new Font(Font.FontFamily.HELVETICA, 10, Font.BOLD, BaseColor.WHITE);
+        com.itextpdf.text.Font heading1 = new com.itextpdf.text.Font(com.itextpdf.text.Font.FontFamily.HELVETICA, 13, com.itextpdf.text.Font.BOLD, BaseColor.BLUE);
+        com.itextpdf.text.Font heading2 = new com.itextpdf.text.Font(com.itextpdf.text.Font.FontFamily.HELVETICA, 12, com.itextpdf.text.Font.NORMAL, BaseColor.BLUE);
+        com.itextpdf.text.Font heading3 = new com.itextpdf.text.Font(com.itextpdf.text.Font.FontFamily.HELVETICA, 10, Font.BOLD, BaseColor.WHITE);
         int count =1;
 
         Chunk head = new Chunk("RASA MOTERS PRIVATE LIMITED", heading1);
@@ -219,7 +222,7 @@ public class employeeService implements IEmployee_Details{
 
         //image path
         String path = "C:\\Users\\User\\Desktop\\KaviB hero here\\rasa.jpeg";
-        Image img = Image.getInstance(path);
+        com.itextpdf.text.Image img = Image.getInstance(path);
         PdfPTable table1 = new PdfPTable(2); // 3 columns.
         PdfPTable table2 = new PdfPTable(1); // 1 column
 
@@ -302,7 +305,7 @@ public class employeeService implements IEmployee_Details{
 
 
         document.add(table);
-       document.close();
+        document.close();
     }
 
 }

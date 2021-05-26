@@ -16,16 +16,13 @@ const checkFname = () => {
 
     let valid = false;
 
-    const min = 3,
-        max = 25;
-
     const fname = fnameEl.value.trim();
-
-    if (!isRequired(fname)) {
-        showError(fnameEl, 'First name cannot be blank.');
-    }if (!isNaN(fname)) {
-        showError(fnameEl, 'First name cannot be number');
-    } else {
+    if(!isRequired(fname)) {
+        showError(fnameEl, 'First Name cannot be blank.');
+    }else if (!isNaN(fname)) {
+        showError(fnameEl, 'First Name not be number');
+    }
+    else {
         showSuccess(fnameEl);
         valid = true;
     }
@@ -37,18 +34,13 @@ const checkLname = () => {
 
     let valid = false;
 
-    const min = 3,
-        max = 25;
-
     const lname = lnameEl.value.trim();
-    if (!isNaN(lname)) {
-        showError(lnameEl, 'last name cannot be number');
+    if(!isRequired(lname)) {
+        showError(lnameEl, 'Last Name cannot be blank.');
+    }else if (!isNaN(lname)) {
+        showError(lnameEl, 'Last Name not be number');
     }
-    if (!isRequired(lname)) {
-        showError(lnameEl, 'Last name cannot be blank.');
-    } else if (!isBetween(lname.length, min, max)) {
-        showError(lnameEl, `Username must be between ${min} and ${max} characters.`)
-    } else {
+    else {
         showSuccess(lnameEl);
         valid = true;
     }
@@ -95,22 +87,19 @@ const checkMobile = () => {
 
     let valid = false;
 
-    const min = 3,
-        max = 25;
-
     const mobile = mobileEl.value.trim();
-
-    if (!isRequired(mobile)) {
+    if(!isRequired(mobile)) {
         showError(mobileEl, 'Mobile cannot be blank.');
+    }else if (isNaN(mobile)) {
+        showError(mobileEl, 'mobile must be number');
     }
-    if (isNaN(mobile)) {
-        showError(mobileEl, 'Mobile must be a number.');
-    }else {
+    else {
         showSuccess(mobileEl);
         valid = true;
     }
     return valid;
 };
+
 
 const checkEmail = () => {
     let valid = false;
@@ -144,25 +133,12 @@ const checkAddress = () => {
 
 const checkDOB= () => {
     let valid = false;
-    let today = new Date();
-
-    today.setDate(0);
-    today.setHours(0);
-    today.setMinutes(0);
-    today.setSeconds(0);
-    today.setMilliseconds(0);
-    today = today.getDate();
 
 
     const DOB = DOBEl.value.trim();
 
     if (!isRequired(DOB)) {
         showError(DOBEl, 'Date of Birth cannot be blank.');
-    }
-
-    if(DOB > today)
-    {
-        showError(DOBEl, 'Date of Birth cannot be future date');
     }
     else {
         showSuccess(DOBEl);
@@ -282,3 +258,4 @@ form.addEventListener('input', debounce(function (e) {
 
     }
 }));
+
