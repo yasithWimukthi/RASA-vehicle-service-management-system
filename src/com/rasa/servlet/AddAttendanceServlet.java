@@ -1,5 +1,9 @@
 package com.rasa.servlet;
 
+import com.rasa.model.EmployeeAttendance;
+import com.rasa.service.EmployeeAdvanceService;
+import com.rasa.service.EmployeeAttendanceService;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +18,19 @@ public class AddAttendanceServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int empId = Integer.parseInt(request.getParameter("id"));
+        String status = request.getParameter("att");
+        System.out.println(status);
+
+        EmployeeAttendance att = new EmployeeAttendance();
+        att.setEmpID(empId);
+        att.setStatus(status);
+
+        EmployeeAttendanceService service = new EmployeeAttendanceService();
+        service.addAttendance(att);
+
+        response.sendRedirect("attendance.jsp");
+
 
     }
 }

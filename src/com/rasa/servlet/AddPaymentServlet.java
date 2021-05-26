@@ -15,16 +15,18 @@ import java.sql.Date;
 public class AddPaymentServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int empID = Integer.parseInt(request.getParameter("empID"));
-        int adminID = Integer.parseInt(request.getParameter("adminID"));
-        Date date = Date.valueOf(request.getParameter("date"));
+       // int adminID = Integer.parseInt(request.getParameter("adminID"));
+      //  Date date = Date.valueOf(request.getParameter("date"));
+
+        double topay = Double.parseDouble(request.getParameter("toPay"));
         double bonus = Double.parseDouble(request.getParameter("bonus"));
         double deduct = Double.parseDouble(request.getParameter("deduct"));
-        double amount = Double.parseDouble(request.getParameter("amount"));
+        double amount = topay+bonus-deduct;
 
         EmployeePayment payment= new EmployeePayment();
         payment.setEmpID(empID);
-        payment.setAdminID(adminID);
-        payment.setDate(date);
+       // payment.setAdminID(adminID);
+       // payment.setDate(date);
         payment.setBonus(bonus);
         payment.setDeduct(deduct);
         payment.setAmount(amount);
@@ -32,6 +34,8 @@ public class AddPaymentServlet extends HttpServlet {
         EmployeePaymentService service = new EmployeePaymentService();
 
         service.addPayement(payment);
+
+        response.sendRedirect("employeePayment.jsp");
 
     }
 
