@@ -1,0 +1,33 @@
+.form{
+
+    margin-top: 175px;
+    margin-left: 175px;
+}
+
+#year{
+    padding: 10px 13px;
+    border-color: #2d4373;
+}
+
+.drop{
+
+    padding: 12px 15px;
+    background-color: #0e566c;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+button{
+    padding: 12px 15px;
+    background-color: #0e566c;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+option{
+
+    padding: 12px 15px;
+    background-color: #0e566c;
+    color: #ffffff;
+    font-weight: bold;
+}
