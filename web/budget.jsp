@@ -164,7 +164,7 @@
                                         <%if(request.getAttribute("income") == null){%>
                                         <span class="amount">0.0</span>
                                         <%}else{%>
-                                        <td>Rs:<%=request.getAttribute("income")%></td>
+                                        <span class="amount">Rs:<%=request.getAttribute("income")%></>span>
                                         <%}%>
 
                                     </div>
@@ -229,7 +229,7 @@
                                         <%if(request.getAttribute("expenses") == null){%>
                                         <span class="amount">0.0</span>
                                         <%}else{%>
-                                        <td>Rs:<%=request.getAttribute("expenses")%></td>
+                                        <span class="amount">Rs:<%=request.getAttribute("expenses")%></span>
                                         <%}%>
 
                                     </div>
