@@ -59,7 +59,7 @@ public class AddCustomerServlet extends HttpServlet {
         if(isSuccess){
             dispatcher = getServletContext().getRequestDispatcher("/vehiclereg.jsp");
         }else {
-            dispatcher = getServletContext().getRequestDispatcher("/customerreg.jsp");
+            dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
         }
         dispatcher.forward(request, response);
     }

@@ -38,7 +38,7 @@ public class SearchClientServlet extends HttpServlet {
         request.setAttribute("customer",customer);
         request.setAttribute("isSuccess",false);
 
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/customerreg.jsp");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
         dispatcher.forward(request, response);
     }
 

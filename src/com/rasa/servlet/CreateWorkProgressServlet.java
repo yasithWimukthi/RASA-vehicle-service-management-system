@@ -28,12 +28,6 @@ public class CreateWorkProgressServlet extends HttpServlet {
             System.out.println("something wrong !");
         }
 
-
-
-
-
-
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
