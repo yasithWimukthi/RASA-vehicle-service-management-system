@@ -142,7 +142,7 @@
                 </li>
 
                 <li class="side-nav__item">
-                    <a href="#" class="side-nav__link">
+                    <a href="attendance.jsp" class="side-nav__link">
                         <i class="address book outline icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
                         <div class="side-nav__text">Employee Management</div>
                     </a>
