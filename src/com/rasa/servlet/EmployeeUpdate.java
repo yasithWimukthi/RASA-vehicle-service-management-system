@@ -20,7 +20,7 @@ public class EmployeeUpdate extends HttpServlet {
         String gender = request.getParameter("gender");
         String DOB = request.getParameter("DOB");
         String NIC = request.getParameter("NIC");
-        String basicSalary = request.getParameter("basicSalary");
+        double basicSalary = Double.parseDouble(request.getParameter("basicSalary"));
         String mobile = request.getParameter("mobile");
         String email = request.getParameter("email");
         String address = request.getParameter("address");

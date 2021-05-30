@@ -105,7 +105,7 @@ public class EmployeeLoadingService  {
                int empID = rs.getInt(1);
                String fname=rs.getString(2);
                String lname = rs.getString(3);
-                Double bSal=(rs.getDouble(9));
+               Double bSal=(rs.getDouble(9));
 
 
                 

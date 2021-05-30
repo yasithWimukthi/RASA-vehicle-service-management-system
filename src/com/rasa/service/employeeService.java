@@ -39,7 +39,7 @@ public class employeeService implements IEmployee_Details{
             preparedStatement.setString(3,employee.getGender());
             preparedStatement.setString(4,employee.getDOB());
             preparedStatement.setString(5,employee.getNIC());
-            preparedStatement.setString(6,employee.getBasicSalary());
+            preparedStatement.setDouble(6,employee.getBasicSalary());
             preparedStatement.setString(7,employee.getMobile());
             preparedStatement.setString(8,employee.getEmail());
             preparedStatement.setString(9,employee.getAddress());
@@ -70,7 +70,7 @@ public class employeeService implements IEmployee_Details{
             statement.setString(4,employee.getGender());
             statement.setString(5,employee.getDOB());
             statement.setString(6,employee.getNIC());
-            statement.setString(7,employee.getBasicSalary());
+            statement.setDouble(7,employee.getBasicSalary());
             statement.setString(8,employee.getMobile());
             statement.setString(9,employee.getEmail());
             statement.setString(10,employee.getAddress());
@@ -129,7 +129,7 @@ public class employeeService implements IEmployee_Details{
                 e1.setGender(resultSet.getString(4));
                 e1.setDOB(resultSet.getString(5));
                 e1.setNIC(resultSet.getString(6));
-                e1.setBasicSalary(resultSet.getString(7));
+                e1.setBasicSalary(resultSet.getDouble(7));
                 e1.setMobile(resultSet.getString(8));
                 e1.setEmail(resultSet.getString(9));
                 e1.setAddress(resultSet.getString(10));
@@ -186,7 +186,7 @@ public class employeeService implements IEmployee_Details{
                 emp.setGender(resultSet.getString(4));
                 emp.setDOB(resultSet.getString(5));
                 emp.setNIC(resultSet.getString(6));
-                emp.setBasicSalary(resultSet.getString(7));
+                emp.setBasicSalary(resultSet.getDouble(7));
                 emp.setMobile(resultSet.getString(8));
                 emp.setEmail(resultSet.getString(9));
                 emp.setAddress(resultSet.getString(10));
@@ -269,7 +269,7 @@ public class employeeService implements IEmployee_Details{
         PdfPCell cell9 = new PdfPCell(new Paragraph("NIC"));
         PdfPCell cell10 = new PdfPCell(new Paragraph(emp.getNIC()));
         PdfPCell cell11 = new PdfPCell(new Paragraph("Basic Salary"));
-        PdfPCell cell12 = new PdfPCell(new Paragraph(emp.getBasicSalary()));
+        PdfPCell cell12 = new PdfPCell(new Paragraph(""+emp.getBasicSalary()));
         PdfPCell cell13 = new PdfPCell(new Paragraph("Email"));
         PdfPCell cell14 = new PdfPCell(new Paragraph(emp.getEmail()));
         PdfPCell cell15 = new PdfPCell(new Paragraph("mobile"));

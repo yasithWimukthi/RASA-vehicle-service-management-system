@@ -2,7 +2,7 @@ package com.rasa.servlet;
 
 import com.rasa.model.Employee;
 import com.rasa.service.employeeService;
-import jdk.jfr.consumer.RecordedObject;
+//import jdk.jfr.consumer.RecordedObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,7 +24,7 @@ public class AddEmployeeServlet extends HttpServlet {
         String gender = request.getParameter("gender");
         String DOB = request.getParameter("DOB");
         String NIC = request.getParameter("NIC");
-        String basicSalary = request.getParameter("basicSalary");
+        double basicSalary = Double.parseDouble(request.getParameter("basicSalary"));
         String mobile = request.getParameter("mobile");
         String email = request.getParameter("email");
         String address = request.getParameter("address");

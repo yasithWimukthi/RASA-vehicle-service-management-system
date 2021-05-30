@@ -31,9 +31,9 @@ public class LoadToPaymentFormServlet extends HttpServlet {
         request.setAttribute("lname", refEmp.getLname());
         request.setAttribute("advance",advance);
 
-        double topay = ( (present*refEmp.getBasicSalary()) + (half*(refEmp.getBasicSalary()/2)) ) - advance;
+        //double topay = ( (present*refEmp.getBasicSalary()) + (half*(refEmp.getBasicSalary()/2)) ) - advance;
 
-        request.setAttribute("topay",topay);
+        //request.setAttribute("topay",topay);
 
         System.out.println(present);
         System.out.println(half);

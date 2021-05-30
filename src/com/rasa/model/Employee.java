@@ -7,13 +7,13 @@ public class Employee {
     private String gender;
     private String DOB;
     private String NIC;
-    private String basicSalary;
+    private Double basicSalary;
     private String mobile;
     private String email;
     private String address;
     private String joinDate;
 
-    public Employee(String fname, String lname, String gender, String DOB, String NIC, String basicSalary,String mobile,String email,String address,String joinDate) {
+    public Employee(String fname, String lname, String gender, String DOB, String NIC, double basicSalary,String mobile,String email,String address,String joinDate) {
         this.fname = fname;
         this.lname = lname;
         this.gender = gender;
@@ -91,11 +91,11 @@ public class Employee {
         this.mobile = mobile;
     }
 
-    public String getBasicSalary() {
+    public Double getBasicSalary() {
         return basicSalary;
     }
 
-    public void setBasicSalary(String basicSalary) {
+    public void setBasicSalary(double basicSalary) {
         this.basicSalary = basicSalary;
     }
 
