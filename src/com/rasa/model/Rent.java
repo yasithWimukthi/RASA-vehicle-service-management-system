@@ -18,6 +18,19 @@ public class Rent {
 
     }
 
+    public Rent(int rentID, String firstName, String lastName, String email, String mobile, String address, String pickUpDate, String dropOffDate, Double rentalPrice, int registrationNo) {
+        this.RentID = rentID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.mobile = mobile;
+        this.address = address;
+        this.pickUpDate = pickUpDate;
+        this.dropOffDate = dropOffDate;
+        this.rentalPrice = rentalPrice;
+        this.registrationNo = registrationNo;
+    }
+
     public Rent(String firstName, String lastName, String email, String mobile, String address, String pickUpDate, String dropOffDate, Double rentalPrice, int registrationNo, int operatorID) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -29,19 +42,6 @@ public class Rent {
         this.rentalPrice = rentalPrice;
         this.registrationNo = registrationNo;
         this.operatorID = operatorID;
-    }
-
-    public Rent(int rentID, String firstName, String lastName, String email, String mobile, String address, String pickUpDate, String dropOffDate, Double rentalPrice, int registrationNo) {
-        RentID = rentID;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.mobile = mobile;
-        this.address = address;
-        this.pickUpDate = pickUpDate;
-        this.dropOffDate = dropOffDate;
-        this.rentalPrice = rentalPrice;
-        this.registrationNo = registrationNo;
     }
 
     public int getRentID() {

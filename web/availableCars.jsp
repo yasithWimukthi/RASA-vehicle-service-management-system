@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="styles/tableStyles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
 </head>
 <body>
 <div class="container">
@@ -61,7 +60,7 @@
                 </li>
 
                 <li class="side-nav__item">
-                    <a href="#" class="side-nav__link">
+                    <a href="availableCars.jsp" class="side-nav__link">
                         <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
                         <div class="side-nav__text">Car Rent</div>
                     </a>
@@ -118,11 +117,11 @@
                             <td><%=availableCars.getModel()%></td>
                             <td><%=availableCars.getNumberOfSeats()%></td>
                             <td><%=availableCars.getPricePerDay()%></td>
-                            <!--<td></td>-->
-                            <td><button class="button button2">Update</button></td>
+                            <td></td>
+                            <!--<td><button class="button button2">Update</button></td>-->
                             <form action="<%=request.getContextPath()%>/RetrieveRegNoServlet" method="post">
                                 <input type="hidden" name="registrationnumber" value="<%=availableCars.getRegistrationNumber()%>">
-                                <td><button class="button button2">Rent Out</button></td>
+                                <td><button class="button1">Rent Out</button></td>
                             </form>
                         </tr>
                         <%}%>
