@@ -26,7 +26,7 @@
         <div class="sidebar">
             <ul class="side-nav">
 
-                <li class="side-nav_item side-nav_item--active">
+                <li class="side-nav__item">
                     <a href="#" class="side-nav__link">
                         <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
                         <div class="side-nav__text">Add Service Entry</div>
@@ -61,7 +61,7 @@
                     </a>
                 </li>
 
-                <li class="side-nav__item">
+                <li class="side-nav__item side-nav__item--active">
                     <a href="availableCars.jsp" class="side-nav__link">
                         <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
                         <div class="side-nav__text">Car Rent</div>
