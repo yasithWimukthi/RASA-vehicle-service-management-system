@@ -49,8 +49,8 @@
 <div class="container">
     <div class="content">
         <div class="sidebar">
-            <li class="side-nav__item side-nav__item--active">
-                <a href="#" class="side-nav__link">
+            <li class="side-nav__item ">
+                <a href="index.jsp" class="side-nav__link">
                     <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
                     <div class="side-nav__text">Add Service Entry</div>
                 </a>
@@ -63,7 +63,7 @@
                 </a>
             </li>
 
-            <li class="side-nav__item">
+            <li class="side-nav__item side-nav__item--active">
                 <a href="#" class="side-nav__link">
                     <i class="dollar sign icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
                     <div class="side-nav__text">Budget Management</div>
