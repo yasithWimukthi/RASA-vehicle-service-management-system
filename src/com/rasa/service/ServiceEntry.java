@@ -233,7 +233,7 @@ public class ServiceEntry implements IServiceEntry{
                 preparedStatement.setInt(QueryConstants.COLUMN_SIX,serviceID);
             }
 
-            preparedStatement.execute();
+            preparedStatement.executeUpdate();
 
         }catch (SQLException | ClassNotFoundException e){
             e.printStackTrace();
@@ -367,7 +367,7 @@ public class ServiceEntry implements IServiceEntry{
         pTable.addCell(colorValue);
 
         PdfPCell manufactYear = new PdfPCell(new Paragraph("Manufacture Year"));
-        PdfPCell manufactYearValue = new PdfPCell(new Paragraph(vehicle.getYear()));
+        PdfPCell manufactYearValue = new PdfPCell(new Paragraph(""+vehicle.getYear()));
         pTable.addCell(manufactYear);
         pTable.addCell(manufactYearValue);
 

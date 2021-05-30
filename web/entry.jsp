@@ -27,7 +27,7 @@
     Vehicle vehicle = (Vehicle) request.getAttribute("vehicle");
     boolean isUpdate = (boolean) request.getAttribute("isUpdate");
     boolean isCreate = (boolean) request.getAttribute("isCreate");
-    String documents = "";
+    String documents = "No Documents";
 
     if (repair.isCustomerNoObjection()){
         documents = documents+" "+"Customer No Objection";
@@ -152,12 +152,12 @@
                                 </div>
                             </div>
                         </div>
-<%--                        <div class="extra content">--%>
-<%--                            <button class="ui active green fluid button huge " id="entry-edit">--%>
-<%--                                <i class="edit icon"></i>--%>
-<%--                                edit--%>
-<%--                            </button>--%>
-<%--                        </div>--%>
+                        <div class="extra content">
+                            <button class="ui active green fluid button huge " id="entry-edit">
+                                <i class="edit icon"></i>
+                                edit
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -371,21 +371,21 @@
 
                         <div class="field" id="entryDateContainer">
                             <label>Entry Date</label>
-                            <input placeholder="Entry Date" type="date" id="entryDate" value="<%=repair.getEntryDate()%>">
+                            <input placeholder="Entry Date" type="date" id="entryDate" name="entryDate" value="<%=repair.getEntryDate()%>">
                         </div>
 
                         <div class="inline fields">
                             <label for="repair">Repair Type:</label>
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" name="reapir" checked tabindex="10" class="hidden" id="insurance" value="insurance">
+                                    <input type="radio" name="repair"  tabindex="10" class="hidden" id="insurance" value="insurance">
                                     <label>Insuarance</label>
                                 </div>
                             </div>
 
                             <div class="field">
                                 <div class="ui radio checkbox">
-                                    <input type="radio" name="reapir"  tabindex="0" class="hidden" id="nonInsurance" value="nonInsurance">
+                                    <input type="radio" name="repair" checked tabindex="0" class="hidden" id="nonInsurance" value="Non Insurance">
                                     <label>Non-Insuarance</label>
                                 </div>
                             </div>
