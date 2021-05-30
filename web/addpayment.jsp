@@ -29,14 +29,14 @@
         <div class="sidebar">
             <ul class="side-nav">
 
-                <li class="side-nav__item side-nav__item--active">
+                <li class="side-nav__item">
                     <a href="#" class="side-nav__link">
                         <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
                         <div class="side-nav__text">Add Service Entry</div>
                     </a>
                 </li>
 
-                <li class="side-nav__item">
+                <li class="side-nav__item side-nav__item--active">
                     <a href="searchservice.jsp" class="side-nav__link">
                         <i class="search icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
                         <div class="side-nav__text">Search Entry</div>

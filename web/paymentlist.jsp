@@ -39,14 +39,14 @@
         <div class="sidebar">
             <ul class="side-nav">
 
-                <li class="side-nav__item side-nav__item--active">
+                <li class="side-nav__item">
                     <a href="#" class="side-nav__link">
                         <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
                         <div class="side-nav__text">Add Service Entry</div>
                     </a>
                 </li>
 
-                <li class="side-nav__item">
+                <li class="side-nav__item side-nav__item--active">
                     <a href="searchservice.jsp" class="side-nav__link">
                         <i class="search icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
                         <div class="side-nav__text">Search Entry</div>
@@ -148,18 +148,18 @@
                                     <%=pay.getPayId() %>
                                 </td>
                                 <td>
-                                    <%=pay.getPayId() %>
+                                    <%=pay.getRegistrationNumber() %>
                                 </td>
 
                                 <td>
-                                    <%=pay.getPayId() %>
+                                    <%=pay.getEstimateAmount() %>
                                 </td>
 
                                 <td>
-                                    <%=pay.getPayId() %>
+                                    <%=pay.getCash() %>
                                 </td>
                                 <td>
-                                    <%=pay.getPayId() %>
+                                    <%=pay.getPaymentDate() %>
                                 </td>
                                 <td><a href="retriveEditServlet?payId=<%=pay.getPayId()%>" > <i class="yellow pen square icon"></i></a> &nbsp;&nbsp;&nbsp;&nbsp; <a  href="paymentDeleteServlet?payId=<%=pay.getPayId()%>" > <i class="red trash icon"></i></a> &nbsp;&nbsp;&nbsp<a href="BillServlet?payId=<%=pay.getPayId()%>" ><i class="blue file icon"></i></a></td>
                             </tr>
