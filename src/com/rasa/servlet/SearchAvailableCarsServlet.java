@@ -1,12 +1,9 @@
 package com.rasa.servlet;
 
 import com.rasa.model.AvailableCars;
-import com.rasa.model.Customer;
-import com.rasa.service.ClientService;
 import com.rasa.service.IRentCarService;
 import com.rasa.service.RentCarService;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
