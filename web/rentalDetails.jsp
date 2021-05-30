@@ -24,11 +24,16 @@
         function selectYear(){
             let d = new Date();
             let currentYear = d.getFullYear();
-            let str = "<option value='0'>Select Year</option>";
+            let str = "<option value='0' selected disabled>Select Year</option>";
             for(let i=0; i<10; i++){
                 str+="<option value="+(currentYear+i)+">"+(currentYear+i)+"</option>";
             }
             document.getElementById('year').innerHTML = str;
+        }
+    </script>
+    <script>
+        function ConfirmDelete() {
+            return confirm("Are you sure you want to delete?");
         }
     </script>
     <title>Rental Details</title>
@@ -39,7 +44,7 @@
         <div class="sidebar">
             <ul class="side-nav">
 
-                <li class="side-nav_item side-nav_item--active">
+                <li class="side-nav__item">
                     <a href="#" class="side-nav__link">
                         <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
                         <div class="side-nav__text">Add Service Entry</div>
@@ -74,7 +79,7 @@
                     </a>
                 </li>
 
-                <li class="side-nav__item">
+                <li class="side-nav__item side-nav__item--active">
                     <a href="availableCars.jsp" class="side-nav__link">
                         <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
                         <div class="side-nav__text">Car Rent</div>
@@ -138,7 +143,8 @@
                             </form>
                             <form action="<%=request.getContextPath()%>/DeleteRentalDetailsServlet" method="post">
                                 <input type="hidden" name="rid" value="<%=rent.getRentID()%>">
-                                <td><button class="button2">Delete</button></td>
+                                <td><button class="button2" id="box" Onclick="return ConfirmDelete()">Delete</button></td>
+                                <div id="dialog-confirm"></div>
                             </form>
                         </tr>
                     <%}%>
@@ -147,25 +153,25 @@
                 </br>
                 <div>
                     <form action="<%=request.getContextPath()%>/RentDetailsReportServlet" method="post">
-                        <span>Select the year and month to generate report</span>
-                        <select name="year" id="year">
-                        </select>
-                        <select name="month" id="month">
-                            <option value="">Select Month</option>
-                            <option value="1">January</option>
-                            <option value="2">February</option>
-                            <option value="3">March</option>
-                            <option value="4">April</option>
-                            <option value="5">May</option>
-                            <option value="6">June</option>
-                            <option value="7">July</option>
-                            <option value="8">August</option>
-                            <option value="9">September</option>
-                            <option value="10">October</option>
-                            <option value="11">November</option>
-                            <option value="12">December</option>
-                        </select>
-                        </br>
+                        <span>Select the year and month to generate the report</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <select name="year" id="year">
+                            </select>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <select name="month" id="month">
+                                <option value="" selected disabled>Select Month</option>
+                                <option value="1">January</option>
+                                <option value="2">February</option>
+                                <option value="3">March</option>
+                                <option value="4">April</option>
+                                <option value="5">May</option>
+                                <option value="6">June</option>
+                                <option value="7">July</option>
+                                <option value="8">August</option>
+                                <option value="9">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                        </br></br>
                         <div id="btn">
                             <button class="button1">Generate Report</button>
                         </div>

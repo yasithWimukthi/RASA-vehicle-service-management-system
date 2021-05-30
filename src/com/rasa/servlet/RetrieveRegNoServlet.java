@@ -13,7 +13,6 @@ public class RetrieveRegNoServlet extends HttpServlet {
 
         int registrationNumber = Integer.parseInt(request.getParameter("registrationnumber"));
 
-        System.out.println(registrationNumber);
         request.setAttribute("regNo", registrationNumber);
         request.getRequestDispatcher("carRentalForm.jsp").forward(request, response);
 
