@@ -11,7 +11,7 @@ import java.io.IOException;
 @WebServlet("/NavigateToFinancialServlet")
 public class NavigateToFinancialServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String sid = request.getParameter("sid");
+        int sid = Integer.parseInt(request.getParameter("sid"));
         RequestDispatcher dispatcher ;
         request.setAttribute("sid",sid);
         dispatcher = getServletContext().getRequestDispatcher("/addpayment.jsp");

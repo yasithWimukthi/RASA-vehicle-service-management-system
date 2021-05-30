@@ -313,7 +313,7 @@
                         </button>
                     </form>
 
-                    <form method="post" action="NavigateToWorkprogressServlet" style="margin-bottom: 100px">
+                    <form method="post" action="NavigateToFinancialServlet" style="margin-bottom: 100px">
                         <input type="hidden" name="sid" value="<%=repair.getRepairId()%>">
                         <button type="submit" class="ui green fluid button" style="width:95%; height:35px" class="mb-10">
                             <i class="dollar sign icon icon"> </i>
