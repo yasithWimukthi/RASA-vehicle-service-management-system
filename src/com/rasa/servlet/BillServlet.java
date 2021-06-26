@@ -28,8 +28,12 @@ public class BillServlet extends HttpServlet {
         int payId = Integer.parseInt(request.getParameter("payId"));
 
         try {
-            ps.billGenerate(payId);
-            response.sendRedirect("paymentlist.jsp");
+            boolean isDownload  = ps.billGenerate(payId);
+            if(isDownload){
+                request.setAttribute("IsConfirmed","Download Completed");
+                request.getRequestDispatcher("paymentlist.jsp").forward(request,response);
+            }
+
         } catch (DocumentException e) {
             e.printStackTrace();
         } catch (SQLException throwables) {
