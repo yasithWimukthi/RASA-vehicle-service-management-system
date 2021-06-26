@@ -10,47 +10,25 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <<html>
 <head>
-    <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
-    >
+    <link href="styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="styles/budget.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
+    <script src="styles/Semantic-UI-CSS-master/semantic.min.js"></script>
 
-        function drawChart() {
-
-            var data = google.visualization.arrayToDataTable([
-                ['Amount', 'Month of a year'],
-                ['Income', <%=request.getAttribute("income")%>],
-                ['Expenses',<%=request.getAttribute("expenses")%>],
-                ['Profit',<%=request.getAttribute("profit")%>],
-
-
-            ]);
-
-            var options = {
-                title: 'Monthly Budget'
-            };
-
-            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-            chart.draw(data, options);
-        }
-    </script>
     <title>Budget</title>
 </head>
 <body>
 <div class="container">
     <div class="content">
         <div class="sidebar">
+
             <li class="side-nav__item">
                 <a href="#" class="side-nav__link">
+
+            <li class="side-nav__item ">
+                <a href="index.jsp" class="side-nav__link">
+
                     <i class="car icon side-nav__icon" style="margin-bottom: 8px; margin-right: 10px;"></i>
                     <div class="side-nav__text">Add Service Entry</div>
                 </a>
@@ -109,45 +87,73 @@
                 <h1>Budget/month</h1>
             </div>
 
+
+            <%-- Report Button --%>
             <div class="report-button">
                 <form method="post" action="<%=request.getContextPath()%>/BudgetReportServlet">
 
 
-                    <button class="ui right labeled icon orange button">
-                        <i class="right arrow icon"></i>
+                    <button class="ui large right labeled icon teal button">
+                        <i class="large right arrow icon"></i>
                         Report
                     </button>
                 </form>
             </div>
 
 
-            <div class="box">
-                <form method="post" name="myForm" id="budget" onsubmit="return validation()"
-                      class="form" action="<%=request.getContextPath()%>/budgetServlet">
-                    <div class="form-control">
-                        <input type="text"  name="year" id="year">
+            <%--Succes Message --%>
+            <%if(request.getAttribute("IsConfirmed") != null){%>
+            <div class="ui success message">
+                <i class="close icon"></i>
+                <div class="header">
+                    Download Completed
+                </div>
+                <p>Please Check Your folder</p>
+            </div>
+            <%}%>
 
-                        <select name="month" >
-                            <option value="1">January</option>
-                            <option value="2">February</option>
-                            <option value="3">March</option>
-                            <option value="4">April</option>
-                            <option value="5">May</option>
-                            <option value="6">June</option>
-                            <option value="7">July</option>
-                            <option value="8">August</option>
-                            <option value="9">September</option>
-                            <option value="10">October</option>
-                            <option value="11">November</option>
-                            <option value="12">December</option>
-                        </select>
-                        <button type="submit" value="submit" class="ui primary button">Show</button>
+
+            <%-- year, date form --%>
+            <div class="box">
+                <form method="post" name="myForm" class="ui big form" id="budget" onsubmit="return validation()"
+                      action="<%=request.getContextPath()%>/budgetServlet">
+                    <div class="field">
+                        <div class="two fields">
+                            <div class="eight wide field">
+                                <input type="text"  name="year" id="year" placeholder="Enter year ..">
+                            </div>
+
+
+                            <div class="eight wide field">
+                                <select name="month">
+                                    <option value="">Select Month</option>
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="button">
+                        <button type="submit" value="submit" class="ui large teal button">Show</button>
+                    </div>
+
                 </form>
             </div>
 
 
 
+            <%-- Budget details presenter --%>
             <div class="demo">
                 <div class="budget_container">
 
@@ -164,7 +170,7 @@
                                         <%if(request.getAttribute("income") == null){%>
                                         <span class="amount">0.0</span>
                                         <%}else{%>
-                                        <span class="amount">Rs:<%=request.getAttribute("income")%></>span>
+                                        <span class="amount">Rs:<%=request.getAttribute("income")%></span>
                                         <%}%>
 
                                     </div>
@@ -179,15 +185,17 @@
                                             <td>Rs:<%=request.getAttribute("Ramount")%></td>
                                             <%}%>
                                         </tr>
-                                        <th>Rental income</th>
+                                        <th>car Rentals</th>
                                         <tr>
+
                                             <%if(request.getAttribute("rentalAmount") == null){%>
                                             <td>0.0</td>
                                             <%}else{%>
                                             <td>Rs:<%=request.getAttribute("rentalAmount")%></td>
                                             <%}%>
+
                                         </tr>
-                                        </ul>
+
                                     </table>
 
                                 </div>
@@ -201,14 +209,25 @@
                                     <h3 class="title">Profit</h3>
                                 </div>
                                 <div class="pricing-content_pro">
+                                    <div class="price-value">
 
+                                        <%if(request.getAttribute("profit") == null){%>
+                                        <span class="amount">0.0</span>
+                                        <%}else{%>
+                                        <span class="amount">Rs:<%=request.getAttribute("profit")%></span>
+                                        <%}%>
+
+                                    </div>
                                     <table>
+
+
+                                        <th></th>
                                         <tr>
-                                            <%if(request.getAttribute("profit") == null){%>
-                                            <td>0.0</td>
-                                            <%}else{%>
-                                            <td>Rs:<%=request.getAttribute("profit")%></td>
-                                            <%}%>
+
+                                            <td></td>
+
+                                            <td></td>
+
                                         </tr>
 
 
