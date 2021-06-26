@@ -33,8 +33,14 @@ public class BudgetReportServlet extends HttpServlet {
 
 
         try {
-            bs.BudgetReport(year, month);
-            response.sendRedirect("budget.jsp");
+
+            boolean isDownload =  bs.BudgetReport(year, month);
+
+            if(isDownload){
+                request.setAttribute("IsConfirmed","Download Completed");
+                request.getRequestDispatcher("budget.jsp").forward(request,response);
+            }
+
         } catch (DocumentException e) {
             e.printStackTrace();
         } catch (SQLException throwables) {
@@ -43,7 +49,7 @@ public class BudgetReportServlet extends HttpServlet {
 
 
     }
-        protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 }
