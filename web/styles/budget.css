@@ -45,6 +45,7 @@ body {
     background-size: cover;
     background-repeat:round;
     min-height: 100vh;
+
 }
 
 .container {
@@ -226,71 +227,19 @@ body {
 
 
 
-.form{
-    margin:0 0 100px 0;
-    padding:30px 20px;
+.box {
+    position:absolute;
+    padding:30px !important;
 
+
+    top:30%;
+    left:28%;
+    margin-top:20px;
+
+    background-color:#f5f5f5;
+    width:60%;
 }
 
-.form-control{
-    left:850px;
-    margin-bottom:20px;
-
-    padding-bottom:10px;
-    position:relative;
-
-
-
-
-}
-
-.form-control input {
-    border:2px solid #f0f0f0;
-    border-radius: 4px;
-    display:block;
-    margin-top:50px;
-    margin-bottom:10px;
-
-    padding:5px;
-    width:16%;
-    font-size: 14px;
-    font-family: inherit;
-
-}
-.form-control.error input{
-    border-color:#e74c3c;
-
-
-}
-.form-control small{
-    color:#2ecc71;
-
-    position: absolute;
-    bottom: 0;
-    left:0;
-    visibility: hidden;
-}
-.form-control.error small{
-    visibility: visible;
-    color:#e74c3c;
-}
-.form-control select {
-    border:2px solid #f0f0f0;
-    border-radius: 4px;
-    display:block;
-    padding:5px;
-
-
-    margin-bottom:10px;
-    width:16%;
-    font-size: 14px;
-    font-family: inherit;
-
-}
-.form-control input:focus{
-    outline:0;
-    border-color: #777;
-}
 .form button{
 
 
@@ -298,7 +247,7 @@ body {
     display:block;
     padding:10px;
     font-size:16px;
-    width:160px;
+    width:100%;
 
 }
 /*************************************************
@@ -308,8 +257,8 @@ body {
 .pricingTable{
 
     position:absolute;
-    top:22%;
-    right:55%;
+    top:60%;
+    right:52%;
 
     font-family:'Roboto', sitka-small;
     text-align: center;
@@ -320,12 +269,11 @@ body {
 
 .pricingTable .pricingTable-header{
     color: #fff;
-    background-color:#32cd32;
+    background-color:#87a7b3;
     padding: 15px 20px;
     position: relative;
     z-index: 1;
-    -webkit-clip-path: polygon(25% 0, 50% 0, 100% 100%, 0 100%, 0 25%);
-    clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%, 0 25%);
+
     transition: all 0.3s;
 }
 .pricingTable .pricingTable-header:before{
@@ -339,8 +287,7 @@ body {
     left: 50%;
     top: 50%;
     z-index: -1;
-    -webkit-clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%, 0 25%);
-    clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%, 0 25%);
+
     transition: all 0.3s;
 }
 .pricingTable:hover .pricingTable-header:before{
@@ -360,20 +307,18 @@ body {
     background-color: rgba(0,0,0,0.08);
     padding: 25px 0 15px;
     position: relative;
-    -webkit-clip-path: polygon(100% 0, 100% 80%, 80% 100%, 0 100%, 0 0);
-    clip-path: polygon(100% 0, 100% 80%, 80% 100%, 0 100%, 0 0);
+
+
     transition: all 0.3s;
 }
 .pricingTable .pricing-content:before{
     content: '';
     background: radial-gradient(transparent,transparent,rgba(0,0,0,0.05));
-    height: 50%;
-    width: 50%;
+
     opacity: 0;
     transform: translateX(-50%) translateY(-50%);
     position: absolute;
-    left: 50%;
-    top: 50%;
+
     z-index: -1;
     -webkit-clip-path: polygon(100% 0, 100% 80%, 80% 100%, 0 100%, 0 0);
     clip-path: polygon(100% 0, 100% 80%, 80% 100%, 0 100%, 0 0);
@@ -385,7 +330,7 @@ body {
     opacity: 1;
 }
 .pricingTable .price-value{
-    color: #32cd32;
+    color:green;
     margin-bottom: 10px;
 }
 .pricingTable .amount{
@@ -395,6 +340,7 @@ body {
     font-family: Monospace;
     line-height: 30px;
     display: inline-block;
+    color:green;
 }
 .pricingTable .month{
     color: #555;
@@ -419,7 +365,8 @@ body {
     vertical-align: middle;
     font-size: 20px;
     font-family: Monospace;
-    padding-left: 20px;
+
+    padding-left:25px;
     padding-bottom:10px;
     position: relative;
 }
@@ -458,8 +405,8 @@ body {
 .pricingTable_Pro{
 
     position:absolute;
-    top:22%;
-    right:37%;
+    top:60%;
+    right:34%;
 
 
     text-align: center;
@@ -471,12 +418,11 @@ body {
 }
 .pricingTable_Pro .pricingTable-header-pro{
     color: #fff;
-    background-color:#6495ed;
+    background-color:#87a7b3;
     padding: 15px 20px;
     position: relative;
     z-index: 1;
-    -webkit-clip-path: polygon(25% 0, 50% 0, 100% 100%, 0 100%, 0 25%);
-    clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%, 0 25%);
+
     transition: all 0.3s;
 }
 .pricingTable_Pro.pricingTable-header-pro:before{
@@ -490,8 +436,7 @@ body {
     left: 50%;
     top: 50%;
     z-index: -1;
-    -webkit-clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%, 0 25%);
-    clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%, 0 25%);
+
     transition: all 0.3s;
 }
 .pricingTable_Pro:hover .pricingTable-header-pro:before{
@@ -506,25 +451,31 @@ body {
     font-family:Monospace;
 
 }
+.pricingTable_Pro .amount{
+    font-size:25px;
+    font-weight: 500;
+    padding:0 40px 0 80px;
+    font-family: Monospace;
+    line-height: 30px;
+    display: inline-block;
+    color:#1e70bf;
+}
 .pricingTable_Pro .pricing-content_pro{
     text-indent:-25px;
     background-color: rgba(0,0,0,0.08);
-    padding: 25px 0 15px;
+    padding: 25px 0 75px;
     position: relative;
-    -webkit-clip-path: polygon(100% 0, 100% 80%, 80% 100%, 0 100%, 0 0);
-    clip-path: polygon(100% 0, 100% 80%, 80% 100%, 0 100%, 0 0);
+
     transition: all 0.3s;
 }
 .pricingTable_Pro .pricing-content_pro:before{
     content: '';
     background: radial-gradient(transparent,transparent,rgba(0,0,0,0.05));
-    height: 50%;
-    width: 50%;
+
     opacity: 0;
     transform: translateX(-50%) translateY(-50%);
     position: absolute;
-    left: 50%;
-    top: 50%;
+
     z-index: -1;
     -webkit-clip-path: polygon(100% 0, 100% 80%, 80% 100%, 0 100%, 0 0);
     clip-path: polygon(100% 0, 100% 80%, 80% 100%, 0 100%, 0 0);
@@ -536,40 +487,26 @@ body {
     opacity: 1;
 }
 
-
-.pricingTable_Pro.pricing-content_pro table{
-
-    padding:5px;
-    margin: 0 0 30px;
-
+.pricingTable .price-value{
+    color:#6495ed;
+    margin-bottom: 10px;
+}
+.pricingTable .amount{
+    font-size:25px;
+    font-weight: 500;
+    padding:0 40px 0 80px;
+    font-family: Monospace;
+    line-height: 30px;
     display: inline-block;
 
 }
-.pricingTable_Pro .pricing-content_pro table td{
-    color: #6495ed;
-    text-align:center;
-    padding:20px;
-    font-size:23px;
-    font-family:Monospace;
-    padding:0 30px 0 80px;
-    position: relative;
+.pricingTable .month{
+    color: #555;
+    font-size: 16px;
+    line-height: 30px;
+    text-transform: capitalize;
+    right:70px;
 }
-.pricingTable_Pro .pricing-content_pro table td:before{
-
-    color: #fff;
-    background-color: #2ecc71;
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    text-align: left;
-    line-height: 25px;
-    height: 25px;
-    width: 25px;
-    border-radius: 50%;
-    position: absolute;
-    left:0;
-    top: 8px;
-}
-
 
 
 /*************************************************
@@ -581,8 +518,8 @@ body {
 .pricingTable_Ex{
 
     position:absolute;
-    top:22%;
-    right:19%;
+    top:60%;
+    right:16%;
 
 
     text-align: center;
@@ -592,27 +529,23 @@ body {
 }
 .pricingTable_Ex .pricingTable-header_Ex{
     color: #fff;
-    background-color:#ea3c53;
+    background-color:#87a7b3;
     padding: 15px 20px;
     position: relative;
     z-index: 1;
-    -webkit-clip-path: polygon(25% 0, 50% 0, 100% 100%, 0 100%, 0 25%);
-    clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%, 0 25%);
+
     transition: all 0.3s;
 }
 .pricingTable_Ex .pricingTable-header_Ex:before{
     content: '';
     background-color: rgba(0,0,0,0.1);
-    height: 10%;
-    width: 10%;
+
     opacity: 0;
     transform: translateX(-50%) translateY(-50%);
     position: absolute;
-    left: 50%;
-    top: 50%;
+
     z-index: -1;
-    -webkit-clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%, 0 25%);
-    clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%, 0 25%);
+
     transition: all 0.3s;
 }
 .pricingTable_Ex:hover .pricingTable-header_Ex:before{
@@ -632,8 +565,7 @@ body {
     background-color: rgba(0,0,0,0.08);
     padding: 25px 0 15px;
     position: relative;
-    -webkit-clip-path: polygon(100% 0, 100% 80%, 80% 100%, 0 100%, 0 0);
-    clip-path: polygon(100% 0, 100% 80%, 80% 100%, 0 100%, 0 0);
+
     transition: all 0.3s;
 }
 .pricingTable_Ex .pricing-content_Ex:before{

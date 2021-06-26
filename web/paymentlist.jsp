@@ -15,10 +15,7 @@
 <head>
     <title>PaymentManagement</title>
 
-    <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
-    >
+    <link href="styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="styles/paymentlist.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -99,7 +96,6 @@
 
 
 
-            <section class="ui container">
 
 
 
@@ -108,23 +104,32 @@
 
 
 
-                <h2 class="main-title">Latest Payment</h2>
-                <div class="bill_button">
-                    <form method="post" action="<%=request.getContextPath()%>/AllPaymentsServlet">
+            <div class="main-title">
+                <h2>Latest Payment</h2>
+            </div>
+
+            <%--Next page button --%>
+            <div class="bill_button">
+                <form method="post" action="allPayments.jsp">
 
 
-                    <button class="big ui right labeled icon green button">
-                        <i class="arrow alternate circle right icon"></i>
+                    <button class="big ui right labeled icon teal button">
+                        <i class="large arrow alternate circle right icon"></i>
                         All Payments
                     </button>
-                    </form>
-                </div>
 
-                    <% paymentService retrieve = new paymentService ();
+                </form>
+            </div>
 
-                        paymentList pay=  retrieve.showLatestPayment();%>
 
-                <div class="card">
+
+
+            <%-- Lateset payment details --%>
+            <% paymentService retrieve = new paymentService ();
+
+                paymentList pay=  retrieve.showLatestPayment();%>
+
+            <div class="card">
                 <div class="ui grid form-container">
                     <div class="sixteen  wide column">
                         <table class="ui celled table">
@@ -150,18 +155,21 @@
                                 <td>
                                     <%=pay.getRegistrationNumber() %>
                                 </td>
+                                <%if(pay.getEstimateAmount() == 0.0){%>
 
+                                <td>None</td>
+                                <%}else{%>
                                 <td>
                                     <%=pay.getEstimateAmount() %>
                                 </td>
-
+                                <%}%>
                                 <td>
                                     <%=pay.getCash() %>
                                 </td>
                                 <td>
                                     <%=pay.getPaymentDate() %>
                                 </td>
-                                <td><a href="retriveEditServlet?payId=<%=pay.getPayId()%>" > <i class="yellow pen square icon"></i></a> &nbsp;&nbsp;&nbsp;&nbsp; <a  href="paymentDeleteServlet?payId=<%=pay.getPayId()%>" > <i class="red trash icon"></i></a> &nbsp;&nbsp;&nbsp<a href="BillServlet?payId=<%=pay.getPayId()%>" ><i class="blue file icon"></i></a></td>
+                                <td><a href="retriveEditServlet?payId=<%=pay.getPayId()%>" > <i class="orange large edit icon"></i></a> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp<a href="BillServlet?payId=<%=pay.getPayId()%>" ><i class="green large file pdf icon" ></i></a></td>
                             </tr>
 
 
@@ -169,7 +177,6 @@
 
 
                             </tbody>
-
                         </table>
 
                     </div>
@@ -177,10 +184,21 @@
 
 
 
-        </div>
                 </div>
+            </div>
+
+            <%-- Success message --%>
+            <%if(request.getAttribute("IsConfirmed") != null){%>
+            <div class="ui success message">
+                <i class="close icon"></i>
+                <div class="header">
+                    Download Completed
+                </div>
+                <p>Please Check Your folder</p>
+            </div>
+            <%}%>
+        </div>
     </div>
-</div>
 </div>
 
 

@@ -26,6 +26,9 @@ paymentForm.addEventListener("submit", e =>{
         document.querySelector("#estimateAmount").classList.remove("error");
 
     }
+
+
+
     if(cash.trim() ===""){
         e.preventDefault();
         document.querySelector("#form-container3").classList.add("error");
@@ -47,11 +50,20 @@ paymentForm.addEventListener("submit", e =>{
     if(isNaN(estimateAmount)){
         e.preventDefault();
         document.querySelector("#form-container2").classList.add("error");
-        document.querySelector("#paymentDate").classList.add("error");
+        document.querySelector("#estimateAmount").classList.add("error");
+        document.querySelector(".estimate-error").style.visibility = "visible";
+    }
+    else{
+        document.querySelector("#estimateAmount").classList.remove("error");
+        document.querySelector(".estimate-error").style.visibility = "hidden";
     }
     if(isNaN(cash)){
         e.preventDefault();
         document.querySelector("#form-container3").classList.add("error");
-        document.querySelector("#paymentDate").classList.add("error");
+        document.querySelector("#cash").classList.add("error");
+        document.querySelector(".cash-error").style.visibility = "visible";
+    }else{
+        document.querySelector("#cash").classList.remove("error");
+        document.querySelector(".cash-error").style.visibility = "hidden";
     }
 });

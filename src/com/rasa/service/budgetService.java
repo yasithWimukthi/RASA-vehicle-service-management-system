@@ -15,7 +15,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Calendar;
 
 
 public class budgetService {
@@ -80,6 +82,8 @@ public class budgetService {
         return totalRentalAmount;
 
     }
+
+
 
     public double calEmpPayments(String year, String month) {
         double empPayments = 0;
@@ -156,17 +160,17 @@ public class budgetService {
 
     }
 
-    public void BudgetReport(String year, String month) throws DocumentException, MalformedURLException, IOException, SQLException {
+    public boolean BudgetReport(String year, String month) throws DocumentException, MalformedURLException, IOException, SQLException {
         Budget bd = new Budget();
         // String year = bd.getYear();
 
         //String month = bd.getMonth();
-
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd  HH.mm.ss").format(Calendar.getInstance().getTime());
         try {
 
             //AllMethods(year,month);
             Document document = new Document();
-            PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\asus\\Desktop\\reports\\budget1" + ".pdf"));
+            PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\asus\\Desktop\\reports\\budget " +timeStamp+".pdf"));
             document.open();
             //header part
             //font
@@ -307,6 +311,6 @@ public class budgetService {
             System.err.println(e);
         }
 
-
+        return true;
     }
 }

@@ -1,6 +1,7 @@
 <%@ page import="com.rasa.service.paymentService" %>
 <%@ page import="com.rasa.model.paymentList" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%--
   Created by IntelliJ IDEA.
   User: Tharukshi
@@ -15,16 +16,12 @@
 <head>
     <title>PaymentManagement</title>
 
-    <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
-    >
-    <link rel="stylesheet" href="styles/paymentlist.css">
+    <link href="styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="styles/allPayments.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script src="styles/Semantic-UI-CSS-master/semantic.min.js"></script>
 
 
 
@@ -32,8 +29,18 @@
 </head>
 <body >
 
+<% List<paymentList> list = (List<paymentList>)request.getAttribute("pay");%>
+<%
+    boolean isSuccess = false;
+    boolean isEmpty = false;
 
 
+    try {
+        isEmpty = (boolean) request.getAttribute("isEmpty");
+    }catch (Exception e){
+        isEmpty =false;
+    }
+%>
 <div class="container">
     <div class="content">
         <div class="sidebar">
@@ -109,13 +116,57 @@
 
                 <h2 class="main-title">Payments</h2>
 
-                    <% paymentService pays = new paymentService();
 
-                    List<paymentList> payList=  pays.selectAllPayment(); %>
+
+
+
+                <%--search box --%>
+
+                <div class="ui grid search-bar-container">
+                    <div class="sixteen wide column">
+                        <div class="search-wrapper">
+                            <form method="get" id="form" action="<%=request.getContextPath()%>/searchPaymentsServlet">
+                                <div class="ui action input searchBar" style="height: 45px ;width:95%">
+
+                                    <input type="date" placeholder="Search..." name="date" id ="date">
+
+                                    <button type="submit" class="ui button">
+                                        <i class="search icon"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <%--Error message --%>
+                    <% if(isEmpty) {%>
+                <div class="ui negative icon message" style="width: 90%; margin-top: 35px">
+
+                    <div class="content">
+                        <div class="header">
+                            Payments not found!
+                        </div>
+                    </div>
+                </div>
+                    <%} %>
+
+                <%--payments--%>
+                    <% if (list !=null && list.size()>0 ){%>
                 <section class="details">
                     <div class="card">
-                        <table class="ui selectable compact blue table">
+
+
+
+                        <table class="ui celled padded table" id="table-id">
+
+
+
+
+
                             <thead>
+
+
                             <tr>
                                 <th>Payment ID</th>
                                 <th>Registration Number</th>
@@ -126,9 +177,10 @@
 
                             </tr>
                             </thead>
-                            <tbody>
                             <!-- table data -->
-                            <%for(paymentList i:payList){ %>
+                            <%for(paymentList i:list){ %>
+                            <tbody>
+
                             <tr>
                                 <td>
                                     <%=i.getPayId() %>
@@ -137,10 +189,14 @@
                                     <%=i.getRegistrationNumber() %>
                                 </td>
 
+                                <%if(i.getEstimateAmount() == 0.0){%>
+
+                                <td>None</td>
+                                <%}else{%>
                                 <td>
                                     <%=i.getEstimateAmount() %>
                                 </td>
-
+                                <%}%>
                                 <td>
                                     <%=i.getCash() %>
                                 </td>
@@ -149,6 +205,7 @@
                                 </td>
 
                             </tr>
+
                             <%} %>
 
 
@@ -156,19 +213,22 @@
 
                             </tbody>
 
+
+
                         </table>
+
 
                     </div>
                 </section>
 
-
+                    <%}%>
 
         </div>
     </div>
 </div>
 </div>
 
-
+<script src="financial_script/allPayment.js"></script>
 </body>
 
 </html>

@@ -6,7 +6,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import com.itextpdf.text.*;
@@ -200,15 +202,51 @@ public class paymentService implements ipayment{
 
     }
 
-    public void billGenerate(int payId)throws DocumentException, MalformedURLException, IOException,SQLException {
+
+    public  List<paymentList> searchByDate(Date date){
+        List<paymentList> pays = new ArrayList<>();
+
+        try{
+            connection = DBConnectionUtil.getConnection();
+            String sql = "SELECT payId,registrationNumber,estimateAmount,cash,paymentDate, sid FROM rasa.payment WHERE paymentDate = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setDate(1,date);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while(rs.next()){
+
+                int payId = rs.getInt("payId");
+                String registrationNumber = rs.getString("registrationNumber");
+
+                double estimateAmount = rs.getDouble("estimateAmount");
+
+                double cash = rs.getDouble("cash");
+                Date paymentDate= rs.getDate("paymentDate");
+                int  sid = rs.getInt("sid");
+
+
+                pays.add(new paymentList(payId,registrationNumber,estimateAmount,cash,paymentDate,sid));
+            }
+            System.out.println(preparedStatement);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return pays;
+
+    }
+
+    public  boolean billGenerate(int payId)throws DocumentException, MalformedURLException, IOException,SQLException {
         paymentList pay  =  selectPayment(payId);
 
-
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd  HH.mm.ss").format(Calendar.getInstance().getTime());
         try {
 
             //AllMethods(year,month);
             Document document = new Document();
-            PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\asus\\Desktop\\reports\\billReceipt" + ".pdf"));
+            PdfWriter.getInstance(document, new FileOutputStream("C:\\Users\\asus\\Desktop\\reports\\billReceipt " +timeStamp+ ".pdf"));
             document.open();
             //header part
             //font
@@ -373,7 +411,7 @@ public class paymentService implements ipayment{
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        return true;
     }
 
 
@@ -395,7 +433,7 @@ public class paymentService implements ipayment{
             }
     }
 
-    }
+}
 
 
 

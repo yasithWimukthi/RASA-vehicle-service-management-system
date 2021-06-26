@@ -31,6 +31,7 @@ public class AllPaymentsServlet extends HttpServlet {
 
 
             request.setAttribute("payList", payList);
+            System.out.println(payList);
 
             RequestDispatcher dis = request.getRequestDispatcher("allPayments.jsp");
             dis.forward(request, response);

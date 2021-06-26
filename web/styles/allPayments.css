@@ -203,113 +203,48 @@ body {
     }
 }
 
-/*************************************************
-            ESTIMATION TABLE
-*************************************************/
 
-::selection { background: #5f74a0; color: #fff; }
-::-moz-selection { background: #5f74a0; color: #fff; }
+form.error input{
+    border-color:#e74c3c;
 
 
+}
+
+.card{
 
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
-ol, ul { list-style: none; }
+    overflow: hidden;
+    overflow-y:scroll;
+    height:300px;
 
+}
+table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    min-width: 120px;
+}
 
+tbody tr{
 
+    background-color: #ffffff;
+    padding: 20px;
+}
 
-table { border-collapse: collapse; border-spacing: 0; }
-
-
-h1 {
-    font-family: Monospace;
-    font-weight: bold;
-    font-size: 29px;
-    line-height: 1.7em;
-    margin-bottom: 8px;
+th, td {
     text-align: center;
-}
 
-
-/** page structure **/
-#wrapper {
-    display: block;
-    width: 850px;
-
-    margin: 0 auto;
-    padding: 10px 17px;
-
-}
-
-
-.amount{
-    font-size:20px;
-    color:#0269A4;
-    font-weight:bold;
-    font-family:Monospace;
-}
-
-.box{
-    position: absolute;
-    top:50%;
-    left:40%;
-    background-color:#fff;
-    border-radius:5px;
-    box-shadow:0 2px 5px rgba(0,0,0,0.3);
-    margin: 0 auto;
-    width:550px;
-    max-width:100%;
-
-}
-.form{
-    padding:30px 40px;
-
-}
-.header{
-    text-align:left;
-    color:slategrey;
-    font-size: 19px;
-    font-family: inherit;
-}
-.form-control{
-    margin-bottom:10px;
-    padding-bottom:20px;
-    position:relative;
-}
-.form-control label{
-    display:inline-block;
-    margin-bottom:5px;
-    font-family: inherit;
-    color:lightslategray;
-    font-size:12px;
-
-}
-.form-control input{
-    border:2px solid #f0f0f0;
-    border-radius: 4px;
-    display:block;
-    padding:10px;
-    width:100%;
-    font-size: 14px;
-    font-family: inherit;
-
+    font-size: 13px;
 }
 
 
 
-.form button{
 
-    position:absolute;
-    top:100%;
-    background-color:teal;
-    border: 2px solid #006699;
-    border-radius:4px ;
-    color:#fff;
-    display:block;
-    padding-top:10px;
-    font-size: 16px;
-    width:92%;
-    height:9%;
+tr:nth-child(even){background-color: #ddd}
 
+th {
+    background-color: #008080;
+    color: white;
 }
+
+
+
