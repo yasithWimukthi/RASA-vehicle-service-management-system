@@ -3,10 +3,12 @@
 <html>
 <head>
     <title></title>
-
+    <link href="styles/Semantic-UI-CSS-master/semantic.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="styles/editPayment.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="styles/Semantic-UI-CSS-master/semantic.min.js"></script>
+
 
 
 
@@ -73,62 +75,63 @@
                 &copy; 2021 by RASA. All rights reserved.
             </div>
         </div>
-        <div class="box">
-            <form method="post" class="form" id="form" action="<%=request.getContextPath()%>/paymentEditServlet">
+
+        <div class="main-content">
+            <div class="header">Edit Payment</div>
+            <form method="post" class="ui huge form" id="form" action="<%=request.getContextPath()%>/paymentEditServlet">
 
 
                 <%--@declare id="vehicleregino"--%><%--@declare id="customername"--%><%--@declare id="estimateamount"--%>
                 <%--@declare id="cash"--%><%--@declare id="paymentdate"--%>
 
-                <div class="header">Edit Payment</div>
+
+                <div class="field">
+                    <input type ="hidden" name="payId" value="<%=request.getAttribute("payId")%>">
+
+                    <div class="field" id="form-container">
+                        <label for="vehicleRegiNo">Vehicle Registration number</label>
+                        <input type="text" name="registrationNumber" id="vehicleRegiNo" value="<%=request.getAttribute("registrationNumber")%>" >
 
 
-                <input type ="hidden" name="payId" value="<%=request.getAttribute("payId")%>">
-                <div class="form-control" id="form-container">
-                    <label for="vehicleRegiNo">Vehicle Registration number</label>
-                    <input type="text" name="registrationNumber" id="vehicleRegiNo" value="<%=request.getAttribute("registrationNumber")%>" >
-                    <i class="fa fa-check-circle" aria-hidden="true"></i>
-                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                    <small>Please enter vehicle registation number</small>
+                    </div>
+
+
+                    <div class="field" id="form-container2">
+                        <label  for="estimateAmount">Estimation Amount</label>
+                        <input type="text" name="estimateAmount"  id="estimateAmount" value="<%=request.getAttribute("estimateAmount")%>" >
+
+                        <small class="estimate-error" style="color: red;visibility: hidden;">Cannot Enter Text Inputs</small>
+                    </div>
+
+                    <div class="field" id="form-container3">
+                        <label for="cash">Cash</label>
+                        <input type="text"   name="cash" id="cash"  value="<%=request.getAttribute("cash")%>" >
+
+                        <small class="cash-error" style="color: red;visibility: hidden;">Cannot Enter Text Inputs</small>
+                    </div>
+
+
+
+                    <div class="field" id="form-container4">
+                        <label for="paymentDate">Date of Payment</label>
+                        <input type="date"  name="paymentDate" id="paymentDate" value="<%=request.getAttribute("paymentDate")%>">
+
+
+                    </div>
+
+
+
+
+
+
+                    <button>Update</button>
                 </div>
-
-
-                <div class="form-control" id="form-container2">
-                    <label  for="estimateAmount">Estimation Amount</label>
-                    <input type="text" name="estimateAmount"  id="estimateAmount" value="<%=request.getAttribute("estimateAmount")%>" >
-                    <i class="fa fa-check-circle" aria-hidden="true"></i>
-                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                    <small>Please enter estimate amount</small>
-                </div>
-
-                <div class="form-control" id="form-container3">
-                    <label for="cash">Cash</label>
-                    <input type="text"   name="cash" id="cash"  value="<%=request.getAttribute("cash")%>" >
-                    <i class="fa fa-check-circle" aria-hidden="true"></i>
-                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                    <small>Please enter cash amount</small>
-                </div>
-
-
-
-                <div class="form-control" id="form-container4">
-                    <label for="paymentDate">Date of Payment</label>
-                    <input type="date"  name="paymentDate" id="paymentDate" value="<%=request.getAttribute("paymentDate")%>">
-                    <i class="fa fa-check-circle" aria-hidden="true"></i>
-                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
-                    <small>Please enter payment date</small>
-                </div>
-
-
-
-
-
-
-                <button>submit</button>
             </form>
         </div>
-        <script src="financial_script/editPayment.js"></script>
     </div>
+
+
 </div>
+<script src="financial_script/editPayment.js"></script>
 </body>
 </html>
