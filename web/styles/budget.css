@@ -267,34 +267,7 @@ body {
 
 }
 
-.pricingTable .pricingTable-header{
-    color: #fff;
-    background-color:#87a7b3;
-    padding: 15px 20px;
-    position: relative;
-    z-index: 1;
 
-    transition: all 0.3s;
-}
-.pricingTable .pricingTable-header:before{
-    content: '';
-    background-color: rgba(0,0,0,0.1);
-    height: 15%;
-    width: 10%;
-    opacity: 0;
-    transform: translateX(-50%) translateY(-50%);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    z-index: -1;
-
-    transition: all 0.3s;
-}
-.pricingTable:hover .pricingTable-header:before{
-    height: 93%;
-    width: 95%;
-    opacity: 1;
-}
 
 .pricingTable .title{
     font-size: 25px;
@@ -416,34 +389,7 @@ body {
 
 
 }
-.pricingTable_Pro .pricingTable-header-pro{
-    color: #fff;
-    background-color:#87a7b3;
-    padding: 15px 20px;
-    position: relative;
-    z-index: 1;
 
-    transition: all 0.3s;
-}
-.pricingTable_Pro.pricingTable-header-pro:before{
-    content: '';
-    background-color: rgba(0,0,0,0.1);
-    height: 10%;
-    width: 10%;
-    opacity: 0;
-    transform: translateX(-50%) translateY(-50%);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    z-index: -1;
-
-    transition: all 0.3s;
-}
-.pricingTable_Pro:hover .pricingTable-header-pro:before{
-    height: 93%;
-    width: 95%;
-    opacity: 1;
-}
 
 .pricingTable_Pro .title{
     font-size:25px;
@@ -526,32 +472,6 @@ body {
     width:17%
 
 
-}
-.pricingTable_Ex .pricingTable-header_Ex{
-    color: #fff;
-    background-color:#87a7b3;
-    padding: 15px 20px;
-    position: relative;
-    z-index: 1;
-
-    transition: all 0.3s;
-}
-.pricingTable_Ex .pricingTable-header_Ex:before{
-    content: '';
-    background-color: rgba(0,0,0,0.1);
-
-    opacity: 0;
-    transform: translateX(-50%) translateY(-50%);
-    position: absolute;
-
-    z-index: -1;
-
-    transition: all 0.3s;
-}
-.pricingTable_Ex:hover .pricingTable-header_Ex:before{
-    height: 93%;
-    width: 95%;
-    opacity: 1;
 }
 
 .pricingTable_Ex .title{
